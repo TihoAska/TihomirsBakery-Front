@@ -1,0 +1,52 @@
+.footer{
+    position: relative;
+    height: 70px;
+    background-color: #1e2633;
+    z-index: 2;
+}
+
+.plus-icon{
+    z-index: 5;
+    margin-top: 20px;
+    transition: transform 0.3s ease;
+}
+
+.plus-icon-background {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    background-color: #1e2633;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    z-index: 0;
+    transition: transform 0.3s ease;
+    transform-origin: center center;
+    text-align: center;
+}
+
+.plus-icon-background:hover {
+    transform: translate(-50%, -60%) scale(1.1) rotate(90deg);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 0 10px orangered;
+}
+
+.socials{
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    right: 0;
+    bottom: 15px;
+}
+
+.social{
+    transition: transform 0.3s ease;
+}
+
+.social:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}

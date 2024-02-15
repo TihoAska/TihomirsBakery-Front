@@ -1,0 +1,10 @@
+<div class="sidebar" [@showSidebar]="showSidebar ? 'show' : 'hide'">
+  <ng-container *ngFor="let item of items; let i = index">
+    <div class="icons">
+      <img class="icon" [src]="item.icon" [alt]="item.name" height="50px" width="50px">
+      <p [@showName]="showSidebar ? 'show' : 'hide'">{{ item.name }}</p>
+    </div>
+    <hr *ngIf="i % 2 === 1 && i !== items.length - 1">
+  </ng-container>
+  <hr>
+</div>
