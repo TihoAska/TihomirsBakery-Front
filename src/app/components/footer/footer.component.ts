@@ -1,5 +1,6 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, HostListener } from '@angular/core';
+import { FooterService } from '../../services/footer.service';
 
 @Component({
   selector: 'app-footer',
@@ -7,11 +8,8 @@ import { Component, HostListener } from '@angular/core';
   styleUrl: './footer.component.scss',
 })
 export class FooterComponent {
-  icons = [
-    { icon: '../../../assets/plus-orange.png', name: 'PLUS'},
-    { icon: '../../../assets/facebook-icon-orange.png', name: 'FB'},
-    { icon: '../../../assets/instagram-icon-orange.png', name: 'IG'},
-    { icon: '../../../assets/twitter-icon-orange.png', name: 'TW'}
-  ]
 
+  constructor(public footerService : FooterService) {
+    
+  }
 }

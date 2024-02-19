@@ -9,6 +9,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './components/footer/footer.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    NgxSkeletonLoaderModule.forRoot()
+    NgxSkeletonLoaderModule.forRoot(),
+    NgApexchartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

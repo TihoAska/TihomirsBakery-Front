@@ -7,6 +7,7 @@ import {
   animate, 
   transition
 } from '@angular/animations'
+import { SidebarService } from '../../services/sidebar.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -19,14 +20,14 @@ import {
           'show',
           style({
             width: '300px',
-            zIndex: 1,
+            zIndex: 3,
           })
         ),
         state(
           'hide',
           style({
             width: '100px',
-            zIndex: 1,
+            zIndex: 3,
           })
         ),
         transition('show <=> hide', animate('300ms ease-in-out')),
@@ -66,21 +67,11 @@ export class SidebarComponent {
   
   showSidebar = false;
 
-  items = [
-    { icon: '../../../assets/bread-orange.png', name: 'BAGELS' },
-    { icon: '../../../assets/sandwich-orange.png', name: 'SANDWICHES' },
-    { icon: '../../../assets/croissant.png', name: 'DESSERTS' },
-    { icon: '../../../assets/pancakes-orange.png', name: 'PANCAKES' },
-    { icon: '../../../assets/coffee-cup-orange.png', name: 'HOT BEVERAGE' },
-    { icon: '../../../assets/bubble-tea-orange.png', name: 'ICE COFFEE' },
-  ];
+  constructor(public sidebarService : SidebarService){
 
-  constructor(private headerService : HeaderService){
   }
 
   ngOnInit(){
-    this.headerService.$isHamburgerClicked.subscribe((clicked) => {
-      this.showSidebar = clicked;
-    })
+
   }
 }

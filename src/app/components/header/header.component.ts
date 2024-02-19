@@ -20,9 +20,5 @@ export class HeaderComponent {
   constructor(headerService : HeaderService){
     this.headerService = headerService;
   }
-
-  toggleSidebar(){
-    this.headerService.toggleSidebar();
-  }
 } 
 

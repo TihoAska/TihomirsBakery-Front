@@ -1,10 +1,96 @@
 <html>
     <div class="top">
+        <div class="top-left-side">
+            <div id="chart">
+                <apx-chart
+                    [series]="chartSeries"
+                    [chart]="chartDetails"
+                    [legend]="legendOptions"
+                    [fill]="fill"
+                    [tooltip]="tooltip"
+                ></apx-chart>
+              </div>
+        </div>
 
+        <div class="top-right-side">
+            <p>Today's goal: </p>
+            <div class="macros">
+                <p #protein style="color: darkorange;">Protein: 0/{{ macros[0].animatedValue }}g</p>
+                <p #fats style="color: greenyellow">Fats: 0/{{ macros[1].animatedValue }}g</p>
+                <p #carbs style="color: lightblue">Carbs: 0/{{ macros[2].animatedValue }}g</p>
+            </div>
+            <hr style="border-color: orangered; width: 40vw; margin-right: 12%;">
+            <p style="color: orangered;">Total Calories: 0/{{ macros[3].animatedValue }}kcal</p>
+        </div>
     </div>
 
     <div class="bottom">
+        <div class="breakfast">
+            <div class="breakfast-top">
+                <img [src]="footerService.pluses[2].icon" [alt]="footerService.pluses[2].name" height="50px" width="50px">
+                <p>ADD BREAKFAST</p>
+            </div>
 
+            <div class="breakfast-bottom">
+                <p>MACROS: </p>
+                <hr style="border-color: darkorange;">
+                <hr style="border-color: greenyellow;">
+                <hr style="border-color: lightblue;">
+            </div>
+        </div>
+
+        <div class="lunch">
+            <div class="lunch-top">
+                <p>MACROS: </p>
+                <hr style="border-color: darkorange;">
+                <hr style="border-color: greenyellow;">
+                <hr style="border-color: lightblue;">
+            </div>
+
+            <div class="lunch-bottom">
+                <img [src]="footerService.pluses[3].icon" [alt]="footerService.pluses[3].name" height="50px" width="50px">
+                <p>ADD LUNCH</p>
+            </div>
+        </div>
+
+        <div class="snack">
+            <div class="snack-top">
+                <img [src]="footerService.pluses[2].icon" [alt]="footerService.pluses[2].name" height="50px" width="50px">
+                <p>ADD SNACK</p>
+            </div>
+    
+            <div class="snack-bottom">
+                <div class="snack-bottom">
+                <p>MACROS: </p>
+                <hr style="border-color: darkorange;">
+                <hr style="border-color: greenyellow;">
+                <hr style="border-color: lightblue;">
+                </div>
+            </div>
+        </div>
+        <div class="dinner">
+            <div class="dinner-top">
+                <p>MACROS: </p>
+                <hr style="border-color: darkorange;">
+                <hr style="border-color: greenyellow;">
+                <hr style="border-color: lightblue;">
+            </div>
+
+            <div class="dinner-bottom">
+                <img [src]="footerService.pluses[3].icon" [alt]="footerService.pluses[3].name" height="50px" width="50px">
+                <p>ADD DINNER</p>
+            </div>
+        </div>
+        <div class="workout">
+            <div class="workout-top">
+                <img [src]="footerService.pluses[0].icon" [alt]="footerService.pluses[0].name" height="50px" width="50px">
+                <p>ADD WORKOUT</p>
+            </div>
+
+            <div class="workout-bottom">
+                <p id="time-elapsed">TIME ELAPSED: 0:00:00</p>
+                <p id="calories-burned">CALORIES BURNED: 0kcal</p>
+            </div>
+        </div>
     </div>
-
 </html>

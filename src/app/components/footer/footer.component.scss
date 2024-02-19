@@ -3,10 +3,11 @@
     height: 70px;
     background-color: #1e2633;
     z-index: 2;
+    border-top: 2px orangered solid;
 }
 
 .plus-icon{
-    z-index: 5;
+    z-index: 3;
     margin-top: 20px;
     transition: transform 0.3s ease;
 }
@@ -25,10 +26,11 @@
     transition: transform 0.3s ease;
     transform-origin: center center;
     text-align: center;
+    border: 2px solid orangered;
 }
 
 .plus-icon-background:hover {
-    transform: translate(-50%, -60%) scale(1.1) rotate(90deg);
+    transform: translate(-50%, -60%) scale(1.03);
     transition: transform 0.3s ease;
     cursor: pointer;
     box-shadow: 0 0 10px orangered;

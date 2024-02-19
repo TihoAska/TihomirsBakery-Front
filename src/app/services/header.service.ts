@@ -10,8 +10,4 @@ export class HeaderService {
 
   constructor() { }
 
-  toggleSidebar(){
-    this.isHamburgerClicked = !this.isHamburgerClicked;
-    this.$isHamburgerClicked.next(this.isHamburgerClicked);
-  }
 }

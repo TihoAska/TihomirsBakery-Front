@@ -1,10 +1,15 @@
 <div class="sidebar" [@showSidebar]="showSidebar ? 'show' : 'hide'">
-  <ng-container *ngFor="let item of items; let i = index">
+  <div class="profile">
+    <img id="profile-photo" [src]="sidebarService.profilePhoto.icon" [alt]="sidebarService.profilePhoto.name" height="40px" width="40px">
+    <p id="profile-name" [@showName]="showSidebar ? 'show' : 'hide'">{{ sidebarService.profilePhoto.name }}</p>
+  </div>
+  <hr>
+  <ng-container *ngFor="let item of sidebarService.items; let i = index">
     <div class="icons">
       <img class="icon" [src]="item.icon" [alt]="item.name" height="50px" width="50px">
       <p [@showName]="showSidebar ? 'show' : 'hide'">{{ item.name }}</p>
     </div>
-    <hr *ngIf="i % 2 === 1 && i !== items.length - 1">
+    <hr *ngIf="i % 2 === 1 && i !== sidebarService.items.length - 1">
   </ng-container>
   <hr>
 </div>

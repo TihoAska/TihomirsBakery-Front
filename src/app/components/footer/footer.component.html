@@ -1,10 +1,10 @@
 <div class="footer" >
     <div class ="plus-icon-background">
-        <img class="plus-icon" [src]="icons[0].icon" alt="icon" height="70px" width="70px">
+        <img class="plus-icon" [src]="footerService.pluses[0].icon" alt="icon" height="70px" width="70px">
     </div>
     <div class="socials">
-        <ng-container *ngFor="let icon of icons; let i = index">
-            <img class="social" *ngIf="i !== 0" [src]="icon.icon" [alt]="icon.name" height="40px" width="40px" style="margin-right: 10px;">
+        <ng-container *ngFor="let icon of footerService.socials; let i = index">
+            <img class="social" [src]="icon.icon" [alt]="icon.name" height="40px" width="40px" style="margin-right: 10px;">
         </ng-container>
     </div>
 </div>
