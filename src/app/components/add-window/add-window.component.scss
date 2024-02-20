@@ -1,0 +1,167 @@
+.floating-window{
+    position: relative; 
+    height: 70vh;
+    width: 20vw;
+    background-color: #181e29;
+    border-radius: 10px;
+    border: 2px orangered solid;
+    overflow: hidden;
+}
+
+.top{
+    position: absolute;
+    height: 55%;
+    width: 100%;
+    background-color: white;
+    clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
+    border-radius: 8px 8px 0 0;
+    transition: transform 0.3s ease;
+}
+
+.top:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.top > img{
+    position: absolute;
+    top: 40%;
+    left: 45%;
+}
+
+.top > p{
+    position: absolute;
+    top: 55%;
+    left: 44%;
+    color: #181e29;
+}
+
+.bottom{
+    position: absolute;
+    height: 50%;
+    width: 100%;
+    top: 50%;
+    clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
+    border-radius: 0 0 10px 10px;
+    transition: transform 0.3s ease;
+}
+
+.bottom:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.bottom > img{
+    position: absolute;
+    top: 40%;
+    left: 45%;
+}
+
+.bottom > p{
+    position: absolute;
+    top: 55%;
+    left: 41%;
+    color: orangered;
+}
+
+.search{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 2px #181e29 solid;
+    width: 90%;
+    height: 52px;
+    z-index: 5;
+    left: 5%;
+    padding-top: 5%;
+}
+
+.meal-search-bar {
+    width: 90%;
+    height: 50px;
+    font-size: 15px;
+    border: none;
+}
+
+.meal-search-bar::placeholder{
+    color: #181e29;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.add-meal{
+    background-color: white;
+    width: 100%;
+    height: 100%;
+}
+
+.icons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 95%;
+    margin: auto;
+    padding-top: 2%;
+}
+
+.quick-add{
+    width: 70%;
+    margin: auto;
+}
+
+.quick-add > h1{
+    text-align: center;
+    padding: 20px;
+    font-size: 3vh;
+}
+
+.macros{
+    text-align: center;
+    font-size: 1.6vh;
+}
+
+#protein, #fats, #carbs, #calories{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    font-size: 1.6vh;
+}
+
+#protein > label, #fats > label, #carbs > label, #calories > label{
+    padding-top: 5%;
+}
+
+#calories > label{
+    padding-bottom: 10%;
+}
+
+#protein > input, #fats > input, #carbs > input, #calories > input{
+    font-size: 1.6vh;
+    height: 3vh;
+    width: 50px;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    margin-left: auto;
+}
+
+input{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    outline:0;
+}
+
+input:focus{
+    outline:none!important;
+}
+
+#chart{
+    margin: auto;
+}
+
+mat-icon{
+    transition: transform 0.1s ease;
+}
+
+mat-icon:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}

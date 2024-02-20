@@ -3,24 +3,24 @@
         <div class="top-left-side">
             <div id="chart">
                 <apx-chart
-                    [series]="chartSeries"
-                    [chart]="chartDetails"
-                    [legend]="legendOptions"
-                    [fill]="fill"
-                    [tooltip]="tooltip"
+                    [series]="helperService.chartOptions.chartSeries"
+                    [chart]="helperService.chartOptions.chartDetails"
+                    [legend]="helperService.chartOptions.legendOptions"
+                    [fill]="helperService.chartOptions.fill"
+                    [tooltip]="helperService.chartOptions.tooltip"
                 ></apx-chart>
-              </div>
+            </div>
         </div>
 
         <div class="top-right-side">
             <p>Today's goal: </p>
             <div class="macros">
-                <p #protein style="color: darkorange;">Protein: 0/{{ macros[0].animatedValue }}g</p>
-                <p #fats style="color: greenyellow">Fats: 0/{{ macros[1].animatedValue }}g</p>
-                <p #carbs style="color: lightblue">Carbs: 0/{{ macros[2].animatedValue }}g</p>
+                <p style="color: darkorange;">Protein: 0/{{ helperService.macros[0].animatedValue }}g</p>
+                <p style="color: greenyellow">Fats: 0/{{ helperService.macros[1].animatedValue }}g</p>
+                <p style="color: lightblue">Carbs: 0/{{ helperService.macros[2].animatedValue }}g</p>
             </div>
             <hr style="border-color: orangered; width: 40vw; margin-right: 12%;">
-            <p style="color: orangered;">Total Calories: 0/{{ macros[3].animatedValue }}kcal</p>
+            <p style="color: orangered;">Total Calories: 0/{{ helperService.macros[3].animatedValue }}kcal</p>
         </div>
     </div>
 

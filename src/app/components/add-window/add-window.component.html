@@ -1,0 +1,90 @@
+<div class="floating-window" [@showWindow]="footerService.isPlusClicked.value ? 'show' : 'hide'" *ngIf="footerService.isPlusClicked.value">
+    <div class="choice-container" *ngIf="helperService.windowChoice.value=='add'">
+        <div class="top" (click)="changeWindow('addMeal')">
+            <img [src]="footerService.pluses[3].icon" [alt]="footerService.pluses[3].name" height="50px" width="50px">
+            <p>ADD MEAL</p>
+        </div>
+    
+        <div class="bottom" (click)="changeWindow('addMeal')">
+            <img [src]="footerService.pluses[0].icon" [alt]="footerService.pluses[0].name" height="50px" width="50px">
+            <p>ADD WORKOUT</p>
+        </div>
+    </div>
+
+    <div class="add-meal" *ngIf="helperService.windowChoice.value=='addMeal'">
+        <div class="icons">
+            <mat-icon>arrow_back</mat-icon>
+            <mat-icon (click)="closeWindow()">close</mat-icon>
+        </div>
+
+        <div class="search">
+            <mat-form-field style="width: 100%">
+                <input type="text" matInput placeholder="Search for a meal..." class="meal-search-bar">
+                <mat-icon class="search-button" style="color: #181e29">search</mat-icon>
+            </mat-form-field>
+        </div>
+
+        <div class="quick-add">
+            <h1>QUICK ADD</h1>
+            <div class="macros">
+                <p>MACROS:</p>
+                <form [formGroup]="quickAddForm">
+                    <div id="protein">
+                        <label for="protein-value">Protein:</label>
+                        <input
+                            formControlName="protein"
+                            id="protein-value"
+                            type="text"
+                            (input)="checkValue($event)"
+                        />
+                        <p>g</p>
+                    </div>
+                    <div id="fats">
+                        <label for="fats-value">Fats:</label>
+                        <input
+                            formControlName="fats"
+                            id="fats-value"
+                            type="text"
+                            (input)="checkValue($event)"
+                        />
+                        <p>g</p>
+                    </div>
+                    <div id="carbs">
+                        <label for="carbs-value">Carbs:</label>
+                        <input
+                            formControlName="carbs"
+                            id="carbs-value"
+                            type="text"
+                            (input)="checkValue($event)"
+                        />
+                        <p>g</p>
+                    </div>
+                    <div id="calories">
+                        <label for="calories-value">CALORIES:</label>
+                        <input
+                            formControlName="calories"
+                            id="calories-value"
+                            type="text"
+                            (input)="checkValue($event)"
+                        />
+                        <p>kcal</p>
+                    </div>
+                </form>
+            </div>
+
+            <div id="chart">
+                <apx-chart
+                    [series]="helperService.chartOptions.chartSeries"
+                    [chart]="helperService.chartOptions.chartDetails"
+                    [legend]="helperService.chartOptions.legendOptions"
+                    [fill]="helperService.chartOptions.fill"
+                    [tooltip]="helperService.chartOptions.tooltip"
+                ></apx-chart>
+            </div>
+        </div>
+    </div>
+ 
+    <div class="add-workout" *ngIf="helperService.windowChoice.value=='addWorkout'">
+
+    </div>
+</div>

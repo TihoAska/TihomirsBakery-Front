@@ -10,6 +10,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './components/footer/footer.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { AddWindowComponent } from './components/add-window/add-window.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,14 +21,18 @@ import { NgApexchartsModule } from 'ng-apexcharts';
     HeaderComponent,
     MainComponent,
     SidebarComponent,
-    FooterComponent
+    FooterComponent,
+    AddWindowComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     NgxSkeletonLoaderModule.forRoot(),
-    NgApexchartsModule
+    NgApexchartsModule,
+    MatFormFieldModule,
+    MatIconModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
