@@ -25,7 +25,7 @@
         <div class="quick-add">
             <h1>QUICK ADD</h1>
             <div class="macros">
-                <form [formGroup]="quickAddForm">
+                <form [formGroup]="mealForm">
                     <div id="name">
                         <label for="name-value">Name:</label>
                         <input 
@@ -95,15 +95,86 @@
                 ></apx-chart>
             </div>
 
-            <div class="submit-button">
-                <button mat-button type="submit" [disabled]="!quickAddForm.valid" id="submit">
-                    ADD MEAL
-                </button>
+            <div class="buttons">
+                <div class="submit-button">
+                    <button mat-button type="submit" [disabled]="!mealForm.valid" id="submit">
+                        ADD MEAL
+                    </button>
+                </div>
+                <div class="submit-button">
+                    <button mat-button type="submit" [disabled]="!mealForm.valid" id="submit">
+                        SAVE TO MEALS
+                    </button>
+                </div>
             </div>
         </div>
     </div>
  
     <div class="add-workout" *ngIf="helperService.windowChoice.value=='addWorkout'">
+        <div class="icons">
+            <mat-icon style="color: orangered;" (click)="goBack()">arrow_back</mat-icon>
+            <mat-icon style="color: orangered;" (click)="closeWindow()">close</mat-icon>
+        </div>
 
+        <div class="search-workout">
+            <input matInput type="text" placeholder="Search for a workout..." class="workout-search-bar">
+            <mat-icon style="color: orangered" class="search-button">search</mat-icon>
+        </div>
+
+        <div class="quick-add">
+            <h1 style="color: orangered;">QUICK ADD</h1>
+            <div class="workout-data">
+                <form [formGroup]="workoutForm">
+                    <div id="name">
+                        <label style="color: orangered" for="name-value">Name:</label>
+                        <input 
+                            style="background-color: transparent;"
+                            formControlName="name"
+                            id="name-value"
+                            type="text"
+                        />
+                    </div>
+                    <div class="time-elapsed">
+                        <label style="color: orangered" for="time-elapsed-value">Time elapsed:</label>
+                        <div class="input">
+                            <input 
+                                style="background-color: transparent; color: orangered;"
+                                formControlName="timeElapsed"
+                                id="time-elapsed-value"
+                                type="text"
+                            />
+                            <p style="color: orangered;">min</p>
+                        </div>
+                    
+                    </div>
+                    <div class="total-calories">
+                        <label style="color: orangered" for="total-calories-value">Total calories:</label>
+                        <div class="input">
+                            <input 
+                                style="background-color: transparent; color: orangered;"
+                                formControlName="totalCalories"
+                                id="total-calories-value"
+                                type="text"
+                            />
+                            <p style="color: orangered;">kcal</p>
+                        </div>
+                    </div>
+
+                    <div class="buttons">
+                        <div class="submit-button">
+                            <button style="background-color: orangered;" mat-button type="submit" [disabled]="!mealForm.valid" id="submit">
+                                ADD WORKOUT 
+                            </button>
+                        </div>
+    
+                        <div class="submit-button">
+                            <button style="background-color: orangered;" mat-button type="submit" [disabled]="!mealForm.valid" id="submit">
+                                SAVE TO WORKOUTS
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </div>

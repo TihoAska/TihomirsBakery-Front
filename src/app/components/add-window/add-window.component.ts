@@ -33,7 +33,8 @@ import { ApexNonAxisChartSeries } from 'ng-apexcharts';
 })
 export class AddWindowComponent {
 
-  quickAddForm : FormGroup;
+  mealForm : FormGroup;
+  workoutForm : FormGroup;
   chartSeries : ApexNonAxisChartSeries;
 
   protein : number = 0;
@@ -46,12 +47,18 @@ export class AddWindowComponent {
     private formBuilder : FormBuilder,
     private router : Router) 
   {
-    this.quickAddForm = this.formBuilder.group({
+    this.mealForm = this.formBuilder.group({
       name: new FormControl(''),
       protein: new FormControl(0),
       fats: new FormControl(0),
       carbs: new FormControl(0),
       calories: new FormControl(0)
+    });
+
+    this.workoutForm = this.formBuilder.group({
+      name: new FormControl(''),
+      timeElapsed: new FormControl(0),
+      totalCalories: new FormControl(0)
     });
 
     this.chartSeries = [
@@ -66,7 +73,7 @@ export class AddWindowComponent {
   }
 
   subscribeToFormChanges() {
-    this.quickAddForm.valueChanges.subscribe(formValues => {
+    this.mealForm.valueChanges.subscribe(formValues => {
       this.protein = Number.isNaN(parseFloat(formValues.protein)) || parseFloat(formValues.protein) == null || parseFloat(formValues.protein) == 0 ? 0.01 : parseFloat(formValues.protein);
       this.fats = Number.isNaN(parseFloat(formValues.fats)) || parseFloat(formValues.fats) == null || parseFloat(formValues.fats) == 0 ? 0.01 : parseFloat(formValues.fats);
       this.carbs = Number.isNaN(parseFloat(formValues.carbs)) || parseFloat(formValues.carbs) == null || parseFloat(formValues.carbs) == 0 ? 0.01 : parseFloat(formValues.carbs);
@@ -80,11 +87,6 @@ export class AddWindowComponent {
       } else{
         this.chartSeries = [this.protein, this.fats, this.carbs];
       }
-      // this.chartSeries = [
-      //   this.protein == 0.01 ? 0 : this.protein,
-      //   this.fats == 0.01 ? 0 : this.fats,
-      //   this.carbs == 0.01 ? 0 : this.carbs,
-      // ];
 
       console.log("Protein: " + this.protein + " fats: " + this.fats + " carbs:" + this.carbs);
     });

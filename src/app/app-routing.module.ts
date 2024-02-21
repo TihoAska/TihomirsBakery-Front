@@ -15,6 +15,10 @@ const routes: Routes = [
           {
             path: 'meal',
             component: AddWindowComponent,
+          },
+          {
+            path: 'workout',
+            component: AddWindowComponent,
           }
         ]
       }

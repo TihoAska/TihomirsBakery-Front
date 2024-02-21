@@ -64,7 +64,7 @@
     color: orangered;
 }
 
-.search{
+.search, .search-workout{
     position: relative;
     display: flex;
     flex-direction: row;
@@ -76,13 +76,17 @@
     border-bottom: 2px solid #181e29;
 }
 
+.search-workout{
+    border-bottom: 2px solid orangered !important;
+}
+
 .search-button{
     position: absolute;
     top: 50%;
     left: 90%;
 }
 
-.meal-search-bar {
+.meal-search-bar, .workout-search-bar{
     width: 90%;
     height: 50px;
     font-size: 15px;
@@ -90,8 +94,17 @@
     background-color: transparent;
 }
 
+.workout-search-bar{
+    color: orangered !important;
+}
+
 .meal-search-bar::placeholder{
     color: #181e29;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.workout-search-bar::placeholder{
+    color: orange;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
@@ -120,12 +133,12 @@
     font-size: 3vh;
 }
 
-.macros{
+.macros, .workout-data{
     text-align: center;
     font-size: 1.6vh;
 }
 
-#name, #protein, #fats, #carbs, #calories{
+#name, #protein, #fats, #carbs, #calories, .total-calories, .time-elapsed{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -136,7 +149,7 @@
     padding-bottom: 5%;
 }
 
-#name > label, #protein > label, #fats > label, #carbs > label, #calories > label{
+#name > label, #protein > label, #fats > label, #carbs > label, #calories > label, .total-calories > label, .time-elapsed > label{
     padding-top: 5%;
 }
 
@@ -200,6 +213,12 @@ mat-icon:hover{
     display: flex;
     justify-content: center;
     padding-top: 10%;
+}
+
+.buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
 }
 
 #submit{
