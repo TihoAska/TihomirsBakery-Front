@@ -5,7 +5,7 @@
             <p>ADD MEAL</p>
         </div>
     
-        <div class="bottom" (click)="changeWindow('addMeal')">
+        <div class="bottom" (click)="changeWindow('addWorkout')">
             <img [src]="footerService.pluses[0].icon" [alt]="footerService.pluses[0].name" height="50px" width="50px">
             <p>ADD WORKOUT</p>
         </div>
@@ -13,73 +13,92 @@
 
     <div class="add-meal" *ngIf="helperService.windowChoice.value=='addMeal'">
         <div class="icons">
-            <mat-icon>arrow_back</mat-icon>
+            <mat-icon (click)="goBack()">arrow_back</mat-icon>
             <mat-icon (click)="closeWindow()">close</mat-icon>
         </div>
 
         <div class="search">
-            <mat-form-field style="width: 100%">
-                <input type="text" matInput placeholder="Search for a meal..." class="meal-search-bar">
-                <mat-icon class="search-button" style="color: #181e29">search</mat-icon>
-            </mat-form-field>
+            <input matInput type="text" placeholder="Search for a meal..." class="meal-search-bar">
+            <mat-icon class="search-button" style="color: #181e29">search</mat-icon>
         </div>
 
         <div class="quick-add">
             <h1>QUICK ADD</h1>
             <div class="macros">
-                <p>MACROS:</p>
                 <form [formGroup]="quickAddForm">
+                    <div id="name">
+                        <label for="name-value">Name:</label>
+                        <input 
+                            formControlName="name"
+                            id="name-value"
+                            type="text"
+                        />
+                    </div>
                     <div id="protein">
                         <label for="protein-value">Protein:</label>
-                        <input
-                            formControlName="protein"
-                            id="protein-value"
-                            type="text"
-                            (input)="checkValue($event)"
-                        />
-                        <p>g</p>
+                        <div class="input">
+                            <input
+                                formControlName="protein"
+                                id="protein-value"
+                                type="text"
+                                (input)="checkValue($event)"
+                            />
+                            <p>g</p>
+                        </div>
                     </div>
                     <div id="fats">
                         <label for="fats-value">Fats:</label>
-                        <input
-                            formControlName="fats"
-                            id="fats-value"
-                            type="text"
-                            (input)="checkValue($event)"
-                        />
-                        <p>g</p>
+                        <div class="input">
+                            <input
+                                formControlName="fats"
+                                id="fats-value"
+                                type="text"
+                                (input)="checkValue($event)"
+                            />
+                            <p>g</p>
+                        </div>
                     </div>
                     <div id="carbs">
                         <label for="carbs-value">Carbs:</label>
-                        <input
-                            formControlName="carbs"
-                            id="carbs-value"
-                            type="text"
-                            (input)="checkValue($event)"
-                        />
-                        <p>g</p>
+                        <div class="input">
+                            <input
+                                formControlName="carbs"
+                                id="carbs-value"
+                                type="text"
+                                (input)="checkValue($event)"
+                            />
+                            <p>g</p>
+                        </div>
                     </div>
                     <div id="calories">
                         <label for="calories-value">CALORIES:</label>
-                        <input
-                            formControlName="calories"
-                            id="calories-value"
-                            type="text"
-                            (input)="checkValue($event)"
-                        />
-                        <p>kcal</p>
+                        <div class="input">
+                            <input
+                                formControlName="calories"
+                                id="calories-value"
+                                type="text"
+                                (input)="checkValue($event)"
+                            />
+                            <p>kcal</p>
+                        </div>
                     </div>
                 </form>
             </div>
 
             <div id="chart">
                 <apx-chart
-                    [series]="helperService.chartOptions.chartSeries"
+                    [series]="chartSeries"
                     [chart]="helperService.chartOptions.chartDetails"
                     [legend]="helperService.chartOptions.legendOptions"
                     [fill]="helperService.chartOptions.fill"
                     [tooltip]="helperService.chartOptions.tooltip"
                 ></apx-chart>
+            </div>
+
+            <div class="submit-button">
+                <button mat-button type="submit" [disabled]="!quickAddForm.valid" id="submit">
+                    ADD MEAL
+                </button>
             </div>
         </div>
     </div>

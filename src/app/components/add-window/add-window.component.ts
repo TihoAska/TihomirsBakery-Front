@@ -5,6 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 import { HelperService } from '../../services/helper.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ApexNonAxisChartSeries } from 'ng-apexcharts';
 
 @Component({
   selector: 'app-add-window',
@@ -33,6 +34,11 @@ import { Router } from '@angular/router';
 export class AddWindowComponent {
 
   quickAddForm : FormGroup;
+  chartSeries : ApexNonAxisChartSeries;
+
+  protein : number = 0;
+  fats : number = 0; 
+  carbs : number = 0;
 
   constructor(
     public footerService : FooterService, 
@@ -41,15 +47,47 @@ export class AddWindowComponent {
     private router : Router) 
   {
     this.quickAddForm = this.formBuilder.group({
-      protein: new FormControl,
-      fats: new FormControl,
-      carbs: new FormControl,
-      calories: new FormControl
-    })
+      name: new FormControl(''),
+      protein: new FormControl(0),
+      fats: new FormControl(0),
+      carbs: new FormControl(0),
+      calories: new FormControl(0)
+    });
+
+    this.chartSeries = [
+      0.01, 
+      0.01,
+      0.01
+    ];
   }
 
   ngOnInit(){
-    
+    this.subscribeToFormChanges();
+  }
+
+  subscribeToFormChanges() {
+    this.quickAddForm.valueChanges.subscribe(formValues => {
+      this.protein = Number.isNaN(parseFloat(formValues.protein)) || parseFloat(formValues.protein) == null || parseFloat(formValues.protein) == 0 ? 0.01 : parseFloat(formValues.protein);
+      this.fats = Number.isNaN(parseFloat(formValues.fats)) || parseFloat(formValues.fats) == null || parseFloat(formValues.fats) == 0 ? 0.01 : parseFloat(formValues.fats);
+      this.carbs = Number.isNaN(parseFloat(formValues.carbs)) || parseFloat(formValues.carbs) == null || parseFloat(formValues.carbs) == 0 ? 0.01 : parseFloat(formValues.carbs);
+
+      if(this.protein != 0.01 && this.fats == 0.01 && this.carbs == 0.01){
+        this.chartSeries = [this.protein, 0, 0];
+      } else if(this.protein == 0.01 && this.fats != 0.01 && this.carbs == 0.01){
+        this.chartSeries = [0, this.fats, 0];
+      } else if(this.protein == 0.01 && this.fats == 0.01 && this.carbs != 0.01){
+        this.chartSeries = [0, 0, this.carbs];
+      } else{
+        this.chartSeries = [this.protein, this.fats, this.carbs];
+      }
+      // this.chartSeries = [
+      //   this.protein == 0.01 ? 0 : this.protein,
+      //   this.fats == 0.01 ? 0 : this.fats,
+      //   this.carbs == 0.01 ? 0 : this.carbs,
+      // ];
+
+      console.log("Protein: " + this.protein + " fats: " + this.fats + " carbs:" + this.carbs);
+    });
   }
 
   checkValue(event : any){
@@ -60,11 +98,25 @@ export class AddWindowComponent {
 
   changeWindow(event : any){
     this.helperService.windowChoice.next(event);
+    if(event == 'addMeal'){
+      this.router.navigate(['add', 'meal']) 
+    } else{
+      this.router.navigate(['add', 'workout']) 
+    }
   }
 
   closeWindow(){
     this.footerService.isPlusClicked.next(false);
     this.helperService.windowChoice.next('add');
     this.router.navigate([''])
+  }
+
+  navigateToAddMeal(){
+    this.router.navigate(['add', 'meal']);
+  }
+
+  goBack(){
+    this.helperService.windowChoice.next('add');
+    this.router.navigate(['add'])
   }
 }

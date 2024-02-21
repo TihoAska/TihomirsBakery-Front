@@ -10,7 +10,13 @@ const routes: Routes = [
     children : [
       {
         path: 'add',
-        component: AddWindowComponent
+        component: AddWindowComponent,
+        children : [
+          {
+            path: 'meal',
+            component: AddWindowComponent,
+          }
+        ]
       }
     ]
   }

@@ -12,8 +12,11 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { AddWindowComponent } from './components/add-window/add-window.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -32,9 +35,13 @@ import { ReactiveFormsModule } from '@angular/forms';
     NgApexchartsModule,
     MatFormFieldModule,
     MatIconModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatInputModule
   ],
-  providers: [],
+  providers: [
+    provideAnimationsAsync()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

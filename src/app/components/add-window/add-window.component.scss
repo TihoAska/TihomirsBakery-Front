@@ -68,12 +68,18 @@
     position: relative;
     display: flex;
     flex-direction: row;
-    border-bottom: 2px #181e29 solid;
     width: 90%;
     height: 52px;
     z-index: 5;
     left: 5%;
     padding-top: 5%;
+    border-bottom: 2px solid #181e29;
+}
+
+.search-button{
+    position: absolute;
+    top: 50%;
+    left: 90%;
 }
 
 .meal-search-bar {
@@ -81,6 +87,7 @@
     height: 50px;
     font-size: 15px;
     border: none;
+    background-color: transparent;
 }
 
 .meal-search-bar::placeholder{
@@ -110,7 +117,6 @@
 
 .quick-add > h1{
     text-align: center;
-    padding: 20px;
     font-size: 3vh;
 }
 
@@ -119,14 +125,18 @@
     font-size: 1.6vh;
 }
 
-#protein, #fats, #carbs, #calories{
+#name, #protein, #fats, #carbs, #calories{
     display: flex;
     flex-direction: row;
-    text-align: center;
+    justify-content: space-between;
     font-size: 1.6vh;
 }
 
-#protein > label, #fats > label, #carbs > label, #calories > label{
+#name{
+    padding-bottom: 5%;
+}
+
+#name > label, #protein > label, #fats > label, #carbs > label, #calories > label{
     padding-top: 5%;
 }
 
@@ -134,14 +144,32 @@
     padding-bottom: 10%;
 }
 
-#protein > input, #fats > input, #carbs > input, #calories > input{
+#name > input, .input > input{
     font-size: 1.6vh;
-    height: 3vh;
-    width: 50px;
+    height: 3.5vh;
+    width: 2vw;
     border-top: none;
     border-right: none;
     border-left: none;
     margin-left: auto;
+    text-align: right;
+    margin-top: 7%;
+}
+
+#name > input{
+    width: 11vw !important;
+    text-align: left !important;
+    font-size: 1.3vh;
+    margin-top: 2%;
+}
+
+.input{
+    display: flex;
+    flex-direction: row;
+}
+
+.input > p{
+    margin-left: 5%;
 }
 
 input{
@@ -155,6 +183,8 @@ input:focus{
 
 #chart{
     margin: auto;
+    height: 80%;
+    width: 80%;
 }
 
 mat-icon{
@@ -164,4 +194,25 @@ mat-icon{
 mat-icon:hover{
     transform: scale(1.1);
     cursor: pointer;
+}
+
+.submit-button{
+    display: flex;
+    justify-content: center;
+    padding-top: 10%;
+}
+
+#submit{
+    background-color: #181e29;
+    color: white;
+    border-radius: 5px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    height: 3vh;
+    width: 5vw;
+    transition: transform 0.1s ease;
+    overflow: hidden;
+}
+
+#submit:hover{
+    transform: scale(1.01);
 }

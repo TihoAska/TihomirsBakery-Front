@@ -16,6 +16,12 @@ export class FooterComponent {
 
   togglePlus(){
     this.footerService.isPlusClicked.next(!this.footerService.isPlusClicked.value);
-    this.router.navigate(['add'])
+    if(this.footerService.isPlusClicked.value){
+      this.router.navigate(['add']);
+    } 
+    else
+    {
+      this.router.navigate(['']);
+    }
   }
 }

@@ -9,6 +9,7 @@ import {
 import { interval, take } from 'rxjs';
 import { FooterService } from '../../services/footer.service';
 import { HelperService } from '../../services/helper.service';
+import { Router } from '@angular/router';
 
 export type ChartOptions = {
   series: ApexNonAxisChartSeries;
@@ -31,7 +32,13 @@ export class MainComponent {
     { name: "dinner", macros: [{ name: "protein", value: 0}, { name: "fats", value: 0}, { name: "carbs", value: 0}, { name: "calories", value: 0}]},
   ]
 
-  constructor(public footerService : FooterService, public helperService : HelperService) {
+  constructor(
+    public footerService : FooterService, 
+    public helperService : HelperService, 
+    private router : Router) {
+  }
 
+  ngOnInit(){
+    this.router.navigate([''])
   }
 }
