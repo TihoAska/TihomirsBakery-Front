@@ -6,6 +6,7 @@ import { HelperService } from '../../services/helper.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApexNonAxisChartSeries } from 'ng-apexcharts';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-add-window',
@@ -41,11 +42,15 @@ export class AddWindowComponent {
   fats : number = 0; 
   carbs : number = 0;
 
+  searchQuery : string = '';
+  searchResults : any[] = [];
+
   constructor(
     public footerService : FooterService, 
     public helperService : HelperService,
     private formBuilder : FormBuilder,
-    private router : Router) 
+    private router : Router,
+    private http : HttpClient) 
   {
     this.mealForm = this.formBuilder.group({
       name: new FormControl(''),
@@ -120,5 +125,23 @@ export class AddWindowComponent {
   goBack(){
     this.helperService.windowChoice.next('add');
     this.router.navigate(['add'])
+  }
+
+  search(){
+    if (this.searchQuery.trim() === '') {
+      this.searchResults = [];
+      return;
+    }
+
+    this.http.get<any[]>('https://localhost:7069/api/meal/GetByNameFromQuery?name=' + this.searchQuery).subscribe(data => {
+      this.searchResults = data;
+      console.log(data);
+    });
+  }
+
+  getAll(){
+    this.http.get('https://localhost:7069/api/meal/Get').subscribe(data => {
+      console.log(data);
+    });
   }
 }

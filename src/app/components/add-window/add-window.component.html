@@ -22,8 +22,22 @@
         </div>
 
         <div class="search">
-            <input matInput type="text" placeholder="Search for a meal..." class="meal-search-bar">
+            <input [(ngModel)]="searchQuery" (input)="search()" matInput type="text" placeholder="Search for a meal..." class="meal-search-bar">
             <mat-icon class="search-button" style="color: #181e29">search</mat-icon>
+
+        </div>
+
+        <div class="search-list-wrapper">
+            <ul class="search-list" *ngIf="searchResults.length != 0">
+                <li *ngFor="let meal of searchResults">{{ meal.name }} 
+                    <div class="search-macros-container">
+                        <p>P: {{ meal.proteins }}</p>
+                        <p>C: {{ meal.fats }}</p>
+                        <p>C: {{ meal.carbs }}</p>
+                        <p>CAL: {{ meal.calories }}</p>
+                    </div>
+                </li>
+            </ul>
         </div>
 
         <div class="quick-add">
@@ -101,7 +115,7 @@
 
             <div class="buttons">
                 <div class="submit-button">
-                    <button mat-button type="submit" [disabled]="!mealForm.valid" id="submit">
+                    <button mat-button type="submit" [disabled]="!mealForm.valid" id="submit" (click)="getAll()">
                         ADD MEAL
                     </button>
                 </div>

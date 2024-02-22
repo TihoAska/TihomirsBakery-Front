@@ -70,6 +70,44 @@
     border-bottom: 2px solid #181e29;
 }
 
+.search-list-wrapper{
+    display: flex;
+    justify-content: center;
+}
+
+.search-list{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background-color: white;
+    z-index: 5;
+    width: 80%;
+    border-radius: 5px;
+    border: 2px solid orangered;
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.search-list > li{
+    padding: 2%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 0.75vw;
+}
+
+li > div{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    width: 60%;
+}
+
+.search-macros-container > p{
+    padding-left: 5%;
+    margin: 0;
+}
+
 .search-workout{
     border-bottom: 2px solid orangered !important;
 }
