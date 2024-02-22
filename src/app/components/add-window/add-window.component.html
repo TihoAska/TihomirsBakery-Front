@@ -1,13 +1,17 @@
 <div class="floating-window" [@showWindow]="footerService.isPlusClicked.value ? 'show' : 'hide'" *ngIf="footerService.isPlusClicked.value">
     <div class="choice-container" *ngIf="helperService.windowChoice.value=='add'">
         <div class="top" (click)="changeWindow('addMeal')">
-            <img [src]="footerService.pluses[3].icon" [alt]="footerService.pluses[3].name" height="50px" width="50px">
-            <p>ADD MEAL</p>
+            <div class="top-container">
+                <img [src]="footerService.pluses[3].icon" [alt]="footerService.pluses[3].name" height="50px" width="50px">
+                <p>ADD MEAL</p>
+            </div>
         </div>
     
         <div class="bottom" (click)="changeWindow('addWorkout')">
-            <img [src]="footerService.pluses[0].icon" [alt]="footerService.pluses[0].name" height="50px" width="50px">
-            <p>ADD WORKOUT</p>
+            <div class="bottom-container">
+                <img [src]="footerService.pluses[0].icon" [alt]="footerService.pluses[0].name" height="50px" width="50px">
+                <p style="color: orangered">ADD WORKOUT</p>
+            </div>
         </div>
     </div>
 
@@ -101,11 +105,6 @@
                         ADD MEAL
                     </button>
                 </div>
-                <div class="submit-button">
-                    <button mat-button type="submit" [disabled]="!mealForm.valid" id="submit">
-                        SAVE TO MEALS
-                    </button>
-                </div>
             </div>
         </div>
     </div>
@@ -164,12 +163,6 @@
                         <div class="submit-button">
                             <button style="background-color: orangered;" mat-button type="submit" [disabled]="!mealForm.valid" id="submit">
                                 ADD WORKOUT 
-                            </button>
-                        </div>
-    
-                        <div class="submit-button">
-                            <button style="background-color: orangered;" mat-button type="submit" [disabled]="!mealForm.valid" id="submit">
-                                SAVE TO WORKOUTS
                             </button>
                         </div>
                     </div>

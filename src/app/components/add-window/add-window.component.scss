@@ -18,22 +18,16 @@
     transition: transform 0.3s ease;
 }
 
+.top-container, .bottom-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 35%;
+}
+
 .top:hover{
     cursor: pointer;
     transform: scale(1.05);
-}
-
-.top > img{
-    position: absolute;
-    top: 40%;
-    left: 45%;
-}
-
-.top > p{
-    position: absolute;
-    top: 55%;
-    left: 44%;
-    color: #181e29;
 }
 
 .bottom{
