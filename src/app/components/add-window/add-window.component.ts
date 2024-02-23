@@ -7,6 +7,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { ApexNonAxisChartSeries } from 'ng-apexcharts';
 import { HttpClient } from '@angular/common/http';
+import { MealService } from '../../services/meal.service';
 
 @Component({
   selector: 'app-add-window',
@@ -50,7 +51,8 @@ export class AddWindowComponent {
     public helperService : HelperService,
     private formBuilder : FormBuilder,
     private router : Router,
-    private http : HttpClient) 
+    private http : HttpClient,
+    private mealService : MealService) 
   {
     this.mealForm = this.formBuilder.group({
       name: new FormControl(''),
@@ -127,21 +129,13 @@ export class AddWindowComponent {
     this.router.navigate(['add'])
   }
 
-  search(){
-    if (this.searchQuery.trim() === '') {
-      this.searchResults = [];
+  search() {
+    if (!this.mealService.allMeals.value) {
       return;
     }
 
-    this.http.get<any[]>('https://localhost:7069/api/meal/GetByNameFromQuery?name=' + this.searchQuery).subscribe(data => {
-      this.searchResults = data;
-      console.log(data);
-    });
-  }
-
-  getAll(){
-    this.http.get('https://localhost:7069/api/meal/Get').subscribe(data => {
-      console.log(data);
+    this.searchResults = this.mealService.allMeals.value.filter((item: any) => {
+      return item.name.toLowerCase().includes(this.searchQuery.toLowerCase());
     });
   }
 }

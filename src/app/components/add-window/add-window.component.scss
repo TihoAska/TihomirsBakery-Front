@@ -160,9 +160,19 @@ li > div{
     margin: auto;
 }
 
-.quick-add > h1{
+select{
     text-align: center;
     font-size: 3vh;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+}
+
+.select-wrapper{
+    display: flex;
+    justify-content: center;
+    padding: 5%;
 }
 
 .macros, .workout-data{

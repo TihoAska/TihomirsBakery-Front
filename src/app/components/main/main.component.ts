@@ -6,10 +6,11 @@ import {
   ApexResponsive,
   ApexChart
 } from "ng-apexcharts";
-import { interval, take } from 'rxjs';
+import { BehaviorSubject, interval, take } from 'rxjs';
 import { FooterService } from '../../services/footer.service';
 import { HelperService } from '../../services/helper.service';
 import { Router } from '@angular/router';
+import { MealService } from '../../services/meal.service';
 
 export type ChartOptions = {
   series: ApexNonAxisChartSeries;
@@ -35,10 +36,14 @@ export class MainComponent {
   constructor(
     public footerService : FooterService, 
     public helperService : HelperService, 
-    private router : Router) {
+    private router : Router,
+    private mealService : MealService) {
   }
 
   ngOnInit(){
     this.router.navigate([''])
+    this.mealService.getAll().subscribe(data => {
+      this.mealService.allMeals.next(data);
+    })
   }
 }
