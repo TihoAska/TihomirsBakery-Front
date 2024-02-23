@@ -46,6 +46,8 @@ export class AddWindowComponent {
   searchQuery : string = '';
   searchResults : any[] = [];
 
+  isQueryClicked = false;
+
   constructor(
     public footerService : FooterService, 
     public helperService : HelperService,
@@ -137,5 +139,21 @@ export class AddWindowComponent {
     this.searchResults = this.mealService.allMeals.value.filter((item: any) => {
       return item.name.toLowerCase().includes(this.searchQuery.toLowerCase());
     });
+  }
+
+  fillForm(meal : any){
+    this.mealForm.patchValue({
+      name: meal.name,
+      protein: meal.proteins,
+      fats: meal.fats,
+      carbs: meal.carbs,
+      calories: meal.calories
+    });
+
+    this.isQueryClicked = true;
+  }
+
+  closeQuery(){
+    this.isQueryClicked = false;
   }
 }
