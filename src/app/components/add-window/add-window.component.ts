@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FooterService } from '../../services/footer.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, tap } from 'rxjs';
 import { HelperService } from '../../services/helper.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -155,5 +155,25 @@ export class AddWindowComponent {
 
   closeQuery(){
     this.isQueryClicked = false;
+  }
+
+  addMeal(){
+    this.mealService.mealFormValues.next({
+      proteins: this.mealForm.get('protein')?.value,
+      fats: this.mealForm.get('fats')?.value,
+      carbs: this.mealForm.get('carbs')?.value,
+      calories: this.mealForm.get('calories')?.value
+    });
+
+    this.mealService.totalValues.pipe(
+      tap((values: any) => {
+        values.protein += this.mealForm.get('protein')?.value;
+        values.fats += this.mealForm.get('fats')?.value;
+        values.carbs += this.mealForm.get('carbs')?.value;
+        values.calories += this.mealForm.get('calories')?.value;
+      })
+    ).subscribe(() => {
+      console.log(this.mealService.totalValues.value);
+    });
   }
 }

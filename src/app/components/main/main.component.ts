@@ -26,18 +26,13 @@ export type ChartOptions = {
 })
 export class MainComponent {
 
-  meals = [
-    { name: "breakfast", macros: [{ name: "protein", value: 0}, { name: "fats", value: 0}, { name: "carbs", value: 0}, { name: "calories", value: 0}]},
-    { name: "lunch", macros: [{ name: "protein", value: 0}, { name: "fats", value: 0}, { name: "carbs", value: 0}, { name: "calories", value: 0}]},
-    { name: "snack", macros: [{ name: "protein", value: 0}, { name: "fats", value: 0}, { name: "carbs", value: 0}, { name: "calories", value: 0}]},
-    { name: "dinner", macros: [{ name: "protein", value: 0}, { name: "fats", value: 0}, { name: "carbs", value: 0}, { name: "calories", value: 0}]},
-  ]
+  
 
   constructor(
     public footerService : FooterService, 
     public helperService : HelperService, 
     private router : Router,
-    private mealService : MealService) {
+    public mealService : MealService) {
   }
 
   ngOnInit(){

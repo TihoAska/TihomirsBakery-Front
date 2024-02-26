@@ -122,7 +122,7 @@
 
             <div class="buttons">
                 <div class="submit-button">
-                    <button mat-button type="submit" [disabled]="!mealForm.valid" id="submit">
+                    <button mat-button type="submit" [disabled]="!mealForm.valid" id="submit" (click)="addMeal()">
                         ADD MEAL
                     </button>
                 </div>
