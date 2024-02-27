@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MainComponent } from './components/main/main.component';
+import { YourDayComponent } from './components/your-day/your-day.component';
 import { AddWindowComponent } from './components/add-window/add-window.component';
 import { MapComponent } from './components/map/map.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: MainComponent,
+    component: YourDayComponent,
     children: [
       {
         path: 'add',

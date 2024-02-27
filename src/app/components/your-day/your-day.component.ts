@@ -20,11 +20,11 @@ export type ChartOptions = {
 };
 
 @Component({
-  selector: 'app-main',
-  templateUrl: './main.component.html',
-  styleUrl: './main.component.scss'
+  selector: 'app-your-day',
+  templateUrl: './your-day.component.html',
+  styleUrl: './your-day.component.scss'
 })
-export class MainComponent {
+export class YourDayComponent {
 
   
 

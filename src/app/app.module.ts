@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
-import { MainComponent } from './components/main/main.component';
+import { YourDayComponent } from './components/your-day/your-day.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './components/footer/footer.component';
@@ -26,7 +26,7 @@ import { MapComponent } from './components/map/map.component';
   declarations: [
     AppComponent,
     HeaderComponent,
-    MainComponent,
+    YourDayComponent,
     SidebarComponent,
     FooterComponent,
     AddWindowComponent,
