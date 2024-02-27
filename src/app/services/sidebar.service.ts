@@ -18,5 +18,17 @@ export class SidebarService {
     name: 'YOUR PROFILE'
   }
 
+  yourDay = {
+    icon: '../../../assets/your-day.png',
+    name: 'YOUR DAY'
+  }
+
+  workout = {
+    icon: '../../../assets/workout-icon-orange.png',
+    name: 'WORKOUT SPOTS'
+  }
+
+
+
   constructor() { }
 }

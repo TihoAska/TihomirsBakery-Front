@@ -8,6 +8,7 @@ import {
   transition
 } from '@angular/animations'
 import { SidebarService } from '../../services/sidebar.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -67,11 +68,20 @@ export class SidebarComponent {
   
   showSidebar = false;
 
-  constructor(public sidebarService : SidebarService){
-
+  constructor(
+    public sidebarService : SidebarService,
+    private router : Router){
   }
 
   ngOnInit(){
 
+  }
+
+  navigateToMap(){
+    this.router.navigate(['map']);
+  }
+
+  navigateToDetails(){
+    this.router.navigate(['']);
   }
 }

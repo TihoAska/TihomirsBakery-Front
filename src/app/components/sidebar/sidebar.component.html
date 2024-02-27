@@ -1,7 +1,11 @@
 <div class="sidebar" [@showSidebar]="showSidebar ? 'show' : 'hide'">
-  <div class="profile">
-    <img id="profile-photo" [src]="sidebarService.profilePhoto.icon" [alt]="sidebarService.profilePhoto.name" height="40px" width="40px">
-    <p id="profile-name" [@showName]="showSidebar ? 'show' : 'hide'">{{ sidebarService.profilePhoto.name }}</p>
+  <div class="profile" (click)="navigateToDetails()">
+    <img id="profile-photo" [src]="sidebarService.yourDay.icon" [alt]="sidebarService.yourDay.name" height="40px" width="40px">
+    <p id="profile-name" [@showName]="showSidebar ? 'show' : 'hide'">{{ sidebarService.yourDay.name }}</p>
+  </div>
+  <div class="workout" (click)="navigateToMap()">
+    <img class="icons" [src]="sidebarService.workout.icon" [alt]="sidebarService.workout.name" style="height: 50px; width: 50px;">
+    <p [@showName]="showSidebar ? 'show' : 'hide'">{{ sidebarService.workout.name }}</p>
   </div>
   <hr>
   <ng-container *ngFor="let item of sidebarService.items; let i = index">

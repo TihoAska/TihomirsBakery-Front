@@ -1,9 +1,13 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<div class="overlay" [@dimBackground]="footerService.isPlusClicked.value ? 'dim' : 'undim'" (click)="undim()">
+<!-- <div class="overlay" [@dimBackground]="footerService.isPlusClicked.value ? 'dim' : 'undim'" (click)="undim()">
   <app-sidebar></app-sidebar>
   <div class="main-content">
-    <app-main></app-main>
+    <router-outlet></router-outlet>
   </div>
+</div> -->
+<app-sidebar></app-sidebar>
+<div class="main-content">
+  <router-outlet></router-outlet>
 </div>
 <app-footer></app-footer>
 <app-add-window></app-add-window>

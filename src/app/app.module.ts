@@ -19,7 +19,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { MapComponent } from './components/map/map.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { HttpClientModule } from '@angular/common/http'
     MainComponent,
     SidebarComponent,
     FooterComponent,
-    AddWindowComponent
+    AddWindowComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,

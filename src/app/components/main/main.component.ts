@@ -36,7 +36,7 @@ export class MainComponent {
   }
 
   ngOnInit(){
-    this.router.navigate([''])
+    // this.router.navigate([''])
     this.mealService.getAll().subscribe(data => {
       this.mealService.allMeals.next(data);
     })
