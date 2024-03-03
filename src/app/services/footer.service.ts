@@ -16,11 +16,11 @@ export class FooterService {
   ]
 
   socials = [
-    { icon: '../../../assets/facebook-icon-orange.png', name: 'FB'},
-    { icon: '../../../assets/instagram-icon-orange.png', name: 'IG'},
-    { icon: '../../../assets/twitter-icon-orange.png', name: 'TW'},
+    { icon: '../../../assets/facebook-white.png', name: 'FB'},
+    { icon: '../../../assets/instagram-white.png', name: 'IG'},
+    { icon: '../../../assets/twitter-white.png', name: 'TW'},
+    { icon: '../../../assets/github.png', name: 'GH'},
   ]
-
-
+  
   constructor() { }
 }

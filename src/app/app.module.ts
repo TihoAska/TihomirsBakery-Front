@@ -21,6 +21,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MapComponent } from './components/map/map.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { MapComponent } from './components/map/map.component';
     SidebarComponent,
     FooterComponent,
     AddWindowComponent,
-    MapComponent
+    MapComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

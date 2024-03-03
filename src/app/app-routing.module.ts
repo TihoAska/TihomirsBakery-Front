@@ -3,10 +3,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { YourDayComponent } from './components/your-day/your-day.component';
 import { AddWindowComponent } from './components/add-window/add-window.component';
 import { MapComponent } from './components/map/map.component';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
   {
     path: '',
+    component: HomeComponent,
+  },
+  {
+    path: 'your-day',
     component: YourDayComponent,
     children: [
       {

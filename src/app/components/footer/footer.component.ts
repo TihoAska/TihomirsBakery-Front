@@ -28,4 +28,10 @@ export class FooterComponent {
       this.router.navigate(['']);
     }
   }
+
+  navigateToSocial(social){
+    if(social == 'GH'){
+      window.open('https://github.com/TihoAska');
+    }
+  }
 }

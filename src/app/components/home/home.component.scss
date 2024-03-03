@@ -1,0 +1,211 @@
+body{
+    overflow-x: hidden;
+}
+
+.monkey-bar {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#bar{
+    border-radius: 0 !important;
+}
+
+.image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.monkey-bar > .image-wrapper > img {
+    width: 100%;
+    height: 100%;
+}
+
+.gradient-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+}
+
+.description {
+    position: absolute;
+    top: 20%;
+    left: 35%;
+    color: white;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 50px;
+    text-shadow: 4px 4px 8px darkslategray;
+    text-align: center;
+    z-index: 2;
+}
+
+.cooking {
+    width: 100%;
+    height: 1600px;
+    background-color: #0B1A11;
+}
+
+.cooking > .gradient-overlay-2 {
+    position: absolute;
+    top: 100;
+    left: 0;
+    width: 100%;
+    height: 20%;
+    background: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+}
+
+.images{
+    padding-left: 10%;
+    padding-top: 10%;
+    border-radius: 10px;
+    height: 50vh;
+}
+
+img{
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+img:not(#bar, #pullup-bar):hover{
+    transform: scale(1.01);
+    cursor: pointer;
+}
+
+
+.oatmeal-container,
+.rice-cakes-container,
+.ham-sandwich-container,
+.fruit-salad-container {
+    position: absolute;
+    width: 500px; 
+    height: 500px;
+}
+
+.oatmeal-container {
+    z-index: 1;
+}
+
+#oatmeal:hover{
+    box-shadow: 0px 0px 15px orangered;
+}
+
+.rice-cakes-container {
+    z-index: 1; 
+    margin-top: 3%;
+    margin-left: 22%; 
+}
+
+#rice-cakes:hover{
+    box-shadow: 0px 0px 15px yellow;
+}
+
+.ham-sandwich-container{
+    z-index: 1;
+    margin-top: 22%;
+}
+
+#ham-sandwich:hover{
+    box-shadow: 0px 0px 15px greenyellow;
+}
+
+.fruit-salad-container{
+    z-index: 1;
+    margin-top: 25%;
+    margin-left: 22%; 
+}
+
+#fruit-salad:hover{
+    box-shadow: 0px 0px 15px cyan;
+}
+
+.meal-description{
+    width: 40%;
+    height: 100%;
+    margin-top: 15%;
+}
+
+.meal-description > p{
+    z-index: 1;
+    color: white;
+    font-size: 40px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+p > span{
+    text-shadow: 2px 2px 4px black;
+}
+
+.meal-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 95vw;
+    height: 1000px;
+}
+
+.workout-container{
+    width: 100%;
+    height: 100%;
+    background-color: #0B1A11;
+    position: relative;
+}
+
+.gradient-overlay-3 {
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+}
+
+.gradient-overlay-4{
+    position: absolute;
+    width: 100%;
+    height: 40%;
+    background: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+}
+
+#pullup-bar{
+    width: 100%;
+    height: 100%;
+}
+
+.workout-description{
+    position: absolute;
+    top : 0;
+    color: white;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 35px;
+    margin-left: 15%;
+}
+
+.gym-description{
+    color: white;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 35px;
+}
+
+.workout-description > p{
+    width: 35%;
+    text-align: justify;
+}
+
+.gym-description > p{
+    width: 45%;
+    text-align: justify;
+}
+
+.gym-description{
+    position: absolute;
+    top: 0;
+    left: 60%;
+}
+
+.descriptions{
+    display: flex;
+    flex-direction: row;
+}

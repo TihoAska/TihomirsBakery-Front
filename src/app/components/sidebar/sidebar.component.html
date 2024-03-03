@@ -4,7 +4,7 @@
     <p id="profile-name" [@showName]="showSidebar ? 'show' : 'hide'">{{ sidebarService.yourDay.name }}</p>
   </div>
   <div class="workout" (click)="navigateToMap()">
-    <img class="icons" [src]="sidebarService.workout.icon" [alt]="sidebarService.workout.name" style="height: 50px; width: 50px;">
+    <img class="workout-icon" [src]="sidebarService.workout.icon" [alt]="sidebarService.workout.name" style="height: 50px; width: 50px;">
     <p [@showName]="showSidebar ? 'show' : 'hide'">{{ sidebarService.workout.name }}</p>
   </div>
   <hr>

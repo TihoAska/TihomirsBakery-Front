@@ -31,7 +31,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
 
-  title = 'TihomirsBakery';
+  title = 'TihomirsWorkshop';
 
   constructor(
     public footerService : FooterService, 

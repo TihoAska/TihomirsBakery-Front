@@ -82,6 +82,6 @@ export class SidebarComponent {
   }
 
   navigateToDetails(){
-    this.router.navigate(['']);
+    this.router.navigate(['your-day']);
   }
 }
