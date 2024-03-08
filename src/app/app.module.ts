@@ -22,6 +22,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MapComponent } from './components/map/map.component';
 import { HomeComponent } from './components/home/home.component';
+import { StreetWorkoutComponent } from './components/street-workout/street-workout.component';
+import { DragScrollComponent, DragScrollItemDirective } from 'ngx-drag-scroll';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { HomeComponent } from './components/home/home.component';
     FooterComponent,
     AddWindowComponent,
     MapComponent,
-    HomeComponent
+    HomeComponent,
+    StreetWorkoutComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,9 @@ import { HomeComponent } from './components/home/home.component';
     MatInputModule,
     MatSelectModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    DragScrollComponent,
+    DragScrollItemDirective,
   ],
   providers: [
     provideAnimationsAsync()

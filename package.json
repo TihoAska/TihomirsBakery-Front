@@ -28,6 +28,7 @@
     "mapbox-gl": "^2.15.0",
     "maplibre-gl": "^4.0.2",
     "ng-apexcharts": "^1.8.0",
+    "ngx-drag-scroll": "^17.0.1",
     "ngx-mapbox-gl": "^10.0.0",
     "ngx-skeleton-loader": "^8.1.0",
     "rxjs": "~7.8.0",

@@ -28,6 +28,7 @@
                 <img id="fruit-salad" [src]="images[4].path" [alt]="images[4].name" height="500px" width="500px">
             </div>
         </div>
+        
         <div class="meal-description">
             <p>Start your day with a <span style="color: orangered;">HEALTHY BREAKFAST</span></p>
             <p style="font-size: 25px;">that will fill your stomach for a long time and won't have you craving for sweets or any other snacks until lunch.</p>
@@ -50,17 +51,16 @@
     <img id="pullup-bar" [src]="images[5].path" [alt]="images[5].name">
 
     <div class="descriptions">
-        <div class="workout-description">
+        <div class="workout-description" (click)="navigateToSw()">
             <p style="color: darkslategray; font-size: 40px; text-align: center;">STREET WORKOUT</p>
             <p>Wherever you find bars, you can do a high quality workout. The only thing you need is your body.</p>
-            <img style="box-shadow: 16px 16px 32px black;" [src]="images[6].path" [alt]="images[6].name">
+            <img id="street-workout" style="box-shadow: 16px 16px 32px black;" [src]="images[6].path" [alt]="images[6].name">
         </div>
     
         <div class="gym-description">
             <p style="color: darkslategray; font-size: 40px; text-align: center;">GYM</p>
             <p>Basic exercises for building muscles. With good form and some diet changes, you can come a long way.</p>
-            <img style="box-shadow: 16px 16px 32px black;" [src]="images[7].path" [alt]="images[7].name" height="658" width="440">
+            <img id="gym" style="box-shadow: 16px 16px 32px black;" [src]="images[7].path" [alt]="images[7].name" height="658" width="440">
         </div>
     </div>
-
 </div>

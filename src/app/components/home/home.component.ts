@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -17,4 +18,13 @@ export class HomeComponent {
     { path: '../../../assets/muscle-up.png', name: 'MUSCLE-UP' },
     { path: '../../../assets/pulls.png', name: 'PULLS' },
   ]
+
+  constructor(private router : Router) {
+    
+    
+  }
+
+  navigateToSw(){
+    this.router.navigate(['street-workout']);
+  }
 }

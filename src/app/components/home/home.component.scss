@@ -71,7 +71,7 @@ img{
     transition: transform 0.3s ease;
 }
 
-img:not(#bar, #pullup-bar):hover{
+img:not(#bar, #pullup-bar, #street-workout, #gym):hover{
     transform: scale(1.01);
     cursor: pointer;
 }
@@ -174,35 +174,31 @@ p > span{
     height: 100%;
 }
 
-.workout-description{
+.workout-description, .gym-description{
     position: absolute;
     top : 0;
     color: white;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 35px;
     margin-left: 15%;
+    width: 440px;
+    padding: 1%;
+    border-radius: 10px;
+    border: 2px solid darkslategray;
+    transition: transform 0.3s ease;
 }
 
 .gym-description{
-    color: white;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 35px;
+    margin-left: 60%;
 }
 
-.workout-description > p{
-    width: 35%;
+.workout-description > p, .gym-description > p{
     text-align: justify;
 }
 
-.gym-description > p{
-    width: 45%;
-    text-align: justify;
-}
-
-.gym-description{
-    position: absolute;
-    top: 0;
-    left: 60%;
+.workout-description:hover, .gym-description:hover{
+    transform: scale(1.01);
+    cursor: pointer;
 }
 
 .descriptions{
