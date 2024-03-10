@@ -1,66 +1,68 @@
-<div class="monkey-bar">
-    <div class="image-wrapper">
-        <img id="bar" [src]="images[0].path" [alt]="images[0].name">
-        <div class="gradient-overlay"></div>
-    </div>
-    <div class="description">
-        WELCOME TO <span style="color: darkslategray; text-shadow: 4px 4px 8px whitesmoke;">TIHOMIR'S WORKSHOP</span>
-        <hr color="darkslategray">
-        HERE I WILL SHARE MY EXPERIENCE
-        <br>
-        IN COOKING AND WORKING OUT
-    </div>
-</div>
-<div class="cooking">
-    <div class="gradient-overlay-2"></div>
-    <div class="meal-container">
-        <div class="images">
-            <div class="oatmeal-container">
-                <img id="oatmeal" [src]="images[1].path" [alt]="images[1].name" height="500px" width="500px">
-            </div>
-            <div class="rice-cakes-container">
-                <img id="rice-cakes" [src]="images[2].path" [alt]="images[2].name" height="500px" width="500px">
-            </div>
-            <div class="ham-sandwich-container">
-                <img id="ham-sandwich" [src]="images[3].path" [alt]="images[3].name" height="500px" width="500px">
-            </div>
-            <div class="fruit-salad-container">
-                <img id="fruit-salad" [src]="images[4].path" [alt]="images[4].name" height="500px" width="500px">
-            </div>
+<div #scrollContainer>
+    <div class="monkey-bar">
+        <div class="image-wrapper">
+            <img id="bar" [src]="images[0].path" [alt]="images[0].name">
+            <div class="gradient-overlay"></div>
         </div>
-        
-        <div class="meal-description">
-            <p>Start your day with a <span style="color: orangered;">HEALTHY BREAKFAST</span></p>
-            <p style="font-size: 25px;">that will fill your stomach for a long time and won't have you craving for sweets or any other snacks until lunch.</p>
-            <hr color="orangered">
-            <p>Start your day with a <span style="color: yellow;">LUNCH</span></p>
-            <p style="font-size: 25px;">that will fill your stomach for a long time and won't have you craving for sweets or any other snacks until lunch.</p>
-            <hr color="yellow">
-            <p>Take a break with some of our <span style="color: greenyellow;">QUICK AND HEALTHY MEALS.</span></p>
-            <p style="font-size: 25px;">Our quick and healty meals are easy and fast to make. They contain only a few ingredients that are healthy and will give you energy to finish off your day at work.</p>
-            <hr color="greenyellow">
-            <p>Take a break with some of our <span style="color: cyan;">DINNER.</span></p>
-            <p style="font-size: 25px;">Our quick and healty meals are easy and fast to make. They contain only a few ingredients that are healthy and will give you energy to finish off your day at work.</p>
-            <hr color="cyan">
+        <div class="description">
+            WELCOME TO <span style="color: darkslategray; text-shadow: 4px 4px 8px whitesmoke;">TIHOMIR'S WORKSHOP</span>
+            <hr color="darkslategray">
+            HERE I WILL SHARE MY EXPERIENCE
+            <br>
+            IN COOKING AND WORKING OUT
         </div>
     </div>
-    <div class="gradient-overlay-3"></div>
-</div>
-<div class="workout-container">
-    <div class="gradient-overlay-4"></div>
-    <img id="pullup-bar" [src]="images[5].path" [alt]="images[5].name">
-
-    <div class="descriptions">
-        <div class="workout-description" (click)="navigateToSw()">
-            <p style="color: darkslategray; font-size: 40px; text-align: center;">STREET WORKOUT</p>
-            <p>Wherever you find bars, you can do a high quality workout. The only thing you need is your body.</p>
-            <img id="street-workout" style="box-shadow: 16px 16px 32px black;" [src]="images[6].path" [alt]="images[6].name">
+    <div #cooking class="cooking">
+        <div class="gradient-overlay-2"></div>
+        <div class="meal-container">
+            <div class="images">
+                <div class="oatmeal-container">
+                    <img id="oatmeal" [src]="images[1].path" [alt]="images[1].name" height="500px" width="500px">
+                </div>
+                <div class="rice-cakes-container">
+                    <img id="rice-cakes" [src]="images[2].path" [alt]="images[2].name" height="500px" width="500px">
+                </div>
+                <div class="ham-sandwich-container">
+                    <img id="ham-sandwich" [src]="images[3].path" [alt]="images[3].name" height="500px" width="500px">
+                </div>
+                <div class="fruit-salad-container">
+                    <img id="fruit-salad" [src]="images[4].path" [alt]="images[4].name" height="500px" width="500px">
+                </div>
+            </div>
+            
+            <div class="meal-description">
+                <p>Start your day with a <span style="color: orangered;">HEALTHY BREAKFAST</span></p>
+                <p style="font-size: 25px;">that will fill your stomach for a long time and won't have you craving for sweets or any other snacks until lunch.</p>
+                <hr color="orangered">
+                <p>Start your day with a <span style="color: yellow;">LUNCH</span></p>
+                <p style="font-size: 25px;">that will fill your stomach for a long time and won't have you craving for sweets or any other snacks until lunch.</p>
+                <hr color="yellow">
+                <p>Take a break with some of our <span style="color: greenyellow;">QUICK AND HEALTHY MEALS.</span></p>
+                <p style="font-size: 25px;">Our quick and healty meals are easy and fast to make. They contain only a few ingredients that are healthy and will give you energy to finish off your day at work.</p>
+                <hr color="greenyellow">
+                <p>Take a break with some of our <span style="color: cyan;">DINNER.</span></p>
+                <p style="font-size: 25px;">Our quick and healty meals are easy and fast to make. They contain only a few ingredients that are healthy and will give you energy to finish off your day at work.</p>
+                <hr color="cyan">
+            </div>
         </div>
+        <div class="gradient-overlay-3"></div>
+    </div>
+    <div #workout class="workout-container">
+        <div class="gradient-overlay-4"></div>
+        <img id="pullup-bar" [src]="images[5].path" [alt]="images[5].name">
     
-        <div class="gym-description">
-            <p style="color: darkslategray; font-size: 40px; text-align: center;">GYM</p>
-            <p>Basic exercises for building muscles. With good form and some diet changes, you can come a long way.</p>
-            <img id="gym" style="box-shadow: 16px 16px 32px black;" [src]="images[7].path" [alt]="images[7].name" height="658" width="440">
+        <div class="descriptions">
+            <div class="workout-description" (click)="navigateToSw()">
+                <p style="color: darkslategray; font-size: 40px; text-align: center;">STREET WORKOUT</p>
+                <p>Wherever you find bars, you can do a high quality workout. The only thing you need is your body.</p>
+                <img id="street-workout" style="box-shadow: 16px 16px 32px black;" [src]="images[6].path" [alt]="images[6].name">
+            </div>
+        
+            <div class="gym-description">
+                <p style="color: darkslategray; font-size: 40px; text-align: center;">GYM</p>
+                <p>Basic exercises for building muscles. With good form and some diet changes, you can come a long way.</p>
+                <img id="gym" style="box-shadow: 16px 16px 32px black;" [src]="images[7].path" [alt]="images[7].name" height="658" width="440">
+            </div>
         </div>
     </div>
 </div>

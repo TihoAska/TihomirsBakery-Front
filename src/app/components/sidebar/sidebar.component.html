@@ -1,15 +1,11 @@
 <div class="sidebar" [@showSidebar]="showSidebar ? 'show' : 'hide'">
-  <div class="profile" (click)="navigateToDetails()">
-    <img id="profile-photo" [src]="sidebarService.yourDay.icon" [alt]="sidebarService.yourDay.name" height="40px" width="40px">
-    <p id="profile-name" [@showName]="showSidebar ? 'show' : 'hide'">{{ sidebarService.yourDay.name }}</p>
-  </div>
-  <div class="workout" (click)="navigateToMap()">
-    <img class="workout-icon" [src]="sidebarService.workout.icon" [alt]="sidebarService.workout.name" style="height: 50px; width: 50px;">
-    <p [@showName]="showSidebar ? 'show' : 'hide'">{{ sidebarService.workout.name }}</p>
+  <div class="profile" (click)="navigateTo('HOME')">
+    <img id="profile-photo" [src]="sidebarService.home.icon" [alt]="sidebarService.home.name" height="50px" width="50px">
+    <p id="profile-name" [@showName]="showSidebar ? 'show' : 'hide'">{{ sidebarService.home.name }}</p>
   </div>
   <hr>
   <ng-container *ngFor="let item of sidebarService.items; let i = index">
-    <div class="icons">
+    <div class="icons" (click)="navigateTo(item.name)">
       <img class="icon" [src]="item.icon" [alt]="item.name" height="50px" width="50px">
       <p [@showName]="showSidebar ? 'show' : 'hide'">{{ item.name }}</p>
     </div>

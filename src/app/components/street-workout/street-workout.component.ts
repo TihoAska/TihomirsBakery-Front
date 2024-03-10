@@ -26,4 +26,8 @@ export class StreetWorkoutComponent {
     { path: '../../../assets/videos/Skull-crushers.mp4', name: 'SKULL-CRUSHERS' },
     { path: '../../../assets/videos/Muscle-up.mp4', name: 'MUSCLE-UP' },
   ]
+
+  ngOnInit(){
+    window.scrollTo(0,0);
+  }
 }

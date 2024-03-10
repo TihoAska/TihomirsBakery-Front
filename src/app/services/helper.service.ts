@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Renderer2 } from '@angular/core';
 import { ApexChart, ApexFill, ApexLegend, ApexNonAxisChartSeries, ApexTooltip } from 'ng-apexcharts';
 import { BehaviorSubject, interval, take } from 'rxjs';
 
@@ -9,6 +9,7 @@ export class HelperService {
 
   isDimmedBackgroundClicked : BehaviorSubject<boolean> = new BehaviorSubject(false);
   windowChoice : BehaviorSubject<string> = new BehaviorSubject("add");
+  scrollTo : BehaviorSubject<string> = new BehaviorSubject("");
 
   macros = [
     { name: "protein", value: 220, animatedValue: 0 },

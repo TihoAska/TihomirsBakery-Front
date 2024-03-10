@@ -5,6 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class SidebarService {
   items = [
+    { icon: '../../../assets/your-day-white.png', name: 'YOUR DAY' },
+    { icon: '../../../assets/workout-locations.png', name: 'WORKOUT SPOTS' },
     { icon: '../../../assets/gym.png', name: 'GYM' },
     { icon: '../../../assets/kitchen.png', name: 'KITCHEN' },
     { icon: '../../../assets/gym-essentials.png', name: 'GYM ESSENTIALS' },
@@ -16,9 +18,8 @@ export class SidebarService {
     // { icon: '../../../assets/shake-white.png', name: 'SHAKES' },
   ];
 
-  profilePhoto = { icon: '../../../assets/profile-icon-orange.png', name: 'YOUR PROFILE' }
-  yourDay = { icon: '../../../assets/your-day-white.png', name: 'YOUR DAY' }
-  workout = { icon: '../../../assets/workout-white.png', name: 'WORKOUT SPOTS' }
-  
+  profilePhoto = { icon: '../../../assets/profile-icon-orange.png', name: 'YOUR PROFILE' } ;
+  home = { icon: '../../../assets/workout-white.png', name: 'HOME' };
+
   constructor() { }
 }

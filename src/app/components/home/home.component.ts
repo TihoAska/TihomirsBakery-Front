@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, Renderer2, ViewChild  } from '@angular/core';
 import { Router } from '@angular/router';
+import { HelperService } from '../../services/helper.service';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +8,8 @@ import { Router } from '@angular/router';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
+  @ViewChild('workout') workoutContainer  : ElementRef;
+  @ViewChild('cooking') cookingContainer  : ElementRef;
 
   images = [
     { path: '../../../assets/monkey-bar-resized-edited-2.png', name: 'MONKEY-BAR' },
@@ -19,9 +22,29 @@ export class HomeComponent {
     { path: '../../../assets/pulls.png', name: 'PULLS' },
   ]
 
-  constructor(private router : Router) {
-    
-    
+  constructor(
+    private router : Router, 
+    private renderer: Renderer2, 
+    private helperService : HelperService) {    
+
+  }
+
+  ngOnInit() {
+    this.helperService.scrollTo.subscribe(res => {
+      if (res === "GYM") {
+        this.router.navigate(['/']).then(() => {
+          this.workoutContainer.nativeElement.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      } else if (res === "KITCHEN") {
+        this.router.navigate(['/']).then(() => {
+          const yOffset = -200;
+          const cookingContainerRect = this.cookingContainer.nativeElement.getBoundingClientRect();
+          const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+          const targetOffset = cookingContainerRect.top + scrollTop - yOffset;
+          window.scrollTo({ top: targetOffset, behavior: "smooth" });
+        });
+      }
+    });
   }
 
   navigateToSw(){

@@ -9,6 +9,7 @@ import {
 } from '@angular/animations'
 import { SidebarService } from '../../services/sidebar.service';
 import { Router } from '@angular/router';
+import { HelperService } from '../../services/helper.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -70,18 +71,22 @@ export class SidebarComponent {
 
   constructor(
     public sidebarService : SidebarService,
-    private router : Router){
+    private router : Router,
+    private helperService : HelperService){
   }
 
   ngOnInit(){
 
   }
 
-  navigateToMap(){
-    this.router.navigate(['map']);
-  }
-
-  navigateToDetails(){
-    this.router.navigate(['your-day']);
+  navigateTo(path){
+    if(path == 'HOME'){
+      this.router.navigate([''])
+    } else if(path == 'YOUR DAY'){
+      this.router.navigate(['your-day']);
+    } else if (path == 'WORKOUT SPOTS'){
+      this.router.navigate(['map']);
+    }
+    this.helperService.scrollTo.next(path);
   }
 }
