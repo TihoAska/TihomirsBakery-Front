@@ -52,16 +52,22 @@
         <img id="pullup-bar" [src]="images[5].path" [alt]="images[5].name">
     
         <div class="descriptions">
-            <div class="workout-description" (click)="navigateToSw()">
-                <p style="color: darkslategray; font-size: 40px; text-align: center;">STREET WORKOUT</p>
-                <p>Wherever you find bars, you can do a high quality workout. The only thing you need is your body.</p>
+            <div class="street-workout-container" (click)="navigateToSw()">
                 <img id="street-workout" style="box-shadow: 16px 16px 32px black;" [src]="images[6].path" [alt]="images[6].name">
+                <div class="workout-description">
+                    <h3 style="color: darkslategray; font-size: 40px; text-align: center;">STREET WORKOUT</h3>
+                    <hr>
+                    <p>Wherever you find bars, you can do a high quality workout. The only thing you need is your body.</p>
+                </div>
             </div>
         
-            <div class="gym-description">
-                <p style="color: darkslategray; font-size: 40px; text-align: center;">GYM</p>
-                <p>Basic exercises for building muscles. With good form and some diet changes, you can come a long way.</p>
+            <div class="gym-container">
                 <img id="gym" style="box-shadow: 16px 16px 32px black;" [src]="images[7].path" [alt]="images[7].name" height="658" width="440">
+                <div class="gym-description">
+                    <h3 style="color: darkslategray; font-size: 40px; text-align: center;">GYM</h3>
+                    <hr>
+                    <p>Basic exercises for building muscles. With good form and some diet changes, you can come a long way.</p>
+                </div>
             </div>
         </div>
     </div>
