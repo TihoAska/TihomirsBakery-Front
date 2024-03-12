@@ -86,6 +86,8 @@ export class SidebarComponent {
       this.router.navigate(['your-day']);
     } else if (path == 'WORKOUT SPOTS'){
       this.router.navigate(['map']);
+    } else if (path == 'GYM ESSENTIALS'){
+      this.router.navigate(['gym-essentials'])
     }
     this.helperService.scrollTo.next(path);
   }

@@ -99,14 +99,13 @@
                 font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
                 font-size: 35px;
                 color: orangered;
-                // text-shadow: 1px 1px 6px white;
                 margin: 0;
                 text-align: center;
             }
         
             hr{
                 width: 100%;
-                border-color: darkslategray;
+                border-color: orangered;
             }
         
             p{
@@ -114,10 +113,6 @@
                 font-size: 20px;
                 color: white;
                 text-shadow: 4px 4px 8px darkslategray;
-            }
-
-            hr{
-                border-color: orangered;
             }
         }
     }

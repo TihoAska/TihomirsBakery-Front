@@ -5,6 +5,7 @@ import { AddWindowComponent } from './components/add-window/add-window.component
 import { MapComponent } from './components/map/map.component';
 import { HomeComponent } from './components/home/home.component';
 import { StreetWorkoutComponent } from './components/street-workout/street-workout.component';
+import { GymEssentialsComponent } from './components/gym-essentials/gym-essentials.component';
 
 const routes: Routes = [
   {
@@ -38,6 +39,10 @@ const routes: Routes = [
   {
     path: 'street-workout',
     component: StreetWorkoutComponent
+  },
+  {
+    path: 'gym-essentials',
+    component: GymEssentialsComponent
   }
 ];
 

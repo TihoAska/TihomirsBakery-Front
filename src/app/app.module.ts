@@ -24,6 +24,7 @@ import { MapComponent } from './components/map/map.component';
 import { HomeComponent } from './components/home/home.component';
 import { StreetWorkoutComponent } from './components/street-workout/street-workout.component';
 import { DragScrollComponent, DragScrollItemDirective } from 'ngx-drag-scroll';
+import { GymEssentialsComponent } from './components/gym-essentials/gym-essentials.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { DragScrollComponent, DragScrollItemDirective } from 'ngx-drag-scroll';
     AddWindowComponent,
     MapComponent,
     HomeComponent,
-    StreetWorkoutComponent
+    StreetWorkoutComponent,
+    GymEssentialsComponent
   ],
   imports: [
     BrowserModule,
