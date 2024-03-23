@@ -6,6 +6,10 @@
     border-top: 2px white solid;
 }
 
+#hamburger-menu{
+    display: none;
+}
+
 .plus-icon{
     z-index: 3;
     margin-top: 20px;
@@ -51,4 +55,21 @@
 .social:hover{
     transform: scale(1.1);
     cursor: pointer;
+}
+
+@media screen and (max-width: 650px){
+    #hamburger-menu{
+        display: inline;
+        
+        img{
+            transition: transform 0.3s ease;
+            margin-left: 10px;
+            margin-top: 10px;
+        }
+
+        img:hover{
+            transform: scale(1.1);
+            cursor: pointer;
+        }
+    }
 }

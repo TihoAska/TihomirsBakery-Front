@@ -34,4 +34,8 @@ export class FooterComponent {
       window.open('https://github.com/TihoAska');
     }
   }
+
+  toggleSidebar(){
+    this.footerService.isHamburgerClicked.next(!this.footerService.isHamburgerClicked.value);
+  }
 }

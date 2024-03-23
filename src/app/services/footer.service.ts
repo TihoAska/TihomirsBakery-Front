@@ -7,6 +7,9 @@ import { BehaviorSubject } from 'rxjs';
 export class FooterService {
 
   public isPlusClicked : BehaviorSubject<boolean> = new BehaviorSubject(false);
+  public isHamburgerClicked : BehaviorSubject<boolean> = new BehaviorSubject(false);
+
+  hamburgerMenu = { icon: '../../../assets/hamburger-menu-white.png', name: 'HM'};
   
   pluses = [
     { icon: '../../../assets/plus-orange.png', name: 'PLUS-ORANGE'},

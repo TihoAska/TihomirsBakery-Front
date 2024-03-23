@@ -1,0 +1,15 @@
+<div class="sidebar" [@sidebarAnimation]="isHamburgerClicked ? 'open' : 'closed'">
+    <div class="profile" (click)="navigateTo('HOME')">
+      <img id="profile-photo" [src]="sidebarService.home.icon" [alt]="sidebarService.home.name" height="50px" width="50px">
+      <p id="profile-name">{{ sidebarService.home.name }}</p>
+    </div>
+    <hr>
+    <ng-container *ngFor="let item of sidebarService.items; let i = index">
+      <div class="icons" (click)="navigateTo(item.name)">
+        <img class="icon" [src]="item.icon" [alt]="item.name" height="50px" width="50px">
+        <p>{{ item.name }}</p>
+      </div>
+      <hr *ngIf="i % 2 === 1 && i !== sidebarService.items.length - 1">
+    </ng-container>
+    <hr>
+  </div>

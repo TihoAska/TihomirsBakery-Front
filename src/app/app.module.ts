@@ -25,6 +25,7 @@ import { HomeComponent } from './components/home/home.component';
 import { StreetWorkoutComponent } from './components/street-workout/street-workout.component';
 import { DragScrollComponent, DragScrollItemDirective } from 'ngx-drag-scroll';
 import { GymEssentialsComponent } from './components/gym-essentials/gym-essentials.component';
+import { HamburgerSidebarComponent } from './components/hamburger-sidebar/hamburger-sidebar.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { GymEssentialsComponent } from './components/gym-essentials/gym-essentia
     MapComponent,
     HomeComponent,
     StreetWorkoutComponent,
-    GymEssentialsComponent
+    GymEssentialsComponent,
+    HamburgerSidebarComponent
   ],
   imports: [
     BrowserModule,

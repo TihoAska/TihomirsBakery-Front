@@ -18,8 +18,8 @@ export class HomeComponent {
     { path: '../../../assets/ham-sandwich.jpg', name: 'HAM-SANDWICH' },
     { path: '../../../assets/fruit-salad.jpg', name: 'FRUIT-SALAD' },
     { path: '../../../assets/pullup-bar-edited.jpg', name: 'PULLUP-BAR' },
-    { path: '../../../assets/muscle-up.png', name: 'MUSCLE-UP' },
-    { path: '../../../assets/pulls.png', name: 'PULLS' },
+    { path: '../../../assets/home-gym.jpg', name: 'MUSCLE-UP' },
+    { path: '../../../assets/home-gym-2.jpeg', name: 'PULLS' },
   ]
 
   constructor(

@@ -1,228 +1,754 @@
 body{
-    overflow-x: hidden;
+    overflow-x: hidden;  
+    
 }
 
-.monkey-bar {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
+#scroll-container{
+    --h1-font-size: 50px;
+    --p-font-size: 30px;
+    --base-image-width: 420px;
+    --base-font: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 
-#bar{
-    border-radius: 0 !important;
-}
+    --darkgreen: #060e08;
 
-.image-wrapper {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
-.monkey-bar > .image-wrapper > img {
-    width: 100%;
-    height: 100%;
-}
-
-.gradient-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 50%;
-    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
-}
-
-.description {
-    position: absolute;
-    top: 20%;
-    left: 35%;
-    color: white;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 50px;
-    text-shadow: 4px 4px 8px darkslategray;
-    text-align: center;
-    z-index: 2;
-}
-
-.cooking {
-    width: 100%;
-    height: 1600px;
-    background-color: #0B1A11;
-}
-
-.cooking > .gradient-overlay-2 {
-    position: absolute;
-    top: 100;
-    left: 0;
-    width: 100%;
-    height: 20%;
-    background: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
-}
-
-.images{
-    padding-left: 10%;
-    padding-top: 10%;
-    border-radius: 10px;
-    height: 50vh;
-}
-
-img{
-    border-radius: 10px;
-    transition: transform 0.3s ease;
-}
-
-img:not(#bar, #pullup-bar, #street-workout, #gym):hover{
-    transform: scale(1.01);
-    cursor: pointer;
-}
-
-
-.oatmeal-container,
-.rice-cakes-container,
-.ham-sandwich-container,
-.fruit-salad-container {
-    position: absolute;
-    width: 500px; 
-    height: 500px;
-}
-
-.oatmeal-container {
-    z-index: 1;
-}
-
-#oatmeal:hover{
-    box-shadow: 0px 0px 15px orangered;
-}
-
-.rice-cakes-container {
-    z-index: 1; 
-    margin-top: 3%;
-    margin-left: 22%; 
-}
-
-#rice-cakes:hover{
-    box-shadow: 0px 0px 15px yellow;
-}
-
-.ham-sandwich-container{
-    z-index: 1;
-    margin-top: 22%;
-}
-
-#ham-sandwich:hover{
-    box-shadow: 0px 0px 15px greenyellow;
-}
-
-.fruit-salad-container{
-    z-index: 1;
-    margin-top: 25%;
-    margin-left: 22%; 
-}
-
-#fruit-salad:hover{
-    box-shadow: 0px 0px 15px cyan;
-}
-
-.meal-description{
-    width: 40%;
-    height: 100%;
-    margin-top: 15%;
-}
-
-.meal-description > p{
-    z-index: 1;
-    color: white;
-    font-size: 40px;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-}
-
-p > span{
-    text-shadow: 2px 2px 4px black;
-}
-
-.meal-container{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 95vw;
-    height: 1000px;
-}
-
-.workout-container{
-    width: 100%;
-    height: 100%;
-    background-color: #0B1A11;
-    position: relative;
-}
-
-.gradient-overlay-3 {
-    position: absolute;
-    width: 100%;
-    height: 50%;
-    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
-}
-
-.gradient-overlay-4{
-    position: absolute;
-    width: 100%;
-    height: 40%;
-    background: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
-}
-
-#pullup-bar{
-    width: 100%;
-    height: 100%;
-}
-
-.workout-container{
-    position: relative;
-
-    .descriptions{
-        position: absolute;
-        top: 0;
-        left: 0;
+    .monkey-bar {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    
+        .image-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+    
+            img {
+                width: 100%;
+                height: 100%;
+            }
+    
+            #bar{
+                border-radius: 0 !important;
+            }
+    
+            .gradient-overlay {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 50vh;
+                background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+            }
+        }
+    
+        .description {
+            position: absolute;
+            top: 30%;
+            left: 34%;
+            color: white;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-size: var(--h1-font-size);
+            text-shadow: 4px 4px 8px darkslategray;
+            text-align: center;
+            z-index: 2;
+    
+            p{
+                margin: 0;
+            }
+        }
+    }
+    
+    .cooking {
+        width: 100%;
+        height: 1600px;
+        background-color: #0B1A11;
+        position: relative;
+        z-index: 2;
+    
+        .gradient-overlay-2 {
+            position: absolute;
+            top: 100;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+        }
+        
+        .gradient-overlay-3 {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+        }
+    }
+    
+    img{
+        border-radius: 10px;
+        transition: transform 0.3s ease;
+    }
+    
+    img:not(#bar, #pullup-bar, #street-workout, #gym):hover{
+        transform: scale(1.01);
+        cursor: pointer;
+    }
+    
+    p > span{
+        text-shadow: 2px 2px 4px black;
+    }
+    
+    .meal-container{
         display: flex;
         flex-direction: row;
-        margin-left: 10%;
-        margin-top: 5%;
-        justify-content: space-around;
-        
-        img{
-            transition: transform 0.3s ease;
-        }
+        justify-content: space-between;
+        width: 95vw;
+        height: 75vh;
+    
+        .images{
+            padding-left: 10%;
+            padding-top: 10%;
+            border-radius: 10px;
+            height: 50vh;
+    
+            .oatmeal-container,
+            .rice-cakes-container,
+            .ham-sandwich-container,
+            .fruit-salad-container {
+                position: absolute;
+                width: 500px; 
+                height: 500px;
+            }
+    
+            .oatmeal-container {
+                z-index: 1;
 
-        img:hover{
-            transform: scale(1.01);
-            cursor: pointer;
+                img{
+                    height: var(--base-image-width);
+                    width: var(--base-image-width);
+                }
+        
+                #oatmeal:hover{
+                    box-shadow: 0px 0px 15px orangered;
+                }
+            }
+            
+            .rice-cakes-container {
+                z-index: 1; 
+                margin-top: 3%;
+                margin-left: 22%; 
+
+                img{
+                    height: var(--base-image-width);
+                    width: var(--base-image-width);
+                }
+        
+                #rice-cakes:hover{
+                    box-shadow: 0px 0px 15px yellow;
+                }
+            }
+            
+            .ham-sandwich-container{
+                z-index: 1;
+                margin-top: 22%;
+
+                img{
+                    height: var(--base-image-width);
+                    width: var(--base-image-width);
+                }
+        
+                #ham-sandwich:hover{
+                    box-shadow: 0px 0px 15px greenyellow;
+                }
+            }
+            
+            .fruit-salad-container{
+                z-index: 1;
+                margin-top: 25%;
+                margin-left: 22%; 
+
+                img{
+                    height: var(--base-image-width);
+                    width: var(--base-image-width);
+                }
+        
+                #fruit-salad:hover{
+                    box-shadow: 0px 0px 15px cyan;
+                }
+            }
         }
     
-        .street-workout-container, .gym-container{
+        .meal-description{
+            z-index: 2;
+            width: 40%;
+            height: 100%;
+            margin-top: 10%;
+        
+            p{
+                z-index: 2;
+                color: white;
+                font-size: var(--p-font-size);
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            }
+        
+            h4{
+                z-index: 2;
+                color: antiquewhite;
+                font-size: var(--p-font-size);
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                text-shadow: none;
+            }
+        }
+    }
+    
+    .workout-container{
+        width: 100%;
+        height: 1000px;
+        background-color: #0B1A11;
+        position: relative;
+        background-color: var(--darkgreen);
+    
+        .gradient-overlay-4{
+            position: absolute;
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+            z-index: 2;
+        }
+    
+        #pullup-bar{
+            width: 100%;
+            height: 100%;
+        }
+    
+        .descriptions{
             display: flex;
             flex-direction: row;
-            width: 40%;
+            justify-content: space-around;
+            height: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            
+            img{
+                transition: transform 0.3s ease;
+            }
+    
+            img:hover{
+                transform: scale(1.01);
+                cursor: pointer;
+            }
 
-            .workout-description, .gym-description{
-                margin-top: 15%;
+            .street-workout-container{
+                clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
+                width: 58vw;
+                margin-right: -10%;
                 display: flex;
                 flex-direction: column;
-    
-                h3, p{
-                    margin-left: 10%;
-                    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-                    font-size: 30px;
-                    color: white;
-                    text-shadow: 1px 1px 2px darkslategray;
+                align-items: center;
+                font-family: var(--base-font);
+
+                .sw-desc{
+                    margin-top: 20%;
+                    text-align: center;
+                    width: 60%;
+
+                    h3{
+                        color: orangered;
+                        font-size: var(--h1-font-size);
+                        text-shadow: 4px 4px 8px #060e08;
+                    }
+        
+                    p{
+                        color: orangered;
+                        font-size: var(--p-font-size);
+                        text-shadow: 4px 4px 8px #060e08;
+                    }
                 }
-    
-                h3{
-                    font-size: 40px !important;
-                    text-shadow: 1px 1px 2px white;
+            }
+
+
+            .gym-container{ 
+                clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%);
+                width: 55vw;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                font-family: var(--base-font);
+
+                .gym-desc{
+                    margin-top: 20%;
+                    text-align: center;
+                    width: 60%;
+
+                    h3{
+                        color: orangered;
+                        font-size: var(--h1-font-size);
+                        text-shadow: 4px 4px 8px #060e08;
+                    }
+        
+                    p{
+                        color: orangered;
+                        font-size: var(--p-font-size);
+                        text-shadow: 4px 4px 8px #060e08;
+                    }
                 }
+            }
+        
+            .street-workout-container, .gym-container{
+                height: 100%;
+                transition: transform 0.3s ease;
+                width: 100%;
     
-                hr{
-                    width: 90%;
+                .workout-description, .gym-description{
+                    display: flex;
+                    flex-direction: column;
+                    width: 50%;
+                }
+            }
+
+            .street-workout-container:hover, .gym-container:hover{
+                transform: scale(1.01);
+                transform-origin: center;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+
+
+@media screen and (max-width: 2100px) {
+    #scroll-container{
+        --h1-font-size: 40px;
+        --p-font-size: 25px;
+        --base-image-width: 350px;
+
+        .cooking{
+            height: 1300px;
+        }
+
+        .workout-container{
+            .descriptions{
+                .street-workout-container{
+                    .sw-desc{
+                        margin-top: 30%;
+                    }
+                }
+
+                .gym-container{
+                    .gym-desc{
+                        margin-top: 30%;
+                    }
+                }
+            }
+        }
+    }
+  }
+  
+@media screen and (max-width: 1800px) {
+    #scroll-container{
+        --h1-font-size: 35px;
+        --p-font-size: 23px;
+        --base-image-width: 300px;
+
+        .cooking{
+            height: 1100px;
+        }
+
+        .workout-container{
+            .descriptions{
+                .street-workout-container{
+                    .sw-desc{
+                        margin-top: 35%;
+                    }
+                }
+
+                .gym-container{
+                    .gym-desc{
+                        margin-top: 35%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1500px) {
+    #scroll-container{
+        --h1-font-size: 30px;
+        --p-font-size: 20px;
+        --base-image-width: 270px;
+
+        .cooking{
+            height: 900px;
+        }
+
+        .workout-container{
+            .descriptions{
+                .street-workout-container{
+                    .sw-desc{
+                        margin-top: 45%;
+                    }
+                }
+
+                .gym-container{
+                    .gym-desc{
+                        margin-top: 45%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    #scroll-container{
+        --h1-font-size: 30px;
+        --p-font-size: 17px;
+        --base-image-width: 220px;
+
+        .cooking{
+            height: 800px;
+        }
+
+        .meal-container{
+            .images{
+                margin-left: 2%;
+            }
+        }
+
+        .workout-container{
+            .descriptions{
+                .street-workout-container{
+                    .sw-desc{
+                        margin-top: 55%;
+
+                        p{
+                            font-size: 20px;
+                        }
+                    }
+                }
+
+                .gym-container{
+                    .gym-desc{
+                        margin-top: 55%;
+
+                        p{
+                            font-size: 20px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    #scroll-container{
+        --h1-font-size: 25px;
+        --p-font-size: 13px;
+        --base-image-width: 180px;
+
+        .cooking{
+            height: 650px;
+             
+        }
+
+        .meal-container{
+            .images{
+                margin-left: 5%;
+            }
+        }
+
+        .workout-container{
+            .descriptions{
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+
+                .street-workout-container{
+                    height: 50%;
+                    .sw-desc{
+                        margin-top: 15%;
+                        p{
+                            font-size: 20px;
+                        }
+                    }
+                }
+
+                .gym-container{
+                    height: 50%;
+                    .gym-desc{
+                        margin-top: 15%;
+                        p{
+                            font-size: 20px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 900px) {
+    #scroll-container{
+        --h1-font-size: 20px;
+        --p-font-size: 18px;
+        --base-image-width: 180px;
+
+        .cooking{
+            height: 1000px;
+        }
+
+        .meal-container{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+
+            .images{
+                padding-left: 10%;
+                padding-top: 10%;
+                height: 700px;
+                width: 200px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+        
+                .oatmeal-container,
+                .rice-cakes-container,
+                .ham-sandwich-container,
+                .fruit-salad-container {
+                    position: relative;
+                    width: 500px; 
+                    height: 500px;
                     margin-left: 10%;
-                    border-color: #0B1A11;
+                    margin-top: 0;
+                    margin-right: 0;
+                    
+                    img{
+                        margin-top: 20px !important;
+                        margin-right: 0;
+                    }
+                }
+            }
+
+            .meal-description{
+                height: 820px;
+                width: 280px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+            }
+        } 
+
+        .workout-container{
+            .descriptions{
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+
+                .street-workout-container{
+                    height: 50%;
+                    .sw-desc{
+                        margin-top: 20%;
+                        p{
+                            font-size: 20px;
+                        }
+                    }
+                }
+
+                .gym-container{
+                    height: 50%;
+                    .gym-desc{
+                        margin-top: 20%;
+                        p{
+                            font-size: 20px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 650px) {
+    #scroll-container{
+        --h1-font-size: 15px;
+        --p-font-size: 17px;
+        --base-image-width: 180px;
+
+        .cooking{
+            height: 1000px;
+        }
+
+        .meal-container{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+
+            .images{
+                padding-left: 0;
+                padding-top: 10%;
+                height: 700px;
+                width: 220px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+        
+                .oatmeal-container,
+                .rice-cakes-container,
+                .ham-sandwich-container,
+                .fruit-salad-container {
+                    position: relative;
+                    width: 100%; 
+                    height: 500px;
+                    margin-left: 10%;
+                    margin-top: 0;
+                    margin-right: 0;
+                    
+                    img{
+                        margin-top: 20px !important;
+                        margin-right: 0;
+                    }
+                }
+            }
+
+            .meal-description{
+                height: 820px;
+                width: 280px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+            }
+        }
+
+        .workout-container{
+            .descriptions{
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+
+                .street-workout-container{
+                    height: 50%;
+                    .sw-desc{
+                        margin-top: 20%;
+
+                        h3{
+                            font-size: 20px;
+                        }
+
+                        p{
+                            font-size: 20px;
+                        }
+                    }
+                }
+
+                .gym-container{
+                    height: 50%;
+                    .gym-desc{
+                        margin-top: 20%;
+                        
+                        h3{
+                            font-size: 20px;
+                        }
+
+                        p{
+                            font-size: 20px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 550px) {
+    #scroll-container{
+        --h1-font-size: 15px;
+        --p-font-size: 17px;
+        --base-image-width: 170px;
+
+        .cooking{
+            height: 1000px;
+        }
+
+        .meal-container{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+
+            .images{
+                padding-left: 0;
+                padding-top: 10%;
+                height: 700px;
+                width: 220px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+        
+                .oatmeal-container,
+                .rice-cakes-container,
+                .ham-sandwich-container,
+                .fruit-salad-container {
+                    position: relative;
+                    width: 100%; 
+                    height: 500px;
+                    margin-left: 10%;
+                    margin-top: 0;
+                    margin-right: 0;
+                    
+                    img{
+                        margin-top: 20px !important;
+                        margin-right: 0;
+                    }
+                }
+            }
+
+            .meal-description{
+                height: 820px;
+                width: 280px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+            }
+        }
+
+        .workout-container{
+            .descriptions{
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+
+                .street-workout-container{
+                    height: 50%;
+
+                    .sw-desc{
+                        margin-top: 20%;
+
+                        h3{
+                            font-size: 20px;
+                        }
+
+                        p{
+                            font-size: 20px;
+                        }
+                    }
+                }
+
+                .gym-container{
+                    height: 50%;
+                    
+                    .gym-desc{
+                        margin-top: 20%;
+                        
+                        h3{
+                            font-size: 20px;
+                        }
+                        
+                        p{
+                            font-size: 20px;
+                        }
+                    }
                 }
             }
         }

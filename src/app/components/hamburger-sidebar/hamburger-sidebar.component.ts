@@ -13,62 +13,23 @@ import { HelperService } from '../../services/helper.service';
 import { FooterService } from '../../services/footer.service';
 
 @Component({
-  selector: 'app-sidebar',
-  templateUrl: './sidebar.component.html',
-  styleUrl: './sidebar.component.scss',
+  selector: 'app-hamburger-sidebar',
+  templateUrl: './hamburger-sidebar.component.html',
+  styleUrl: './hamburger-sidebar.component.scss',
   animations: [
-    trigger(
-      'showSidebar', [
-        state(
-          'show',
-          style({
-            width: '300px',
-            zIndex: 3,
-          })
-        ),
-        state(
-          'hide',
-          style({
-            width: '100px',
-            zIndex: 3,
-          })
-        ),
-        transition('show <=> hide', animate('300ms ease-in-out')),
-      ],
-    ),
-    trigger(
-      'showName', [
-        state(
-          'show',
-          style({
-            opacity: 1,
-            zIndex: 1,
-          })
-        ),
-        state(
-          'hide',
-          style({
-            opacity: 0,
-            zIndex: 1,
-          })
-        ),
-        transition('show <=> hide', animate('300ms ease-in-out')),
-      ],
-    )
+    trigger('sidebarAnimation', [
+      state('open', style({
+        transform: 'translateX(0)'
+      })),
+      state('closed', style({
+        transform: 'translateX(-300px)' // Adjust the value to match your sidebar width
+      })),
+      transition('open <=> closed', animate('0.3s ease'))
+    ])
   ]
 })
-export class SidebarComponent {
-  @HostListener('mouseenter')
-  onMouseEnter() {
-    this.showSidebar = true;
-  }
-  
-  @HostListener('mouseleave')
-  onMouseLeave() {
-    this.showSidebar = false;
-  }
-  
-  showSidebar = false;
+export class HamburgerSidebarComponent {
+
   isHamburgerClicked = false;
 
   constructor(
@@ -79,7 +40,10 @@ export class SidebarComponent {
   }
 
   ngOnInit(){
-
+    this.footerService.isHamburgerClicked.subscribe(res => {
+      this.isHamburgerClicked = res;
+      console.log(res)
+    })
   }
 
   navigateTo(path){

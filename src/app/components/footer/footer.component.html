@@ -2,6 +2,9 @@
     <!-- <div class ="plus-icon-background" (click)="togglePlus()">
         <img class="plus-icon" [src]="footerService.pluses[2].icon" alt="icon" height="70px" width="70px">
     </div> -->
+    <div id="hamburger-menu">
+        <img [src]="footerService.hamburgerMenu.icon" [alt]="footerService.hamburgerMenu.name" (click)="toggleSidebar()">
+    </div>
     <div class="socials">
         <ng-container *ngFor="let icon of footerService.socials; let i = index">
             <img class="social" [src]="icon.icon" [alt]="icon.name" height="40px" width="40px" style="margin-right: 10px;" (click)="navigateToSocial(icon.name)">
