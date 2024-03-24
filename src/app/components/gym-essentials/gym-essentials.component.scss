@@ -2,8 +2,12 @@
     --lightgreen: #08170d;
     --darkgreen: #060e08;
 
+    --h1-font-size: 50px;
+    --h3-font-size: 30px;
+    --p-font-size: 25px;
+
     position: relative;
-    height: 100%;
+    // height: 100%;
     width: 100%;
     text-align: justify;
 
@@ -28,8 +32,9 @@
     .description{
         position: absolute;
         top: 20%;
-        left: 25%;
+        margin-left: 25%;
         width: 55%; 
+        text-align: center;
         
         span{
             color: darkslategray;
@@ -39,7 +44,7 @@
         p{
             color: white;
             font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-            font-size: 50px;
+            font-size: var(--h1-font-size);
             text-shadow: 4px 4px 8px darkslategray;   
         }
 
@@ -52,7 +57,8 @@
     .equipment{
         position: relative;
         width: 100%;
-        height: 100%;
+        height: 2000px;
+        background-color: var(--darkgreen);
 
         .gradient-overlay-2 {
             position: absolute;
@@ -82,6 +88,8 @@
     
                 img{
                     border-radius: 10px;
+                    height: 400px;
+                    width: 400px;
                 }
     
                 .chalk-description{
@@ -92,13 +100,13 @@
                     h3, p{
                         margin-left: 10%;
                         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-                        font-size: 25px;
+                        font-size: var(--p-font-size);
                         color: white;
                         text-shadow: 4px 4px 8px darkslategray;
                     }
     
                     h3{
-                        font-size: 30px !important;
+                        font-size: var(--h3-font-size) !important;
                     }
     
                     hr{
@@ -115,6 +123,8 @@
     
                 img{
                     border-radius: 10px;
+                    height: 400px;
+                    width: 400px;
                 }
     
                 .straps-description{
@@ -125,13 +135,13 @@
                     h3, p{
                         margin-left: 10%;
                         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-                        font-size: 25px;
+                        font-size: var(--p-font-size);
                         color: white;
                         text-shadow: 4px 4px 8px darkslategray;
                     }
     
                     h3{
-                        font-size: 30px !important;
+                        font-size: var(--h3-font-size) !important;
                     }
     
                     hr{
@@ -161,6 +171,8 @@
     
                 img{
                     border-radius: 10px;
+                    height: 400px;
+                    width: 400px;
                 }
     
                 .chain-description{
@@ -171,13 +183,13 @@
                     h3, p{
                         margin-left: 10%;
                         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-                        font-size: 25px;
+                        font-size: var(--p-font-size);
                         color: white;
                         text-shadow: 4px 4px 8px darkslategray;
                     }
     
                     h3{
-                        font-size: 30px !important;
+                        font-size: var(--h3-font-size) !important;
                     }
     
                     hr{
@@ -194,6 +206,8 @@
     
                 img{
                     border-radius: 10px;
+                    height: 400px;
+                    width: 400px;
                 }
     
                 .gloves-description{
@@ -204,13 +218,13 @@
                     h3, p{
                         margin-left: 10%;
                         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-                        font-size: 25px;
+                        font-size: var(--p-font-size);
                         color: white;
                         text-shadow: 4px 4px 8px darkslategray;
                     }
     
                     h3{
-                        font-size: 30px !important;
+                        font-size: var(--h3-font-size) !important;
                     }
     
                     hr{
@@ -240,6 +254,8 @@
     
                 img{
                     border-radius: 10px;
+                    height: 400px;
+                    width: 400px;
                 }
     
                 .belt-description{
@@ -250,13 +266,13 @@
                     h3, p{
                         margin-left: 10%;
                         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-                        font-size: 25px;
+                        font-size: var(--p-font-size);
                         color: white;
                         text-shadow: 4px 4px 8px darkslategray;
                     }
     
                     h3{
-                        font-size: 30px !important;
+                        font-size: var(--h3-font-size) !important;
                     }
     
                     hr{
@@ -273,6 +289,8 @@
     
                 img{
                     border-radius: 10px;
+                    height: 400px;
+                    width: 400px;
                 }
     
                 .resistance-band-description{
@@ -283,13 +301,13 @@
                     h3, p{
                         margin-left: 10%;
                         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-                        font-size: 25px;
+                        font-size: var(--p-font-size);
                         color: white;
                         text-shadow: 4px 4px 8px darkslategray;
                     }
     
                     h3{
-                        font-size: 30px !important;
+                        font-size: var(--h3-font-size) !important;
                     }
     
                     hr{
@@ -299,5 +317,284 @@
                 }
             }
         }
+    }
+}
+
+
+@media screen and (max-width: 2010px){
+    .gym-essentials-wrapper{
+        --h1-font-size: 45px;
+        --h3-font-size: 25px;
+        --p-font-size: 22px;
+    }
+
+
+    img:not(#background-image){
+        height: 350px;
+        width: 350px;
+    }
+}
+
+@media screen and (max-width: 1800px){
+    .gym-essentials-wrapper{
+        --h1-font-size: 40px;
+        --h3-font-size: 22px;
+        --p-font-size: 18px;
+
+        .equipment{
+            .chalk-and-straps, .chain-and-gloves, .belt-and-resistance-band{
+                height: 500px;
+            }
+
+            .chain-and-gloves{
+                margin-top: 500px;
+            }
+
+            .belt-and-resistance-band{
+                margin-top: 1000px;
+            }
+        }
+    }
+
+
+    img:not(#background-image){
+        height: 300px;
+        width: 300px;
+    }
+}
+
+@media screen and (max-width: 1480px){
+    .gym-essentials-wrapper{
+        --h1-font-size: 30px;
+        --h3-font-size: 18px;
+        --p-font-size: 15px;
+
+        .equipment{
+            .chalk-and-straps, .chain-and-gloves, .belt-and-resistance-band{
+                height: 400px;
+            }
+
+            .chain-and-gloves{
+                margin-top: 450px;
+            }
+
+            .belt-and-resistance-band{
+                margin-top: 900px;
+            }
+        }
+        
+    }
+
+
+    img:not(#background-image){
+        height: 250px;
+        width: 250px;
+    }
+}
+
+@media screen and (max-width: 1200px){
+    .gym-essentials-wrapper{
+        --h1-font-size: 25px;
+        --h3-font-size: 15px;
+        --p-font-size: 12px;
+
+        .equipment{
+            .chalk-and-straps, .chain-and-gloves, .belt-and-resistance-band{
+                height: 400px;
+
+                .chalk, .chain, .belt{
+                    margin-left: 15%;
+                }
+            }
+
+            .chain-and-gloves{
+                margin-top: 450px;
+            }
+
+            .belt-and-resistance-band{
+                margin-top: 900px;
+            }
+        }
+        
+    }
+
+
+    img:not(#background-image){
+        height: 200px;
+        width: 200px;
+    }
+}
+
+@media screen and (max-width: 950px){
+    .gym-essentials-wrapper{
+        --h1-font-size: 22px;
+        --h3-font-size: 20px;
+        --p-font-size: 15px;
+
+        .equipment{
+            height: 2100px;
+
+            .chalk-and-straps{
+                padding-top: 150px !important;
+            }
+
+            .chalk-and-straps, .chain-and-gloves, .belt-and-resistance-band{
+                height: 600px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding-top: 0;
+                width: 100%;
+
+                .chalk, .belt, .resistance-band, .straps{
+                    width: 80%;
+                }
+
+                .chalk > .chalk-description{
+                    width: 50%;
+                }
+
+                .straps{
+                    margin-left: 15%;
+
+                    .straps-description{
+                        width: 50%;
+                    }
+                }
+            }
+
+            .chain-and-gloves{
+                margin-top: 750px;
+
+                .chain, .gloves{
+                    width: 80%;
+                }
+
+                .chain > .chain-description{
+                    width: 50%;
+                }
+
+                .gloves{
+                    margin-left: 15%;
+
+                    .gloves-description{
+                        width: 50%;
+                    }
+                }
+            }
+
+            .belt-and-resistance-band{
+                margin-top: 1350px;
+                height: 600px;
+
+                .belt, .resistance-band{
+                    width: 80%;
+                }
+
+                .belt > .belt-description{
+                    width: 50%;
+                }
+                
+                .resistance-band{
+                    margin-left: 15%;
+
+                    .resistance-band-description{
+                        width: 50%;
+                    }
+                }
+            }
+        }
+    }
+
+    img:not(#background-image){
+        height: 200px;
+        width: 200px;
+    }
+}
+
+@media screen and (max-width: 650px){
+    .gym-essentials-wrapper{
+        --h1-font-size: 15px;
+        --h3-font-size: 20px;
+        --p-font-size: 12px;
+
+        .equipment{
+            height: 2100px;
+
+            .chalk-and-straps{
+                padding-top: 150px !important;
+            }
+
+            .chalk-and-straps, .chain-and-gloves, .belt-and-resistance-band{
+                height: 600px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding-top: 0;
+                width: 100%;
+
+                .chalk, .belt, .resistance-band, .straps{
+                    width: 80%;
+                }
+
+                .chalk > .chalk-description{
+                    width: 50%;
+                }
+
+                .straps{
+                    margin-left: 15%;
+
+                    .straps-description{
+                        width: 50%;
+                    }
+                }
+            }
+
+            .chain-and-gloves{
+                margin-top: 750px;
+
+                .chain, .gloves{
+                    width: 80%;
+                }
+
+                .chain > .chain-description{
+                    width: 50%;
+                }
+
+                .gloves{
+                    margin-left: 15%;
+
+                    .gloves-description{
+                        width: 50%;
+                    }
+                }
+            }
+
+            .belt-and-resistance-band{
+                margin-top: 1350px;
+                height: 600px;
+
+                .belt, .resistance-band{
+                    width: 80%;
+                }
+
+                .belt > .belt-description{
+                    width: 50%;
+                }
+                
+                .resistance-band{
+                    margin-left: 15%;
+
+                    .resistance-band-description{
+                        width: 50%;
+                    }
+                }
+            }
+        }
+    }
+
+    img:not(#background-image){
+        height: 200px;
+        width: 200px;
     }
 }

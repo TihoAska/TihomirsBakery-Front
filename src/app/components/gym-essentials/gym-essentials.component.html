@@ -1,19 +1,19 @@
 <div class="gym-essentials-wrapper">
     <div class="background">
-        <img [src]="background.path" [alt]="background.name">
+        <img id="background-image" [src]="background.path" [alt]="background.name">
+        <div class="description">
+            <p>THESE ARE MY <span>GYM ESSENTIALS</span>, THE STUFF THAT I CANNOT GO WITHOUT</p>
+            <hr>
+            <p>I HIGHLY RECOMMEND EVERY SINGLE PIECE OF EQUIPMENT SHOWN BELOW. IT'S NOT EXPENSIVE AND MAKES YOUR WORKOUT WAY EASIER.</p>
+        </div>
         <div class="gradient-overlay"></div>
     </div>
-    <div class="description">
-        <p>THESE ARE MY <span>GYM ESSENTIALS</span>, THE STUFF THAT I CANNOT GO WITHOUT</p>
-        <hr>
-        <p>I HIGHLY RECOMMEND EVERY SINGLE PIECE OF EQUIPMENT SHOWN BELOW. IT'S NOT EXPENSIVE AND MAKES YOUR WORKOUT WAY EASIER.</p>
-    </div>
-
+    
     <div class="equipment">
         <div class="gradient-overlay-2"></div>
         <div class="chalk-and-straps">
             <div class="chalk">
-                <img [src]="images[0].path" [alt]="images[0].name" height="400px" width="400px">
+                <img class="equipment-img" [src]="images[0].path" [alt]="images[0].name">
                 <div class="chalk-description">
                     <h3>GYM CHALK</h3>
                     <hr>
@@ -25,7 +25,7 @@
             </div>
 
             <div class="straps">
-                <img [src]="images[1].path" [alt]="images[1].name" height="400px" width="400px">
+                <img class="equipment-img" [src]="images[1].path" [alt]="images[1].name">
                 <div class="straps-description">
                     <h3>STRAPS</h3>
                     <hr>
@@ -39,7 +39,7 @@
 
         <div class="chain-and-gloves">
             <div class="chain">
-                <img [src]="images[2].path" [alt]="images[2].name" height="400px" width="400px">
+                <img class="equipment-img" [src]="images[2].path" [alt]="images[2].name">
                 <div class="chain-description">
                     <h3>CHAIN BELT</h3>
                     <hr>
@@ -51,7 +51,7 @@
             </div>
 
             <div class="gloves">
-                <img [src]="images[3].path" [alt]="images[3].name" height="400px" width="400px">
+                <img class="equipment-img" [src]="images[3].path" [alt]="images[3].name">
                 <div class="gloves-description">
                     <h3>GYM GLOVES</h3>
                     <hr>
@@ -65,7 +65,7 @@
 
         <div class="belt-and-resistance-band">
             <div class="belt">
-                <img [src]="images[4].path" [alt]="images[4].name" height="400px" width="400px">
+                <img class="equipment-img" [src]="images[4].path" [alt]="images[4].name">
                 <div class="belt-description">
                     <h3>GYM BELT</h3>
                     <hr>
@@ -77,7 +77,7 @@
             </div>
 
             <div class="resistance-band">
-                <img [src]="images[5].path" [alt]="images[5].name" height="400px" width="400px">
+                <img class="equipment-img" [src]="images[5].path" [alt]="images[5].name">
                 <div class="resistance-band-description">
                     <h3>RESISTANCE BANDS</h3>
                     <hr>
