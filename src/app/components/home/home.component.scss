@@ -5,6 +5,8 @@ body{
 
 #scroll-container{
     --h1-font-size: 50px;
+    --title-font-size: 100px;
+    --welcome-font-size: 40px;
     --p-font-size: 30px;
     --base-image-width: 420px;
     --base-font: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
@@ -40,20 +42,41 @@ body{
             }
         }
     
-        .description {
-            position: absolute;
-            top: 30%;
-            left: 34%;
-            color: white;
-            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-            font-size: var(--h1-font-size);
-            text-shadow: 4px 4px 8px darkslategray;
-            text-align: center;
-            z-index: 2;
+        // .description {
+        //     position: absolute;
+        //     top: 30%;
+        //     left: 34%;
+        //     color: white;
+        //     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        //     font-size: var(--h1-font-size);
+        //     text-shadow: 4px 4px 8px darkslategray;
+        //     text-align: center;
+        //     z-index: 2;
     
-            p{
-                margin: 0;
+        //     p{
+        //         margin: 0;
+        //     }
+        // }
+
+        .description-2{
+            position: absolute;
+            top: 70%;
+            margin-left: 8%;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: bold;
+
+            #title{
+                font-size: var(--title-font-size);
+                color: aqua;
+                margin-bottom: 0;
             }
+
+            #welcome{
+                font-size: var(--welcome-font-size);
+                color: whitesmoke;
+            }
+
+            z-index: 3;
         }
     }
     
@@ -192,7 +215,7 @@ body{
         
             h4{
                 z-index: 2;
-                color: antiquewhite;
+                color: white;
                 font-size: var(--p-font-size);
                 font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
                 text-shadow: none;
@@ -320,6 +343,8 @@ body{
 @media screen and (max-width: 2100px) {
     #scroll-container{
         --h1-font-size: 40px;
+        --title-font-size: 75px;
+        --welcome-font-size: 30px;
         --p-font-size: 25px;
         --base-image-width: 350px;
 
@@ -348,8 +373,17 @@ body{
 @media screen and (max-width: 1800px) {
     #scroll-container{
         --h1-font-size: 35px;
+        --title-font-size: 60px;
+        --welcome-font-size: 25px;
         --p-font-size: 23px;
         --base-image-width: 300px;
+
+        .monkey-bar{
+            .description-2{
+                margin-left: 10%;
+            }
+        }
+
 
         .cooking{
             height: 1100px;
@@ -376,6 +410,8 @@ body{
 @media screen and (max-width: 1500px) {
     #scroll-container{
         --h1-font-size: 30px;
+        --title-font-size: 60px;
+        --welcome-font-size: 25px;
         --p-font-size: 20px;
         --base-image-width: 270px;
 
@@ -404,8 +440,16 @@ body{
 @media screen and (max-width: 1300px) {
     #scroll-container{
         --h1-font-size: 30px;
+        --title-font-size: 50px;
+        --welcome-font-size: 20px;
         --p-font-size: 17px;
         --base-image-width: 220px;
+
+        .monkey-bar{
+            .description-2{
+                margin-left: 12%;
+            }
+        }
 
         .cooking{
             height: 800px;
@@ -446,8 +490,16 @@ body{
 @media screen and (max-width: 1100px) {
     #scroll-container{
         --h1-font-size: 25px;
+        --title-font-size: 50px;
+        --welcome-font-size: 18px;
         --p-font-size: 13px;
         --base-image-width: 180px;
+
+        .monkey-bar{
+            .description-2{
+                margin-left: 14%;
+            }
+        }
 
         .cooking{
             height: 650px;
@@ -493,8 +545,17 @@ body{
 @media screen and (max-width: 900px) {
     #scroll-container{
         --h1-font-size: 20px;
+        --title-font-size: 40px;
+        --welcome-font-size: 15px;
         --p-font-size: 18px;
         --base-image-width: 180px;
+
+        .monkey-bar{
+            .description-2{
+                margin-left: 20%;
+                top: 60%;
+            }
+        }
 
         .cooking{
             height: 1000px;
@@ -576,6 +637,18 @@ body{
         --h1-font-size: 15px;
         --p-font-size: 17px;
         --base-image-width: 180px;
+
+        .monkey-bar{
+            .description-2{
+                
+                #title{
+                    margin-top: 0;
+                }
+
+                margin-left: 16%;
+                top: 20%;
+            }
+        }
 
         .cooking{
             height: 1000px;
