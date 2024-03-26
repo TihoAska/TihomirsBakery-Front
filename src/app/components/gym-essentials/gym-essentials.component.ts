@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class GymEssentialsComponent {
 
-  background = { path: '../../../assets/pullup-bar-edited.jpg', name: 'PULLUP-BAR'}
+  background = { path: '../../../assets/pullup-bar.jpg', name: 'PULLUP-BAR'}
 
   images = [
     { path: '../../../assets/gym-chalk.jpg', name: 'GYM-CHALK'},

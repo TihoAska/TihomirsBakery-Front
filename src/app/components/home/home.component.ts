@@ -1,6 +1,7 @@
 import { Component, ElementRef, Renderer2, ViewChild  } from '@angular/core';
 import { Router } from '@angular/router';
 import { HelperService } from '../../services/helper.service';
+import { SidebarService } from '../../services/sidebar.service';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,7 @@ export class HomeComponent {
   @ViewChild('cooking') cookingContainer  : ElementRef;
 
   images = [
-    { path: '../../../assets/monkey-bar-resized-edited-2.png', name: 'MONKEY-BAR' },
+    { path: '../../../assets/monkey-bar-resized.jpg', name: 'MONKEY-BAR' },
     { path: '../../../assets/oatmeal-with-fruit.jpg', name: 'OATMEAL' },
     { path: '../../../assets/chicken-with-pasta.jpg', name: 'CHICKEN-PASTA' },
     { path: '../../../assets/ham-sandwich.jpg', name: 'HAM-SANDWICH' },
@@ -24,8 +25,8 @@ export class HomeComponent {
 
   constructor(
     private router : Router, 
-    private renderer: Renderer2, 
-    private helperService : HelperService) {    
+    private helperService : HelperService,
+    public sidebarService : SidebarService) {    
 
   }
 
