@@ -23,14 +23,14 @@ import { FooterService } from '../../services/footer.service';
           'show',
           style({
             width: '300px',
-            zIndex: 3,
+            zIndex: 5,
           })
         ),
         state(
           'hide',
           style({
             width: '100px',
-            zIndex: 3,
+            zIndex: 5,
           })
         ),
         transition('show <=> hide', animate('300ms ease-in-out')),
@@ -91,7 +91,7 @@ export class SidebarComponent {
       this.router.navigate(['map']);
     } else if (path == 'GYM ESSENTIALS'){
       this.router.navigate(['gym-essentials'])
-    }
+    } 
     this.helperService.scrollTo.next(path);
   }
 }
