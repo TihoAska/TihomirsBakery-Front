@@ -2,12 +2,12 @@
     --lightgreen: #08170d;
     --darkgreen: #060e08;
 
-    --h1-font-size: 50px;
+    --h1-font-size: 100px;
+    --welcome-font-size: 35px;
     --h3-font-size: 30px;
     --p-font-size: 25px;
 
     position: relative;
-    // height: 100%;
     width: 100%;
     text-align: justify;
 
@@ -29,29 +29,51 @@
         }
     }
     
-    .description{
-        position: absolute;
-        top: 20%;
-        margin-left: 25%;
-        width: 55%; 
-        text-align: center;
+    // .description{
+    //     position: absolute;
+    //     top: 20%;
+    //     margin-left: 25%;
+    //     width: 55%; 
+    //     text-align: center;
         
-        span{
-            color: darkslategray;
-            text-shadow: 2px 2px 4px white;
-        }
+    //     span{
+    //         color: darkslategray;
+    //         text-shadow: 2px 2px 4px white;
+    //     }
 
-        p{
-            color: white;
-            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    //     p{
+    //         color: white;
+    //         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    //         font-size: var(--h1-font-size);
+    //         text-shadow: 4px 4px 8px darkslategray;   
+    //     }
+
+    //     hr{
+    //         width: 100%;
+    //         border-color: darkslategray;
+    //     }
+    // }
+
+    .description-2{
+        position: absolute;
+        top: 65%;
+        margin-left: 8%;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-weight: bold;
+        width: 90%;
+
+        #title{
             font-size: var(--h1-font-size);
-            text-shadow: 4px 4px 8px darkslategray;   
+            color: aqua;
+            margin-bottom: 0;
         }
 
-        hr{
-            width: 100%;
-            border-color: darkslategray;
+        #welcome{
+            font-size: var(--welcome-font-size);
+            color: whitesmoke;
         }
+
+        z-index: 3;
     }
 
     .equipment{
@@ -323,7 +345,8 @@
 
 @media screen and (max-width: 2010px){
     .gym-essentials-wrapper{
-        --h1-font-size: 45px;
+        --h1-font-size: 80px;
+        --welcome-font-size: 30px;
         --h3-font-size: 25px;
         --p-font-size: 22px;
     }
@@ -337,9 +360,32 @@
 
 @media screen and (max-width: 1800px){
     .gym-essentials-wrapper{
-        --h1-font-size: 40px;
+        --h1-font-size: 60px;
+        --welcome-font-size: 25px;
         --h3-font-size: 22px;
         --p-font-size: 18px;
+
+        .description-2{
+            position: absolute;
+            top: 65%;
+            margin-left: 10%;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: bold;
+            width: 80%;
+    
+            #title{
+                font-size: var(--h1-font-size);
+                color: aqua;
+                margin-bottom: 0;
+            }
+    
+            #welcome{
+                font-size: var(--welcome-font-size);
+                color: whitesmoke;
+            }
+    
+            z-index: 3;
+        }
 
         .equipment{
             .chalk-and-straps, .chain-and-gloves, .belt-and-resistance-band{
@@ -365,7 +411,8 @@
 
 @media screen and (max-width: 1480px){
     .gym-essentials-wrapper{
-        --h1-font-size: 30px;
+        --h1-font-size: 50px;
+        --welcome-font-size: 20px;
         --h3-font-size: 18px;
         --p-font-size: 15px;
 
@@ -394,9 +441,32 @@
 
 @media screen and (max-width: 1200px){
     .gym-essentials-wrapper{
-        --h1-font-size: 25px;
+        --h1-font-size: 40px;
+        --welcome-font-size: 18px;
         --h3-font-size: 15px;
         --p-font-size: 12px;
+
+        .description-2{
+            position: absolute;
+            top: 65%;
+            margin-left: 15%;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: bold;
+            width: 80%;
+    
+            #title{
+                font-size: var(--h1-font-size);
+                color: aqua;
+                margin-bottom: 0;
+            }
+    
+            #welcome{
+                font-size: var(--welcome-font-size);
+                color: whitesmoke;
+            }
+    
+            z-index: 3;
+        }
 
         .equipment{
             .chalk-and-straps, .chain-and-gloves, .belt-and-resistance-band{
@@ -427,9 +497,32 @@
 
 @media screen and (max-width: 950px){
     .gym-essentials-wrapper{
-        --h1-font-size: 22px;
+        --h1-font-size: 50px;
+        --welcome-font-size: 15px;
         --h3-font-size: 20px;
         --p-font-size: 15px;
+
+        .description-2{
+            position: absolute;
+            top: 65%;
+            margin-left: 17%;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: bold;
+            width: 80%;
+    
+            #title{
+                font-size: var(--h1-font-size);
+                color: aqua;
+                margin-bottom: 0;
+            }
+    
+            #welcome{
+                font-size: var(--welcome-font-size);
+                color: whitesmoke;
+            }
+    
+            z-index: 3;
+        }
 
         .equipment{
             height: 2100px;
@@ -514,9 +607,32 @@
 
 @media screen and (max-width: 650px){
     .gym-essentials-wrapper{
-        --h1-font-size: 15px;
+        --h1-font-size: 40px;
+        --welcome-font-size: 20px
         --h3-font-size: 20px;
         --p-font-size: 12px;
+
+        .description-2{
+            position: absolute;
+            top: 20%;
+            margin-left: 8%;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: bold;
+            width: 90%;
+    
+            #title{
+                font-size: var(--h1-font-size);
+                color: aqua;
+                margin-bottom: 0;
+            }
+    
+            #welcome{
+                font-size: var(--welcome-font-size);
+                color: whitesmoke;
+            }
+    
+            z-index: 3;
+        }
 
         .equipment{
             height: 2100px;
