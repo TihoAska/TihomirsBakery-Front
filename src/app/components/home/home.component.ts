@@ -13,7 +13,7 @@ export class HomeComponent {
   @ViewChild('cooking') cookingContainer  : ElementRef;
 
   images = [
-    { path: '../../../assets/monkey-bar-resized.jpg', name: 'MONKEY-BAR' },
+    { path: '../../../assets/monkey-bar-cartoonish.png', name: 'MONKEY-BAR' },
     { path: '../../../assets/oatmeal-with-fruit.jpg', name: 'OATMEAL' },
     { path: '../../../assets/chicken-with-pasta.jpg', name: 'CHICKEN-PASTA' },
     { path: '../../../assets/ham-sandwich.jpg', name: 'HAM-SANDWICH' },
