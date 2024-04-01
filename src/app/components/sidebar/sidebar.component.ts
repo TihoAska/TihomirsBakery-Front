@@ -91,7 +91,9 @@ export class SidebarComponent {
       this.router.navigate(['map']);
     } else if (path == 'GYM ESSENTIALS'){
       this.router.navigate(['gym-essentials'])
-    } 
+    } else if (path == 'KITCHEN ESSENTIALS'){
+      this.router.navigate(['kitchen-essentials'])
+    }
     this.helperService.scrollTo.next(path);
   }
 }

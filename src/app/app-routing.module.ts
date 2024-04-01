@@ -6,6 +6,7 @@ import { MapComponent } from './components/map/map.component';
 import { HomeComponent } from './components/home/home.component';
 import { StreetWorkoutComponent } from './components/street-workout/street-workout.component';
 import { GymEssentialsComponent } from './components/gym-essentials/gym-essentials.component';
+import { KitchenEssentialsComponent } from './components/kitchen-essentials/kitchen-essentials.component';
 
 const routes: Routes = [
   {
@@ -43,6 +44,10 @@ const routes: Routes = [
   {
     path: 'gym-essentials',
     component: GymEssentialsComponent
+  },
+  {
+    path: 'kitchen-essentials',
+    component: KitchenEssentialsComponent
   }
 ];
 
