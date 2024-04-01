@@ -1,0 +1,846 @@
+.kitchen-essentials-wrapper{
+    --darkgreen: #001011;
+
+    --h1-font-size: 100px;
+    --welcome-font-size: 35px;
+    --h3-font-size: 30px;
+    --p-font-size: 25px;
+
+    position: relative;
+    width: 100%;
+    text-align: justify;
+
+    .background{
+        position: relative;
+
+        img{
+            width: 100%;
+            height: 100%;
+        }
+
+        .gradient-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+        }
+    }
+
+    .description-2{
+        position: absolute;
+        top: 60%;
+        margin-left: 8%;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-weight: bold;
+        width: 90%;
+
+        #title{
+            font-size: var(--h1-font-size);
+            color: orange;
+            margin-bottom: 0;
+        }
+
+        #welcome{
+            font-size: var(--welcome-font-size);
+            color: whitesmoke;
+        }
+
+        z-index: 3;
+    }
+
+    .equipment{
+        position: relative;
+        width: 100%;
+        height: 2000px;
+        background-color: var(--darkgreen);
+
+        .gradient-overlay-2 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 20vh;
+            background: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+            z-index: 2;
+        }
+
+        .oats-and-peanut-butter{
+            padding-top: 200px;
+            background-color: var(--darkgreen);
+            position: absolute;
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            height: 600px;
+            justify-content: space-around;
+
+            .oats{
+                margin-left: 10%;
+                display: flex;
+                flex-direction: row;
+                width: 50%;
+    
+                img{
+                    border-radius: 10px;
+                    height: 400px;
+                    width: 400px;
+                }
+    
+                .oats-description{
+                    display: flex;
+                    flex-direction: column;
+                    width: 40%;
+    
+                    h3, p{
+                        margin-left: 10%;
+                        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                        font-size: var(--p-font-size);
+                        color: white;
+                        text-shadow: 4px 4px 8px darkslategray;
+                    }
+    
+                    h3{
+                        font-size: var(--h3-font-size) !important;
+                        color: orange !important;
+                    }
+    
+                    hr{
+                        width: 90%;
+                        margin-left: 10%;
+                        border-color: orange;
+                    }
+                }
+            }
+
+            .peanut-butter{
+                display: flex;
+                flex-direction: row;
+                width: 50%;
+    
+                img{
+                    border-radius: 10px;
+                    height: 400px;
+                    width: 400px;
+                }
+    
+                .peanut-butter-description{
+                    display: flex;
+                    flex-direction: column;
+                    width: 40%;
+    
+                    h3, p{
+                        margin-left: 10%;
+                        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                        font-size: var(--p-font-size);
+                        color: white;
+                        text-shadow: 4px 4px 8px darkslategray;
+                    }
+    
+                    h3{
+                        font-size: var(--h3-font-size) !important;
+                        color: orange !important;
+                    }
+    
+                    hr{
+                        width: 90%;
+                        margin-left: 10%;
+                        border-color: orange;
+                    }
+                }
+            }
+        }
+
+        .bananas-and-milk{
+            margin-top: 600px;
+            padding-top: 200px;
+            background-color: var(--darkgreen);
+            position: absolute;
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            height: 600px;
+            justify-content: space-around;
+
+            .bananas{
+                margin-left: 10%;
+                display: flex;
+                flex-direction: row;
+                width: 50%;
+    
+                img{
+                    border-radius: 10px;
+                    height: 400px;
+                    width: 400px;
+                }
+    
+                .bananas-description{
+                    display: flex;
+                    flex-direction: column;
+                    width: 40%;
+    
+                    h3, p{
+                        margin-left: 10%;
+                        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                        font-size: var(--p-font-size);
+                        color: white;
+                        text-shadow: 4px 4px 8px darkslategray;
+                    }
+    
+                    h3{
+                        font-size: var(--h3-font-size) !important;
+                        color: orange !important;
+                    }
+    
+                    hr{
+                        width: 90%;
+                        margin-left: 10%;
+                        border-color: orange;
+                    }
+                }
+            }
+
+            .milk{
+                display: flex;
+                flex-direction: row;
+                width: 50%;
+    
+                img{
+                    border-radius: 10px;
+                    height: 400px;
+                    width: 400px;
+                }
+    
+                .milk-description{
+                    display: flex;
+                    flex-direction: column;
+                    width: 40%;
+    
+                    h3, p{
+                        margin-left: 10%;
+                        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                        font-size: var(--p-font-size);
+                        color: white;
+                        text-shadow: 4px 4px 8px darkslategray;
+                    }
+    
+                    h3{
+                        font-size: var(--h3-font-size) !important;
+                        color: orange !important;
+                    }
+    
+                    hr{
+                        width: 90%;
+                        margin-left: 10%;
+                        border-color: orange;
+                    }
+                }
+            }
+        }
+
+        .chicken-and-rice{
+            margin-top: 1200px;
+            padding-top: 200px;
+            background-color: var(--darkgreen);
+            position: absolute;
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            height: 600px;
+            justify-content: space-around;
+
+            .chicken{
+                margin-left: 10%;
+                display: flex;
+                flex-direction: row;
+                width: 50%;
+    
+                img{
+                    border-radius: 10px;
+                    height: 400px;
+                    width: 400px;
+                }
+    
+                .chicken-description{
+                    display: flex;
+                    flex-direction: column;
+                    width: 40%;
+    
+                    h3, p{
+                        margin-left: 10%;
+                        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                        font-size: var(--p-font-size);
+                        color: white;
+                        text-shadow: 4px 4px 8px darkslategray;
+                    }
+    
+                    h3{
+                        font-size: var(--h3-font-size) !important;
+                        color: orange !important;
+                    }
+    
+                    hr{
+                        width: 90%;
+                        margin-left: 10%;
+                        border-color: orange;
+                    }
+                }
+            }
+
+            .rice{
+                display: flex;
+                flex-direction: row;
+                width: 50%;
+    
+                img{
+                    border-radius: 10px;
+                    height: 400px;
+                    width: 400px;
+                }
+    
+                .rice-description{
+                    display: flex;
+                    flex-direction: column;
+                    width: 40%;
+    
+                    h3, p{
+                        margin-left: 10%;
+                        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                        font-size: var(--p-font-size);
+                        color: white;
+                        text-shadow: 4px 4px 8px darkslategray;
+                    }
+    
+                    h3{
+                        font-size: var(--h3-font-size) !important;
+                        color: orange !important;
+                    }
+    
+                    hr{
+                        width: 90%;
+                        margin-left: 10%;
+                        border-color: orange;
+                    }
+                }
+            }
+        }
+
+        .whey-and-creatine{
+            margin-top: 1800px;
+            padding-top: 200px;
+            background-color: var(--darkgreen);
+            position: absolute;
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            height: 600px;
+            justify-content: space-around;
+
+            .whey{
+                margin-left: 10%;
+                display: flex;
+                flex-direction: row;
+                width: 50%;
+    
+                img{
+                    border-radius: 10px;
+                    height: 400px;
+                    width: 400px;
+                }
+    
+                .whey-description{
+                    display: flex;
+                    flex-direction: column;
+                    width: 40%;
+    
+                    h3, p{
+                        margin-left: 10%;
+                        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                        font-size: var(--p-font-size);
+                        color: white;
+                        text-shadow: 4px 4px 8px darkslategray;
+                    }
+    
+                    h3{
+                        font-size: var(--h3-font-size) !important;
+                        color: orange !important;
+                    }
+    
+                    hr{
+                        width: 90%;
+                        margin-left: 10%;
+                        border-color: orange;
+                    }
+                }
+            }
+
+            .creatine{
+                display: flex;
+                flex-direction: row;
+                width: 50%;
+    
+                img{
+                    border-radius: 10px;
+                    height: 400px;
+                    width: 400px;
+                }
+    
+                .creatine-description{
+                    display: flex;
+                    flex-direction: column;
+                    width: 40%;
+    
+                    h3, p{
+                        margin-left: 10%;
+                        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                        font-size: var(--p-font-size);
+                        color: white;
+                        text-shadow: 4px 4px 8px darkslategray;
+                    }
+    
+                    h3{
+                        font-size: var(--h3-font-size) !important;
+                        color: orange !important;
+                    }
+    
+                    hr{
+                        width: 90%;
+                        margin-left: 10%;
+                        border-color: orange;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 2010px){
+    .kitchen-essentials-wrapper{
+        --h1-font-size: 80px;
+        --welcome-font-size: 30px;
+        --h3-font-size: 25px;
+        --p-font-size: 22px;
+    }
+
+
+    img:not(#background-image){
+        height: 350px;
+        width: 350px;
+    }
+}
+
+@media screen and (max-width: 1800px){
+    .kitchen-essentials-wrapper{
+        --h1-font-size: 60px;
+        --welcome-font-size: 25px;
+        --h3-font-size: 22px;
+        --p-font-size: 18px;
+
+        .description-2{
+            position: absolute;
+            top: 65%;
+            margin-left: 10%;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: bold;
+            width: 80%;
+    
+            #title{
+                font-size: var(--h1-font-size);
+                color: orange;
+                margin-bottom: 0;
+            }
+    
+            #welcome{
+                font-size: var(--welcome-font-size);
+                color: whitesmoke;
+            }
+    
+            z-index: 3;
+        }
+
+        .equipment{
+            .oats-and-peanut-butter, .bananas-and-milk , .chicken-and-rice, .whey-and-creatine{
+                height: 500px;
+            }
+
+            .bananas-and-milk{
+                margin-top: 500px;
+            }
+
+            .chicken-and-rice{
+                margin-top: 1000px;
+            }
+
+            .whey-and-creatine{
+                margin-top: 1500px;
+            }
+        }
+    }
+
+
+    img:not(#background-image){
+        height: 300px;
+        width: 300px;
+    }
+}
+
+@media screen and (max-width: 1480px){
+    .kitchen-essentials-wrapper{
+        --h1-font-size: 50px;
+        --welcome-font-size: 20px;
+        --h3-font-size: 18px;
+        --p-font-size: 15px;
+
+        .equipment{
+
+            .oats-and-peanut-butter, .bananas-and-milk , .chicken-and-rice, .whey-and-creatine{
+                height: 400px;
+            }
+
+            .bananas-and-milk{
+                margin-top: 450px;
+            }
+
+            .chicken-and-rice{
+                margin-top: 900px;
+            }
+
+            .whey-and-creatine{
+                margin-top: 1350px;
+            }
+        }
+        
+    }
+
+    img:not(#background-image){
+        height: 250px;
+        width: 250px;
+    }
+}
+
+@media screen and (max-width: 1200px){
+    .kitchen-essentials-wrapper{
+        --h1-font-size: 40px;
+        --welcome-font-size: 18px;
+        --h3-font-size: 15px;
+        --p-font-size: 12px;
+
+        .description-2{
+            position: absolute;
+            top: 65%;
+            margin-left: 15%;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: bold;
+            width: 80%;
+    
+            #title{
+                font-size: var(--h1-font-size);
+                color: orange;
+                margin-bottom: 0;
+            }
+    
+            #welcome{
+                font-size: var(--welcome-font-size);
+                color: whitesmoke;
+            }
+    
+            z-index: 3;
+        }
+
+        .equipment{
+            .oats-and-peanut-butter, .bananas-and-milk, .chicken-and-rice, .whey-and-creatine{
+                height: 400px;
+
+                .oats, .bananas, .chicken, .whey{
+                    margin-left: 15%;
+                }
+            }
+
+            .bananas-and-milk{
+                margin-top: 450px;
+            }
+
+            .chicken-and-rice{
+                margin-top: 900px;
+            }
+
+            .whey-and-creatine{
+                margin-top: 1350px;
+            }
+        }
+        
+    }
+
+
+    img:not(#background-image){
+        height: 200px;
+        width: 200px;
+    }
+}
+
+@media screen and (max-width: 950px){
+    .kitchen-essentials-wrapper{
+        --h1-font-size: 50px;
+        --welcome-font-size: 15px;
+        --h3-font-size: 20px;
+        --p-font-size: 15px;
+
+        .description-2{
+            position: absolute;
+            top: 65%;
+            margin-left: 17%;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: bold;
+            width: 80%;
+    
+            #title{
+                font-size: var(--h1-font-size);
+                color: orange;
+                margin-bottom: 0;
+            }
+    
+            #welcome{
+                font-size: var(--welcome-font-size);
+                color: whitesmoke;
+            }
+    
+            z-index: 3;
+        }
+
+        .equipment{
+            height: 2100px;
+
+            .oats-and-peanut-butter{
+                padding-top: 150px !important;
+            }
+
+            .oats-and-peanut-butter, .bananas-and-milk, .chicken-and-rice, .whey-and-creatine{
+                height: 600px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding-top: 0;
+                width: 100%;
+
+                .oats, .peanut-butter, .resistance-band, .straps, .milk{
+                    width: 80%;
+                }
+
+                .oats > .oats-description{
+                    width: 50%;
+                }
+
+                .peanut-butter{
+                    margin-left: 15%;
+
+                    .peanut-butter-description{
+                        width: 50%;
+                    }
+                }
+            }
+
+            .bananas-and-milk{
+                margin-top: 750px;
+
+                .bananas, .gloves{
+                    width: 80%;
+                }
+
+                .bananas > .bananas-description{
+                    width: 50%;
+                }
+
+                .milk{
+                    margin-left: 15%;
+
+                    .milk-description{
+                        width: 50%;
+                    }
+                }
+            }
+
+            .chicken-and-rice{
+                margin-top: 1350px;
+                height: 600px;
+
+                .chicken, .rice{
+                    width: 80%;
+                }
+
+                .chicken > .chicken-description{
+                    width: 50%;
+                }
+                
+                .rice{
+                    margin-left: 15%;
+
+                    .rice-description{
+                        width: 50%;
+                    }
+                }
+            }
+
+            .whey-and-creatine{
+                margin-top: 1950px;
+                height: 600px;
+                padding-bottom: 100px;
+
+                .whey, .creatine{
+                    width: 80%;
+                }
+
+                .whey > .whey-description{
+                    width: 50%;
+                }
+                
+                .creatine{
+                    margin-left: 15%;
+
+                    .creatine-description{
+                        width: 50%;
+                    }
+                }
+            }
+        }
+    }
+
+    img:not(#background-image){
+        height: 200px;
+        width: 200px;
+    }
+}
+
+@media screen and (max-width: 650px){
+    .kitchen-essentials-wrapper{
+        --h1-font-size: 30px;
+        --welcome-font-size: 13px;
+        --h3-font-size: 20px;
+        --p-font-size: 12px;
+
+        .description-2{
+            position: absolute;
+            top: 80%;
+            margin-left: 8%;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: bold;
+            width: 90%;
+    
+            #title{
+                font-size: var(--h1-font-size);
+                color: orange;
+                margin-bottom: 0;
+            }
+    
+            #welcome{
+                font-size: var(--welcome-font-size);
+                color: whitesmoke;
+            }
+    
+            z-index: 3;
+        }
+
+        .equipment{
+            height: 2100px;
+            
+
+            .oats-and-peanut-butter{
+                padding-top: 150px !important;
+            }
+
+            .oats-and-peanut-butter, .bananas-and-milk, .chicken-and-rice, .whey-and-creatine{
+                height: 600px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding-top: 0;
+                width: 100%;
+
+                .oats, .bananas, .chicken, .whey, .milk{
+                    width: 80%;
+                    margin-left: 0;
+                }
+
+                .oats > .oats-description{
+                    width: 50%;
+                }
+
+                .peanut-butter{
+                    margin-left: 0;
+
+                    .peanut-butter-description{
+                        width: 50%;
+                    }
+                }
+            }
+
+            .bananas-and-milk{
+                margin-top: 750px;
+
+                .bananas, .milk{
+                    width: 80%;
+                }
+
+                .bananas > .bananas-description{
+                    width: 50%;
+                }
+
+                .milk{
+                    margin-left: 0;
+
+                    .milk-description{
+                        width: 50%;
+                    }
+                }
+            }
+
+            .chicken-and-rice{
+                margin-top: 1350px;
+                height: 600px;
+
+                .chicken, .rice{
+                    width: 80%;
+                }
+
+                .chicken > .chicken-description{
+                    width: 50%;
+                }
+                
+                .rice{
+                    margin-left: 0;
+
+                    .rice-description{
+                        width: 50%;
+                    }
+                }
+            }
+
+            .whey-and-creatine{
+                margin-top: 1950px;
+                height: 600px;
+
+                .whey, .creatine{
+                    width: 80%;
+                }
+
+                .whey > .whey-description{
+                    width: 50%;
+                }
+                
+                .creatine{
+                    margin-left: 0;
+
+                    .creatine-description{
+                        width: 50%;
+                    }
+                }
+            }
+        }
+    }
+
+    img:not(#background-image){
+        height: 200px;
+        width: 200px;
+    }
+}
