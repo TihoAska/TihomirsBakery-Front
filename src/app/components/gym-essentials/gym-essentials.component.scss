@@ -28,31 +28,6 @@
             background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
         }
     }
-    
-    // .description{
-    //     position: absolute;
-    //     top: 20%;
-    //     margin-left: 25%;
-    //     width: 55%; 
-    //     text-align: center;
-        
-    //     span{
-    //         color: darkslategray;
-    //         text-shadow: 2px 2px 4px white;
-    //     }
-
-    //     p{
-    //         color: white;
-    //         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    //         font-size: var(--h1-font-size);
-    //         text-shadow: 4px 4px 8px darkslategray;   
-    //     }
-
-    //     hr{
-    //         width: 100%;
-    //         border-color: darkslategray;
-    //     }
-    // }
 
     .description-2{
         position: absolute;
@@ -388,6 +363,8 @@
         }
 
         .equipment{
+            height: 1600px;
+            
             .chalk-and-straps, .chain-and-gloves, .belt-and-resistance-band{
                 height: 500px;
             }
@@ -417,6 +394,8 @@
         --p-font-size: 15px;
 
         .equipment{
+            height: 1600px;
+
             .chalk-and-straps, .chain-and-gloves, .belt-and-resistance-band{
                 height: 400px;
             }
@@ -469,6 +448,8 @@
         }
 
         .equipment{
+            height: 1600px;
+
             .chalk-and-straps, .chain-and-gloves, .belt-and-resistance-band{
                 height: 400px;
 
@@ -614,7 +595,7 @@
 
         .description-2{
             position: absolute;
-            top: 20%;
+            top: 70%;
             margin-left: 8%;
             font-family: Verdana, Geneva, Tahoma, sans-serif;
             font-weight: bold;
@@ -649,8 +630,9 @@
                 padding-top: 0;
                 width: 100%;
 
-                .chalk, .belt, .resistance-band, .straps{
+                .chalk, .belt, .resistance-band, .straps, .chain{
                     width: 80%;
+                    margin-left: 0;
                 }
 
                 .chalk > .chalk-description{
@@ -658,7 +640,7 @@
                 }
 
                 .straps{
-                    margin-left: 15%;
+                    margin-left: 0;
 
                     .straps-description{
                         width: 50%;
@@ -678,7 +660,7 @@
                 }
 
                 .gloves{
-                    margin-left: 15%;
+                    margin-left: 0;
 
                     .gloves-description{
                         width: 50%;
@@ -699,7 +681,7 @@
                 }
                 
                 .resistance-band{
-                    margin-left: 15%;
+                    margin-left: 0;
 
                     .resistance-band-description{
                         width: 50%;
