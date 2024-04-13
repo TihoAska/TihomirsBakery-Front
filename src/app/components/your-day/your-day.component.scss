@@ -1,317 +1,294 @@
-html{
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-}
+.container{
+    --h1-font-size: 100px;
+    --welcome-font-size: 40px;
+    --darkgreen: #001011;
+    --lightgreen: #08170d;
 
-.top{
+    height: 100vh;
+    width: 100vw;
     position: relative;
-    height: 47vh;
-    width: 100%;
-    background-color: #181e29;
-    display: flex;
-    flex-direction: row;
-    border-bottom: 2px solid orangered;
-    box-sizing: border-box;
-    z-index: 2;
-}
+    overflow-x: hidden;
 
-#chart {
-    height: 50%;
-    width: 50%;
-    margin-top: 5%;
-    margin-left: 100px;
-}
+    .kitchen-background{
+        position: relative;
+        height: 95%;
 
-.apexcharts-pie-label{
-    display: none;
-}
+        .description{
+            position: absolute;
+            top: 65%;
+            margin-left: 7%;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            z-index: 2;
+            font-weight: bold;
 
-.bottom{
-    height: 50vh;
-    width: 100%;
-    background-color: white;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
+            #title{
+                font-size: var(--h1-font-size);
+                margin-bottom: 0;
+                color: orange;
+            }
 
-.top-left-side{
-    width: 50%;
-    margin-left: 10%;
-}
+            #welcome{
+                font-size: var(--welcome-font-size);
+                color: white;
+            }
+        }
 
-.top-right-side{
-    width: 50%;
-    color: white;
-    font-size: 4.5vh;
-}
+        .gradient-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40vh;
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+        }
+    }
 
-.top-right-side > .macros{
-    font-size: 1.5rem;
-}
+    .goal-and-meals{
+        height: 1080px;
+        width: 100%;
+        background-color: var(--lightgreen);
+        display: flex;
+        flex-direction: row;
+        box-sizing: border-box;
+        z-index: 2;
 
-.meals{
-    display: flex;
-    flex-direction: row;
-}
+        .gradient-overlay-2 {
+            position: absolute;
+            top: 100;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+        }
+    
+        .todays-goal{
+            width: 50%;
+            
+            .calories-and-chart{   
+                display: flex;
+                flex-direction: row;
 
-#meal{
-    height: 300px;
-    width: 200px;
-    background-color: #181e29;
-    margin-top: 50px;
-    margin-right: 100px;
-    box-sizing: border-box;
-    border: 5px solid orangered;
-    border-radius: 20px;
-    transition: transform 0.3s ease;
-}
+                .calories{
+                    width: 50%;
+                    color: white;
+                    display: flex;
+                    flex-direction: column;
+                    font-weight: bold;
+    
+                    h3{
+                        margin-top: 30%;
+                        margin-left: 30%;
+                        margin-bottom: 0;                
+                        font-size: 70px;
+                    }
+    
+                    p{
+                        margin-left: 30%; 
+                        font-size: 70px;
+                    }
+                }
+        
+                #chart{
+                    height: 500px;
+                    width: 500px;
+                    margin-top: 10%;
+                    margin-left: 100px;
+                }
+            }
 
-#meal:hover{
-    transform: scale(1.1);
-    cursor: pointer;
-}
+            .macros{
+                display: flex;
+                flex-direction: column;
 
-#image{
-    height: 120px;
-    width: 170px;
-    background-color: white;
-    border: 5px solid #181e29;
-    border-radius: 10px;
-    margin-left: 2.5%;
-    margin-top: 2%;
-}
+                .protein, .fats, .carbs{
+                    height: 80px;
+                    width: 1000px;
+                    background-color: var(--lightgreen);
+                    margin-bottom: 50px;
+                    margin-left: 200px;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    font-size: 30px;
 
-#image > p{
-    text-align: center;
-}
+                    p{
+                        margin-top: 20px;
+                    }
 
-#icon{
-    margin-left: 37%;
-    margin-top: 10%;
-}
+                    .macro{
+                        margin-left: 30px;
+                    }
 
-.breakfast {
-    width: 20%;
-    height: 50vh;
-    position: absolute;
-    left: 0;
-    background-color: #181e29;
-    clip-path: polygon(0 0, 100% 0, 80% 100%, 0 100%);
-    transition: transform 0.3s ease;
-}
+                    .macro-number{
+                        margin-right: 30px;
+                    }
+                }
 
-.breakfast:hover{
-    transform: scale(1.05);
-    cursor: pointer;
-}
+                .carbs{
+                    color: lightblue;
+                    border: 2px solid lightblue;
+                    border-radius: 50px;
+                }
 
-.breakfast-top{
-    position: absolute;
-    left: 50%;
-    top: 15%;
-}
+                .protein{
+                    color: darkorange;
+                    border: 2px solid darkorange;
+                    border-radius: 50px;
+                }
 
-.breakfast-top > p {
-    position: absolute;
-    white-space: nowrap;
-    left: -45%;
-    color: white;
-}
+                .fats{
+                    color: greenyellow;
+                    border: 2px solid greenyellow;
+                    border-radius: 50px;
+                }
+            }
+        }
 
-.breakfast-bottom{
-    position: absolute;
-    left: 49%;
-    top: 50%;
-}
+        .workout-and-meals{
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            
+            .meals{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-evenly;
+                font-weight: bold;
+    
+                .breakfast{
+                    height: 300px;
+                    width: 300px;
+                    border-radius: 50%;
+                    transition: transform 0.3s ease;
+                    background-image: url('../../../assets/oatmeal-blurred.png'); 
+                    background-size: cover; 
+                    background-position: center;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    border: 2px solid red;
+                    overflow: hidden;
 
-.breakfast-bottom > p{
-    color: white;
-    margin-bottom: 20%;
-}
+                    .breakfast-content{
+                        margin-top: 10%;
+                        width: 100%;
 
-.breakfast-bottom > hr{
-    margin-bottom: 10%;
-    margin-left: -30%;
-    width: 10em;
-}
+                        p{
+                            margin-top: 10%;
+                            width: 100%;
+                            background-color: red;
+                        }
+                    }
+                }
 
-.lunch{
-    width: 20%;
-    height: 50vh;
-    position: absolute;
-    left: 16%;
-    background-color: white;
-    clip-path: polygon(20% 0, 100% 0, 80% 100%, 0 100%);
-    transition: transform 0.3s ease;
-}
+                .lunch{
+                    background-image: url('../../../assets/chicken-with-pasta-blurred.jpg'); 
+                    border-radius: 10%;
+                    background-size: cover; 
+                    background-position: center;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    border: 2px solid orange;
 
-.lunch-top{
-    position: absolute;
-    white-space: nowrap;
-    left: 47%;
-    top: 15%;
-}
+                    .lunch-content{
+                        margin-top: 10%;
+                        width: 100%;
 
-.lunch-top > p{
-    white-space: nowrap;
-    color: #181e29;
-    margin-bottom: 20%;
-}
+                        p{
+                            margin-top: 10%;
+                            width: 100%;
+                            background-color: orange;
+                        }
+                    }
+                }
+    
+                .dinner{ 
+                    background-image: url('../../../assets/ham-sandwich-blurred.jpg'); 
+                    border-radius: 50%;
+                    background-size: cover; 
+                    background-position: center;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    border: 2px solid lightblue;
 
-.lunch-top > hr{
-    margin-bottom: 10%;
-    margin-left: -30%;
-    width: 10em;
-}
+                    .dinner-content{
+                        margin-top: 10%;
+                        width: 100%;
 
-.lunch-bottom{
-    position: absolute;
-    left: 45%;
-    top: 50%;
-}
+                        p{
+                            margin-top: 10%;
+                            width: 100%;
+                            background-color: lightblue;
+                        }
+                    }
+                }
+    
+                .breakfast, .lunch, .dinner{
+                    height: 300px;
+                    width: 300px;
+                    background-size: cover;
+                    background-position: center;
+                    transition: transform 0.3s ease;
+                    margin-top: 10%;
+                    text-align: center;
+                    overflow: hidden;
 
-.lunch-bottom > p{
-    margin-left: -25%;
-}
+                    p{
+                        color: white;
+                    }
+                }
+    
+                .breakfast:hover, .lunch:hover, .dinner:hover{
+                    transform: scale(1.05);
+                    cursor: pointer;
+                }
+            
+            }
 
-.lunch:hover{
-    transform: scale(1.05);
-    cursor: pointer;
-}
+            hr{
+                width: 80%;
+                margin-top: 10%;
+                border-color: aquamarine;
+            }
 
-.snack{
-    width: 20%;
-    height: 50vh;
-    position: absolute;
-    left: 32%;
-    background-color: #181e29;
-    clip-path: polygon(20% 0, 100% 0, 80% 100%, 0 100%);
-    transition: transform 0.3s ease;
-}
+            .workout{
+                background-image: url('../../../assets/battle-ropes.jpg'); 
+                background-size: cover;
+                background-position: center;
+                height: 400px;
+                width: 1000px;
+                margin-top: 5%;
+                margin-left: 11%;
+                border-radius: 10px;
+                border: 2px solid yellow;
+                transition: transform 0.3s ease;
+                overflow: hidden;
+                font-weight: bold;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
 
-.snack:hover{
-    transform: scale(1.05);
-    cursor: pointer;
-}
+                p{
+                    margin-top: 30%;
+                    margin-left: 5%;
+                    font-size: 50px;
+                    color: yellow;
+                }
+            }
 
-.snack-top{
-    position: absolute;
-    left: 48%;
-    top: 15%;
-}
+            .workout:hover{
+                transform: scale(1.02);
+                cursor: pointer;
+            }
+        }
+    }
 
-.snack-top > p {
-    position: absolute;
-    white-space: nowrap;
-    left: -25%;
-    color: white;
-}
-
-.snack-bottom{
-    position: absolute;
-    left: 45%;
-    top: 50%;
-}
-
-.snack-bottom > p{
-    color: white;
-    margin-bottom: 20%;
-    margin-left: -10%;
-}
-
-.snack-bottom > hr{
-    margin-bottom: 10%;
-    margin-left: -40%;
-    width: 10em;
-}
-
-.dinner{
-    width: 20%;
-    height: 50vh;
-    position: absolute;
-    left: 48%;
-    background-color: white;
-    clip-path: polygon(20% 0, 100% 0, 80% 100%, 0 100%);
-    transition: transform 0.3s ease;
-}
-
-.dinner:hover{
-    transform: scale(1.05);
-    cursor: pointer;
-}
-
-.dinner-top{
-    position: absolute;
-    white-space: nowrap;
-    left: 47%;
-    top: 15%;
-}
-
-.dinner-top > p{
-    white-space: nowrap;
-    color: #181e29;
-    margin-bottom: 20%;
-}
-
-.dinner-top > hr{
-    margin-bottom: 10%;
-    margin-left: -30%;
-    width: 10em;
-}
-
-.dinner-bottom{
-    position: absolute;
-    left: 45%;
-    top: 50%;
-}
-
-.dinner-bottom > p{
-    margin-left: -20%;
-}
-
-.workout {
-    width: 36%;
-    height: 50vh;
-    position: absolute;
-    left: 64%;
-    background-color: #181e29  ;
-    clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%);
-    transition: width 0.3s ease, left 0.3s ease;
-}
-
-.workout:hover {
-    width: calc(36% * 1.05);
-    left: calc(64% - (0.05 * 36%));
-    cursor: pointer;
-}
-
-.workout-top{
-    position: absolute;
-    left: 50%;
-    top: 15%
-}
-
-.workout-top > p{
-    color: orangered;
-    margin-left: -20%;
-}
-
-.workout-bottom {
-    position: absolute;
-    left: 50%;
-    top: 50%
-}
-
-.workout-bottom > p{
-    margin-left: -50%;
-}
-
-#time-elapsed{
-    color: greenyellow;
-    font-size: 1.5vw;
-}
-
-#calories-burned{
-    color: orangered;
-    font-size: 2vw;
+    .bottom{
+        height: 1080px;
+        width: 100%;
+        background-color: var(--lightgreen);
+    }
 }
