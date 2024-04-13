@@ -12,8 +12,9 @@ export class FooterService {
   hamburgerMenu = { icon: '../../../assets/hamburger-menu-white.png', name: 'HM'};
   
   pluses = [
+    { icon: '../../../assets/plus-red.png', name: 'PLUS-RED'},
     { icon: '../../../assets/plus-orange.png', name: 'PLUS-ORANGE'},
-    { icon: '../../../assets/plus-black.png', name: 'PLUS-BLACK'},
+    { icon: '../../../assets/plus-light-blue.png', name: 'PLUS-LIGHT-BLUE'},
     { icon: '../../../assets/plus-white.png', name: 'PLUS-WHITE'},
     { icon: '../../../assets/plus-dark-blue.png', name: 'PLUS-DARK-BLUE'},
   ]
