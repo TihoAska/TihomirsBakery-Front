@@ -26,7 +26,9 @@ export type ChartOptions = {
 })
 export class YourDayComponent {
 
-  
+  images = [
+    { path: '../../../assets/your-day-kitchen.jpg', name: 'KITCHEN-BACKGROUND'},
+  ]
 
   constructor(
     public footerService : FooterService, 
