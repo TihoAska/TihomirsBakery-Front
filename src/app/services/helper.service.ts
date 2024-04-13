@@ -27,7 +27,7 @@ export class HelperService {
   
   chartOptions : ChartOptions = {
     chartSeries : [this.macros[0].value, this.macros[1].value, this.macros[2].value],
-    chartDetails : { type : 'pie', },
+    chartDetails : { type : 'donut', },
     legendOptions : { show: false },
     fill : { colors: ['darkorange', 'greenyellow', 'lightblue'] },
     tooltip : { enabled: false }
