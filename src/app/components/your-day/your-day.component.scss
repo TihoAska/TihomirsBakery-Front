@@ -291,4 +291,172 @@
         width: 100%;
         background-color: var(--lightgreen);
     }
+
+    .add-meal{
+        position: fixed;
+        top: 30%;
+        left: 34%;
+        height: 500px;
+        width: 800px;
+        background-color: var(--darkgreen);
+        border-radius: 50px;
+        z-index: 3;
+
+        mat-icon{
+            color: #F5F5DC;
+            margin-top: 3%;
+            margin-left: 93%;
+            font-size: 30px;
+            transition: transform 0.3s ease;
+        }
+
+        mat-icon:hover{
+            transform: scale(1.1);
+            cursor: pointer;
+        }
+
+        p{
+            font-size: 30px;
+            color: #F5F5DC;
+            margin-left: 10%;
+            margin-bottom: 2%;
+            font-weight: bold;
+        }
+
+        .search{
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            height: 50px;
+
+            #search-bar{
+                margin-left: 10%;
+                width: 75%;
+                height: 40px;
+                background-color: #F5F5DC;
+                border-radius: 20px 0px 0px 20px;
+                text-align: left;
+                color: var(--darkgreen);
+            }
+
+            .magnifier-container{
+                margin-left: 0;
+                margin-top: 0;
+                background-color: #f6f6c2;
+                height: 40px;
+                width: 40px;
+                border-radius: 0px 20px 20px 0;
+
+                mat-icon{
+                    margin-left: 5%;
+                    margin-top: 10%;
+                    color: var(--darkgreen)
+                }
+            }
+
+        }
+
+        .calories{
+            p{
+                font-weight: bold;
+                font-size: 50px;
+            }
+        }
+    
+        .calories-and-macros{
+            margin-left: 5%;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+
+            .calories{
+                width: 50%;
+            }
+
+            .macros{
+                margin-top: 2%;
+                width: 50%;
+
+                #protein{
+                    color: orange;
+                }
+
+                #carbs{
+                    color: greenyellow;
+                }
+
+                #fats{
+                    color: lightblue;
+                }
+            }
+        }
+        
+        .search-results{
+            width: 80%;
+            margin-top: 10px;
+            margin-left: 10%;
+            background-color: #F5F5DC;
+            color: var(--darkgreen);
+            border-radius: 20px 20px 20px 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: absolute;
+            top: 33%;
+            left: 0;
+            z-index: 5;
+            overflow-y: auto;
+            max-height: 200px;
+
+            .searched-meal{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                border: 0;
+                height: 20px;
+
+                .searched-meal-name-container{
+                    border: 0;
+                    padding: 0;
+
+                    #searched-meal-name{
+                        color: var(--darkgreen);
+                        font-size: 20px;
+                        margin: 0;
+                        border: 0;
+                    }
+                }
+
+                .searched-macros-container{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-evenly;
+                    width: 70%;
+                    border: 0;
+                    padding: 0;
+                    // margin-right: 5%;
+                    
+                    p{
+                        margin: 0;
+                        // margin-right: 1%;
+                        color: var(--darkgreen);
+                        font-size: 15px;
+                        border: 0;
+                    }
+                    
+                }
+            }
+        }
+    
+        /* Styling individual search result items for better visual separation */
+        .search-results div{
+            padding: 10px;
+            border-bottom: 1px solid #ddd; /* Light separator lines between items */
+        }
+    
+        /* Hover effect for individual items */
+        .search-results div:hover{
+            background-color: #eee; /* Light grey background on hover */
+            cursor: pointer;
+        }
+    }
 }

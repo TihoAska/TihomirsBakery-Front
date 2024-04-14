@@ -47,19 +47,19 @@
 
         <div class="workout-and-meals">
             <div class="meals">
-                <div class="breakfast">
+                <div class="breakfast" (click)="toggleAddMeal('breakfast')">
                     <div class="breakfast-content">
                         <img [src]="footerService.pluses[0].icon" [alt]="footerService.pluses[0].name" height="100px" width="100px">
                         <p>ADD BREAKFAST</p>
                     </div>
                 </div>
-                <div class="lunch">
+                <div class="lunch" (click)="toggleAddMeal('lunch')">
                     <div class="lunch-content">
                         <img [src]="footerService.pluses[1].icon" [alt]="footerService.pluses[1].name" height="100px" width="100px">
                         <p>ADD LUNCH</p>
                     </div>
                 </div>
-                <div class="dinner">
+                <div class="dinner" (click)="toggleAddMeal('dinner')">
                     <div class="dinner-content">
                         <img [src]="footerService.pluses[2].icon" [alt]="footerService.pluses[2].name" height="100px" width="100px">
                         <p>ADD DINNER</p>
@@ -68,9 +68,50 @@
             </div>
 
             <hr>
-            
+
             <div class="workout">
                 <p>add workout.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="add-meal" *ngIf="isAddMealVisible">
+        <mat-icon (click)="closeAddMeal()">close</mat-icon>
+        <p>add {{ mainMealName }}.</p>   
+        <div class="search">
+            <input [formControl]="searchControl" id="search-bar" type="search" placeholder="search for food...">
+            <div class="magnifier-container">
+                <mat-icon>search</mat-icon>
+            </div>
+        </div>
+
+        <div class="calories-and-macros">
+            <div class="calories">
+                <p>Calories: </p>
+                <p>{{ addedMealsValues.calories | number:'1.0-2' }} kcal</p>
+            </div>
+    
+            <div class="macros">
+                <p id="protein">Protein: {{ addedMealsValues.protein | number:'1.0-2' }} g</p>
+                <p id="carbs">Carbs: {{ addedMealsValues.carbs | number:'1.0-2' }} g</p>
+                <p id="fats">Fats: {{ addedMealsValues.fats | number:'1.0-2' }} g</p>
+            </div>
+        </div>
+
+        <div class="search-results" *ngIf="showQuery">
+            <div *ngFor="let meal of filteredMeals">
+                <div class="searched-meal" (click)="addMeal(meal)">
+                    <div class="searched-meal-name-container">
+                        <p id="searched-meal-name">{{ meal.name }}</p>
+                    </div>
+                    
+                    <div class="searched-macros-container">
+                        <p style="color: orange;">Protein: {{ meal.proteins }} g</p>
+                        <p style="color: green;">Carbs: {{ meal.carbs }} g</p>
+                        <p style="color: lightblue;">Fats: {{ meal.fats }} g</p>
+                        <p>Calories: {{ meal.calories }} kcal</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
