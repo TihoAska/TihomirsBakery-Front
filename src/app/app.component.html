@@ -1,10 +1,8 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<!-- <div class="overlay" [@dimBackground]="footerService.isPlusClicked.value ? 'dim' : 'undim'" (click)="undim()">
-  <app-sidebar></app-sidebar>
-  <div class="main-content">
-    <router-outlet></router-outlet>
-  </div>
-</div> -->
+
+<div class="dim-overlay" *ngIf="helperService.dimBackground.value">
+</div>
+
 <app-sidebar></app-sidebar>
 <app-hamburger-sidebar></app-hamburger-sidebar>
 <div class="main-content">
