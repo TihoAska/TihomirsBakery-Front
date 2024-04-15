@@ -36,13 +36,12 @@ export class AppComponent {
   constructor(
     public footerService : FooterService, 
     public helperService : HelperService, 
-    public router : Router)
-  {
+    public router : Router){
 
   }
 
   undim(){
-    this.footerService.isPlusClicked.next(false);
+    // this.footerService.isPlusClicked.next(false);
     this.helperService.windowChoice.next('add');
     this.router.navigate([''])
   }
