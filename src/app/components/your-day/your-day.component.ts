@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 import { MealService } from '../../services/meal.service';
 import { FormControl } from '@angular/forms';
 import { provideProtractorTestingSupport } from '@angular/platform-browser';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 export type ChartOptions = {
   series: ApexNonAxisChartSeries;
@@ -24,7 +25,19 @@ export type ChartOptions = {
 @Component({
   selector: 'app-your-day',
   templateUrl: './your-day.component.html',
-  styleUrl: './your-day.component.scss'
+  styleUrl: './your-day.component.scss', 
+  animations: [
+    trigger('fadeInOut', [
+      state('in', style({opacity: 1, transform: 'scale(1)'})),
+      transition('void => *', [
+        style({opacity: 0, transform: 'scale(0.5)'}),
+        animate('0.3s ease-in')
+      ]),
+      transition('* => void', [
+        animate('0.3s ease-out', style({opacity: 0, transform: 'scale(0.5)'}))
+      ])
+    ])
+  ]
 })
 export class YourDayComponent {
 
@@ -35,13 +48,22 @@ export class YourDayComponent {
   searchControl = new FormControl();
   allMeals: any[] = [];
   filteredMeals: any[] = [];
+  pickedMeals: any[] = [];
 
   isAddMealVisible = false;
   showQuery = true;
+  isFoodPicked = false;
 
   mainMealName = "";
 
-  addedMealsValues = {
+  pickedMealsValue = {
+    protein: 0,
+    fats: 0,
+    carbs: 0,
+    calories: 0
+  }
+
+  totalMealsValue = {
     protein: 0,
     fats: 0,
     carbs: 0,
@@ -51,7 +73,6 @@ export class YourDayComponent {
   constructor(
     public footerService : FooterService, 
     public helperService : HelperService, 
-    private router : Router,
     public mealService : MealService) {
   }
 
@@ -60,9 +81,7 @@ export class YourDayComponent {
       this.mealService.allMeals.next(data);
       this.allMeals = data;
     })
-    this.searchControl.valueChanges.pipe(
-      distinctUntilChanged()
-    ).subscribe(query => {
+    this.searchControl.valueChanges.pipe(distinctUntilChanged()).subscribe(query => {
       this.filterMeals(query);
     });
   }
@@ -80,6 +99,7 @@ export class YourDayComponent {
   }
 
   toggleAddMeal(mainMealName : string){
+    this.helperService.dimBackground.next(true);
     if(this.mainMealName == mainMealName){
       this.isAddMealVisible = !this.isAddMealVisible;
     } else{
@@ -89,8 +109,10 @@ export class YourDayComponent {
   }
 
   closeAddMeal(){
+    this.helperService.dimBackground.next(false);
     this.isAddMealVisible = false;
-    this.addedMealsValues = {
+
+    this.pickedMealsValue = {
       protein: 0,
       fats: 0,
       carbs: 0,
@@ -98,13 +120,28 @@ export class YourDayComponent {
     }
   }
 
-  addMeal(meal : any){
+  pickMeal(meal : any){
     this.showQuery = false;
-    this.addedMealsValues = {
-      protein: this.addedMealsValues.protein + meal.proteins,
-      carbs: this.addedMealsValues.carbs + meal.carbs,
-      fats: this.addedMealsValues.fats + meal.fats,
-      calories: this.addedMealsValues.calories + meal.calories,
+    this.isFoodPicked = true;
+    this.pickedMeals.push(meal);
+
+    this.pickedMealsValue = {
+      protein: this.pickedMealsValue.protein + meal.proteins,
+      carbs: this.pickedMealsValue.carbs + meal.carbs,
+      fats: this.pickedMealsValue.fats + meal.fats,
+      calories: this.pickedMealsValue.calories + meal.calories,
+    }
+  }
+
+  addMeal(){
+    this.helperService.dimBackground.next(false);
+    this.isAddMealVisible = false;
+
+    this.totalMealsValue = {
+      protein: this.totalMealsValue.protein + this.pickedMealsValue.protein,
+      carbs: this.totalMealsValue.carbs + this.pickedMealsValue.carbs, 
+      fats: this.totalMealsValue.fats + this.pickedMealsValue.fats, 
+      calories: this.totalMealsValue.calories + this.pickedMealsValue.calories, 
     }
   }
 }

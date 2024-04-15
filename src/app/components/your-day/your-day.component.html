@@ -14,7 +14,7 @@
             <div class="calories-and-chart">
                 <div class="calories">
                     <h3>Today's goal:</h3>
-                    <p>{{ (mealService.totalValues | async)?.calories }}/{{ helperService.macros[3].animatedValue }}kcal</p>
+                    <p>{{ totalMealsValue.calories }} kcal</p>
                 </div>
                 <div id="chart">
                     <apx-chart
@@ -30,15 +30,15 @@
             <div class="macros">
                 <div class="protein">
                     <p class="macro">Protein: </p>
-                    <p class="macro-number">{{ (mealService.totalValues | async)?.protein }}/{{ helperService.macros[0].animatedValue }}g</p>
+                    <p class="macro-number">{{ totalMealsValue.protein }} g</p>
                 </div>
                 <div class="fats">
                     <p class="macro">Fats:</p>
-                    <p class="macro-number">{{ (mealService.totalValues | async)?.fats }}/{{ helperService.macros[1].animatedValue }}g</p>
+                    <p class="macro-number">{{ totalMealsValue.fats }} g</p>
                 </div>
                 <div class="carbs">
                     <p class="macro">Carbs:</p>
-                    <p class="macro-number">{{ (mealService.totalValues | async)?.carbs }}/{{ helperService.macros[2].animatedValue }}g</p>
+                    <p class="macro-number">{{ totalMealsValue.carbs }} g</p>
                 </div>
             </div>
         </div>
@@ -75,7 +75,15 @@
         </div>
     </div>
 
-    <div class="add-meal" *ngIf="isAddMealVisible">
+    <div 
+        @fadeInOut 
+        class="add-meal" 
+        *ngIf="isAddMealVisible" 
+        [ngStyle]="{
+            'border-bottom-left-radius': pickedMeals.length > 0 ? '0px' : '20px',
+            'border-bottom-right-radius': pickedMeals.length > 0 ? '0px' : '20px'   
+        }"
+    >
         <mat-icon (click)="closeAddMeal()">close</mat-icon>
         <p>add {{ mainMealName }}.</p>   
         <div class="search">
@@ -88,19 +96,19 @@
         <div class="calories-and-macros">
             <div class="calories">
                 <p>Calories: </p>
-                <p>{{ addedMealsValues.calories | number:'1.0-2' }} kcal</p>
+                <p>{{ pickedMealsValue.calories | number:'1.0-2' }} kcal</p>
             </div>
     
             <div class="macros">
-                <p id="protein">Protein: {{ addedMealsValues.protein | number:'1.0-2' }} g</p>
-                <p id="carbs">Carbs: {{ addedMealsValues.carbs | number:'1.0-2' }} g</p>
-                <p id="fats">Fats: {{ addedMealsValues.fats | number:'1.0-2' }} g</p>
+                <p id="protein">Protein: {{ pickedMealsValue.protein | number:'1.0-2' }} g</p>
+                <p id="carbs">Carbs: {{ pickedMealsValue.carbs | number:'1.0-2' }} g</p>
+                <p id="fats">Fats: {{ pickedMealsValue.fats | number:'1.0-2' }} g</p>
             </div>
         </div>
 
         <div class="search-results" *ngIf="showQuery">
             <div *ngFor="let meal of filteredMeals">
-                <div class="searched-meal" (click)="addMeal(meal)">
+                <div class="searched-meal" (click)="pickMeal(meal)">
                     <div class="searched-meal-name-container">
                         <p id="searched-meal-name">{{ meal.name }}</p>
                     </div>
@@ -112,6 +120,24 @@
                         <p>Calories: {{ meal.calories }} kcal</p>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div class="button-container" *ngIf="isFoodPicked" (click)="addMeal()">
+            <button>Add</button>
+        </div>
+
+        <div class="picked-meals" *ngIf="pickedMeals.length > 0">
+            <div class="picked-meal" *ngFor="let meal of pickedMeals">
+                <p>{{ meal.name }} - 
+                    <span style="color: orange;">P: {{ meal.proteins }} g</span>
+                      - 
+                    <span style="color: greenyellow;"> C: {{ meal.carbs }} g </span> 
+                      - 
+                    <span style="color: lightblue;">F: {{ meal.fats }} g</span>
+
+                    - Cal: {{ meal.calories }} kcal
+                </p>
             </div>
         </div>
     </div>
