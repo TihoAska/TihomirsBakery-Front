@@ -125,8 +125,8 @@
                 }
 
                 .carbs{
-                    color: lightblue;
-                    border: 2px solid lightblue;
+                    color: greenyellow;
+                    border: 2px solid greenyellow;
                     border-radius: 50px;
                 }
 
@@ -137,8 +137,8 @@
                 }
 
                 .fats{
-                    color: greenyellow;
-                    border: 2px solid greenyellow;
+                    color: lightblue;
+                    border: 2px solid lightblue;
                     border-radius: 50px;
                 }
             }
@@ -182,6 +182,71 @@
                     }
                 }
 
+                .edit-breakfast{
+                    box-shadow: 0 0 15px 5px red;
+                    border-radius: 50%;
+                    transition: transform 0.3s ease;
+                    background-image: url('../../../assets/oatmeal-blurred.png'); 
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    border: 2px solid red;
+
+                    .edit-breakfast-content{
+                        margin-top: 9%;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        width: 70%;
+
+                        hr{
+                            margin: 0;
+                            border-color: red;
+                            width: 100%;
+                            box-shadow: 2px 2px 4px #001011;
+                        }
+
+                        p:not(#edit-breakfast-title){
+                            margin: 0;
+                            margin-bottom: 10%;
+                        }
+
+                        .edit-breakfast-macros{
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: space-between;
+                            width: 100%;
+                            margin-top: 5%;
+                            text-shadow: 2px 2px 4px #001011;
+
+                            #edit-breakfast-protein{
+                                color: orange;  
+                            }
+      
+                            #edit-breakfast-carbs{
+                                color: greenyellow;
+                            }
+      
+                            #edit-breakfast-fats{
+                                color: lightblue;
+                            }
+                        }
+
+                        #edit-breakfast-calories{
+                            font-size: 35px;
+                            color: red;
+                            text-shadow: 2px 2px 4px #001011;
+                        }
+                    }
+
+                    #edit-breakfast-title{
+                        width: 100%;
+                        background-color: red;
+                        color: white;
+                    }
+                }
+
                 .lunch{
                     background-image: url('../../../assets/chicken-with-pasta-blurred.jpg'); 
                     border-radius: 10%;
@@ -202,6 +267,72 @@
                             width: 100%;
                             background-color: orange;
                         }
+                    }
+                }
+
+                .edit-lunch{
+                    box-shadow: 0 0 15px 5px orange;
+                    background-image: url('../../../assets/chicken-with-pasta-blurred.jpg'); 
+                    border-radius: 10%;
+                    background-size: cover; 
+                    background-position: center;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    border: 2px solid orange;
+
+                    .edit-lunch-content{
+                        margin-top: 9%;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        width: 70%;
+
+                        hr{
+                            margin: 0;
+                            border-color: orange;
+                            width: 100%;
+                            box-shadow: 2px 2px 4px #001011;
+                        }
+
+                        p:not(#edit-lunch-title){
+                            margin: 0;
+                            margin-bottom: 10%;
+                        }
+
+                        .edit-lunch-macros{
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: space-between;
+                            width: 100%;
+                            margin-top: 5%;
+                            text-shadow: 2px 2px 4px #001011;
+
+                            #edit-lunch-protein{
+                                color: orange;  
+                            }
+      
+                            #edit-lunch-carbs{
+                                color: greenyellow;
+                            }
+      
+                            #edit-lunch-fats{
+                                color: lightblue;
+                            }
+                        }
+
+                        #edit-lunch-calories{
+                            font-size: 35px;
+                            color: orange;
+                            text-shadow: 2px 2px 4px #001011;
+                        }
+                    }
+
+                    #edit-lunch-title{
+                        width: 100%;
+                        background-color: orange;
+                        color: white;
                     }
                 }
     
@@ -227,8 +358,73 @@
                         }
                     }
                 }
+
+                .edit-dinner{
+                    box-shadow: 0 0 15px 5px lightblue;
+                    border-radius: 50%;
+                    transition: transform 0.3s ease;
+                    background-image: url('../../../assets/ham-sandwich-blurred.jpg'); 
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    border: 2px solid lightblue;
+
+                    .edit-dinner-content{
+                        margin-top: 9%;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        width: 70%;
+
+                        hr{
+                            margin: 0;
+                            border-color: lightblue;
+                            width: 100%;
+                            box-shadow: 2px 2px 4px #001011;
+                        }
+
+                        p:not(#edit-dinner-title){
+                            margin: 0;
+                            margin-bottom: 10%;
+                        }
+
+                        .edit-dinner-macros{
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: space-between;
+                            width: 100%;
+                            margin-top: 5%;
+                            text-shadow: 2px 2px 4px #001011;
+
+                            #edit-dinner-protein{
+                                color: orange;  
+                            }
+      
+                            #edit-dinner-carbs{
+                                color: greenyellow;
+                            }
+      
+                            #edit-dinner-fats{
+                                color: lightblue;
+                            }
+                        }
+
+                        #edit-dinner-calories{
+                            font-size: 35px;
+                            color: lightblue;
+                            text-shadow: 2px 2px 4px #001011;
+                        }
+                    }
+
+                    #edit-dinner-title{
+                        width: 100%;
+                        background-color: lightblue;
+                        color: white;
+                    }
+                }
     
-                .breakfast, .lunch, .dinner{
+                .breakfast, .lunch, .dinner, .edit-breakfast, .edit-lunch, .edit-dinner{
                     height: 300px;
                     width: 300px;
                     background-size: cover;
@@ -243,11 +439,10 @@
                     }
                 }
     
-                .breakfast:hover, .lunch:hover, .dinner:hover{
+                .breakfast:hover, .lunch:hover, .dinner:hover, .edit-breakfast:hover, .edit-lunch:hover, .edit-dinner:hover{
                     transform: scale(1.05);
                     cursor: pointer;
                 }
-            
             }
 
             hr{
@@ -485,6 +680,10 @@
             border-radius: 0px 0px 20px 20px;
 
             .picked-meal{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
                 width: 100%;
                 height: 50px;
                 background-color: var(--darkgreen);
@@ -494,7 +693,18 @@
                 p{
                     padding: 10px;
                     margin: 0;
-                    margin-left: 10%;
+                }
+
+                mat-icon{
+                    margin: 0;
+                    vertical-align: middle;
+                    height: 33px;
+                    width: 28px;
+                    font-size: 30px;
+                }
+
+                mat-icon:hover{
+                    color: lightcoral
                 }
             }
         }

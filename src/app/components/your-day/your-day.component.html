@@ -47,23 +47,72 @@
 
         <div class="workout-and-meals">
             <div class="meals">
-                <div class="breakfast" (click)="toggleAddMeal('breakfast')">
+                <div class="breakfast" (click)="toggleAddMeal('breakfast')" *ngIf="!isBreakfastAdded">
                     <div class="breakfast-content">
                         <img [src]="footerService.pluses[0].icon" [alt]="footerService.pluses[0].name" height="100px" width="100px">
                         <p>ADD BREAKFAST</p>
                     </div>
                 </div>
-                <div class="lunch" (click)="toggleAddMeal('lunch')">
+                <div class="edit-breakfast" *ngIf="isBreakfastAdded">
+                    <div class="edit-breakfast-content">
+                        <p id="edit-breakfast-calories">{{ pickedBreakfastMealsValue.calories }} kcal</p>
+                        <hr>
+                        <div class="edit-breakfast-macros">
+                            <p id="edit-breakfast-protein">P: {{ pickedBreakfastMealsValue.protein }} g</p>
+                            <p style="color: red;">-</p>
+                            <p id="edit-breakfast-carbs">C: {{ pickedBreakfastMealsValue.carbs }} g</p>
+                            <p style="color: red;">-</p>
+                            <p id="edit-breakfast-fats">F: {{ pickedBreakfastMealsValue.fats }} g</p>
+                        </div>
+                        
+                    </div>
+                    <p id="edit-breakfast-title">
+                        EDIT BREAKFAST
+                    </p>
+                </div>
+                <div class="lunch" (click)="toggleAddMeal('lunch')" *ngIf="!isLunchAdded">
                     <div class="lunch-content">
                         <img [src]="footerService.pluses[1].icon" [alt]="footerService.pluses[1].name" height="100px" width="100px">
                         <p>ADD LUNCH</p>
                     </div>
                 </div>
-                <div class="dinner" (click)="toggleAddMeal('dinner')">
+                <div class="edit-lunch" *ngIf="isLunchAdded">
+                    <div class="edit-lunch-content">
+                        <p id="edit-lunch-calories">{{ pickedLunchMealsValue.calories }} kcal</p>
+                        <hr>
+                        <div class="edit-lunch-macros">
+                            <p id="edit-lunch-protein">P: {{ pickedLunchMealsValue.protein }} g</p>
+                            <p style="color: orange;">-</p>
+                            <p id="edit-lunch-carbs">C: {{ pickedLunchMealsValue.carbs }} g</p>
+                            <p style="color: orange;">-</p>
+                            <p id="edit-lunch-fats">F: {{ pickedLunchMealsValue.fats }} g</p>
+                        </div>
+                    </div>
+                    <p id="edit-lunch-title">
+                        EDIT LUNCH
+                    </p>
+                </div>
+                <div class="dinner" (click)="toggleAddMeal('dinner')" *ngIf="!isDinnerAdded">
                     <div class="dinner-content">
                         <img [src]="footerService.pluses[2].icon" [alt]="footerService.pluses[2].name" height="100px" width="100px">
                         <p>ADD DINNER</p>
                     </div>
+                </div>
+                <div class="edit-dinner" *ngIf="isDinnerAdded">
+                    <div class="edit-dinner-content">
+                        <p id="edit-dinner-calories">{{ pickedLunchMealsValue.calories }} kcal</p>
+                        <hr>
+                        <div class="edit-dinner-macros">
+                            <p id="edit-dinner-protein">P: {{ pickedLunchMealsValue.protein }} g</p>
+                            <p style="color: orange;">-</p>
+                            <p id="edit-dinner-carbs">C: {{ pickedLunchMealsValue.carbs }} g</p>
+                            <p style="color: orange;">-</p>
+                            <p id="edit-dinner-fats">F: {{ pickedLunchMealsValue.fats }} g</p>
+                        </div>
+                    </div>
+                    <p id="edit-dinner-title">
+                        EDIT DINNER
+                    </p>
                 </div>
             </div>
 
@@ -123,12 +172,12 @@
             </div>
         </div>
 
-        <div class="button-container" *ngIf="isFoodPicked" (click)="addMeal()">
-            <button>Add</button>
+        <div class="button-container" *ngIf="isFoodPicked" >
+            <button (click)="addMeal()">Add</button>
         </div>
 
         <div class="picked-meals" *ngIf="pickedMeals.length > 0">
-            <div class="picked-meal" *ngFor="let meal of pickedMeals">
+            <div class="picked-meal" *ngFor="let meal of pickedMeals; let i = index">
                 <p>{{ meal.name }} - 
                     <span style="color: orange;">P: {{ meal.proteins }} g</span>
                       - 
@@ -137,8 +186,14 @@
                     <span style="color: lightblue;">F: {{ meal.fats }} g</span>
 
                     - Cal: {{ meal.calories }} kcal
+
+                    <mat-icon (click)="removeMeal(i)">cancel</mat-icon>
                 </p>
             </div>
         </div>
+    </div>
+
+    <div class="edit-meal">
+
     </div>
 </div>

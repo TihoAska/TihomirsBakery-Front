@@ -46,17 +46,46 @@ export class YourDayComponent {
   ]
 
   searchControl = new FormControl();
+
   allMeals: any[] = [];
   filteredMeals: any[] = [];
   pickedMeals: any[] = [];
 
+  pickedBreakfastMeals : any[] = [];
+  pickedLunchMeals : any[] = [];
+  pickedDinnerMeals : any[] = [];
+
   isAddMealVisible = false;
   showQuery = true;
   isFoodPicked = false;
+  isBreakfastAdded = false;
+  isLunchAdded = false;
+  isDinnerAdded = false;
 
   mainMealName = "";
 
   pickedMealsValue = {
+    protein: 0,
+    fats: 0,
+    carbs: 0,
+    calories: 0
+  }
+
+  pickedBreakfastMealsValue = {
+    protein: 0,
+    fats: 0,
+    carbs: 0,
+    calories: 0
+  }
+
+  pickedLunchMealsValue = {
+    protein: 0,
+    fats: 0,
+    carbs: 0,
+    calories: 0
+  }
+
+  pickedDinnerMealsValue = {
     protein: 0,
     fats: 0,
     carbs: 0,
@@ -100,6 +129,18 @@ export class YourDayComponent {
 
   toggleAddMeal(mainMealName : string){
     this.helperService.dimBackground.next(true);
+
+    if(mainMealName == "breakfast"){
+      this.pickedMeals = this.pickedBreakfastMeals;
+      this.pickedMealsValue = this.pickedBreakfastMealsValue;
+    } else if (mainMealName == "lunch"){
+      this.pickedMeals = this.pickedLunchMeals;
+      this.pickedMealsValue = this.pickedLunchMealsValue;
+    } else if (mainMealName == "dinner"){
+      this.pickedMeals = this.pickedDinnerMeals;
+      this.pickedMealsValue = this.pickedDinnerMealsValue;
+    }
+
     if(this.mainMealName == mainMealName){
       this.isAddMealVisible = !this.isAddMealVisible;
     } else{
@@ -111,12 +152,40 @@ export class YourDayComponent {
   closeAddMeal(){
     this.helperService.dimBackground.next(false);
     this.isAddMealVisible = false;
+    this.isFoodPicked = false;
 
-    this.pickedMealsValue = {
-      protein: 0,
-      fats: 0,
-      carbs: 0,
-      calories: 0
+    if(this.mainMealName == "breakfast"){
+      this.pickedBreakfastMealsValue = {
+        protein: 0,
+        fats: 0,
+        carbs: 0,
+        calories: 0
+      }
+      this.pickedBreakfastMeals = [];
+      this.pickedMeals = [];
+      this.pickedMealsValue = this.pickedBreakfastMealsValue;
+    } 
+    else if (this.mainMealName == "lunch"){
+      this.pickedLunchMealsValue = {
+        protein: 0,
+        fats: 0,
+        carbs: 0,
+        calories: 0
+      }
+      this.pickedLunchMeals = [];
+      this.pickedMeals = [];
+      this.pickedMealsValue = this.pickedLunchMealsValue;
+    } 
+    else if (this.mainMealName == "dinner"){
+      this.pickedDinnerMealsValue = {
+        protein: 0,
+        fats: 0,
+        carbs: 0,
+        calories: 0
+      }
+      this.pickedDinnerMeals = [];
+      this.pickedMeals = [];
+      this.pickedMealsValue = this.pickedDinnerMealsValue;
     }
   }
 
@@ -125,17 +194,47 @@ export class YourDayComponent {
     this.isFoodPicked = true;
     this.pickedMeals.push(meal);
 
-    this.pickedMealsValue = {
-      protein: this.pickedMealsValue.protein + meal.proteins,
-      carbs: this.pickedMealsValue.carbs + meal.carbs,
-      fats: this.pickedMealsValue.fats + meal.fats,
-      calories: this.pickedMealsValue.calories + meal.calories,
-    }
+    if(this.mainMealName == "breakfast"){
+      this.pickedBreakfastMealsValue = {
+        protein: this.pickedBreakfastMealsValue.protein + meal.proteins,
+        carbs: this.pickedBreakfastMealsValue.carbs + meal.carbs,
+        fats: this.pickedBreakfastMealsValue.fats + meal.fats,
+        calories: this.pickedBreakfastMealsValue.calories + meal.calories,
+      }
+      this.pickedMealsValue = this.pickedBreakfastMealsValue;
+    } 
+    else if(this.mainMealName == "lunch"){
+      this.pickedLunchMealsValue = {
+        protein: this.pickedLunchMealsValue.protein + meal.proteins,
+        carbs: this.pickedLunchMealsValue.carbs + meal.carbs,
+        fats: this.pickedLunchMealsValue.fats + meal.fats,
+        calories: this.pickedLunchMealsValue.calories + meal.calories,
+      }
+      this.pickedMealsValue = this.pickedLunchMealsValue;
+    } 
+    else if(this.mainMealName == "dinner"){
+      this.pickedDinnerMealsValue = {
+        protein: this.pickedDinnerMealsValue.protein + meal.proteins,
+        carbs: this.pickedDinnerMealsValue.carbs + meal.carbs,
+        fats: this.pickedDinnerMealsValue.fats + meal.fats,
+        calories: this.pickedDinnerMealsValue.calories + meal.calories,
+      }
+      this.pickedMealsValue = this.pickedDinnerMealsValue;
+    } 
   }
 
   addMeal(){
     this.helperService.dimBackground.next(false);
     this.isAddMealVisible = false;
+    this.isFoodPicked = false;
+
+    if(this.mainMealName == "breakfast"){
+      this.isBreakfastAdded = true;
+    } else if (this.mainMealName == "lunch"){
+      this.isLunchAdded = true;
+    } else if (this.mainMealName == "dinner"){
+      this.isDinnerAdded = true;
+    }
 
     this.totalMealsValue = {
       protein: this.totalMealsValue.protein + this.pickedMealsValue.protein,
@@ -143,5 +242,39 @@ export class YourDayComponent {
       fats: this.totalMealsValue.fats + this.pickedMealsValue.fats, 
       calories: this.totalMealsValue.calories + this.pickedMealsValue.calories, 
     }
+  }
+
+  removeMeal(index : number){
+    const meal = this.pickedMeals[index];
+
+    if(this.mainMealName == "breakfast"){
+      this.pickedBreakfastMealsValue = {
+        protein: this.pickedBreakfastMealsValue.protein - meal.proteins,
+        carbs: this.pickedBreakfastMealsValue.carbs - meal.carbs,
+        fats: this.pickedBreakfastMealsValue.fats - meal.fats,
+        calories: this.pickedBreakfastMealsValue.calories - meal.calories,
+      }
+      this.pickedMealsValue = this.pickedBreakfastMealsValue;
+    } 
+    else if(this.mainMealName == "lunch"){
+      this.pickedLunchMealsValue = {
+        protein: this.pickedLunchMealsValue.protein - meal.proteins,
+        carbs: this.pickedLunchMealsValue.carbs - meal.carbs,
+        fats: this.pickedLunchMealsValue.fats - meal.fats,
+        calories: this.pickedLunchMealsValue.calories - meal.calories,
+      }
+      this.pickedMealsValue = this.pickedLunchMealsValue;
+    } 
+    else if(this.mainMealName == "dinner"){
+      this.pickedDinnerMealsValue = {
+        protein: this.pickedDinnerMealsValue.protein - meal.proteins,
+        carbs: this.pickedDinnerMealsValue.carbs - meal.carbs,
+        fats: this.pickedDinnerMealsValue.fats - meal.fats,
+        calories: this.pickedDinnerMealsValue.calories - meal.calories,
+      }
+      this.pickedMealsValue = this.pickedDinnerMealsValue;
+    } 
+
+    this.pickedMeals.splice(index, 1);
   }
 }
