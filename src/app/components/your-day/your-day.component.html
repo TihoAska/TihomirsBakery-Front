@@ -14,7 +14,7 @@
             <div class="calories-and-chart">
                 <div class="calories">
                     <h3>Today's goal:</h3>
-                    <p>{{ totalMealsValue.calories }} kcal</p>
+                    <p>{{ totalMealsValue.calories | number:'1.0-2' }} kcal</p>
                 </div>
                 <div id="chart">
                     <apx-chart
@@ -30,15 +30,15 @@
             <div class="macros">
                 <div class="protein">
                     <p class="macro">Protein: </p>
-                    <p class="macro-number">{{ totalMealsValue.protein }} g</p>
+                    <p class="macro-number">{{ totalMealsValue.protein | number:'1.0-2' }} g</p>
                 </div>
                 <div class="fats">
                     <p class="macro">Fats:</p>
-                    <p class="macro-number">{{ totalMealsValue.fats }} g</p>
+                    <p class="macro-number">{{ totalMealsValue.fats | number:'1.0-2' }} g</p>
                 </div>
                 <div class="carbs">
                     <p class="macro">Carbs:</p>
-                    <p class="macro-number">{{ totalMealsValue.carbs }} g</p>
+                    <p class="macro-number">{{ totalMealsValue.carbs | number:'1.0-2' }} g</p>
                 </div>
             </div>
         </div>
@@ -53,16 +53,16 @@
                         <p>ADD BREAKFAST</p>
                     </div>
                 </div>
-                <div class="edit-breakfast" *ngIf="isBreakfastAdded">
+                <div class="edit-breakfast" *ngIf="isBreakfastAdded" (click)="toggleEditMeal('breakfast')">
                     <div class="edit-breakfast-content">
-                        <p id="edit-breakfast-calories">{{ pickedBreakfastMealsValue.calories }} kcal</p>
+                        <p id="edit-breakfast-calories">{{ pickedBreakfastMealsValue.calories | number:'1.0-2' }} kcal</p>
                         <hr>
                         <div class="edit-breakfast-macros">
-                            <p id="edit-breakfast-protein">P: {{ pickedBreakfastMealsValue.protein }} g</p>
+                            <p id="edit-breakfast-protein">P: {{ pickedBreakfastMealsValue.protein | number:'1.0-2' }} g</p>
                             <p style="color: red;">-</p>
-                            <p id="edit-breakfast-carbs">C: {{ pickedBreakfastMealsValue.carbs }} g</p>
+                            <p id="edit-breakfast-carbs">C: {{ pickedBreakfastMealsValue.carbs | number:'1.0-2' }} g</p>
                             <p style="color: red;">-</p>
-                            <p id="edit-breakfast-fats">F: {{ pickedBreakfastMealsValue.fats }} g</p>
+                            <p id="edit-breakfast-fats">F: {{ pickedBreakfastMealsValue.fats | number:'1.0-2' }} g</p>
                         </div>
                         
                     </div>
@@ -76,16 +76,16 @@
                         <p>ADD LUNCH</p>
                     </div>
                 </div>
-                <div class="edit-lunch" *ngIf="isLunchAdded">
+                <div class="edit-lunch" *ngIf="isLunchAdded" (click)="toggleEditMeal('lunch')">
                     <div class="edit-lunch-content">
                         <p id="edit-lunch-calories">{{ pickedLunchMealsValue.calories }} kcal</p>
                         <hr>
                         <div class="edit-lunch-macros">
-                            <p id="edit-lunch-protein">P: {{ pickedLunchMealsValue.protein }} g</p>
+                            <p id="edit-lunch-protein">P: {{ pickedLunchMealsValue.protein | number:'1.0-2' }} g</p>
                             <p style="color: orange;">-</p>
-                            <p id="edit-lunch-carbs">C: {{ pickedLunchMealsValue.carbs }} g</p>
+                            <p id="edit-lunch-carbs">C: {{ pickedLunchMealsValue.carbs | number:'1.0-2' }} g</p>
                             <p style="color: orange;">-</p>
-                            <p id="edit-lunch-fats">F: {{ pickedLunchMealsValue.fats }} g</p>
+                            <p id="edit-lunch-fats">F: {{ pickedLunchMealsValue.fats | number:'1.0-2' }} g</p>
                         </div>
                     </div>
                     <p id="edit-lunch-title">
@@ -98,16 +98,16 @@
                         <p>ADD DINNER</p>
                     </div>
                 </div>
-                <div class="edit-dinner" *ngIf="isDinnerAdded">
+                <div class="edit-dinner" *ngIf="isDinnerAdded" (click)="toggleEditMeal('dinner')">
                     <div class="edit-dinner-content">
-                        <p id="edit-dinner-calories">{{ pickedLunchMealsValue.calories }} kcal</p>
+                        <p id="edit-dinner-calories">{{ pickedDinnerMealsValue.calories }} kcal</p>
                         <hr>
                         <div class="edit-dinner-macros">
-                            <p id="edit-dinner-protein">P: {{ pickedLunchMealsValue.protein }} g</p>
+                            <p id="edit-dinner-protein">P: {{ pickedDinnerMealsValue.protein | number:'1.0-2' }} g</p>
                             <p style="color: orange;">-</p>
-                            <p id="edit-dinner-carbs">C: {{ pickedLunchMealsValue.carbs }} g</p>
+                            <p id="edit-dinner-carbs">C: {{ pickedDinnerMealsValue.carbs | number:'1.0-2' }} g</p>
                             <p style="color: orange;">-</p>
-                            <p id="edit-dinner-fats">F: {{ pickedLunchMealsValue.fats }} g</p>
+                            <p id="edit-dinner-fats">F: {{ pickedDinnerMealsValue.fats | number:'1.0-2' }} g</p>
                         </div>
                     </div>
                     <p id="edit-dinner-title">
@@ -115,9 +115,7 @@
                     </p>
                 </div>
             </div>
-
             <hr>
-
             <div class="workout">
                 <p>add workout.</p>
             </div>
@@ -187,13 +185,78 @@
 
                     - Cal: {{ meal.calories }} kcal
 
-                    <mat-icon (click)="removeMeal(i)">cancel</mat-icon>
+                    <mat-icon (click)="removeMeal(i, 'addMeal')">cancel</mat-icon>
                 </p>
             </div>
         </div>
     </div>
 
-    <div class="edit-meal">
+    <div 
+        @fadeInOut 
+        class="edit-meal" 
+        *ngIf="isEditMealVisible" 
+        [ngStyle]="{
+            'border-bottom-left-radius': pickedMealsBeforeConfirm.length > 0 ? '0px' : '20px',
+            'border-bottom-right-radius': pickedMealsBeforeConfirm.length > 0 ? '0px' : '20px'   
+        }"
+    >
+        <mat-icon (click)="closeEditMeal()">close</mat-icon>
+        <p>edit {{ mainMealName }}.</p>   
+        <div class="search">
+            <input [formControl]="searchControl" id="search-bar" type="search" placeholder="search for food...">
+            <div class="magnifier-container">
+                <mat-icon>search</mat-icon>
+            </div>
+        </div>
 
+        <div class="calories-and-macros">
+            <div class="calories">
+                <p>Calories: </p>
+                <p>{{ pickedMealsBeforeConfirmValues.calories | number:'1.0-2' }} kcal</p>
+            </div>
+    
+            <div class="macros">
+                <p id="protein">Protein: {{ pickedMealsBeforeConfirmValues.protein| number:'1.0-2' }} g</p>
+                <p id="carbs">Carbs: {{ pickedMealsBeforeConfirmValues.carbs | number:'1.0-2' }} g</p>
+                <p id="fats">Fats: {{ pickedMealsBeforeConfirmValues.fats | number:'1.0-2' }} g</p>
+            </div>
+        </div>
+
+        <div class="search-results" *ngIf="showQuery">
+            <div *ngFor="let meal of filteredMeals">
+                <div class="searched-meal" (click)="pickMeal(meal)">
+                    <div class="searched-meal-name-container">
+                        <p id="searched-meal-name">{{ meal.name }}</p>
+                    </div>
+                    
+                    <div class="searched-macros-container">
+                        <p style="color: orange;">Protein: {{ meal.proteins }} g</p>
+                        <p style="color: green;">Carbs: {{ meal.carbs }} g</p>
+                        <p style="color: lightblue;">Fats: {{ meal.fats }} g</p>
+                        <p>Calories: {{ meal.calories }} kcal</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="button-container">
+            <button style="background-color: lightyellow;" (click)="confirmMeal()">Confirm</button>
+        </div>
+
+        <div class="picked-meals" *ngIf="pickedMealsBeforeConfirm.length > 0">
+            <div class="picked-meal" *ngFor="let meal of pickedMealsBeforeConfirm; let i = index">
+                <p>{{ meal.name }} - 
+                    <span style="color: orange;">P: {{ meal.proteins }} g</span>
+                      - 
+                    <span style="color: greenyellow;"> C: {{ meal.carbs }} g </span> 
+                      - 
+                    <span style="color: lightblue;">F: {{ meal.fats }} g</span>
+
+                    - Cal: {{ meal.calories }} kcal
+
+                    <mat-icon (click)="removeMeal(i, 'editMeal')">cancel</mat-icon>
+                </p>
+            </div>
+        </div>
     </div>
 </div>
