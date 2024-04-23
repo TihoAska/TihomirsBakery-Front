@@ -155,7 +155,7 @@
 
         <div class="search-results" *ngIf="showQuery">
             <div *ngFor="let meal of filteredMeals">
-                <div class="searched-meal" (click)="pickMeal(meal)">
+                <div class="searched-meal" (click)="pickMeal(meal, 'add')">
                     <div class="searched-meal-name-container">
                         <p id="searched-meal-name">{{ meal.name }}</p>
                     </div>
@@ -224,7 +224,7 @@
 
         <div class="search-results" *ngIf="showQuery">
             <div *ngFor="let meal of filteredMeals">
-                <div class="searched-meal" (click)="pickMeal(meal)">
+                <div class="searched-meal" (click)="pickMeal(meal, 'edit')">
                     <div class="searched-meal-name-container">
                         <p id="searched-meal-name">{{ meal.name }}</p>
                     </div>
