@@ -25,25 +25,30 @@ export type ChartOptions = {
 @Component({
   selector: 'app-your-day',
   templateUrl: './your-day.component.html',
-  styleUrl: './your-day.component.scss', 
+  styleUrl: './your-day.component.scss',
   animations: [
     trigger('fadeInOut', [
-      state('in', style({opacity: 1, transform: 'scale(1)'})),
+      state('in', style({ opacity: 1, transform: 'scale(1)' })),
       transition('void => *', [
-        style({opacity: 0, transform: 'scale(0.5)'}),
-        animate('0.3s ease-in')
+        style({ opacity: 0, transform: 'scale(0.5)' }),
+        animate('0.3s ease-in'),
       ]),
       transition('* => void', [
-        animate('0.3s ease-out', style({opacity: 0, transform: 'scale(0.5)'}))
-      ])
-    ])
-  ]
+        animate(
+          '0.3s ease-out',
+          style({ opacity: 0, transform: 'scale(0.5)' })
+        ),
+      ]),
+    ]),
+  ],
 })
 export class YourDayComponent {
-
   images = [
-    { path: '../../../assets/your-day-kitchen.jpg', name: 'KITCHEN-BACKGROUND'},
-  ]
+    {
+      path: '../../../assets/your-day-kitchen.jpg',
+      name: 'KITCHEN-BACKGROUND',
+    },
+  ];
 
   searchControl = new FormControl();
 
@@ -51,15 +56,11 @@ export class YourDayComponent {
   filteredMeals: any[] = [];
   pickedMeals: any[] = [];
 
-  pickedBreakfastMeals : any[] = [];
-  pickedLunchMeals : any[] = [];
-  pickedDinnerMeals : any[] = [];
-  tempPickedMeals : any[] = [];
+  pickedBreakfastMeals: any[] = [];
+  pickedLunchMeals: any[] = [];
+  pickedDinnerMeals: any[] = [];
 
-  tempBreakfastMeals : any[] = [];
-  tempLunchMeals : any[] = [];
-  tempDinnerMeals : any[] = [];
-  pickedMealsBeforeConfirm : any[] = [];
+  pickedMealsBeforeConfirm: any[] = [];
 
   isAddMealVisible = false;
   isEditMealVisible = false;
@@ -69,73 +70,40 @@ export class YourDayComponent {
   isLunchAdded = false;
   isDinnerAdded = false;
 
-  mainMealName = "";
+  mainMealName = '';
 
-  pickedMealsValue = {
-    protein: 0,
-    fats: 0,
-    carbs: 0,
-    calories: 0
-  }
+  pickedMealsValue = { protein: 0, fats: 0, carbs: 0, calories: 0 };
 
-  tempRemovedMealsValue = { protein: 0, fats: 0, carbs: 0, calories: 0}
+  tempPickedMealsValue = { protein: 0, fats: 0, carbs: 0, calories: 0 };
 
-  tempPickedMealsValue = {
-    protein: 0,
-    fats: 0,
-    carbs: 0,
-    calories: 0
-  }
+  pickedMealsBeforeConfirmValues = { protein: 0, fats: 0, carbs: 0, calories: 0 };
+  pickedBreakfastBeforeConfirmValues = { protein: 0, fats: 0, carbs: 0, calories: 0 };
+  pickedLunchBeforeConfirmValues = { protein: 0, fats: 0, carbs: 0, calories: 0 };
+  pickedDinnerBeforeConfirmValues = { protein: 0, fats: 0, carbs: 0, calories: 0 };
 
-  pickedMealsBeforeConfirmValues = {
-    protein: 0,
-    fats: 0,
-    carbs: 0,
-    calories: 0
-  }
+  pickedBreakfastMealsValue = { protein: 0, fats: 0, carbs: 0, calories: 0 };
+  pickedLunchMealsValue = { protein: 0, fats: 0, carbs: 0, calories: 0 };
+  pickedDinnerMealsValue = { protein: 0, fats: 0, carbs: 0, calories: 0 };
 
-  pickedBreakfastMealsValue = {
-    protein: 0,
-    fats: 0,
-    carbs: 0,
-    calories: 0
-  }
-
-  pickedLunchMealsValue = {
-    protein: 0,
-    fats: 0,
-    carbs: 0,
-    calories: 0
-  }
-
-  pickedDinnerMealsValue = {
-    protein: 0,
-    fats: 0,
-    carbs: 0,
-    calories: 0
-  }
-
-  totalMealsValue = {
-    protein: 0,
-    fats: 0,
-    carbs: 0,
-    calories: 0
-  }
+  totalMealsValue = { protein: 0, fats: 0, carbs: 0, calories: 0 };
+  
 
   constructor(
-    public footerService : FooterService, 
-    public helperService : HelperService, 
-    public mealService : MealService) {
-  }
+    public footerService: FooterService,
+    public helperService: HelperService,
+    public mealService: MealService
+  ) {}
 
-  ngOnInit(){
-    this.mealService.getAll().subscribe(data => {
+  ngOnInit() {
+    this.mealService.getAll().subscribe((data) => {
       this.mealService.allMeals.next(data);
       this.allMeals = data;
-    })
-    this.searchControl.valueChanges.pipe(distinctUntilChanged()).subscribe(query => {
-      this.filterMeals(query);
     });
+    this.searchControl.valueChanges
+      .pipe(distinctUntilChanged())
+      .subscribe((query) => {
+        this.filterMeals(query);
+      });
   }
 
   filterMeals(query: string) {
@@ -143,282 +111,294 @@ export class YourDayComponent {
     if (!query.trim()) {
       this.filteredMeals = [];
     } else {
-      this.filteredMeals = this.allMeals.filter(meal =>
+      this.filteredMeals = this.allMeals.filter((meal) =>
         meal.name.toLowerCase().includes(query.toLowerCase())
       );
-      // console.log(this.filteredMeals);
+      console.log(this.filteredMeals);
     }
   }
 
-  toggleAddMeal(mainMealName : string){
+  toggleAddMeal(mainMealName: string) {
     this.helperService.dimBackground.next(true);
 
-    if(mainMealName == "breakfast"){
+    if (mainMealName == 'breakfast') {
       this.pickedMeals = this.pickedBreakfastMeals;
       this.pickedMealsValue = this.pickedBreakfastMealsValue;
-    } else if (mainMealName == "lunch"){
+    } else if (mainMealName == 'lunch') {
       this.pickedMeals = this.pickedLunchMeals;
       this.pickedMealsValue = this.pickedLunchMealsValue;
-    } else if (mainMealName == "dinner"){
+    } else if (mainMealName == 'dinner') {
       this.pickedMeals = this.pickedDinnerMeals;
       this.pickedMealsValue = this.pickedDinnerMealsValue;
     }
 
-    if(this.mainMealName == mainMealName){
+    if (this.mainMealName == mainMealName) {
       this.isAddMealVisible = !this.isAddMealVisible;
-    } else{
+    } else {
       this.mainMealName = mainMealName;
       this.isAddMealVisible = true;
     }
   }
 
-  closeAddMeal(){
+  closeAddMeal() {
     this.helperService.dimBackground.next(false);
     this.isAddMealVisible = false;
     this.isFoodPicked = false;
 
-    if(this.mainMealName == "breakfast"){
+    if (this.mainMealName == 'breakfast') {
       this.pickedBreakfastMealsValue = {
         protein: 0,
         fats: 0,
         carbs: 0,
-        calories: 0
-      }
+        calories: 0,
+      };
       this.pickedBreakfastMeals = [];
       this.pickedMeals = [];
       this.pickedMealsValue = this.pickedBreakfastMealsValue;
-    } 
-    else if (this.mainMealName == "lunch"){
+    } else if (this.mainMealName == 'lunch') {
       this.pickedLunchMealsValue = {
         protein: 0,
         fats: 0,
         carbs: 0,
-        calories: 0
-      }
+        calories: 0,
+      };
       this.pickedLunchMeals = [];
       this.pickedMeals = [];
       this.pickedMealsValue = this.pickedLunchMealsValue;
-    } 
-    else if (this.mainMealName == "dinner"){
+    } else if (this.mainMealName == 'dinner') {
       this.pickedDinnerMealsValue = {
         protein: 0,
         fats: 0,
         carbs: 0,
-        calories: 0
-      }
+        calories: 0,
+      };
       this.pickedDinnerMeals = [];
       this.pickedMeals = [];
       this.pickedMealsValue = this.pickedDinnerMealsValue;
     }
   }
 
-  closeEditMeal(){
+  closeEditMeal() {
     this.helperService.dimBackground.next(false);
     this.isEditMealVisible = false;
+
+    this.pickedBreakfastBeforeConfirmValues = { protein: 0, fats: 0, carbs: 0, calories: 0 }
+    this.pickedLunchBeforeConfirmValues = { protein: 0, fats: 0, carbs: 0, calories: 0 }
+    this.pickedDinnerBeforeConfirmValues = { protein: 0, fats: 0, carbs: 0, calories: 0 }
+
+    this.pickedMealsBeforeConfirm = [];
   }
 
-  pickMeal(meal : any){
+  pickMeal(meal: any, window: string) {
     this.showQuery = false;
     this.isFoodPicked = true;
-    this.pickedMeals.push(meal);
+    
+    console.log("Picked meals before confirm: ");
+    console.log(this.pickedMealsBeforeConfirm);
 
-    if(this.mainMealName == "breakfast"){
-      this.pickedBreakfastMealsValue = {
-        protein: this.pickedBreakfastMealsValue.protein + meal.proteins,
-        carbs: this.pickedBreakfastMealsValue.carbs + meal.carbs,
-        fats: this.pickedBreakfastMealsValue.fats + meal.fats,
-        calories: this.pickedBreakfastMealsValue.calories + meal.calories,
+    if (window == 'add') {
+      this.pickedMeals.push(meal);
+      if (this.mainMealName == 'breakfast') {
+        this.pickedBreakfastMealsValue = {
+          protein: this.pickedBreakfastMealsValue.protein + meal.proteins,
+          carbs: this.pickedBreakfastMealsValue.carbs + meal.carbs,
+          fats: this.pickedBreakfastMealsValue.fats + meal.fats,
+          calories: this.pickedBreakfastMealsValue.calories + meal.calories,
+        };
+        this.pickedMealsValue = this.pickedBreakfastMealsValue;
+      } else if (this.mainMealName == 'lunch') {
+        this.pickedLunchMealsValue = {
+          protein: this.pickedLunchMealsValue.protein + meal.proteins,
+          carbs: this.pickedLunchMealsValue.carbs + meal.carbs,
+          fats: this.pickedLunchMealsValue.fats + meal.fats,
+          calories: this.pickedLunchMealsValue.calories + meal.calories,
+        };
+        this.pickedMealsValue = this.pickedLunchMealsValue;
+      } else if (this.mainMealName == 'dinner') {
+        this.pickedDinnerMealsValue = {
+          protein: this.pickedDinnerMealsValue.protein + meal.proteins,
+          carbs: this.pickedDinnerMealsValue.carbs + meal.carbs,
+          fats: this.pickedDinnerMealsValue.fats + meal.fats,
+          calories: this.pickedDinnerMealsValue.calories + meal.calories,
+        };
+        this.pickedMealsValue = this.pickedDinnerMealsValue;
       }
-      this.pickedMealsValue = this.pickedBreakfastMealsValue;
-    } 
-    else if(this.mainMealName == "lunch"){
-      this.pickedLunchMealsValue = {
-        protein: this.pickedLunchMealsValue.protein + meal.proteins,
-        carbs: this.pickedLunchMealsValue.carbs + meal.carbs,
-        fats: this.pickedLunchMealsValue.fats + meal.fats,
-        calories: this.pickedLunchMealsValue.calories + meal.calories,
+    } else if (window == 'edit') {
+      if (this.mainMealName == 'breakfast') {
+        this.pickedMealsBeforeConfirmValues = {
+          protein: this.pickedBreakfastBeforeConfirmValues.protein += meal.proteins,
+          carbs: this.pickedBreakfastBeforeConfirmValues.carbs += meal.carbs,
+          fats: this.pickedBreakfastBeforeConfirmValues.fats += meal.fats,
+          calories: this.pickedBreakfastBeforeConfirmValues.calories += meal.calories,
+        };
+      } else if (this.mainMealName == 'lunch') {
+        this.pickedMealsBeforeConfirmValues = {
+          protein: this.pickedLunchBeforeConfirmValues.protein += meal.proteins,
+          carbs: this.pickedLunchBeforeConfirmValues.carbs += meal.carbs,
+          fats:this.pickedLunchBeforeConfirmValues.fats += meal.fats,
+          calories: this.pickedLunchBeforeConfirmValues.calories += meal.calories,
+        };
+      } else if (this.mainMealName == 'dinner') {
+        this.pickedMealsBeforeConfirmValues = {
+          protein: this.pickedDinnerBeforeConfirmValues.protein += meal.proteins,
+          carbs: this.pickedDinnerBeforeConfirmValues.carbs += meal.carbs,
+          fats: this.pickedDinnerBeforeConfirmValues.fats += meal.fats,
+          calories: this.pickedDinnerBeforeConfirmValues.calories += meal.calories,
+        };
       }
-      this.pickedMealsValue = this.pickedLunchMealsValue;
-    } 
-    else if(this.mainMealName == "dinner"){
-      this.pickedDinnerMealsValue = {
-        protein: this.pickedDinnerMealsValue.protein + meal.proteins,
-        carbs: this.pickedDinnerMealsValue.carbs + meal.carbs,
-        fats: this.pickedDinnerMealsValue.fats + meal.fats,
-        calories: this.pickedDinnerMealsValue.calories + meal.calories,
-      }
-      this.pickedMealsValue = this.pickedDinnerMealsValue;
-    } 
+      this.pickedMealsBeforeConfirm.push(meal);
+    }
   }
 
-  addMeal(){
+  addMeal() {
     this.helperService.dimBackground.next(false);
     this.isAddMealVisible = false;
     this.isFoodPicked = false;
 
-    if(this.mainMealName == "breakfast"){
+    if (this.mainMealName == 'breakfast') {
       this.isBreakfastAdded = true;
-    } 
-    else if (this.mainMealName == "lunch"){
+    } else if (this.mainMealName == 'lunch') {
       this.isLunchAdded = true;
-    } 
-    else if (this.mainMealName == "dinner"){
+    } else if (this.mainMealName == 'dinner') {
       this.isDinnerAdded = true;
     }
 
     this.totalMealsValue = {
       protein: this.totalMealsValue.protein + this.pickedMealsValue.protein,
-      carbs: this.totalMealsValue.carbs + this.pickedMealsValue.carbs, 
-      fats: this.totalMealsValue.fats + this.pickedMealsValue.fats, 
-      calories: this.totalMealsValue.calories + this.pickedMealsValue.calories, 
-    }
+      carbs: this.totalMealsValue.carbs + this.pickedMealsValue.carbs,
+      fats: this.totalMealsValue.fats + this.pickedMealsValue.fats,
+      calories: this.totalMealsValue.calories + this.pickedMealsValue.calories,
+    };
   }
 
-  removeMeal(index : number, type : string){
-    if(type == 'addMeal'){
+  removeMeal(index: number, type: string) {
+    if (type == 'addMeal') {
       const meal = this.pickedMeals[index];
 
-      if(this.mainMealName == "breakfast"){
+      if (this.mainMealName == 'breakfast') {
         this.pickedBreakfastMealsValue = {
           protein: this.pickedBreakfastMealsValue.protein - meal.proteins,
           carbs: this.pickedBreakfastMealsValue.carbs - meal.carbs,
           fats: this.pickedBreakfastMealsValue.fats - meal.fats,
           calories: this.pickedBreakfastMealsValue.calories - meal.calories,
-        }
+        };
         this.pickedMealsValue = this.pickedBreakfastMealsValue;
-      } 
-      else if(this.mainMealName == "lunch"){
+      } else if (this.mainMealName == 'lunch') {
         this.pickedLunchMealsValue = {
           protein: this.pickedLunchMealsValue.protein - meal.proteins,
           carbs: this.pickedLunchMealsValue.carbs - meal.carbs,
           fats: this.pickedLunchMealsValue.fats - meal.fats,
           calories: this.pickedLunchMealsValue.calories - meal.calories,
-        }
+        };
         this.pickedMealsValue = this.pickedLunchMealsValue;
-      } 
-      else if(this.mainMealName == "dinner"){
+      } else if (this.mainMealName == 'dinner') {
         this.pickedDinnerMealsValue = {
           protein: this.pickedDinnerMealsValue.protein - meal.proteins,
           carbs: this.pickedDinnerMealsValue.carbs - meal.carbs,
           fats: this.pickedDinnerMealsValue.fats - meal.fats,
           calories: this.pickedDinnerMealsValue.calories - meal.calories,
-        }
+        };
         this.pickedMealsValue = this.pickedDinnerMealsValue;
-      } 
-  
+      }
+
       this.pickedMeals.splice(index, 1);
-    } 
-    else if (type == 'editMeal'){
+    } else if (type == 'editMeal') {
       const meal = this.pickedMealsBeforeConfirm[index];
 
-      this.pickedMealsBeforeConfirmValues = this.tempRemovedMealsValue;
-
-
-      if(this.mainMealName == "breakfast"){
+      if (this.mainMealName == 'breakfast') {
         this.pickedMealsBeforeConfirmValues = {
           protein: this.pickedMealsBeforeConfirmValues.protein - meal.proteins,
           fats: this.pickedMealsBeforeConfirmValues.fats - meal.fats,
           carbs: this.pickedMealsBeforeConfirmValues.carbs - meal.carbs,
-          calories: this.pickedMealsBeforeConfirmValues.calories - meal.calories,
-        }
-        this.tempRemovedMealsValue = {
-          protein: this.tempRemovedMealsValue.protein - meal.proteins,
-          fats: this.tempRemovedMealsValue.fats - meal.fats,
-          carbs: this.tempRemovedMealsValue.carbs - meal.carbs,
-          calories: this.tempRemovedMealsValue.calories - meal.calories,
-        }
+          calories:
+            this.pickedMealsBeforeConfirmValues.calories - meal.calories,
+        };
       } 
-      else if(this.mainMealName == "lunch"){
+      else if (this.mainMealName == 'lunch') {
         this.pickedMealsBeforeConfirmValues = {
           protein: this.pickedMealsBeforeConfirmValues.protein - meal.proteins,
           fats: this.pickedMealsBeforeConfirmValues.fats - meal.fats,
           carbs: this.pickedMealsBeforeConfirmValues.carbs - meal.carbs,
-          calories: this.pickedMealsBeforeConfirmValues.calories - meal.calories,
-        }
-        this.tempRemovedMealsValue = {
-          protein: this.tempRemovedMealsValue.protein - meal.proteins,
-          fats: this.tempRemovedMealsValue.fats - meal.fats,
-          carbs: this.tempRemovedMealsValue.carbs - meal.carbs,
-          calories: this.tempRemovedMealsValue.calories - meal.calories,
-        }
+          calories:
+            this.pickedMealsBeforeConfirmValues.calories - meal.calories,
+        };
       } 
-      else if(this.mainMealName == "dinner"){
+      else if (this.mainMealName == 'dinner') {
         this.pickedMealsBeforeConfirmValues = {
           protein: this.pickedMealsBeforeConfirmValues.protein - meal.proteins,
           fats: this.pickedMealsBeforeConfirmValues.fats - meal.fats,
           carbs: this.pickedMealsBeforeConfirmValues.carbs - meal.carbs,
-          calories: this.pickedMealsBeforeConfirmValues.calories - meal.calories,
-        }
-        this.tempRemovedMealsValue = {
-          protein: this.tempRemovedMealsValue.protein - meal.proteins,
-          fats: this.tempRemovedMealsValue.fats - meal.fats,
-          carbs: this.tempRemovedMealsValue.carbs - meal.carbs,
-          calories: this.tempRemovedMealsValue.calories - meal.calories,
-        }
-      } 
+          calories:
+            this.pickedMealsBeforeConfirmValues.calories - meal.calories,
+        };
+      }
 
       this.pickedMealsBeforeConfirm.splice(index, 1);
     }
 
-    console.log("Before confirm: ");
+    console.log('Before confirm: ');
     console.log(this.pickedMealsBeforeConfirm);
 
-    console.log("Picked meals: ");
+    console.log('Picked meals: ');
     console.log(this.pickedMeals);
   }
 
-  toggleEditMeal(mainMealName : string){
+  toggleEditMeal(mainMealName: string) {
     this.helperService.dimBackground.next(true);
-    this.tempRemovedMealsValue = this.pickedMealsValue;
     this.pickedMealsBeforeConfirm = this.pickedMeals.slice();
 
-    if(mainMealName == "breakfast"){
+    if (mainMealName == 'breakfast') {
+      this.pickedBreakfastBeforeConfirmValues = { ...this.pickedBreakfastMealsValue };
       this.pickedMeals = this.pickedBreakfastMeals;
       this.pickedMealsValue = this.pickedBreakfastMealsValue;
-    } else if (mainMealName == "lunch"){
+    } else if (mainMealName == 'lunch') {
+      this.pickedLunchBeforeConfirmValues = { ...this.pickedLunchMealsValue };
       this.pickedMeals = this.pickedLunchMeals;
       this.pickedMealsValue = this.pickedLunchMealsValue;
-    } else if (mainMealName == "dinner"){
+    } else if (mainMealName == 'dinner') {
+      this.pickedDinnerBeforeConfirmValues = { ...this.pickedDinnerMealsValue };
       this.pickedMeals = this.pickedDinnerMeals;
       this.pickedMealsValue = this.pickedDinnerMealsValue;
     }
 
-    this.tempPickedMeals = this.pickedMeals;
     this.tempPickedMealsValue = this.pickedMealsValue;
 
     this.pickedMealsBeforeConfirm = this.pickedMeals.slice();
     this.pickedMealsBeforeConfirmValues = this.pickedMealsValue;
 
-    if(this.mainMealName == mainMealName){
+    if (this.mainMealName == mainMealName) {
       this.isEditMealVisible = !this.isEditMealVisible;
-    } else{
+    } else {
       this.mainMealName = mainMealName;
       this.isEditMealVisible = true;
     }
   }
 
-  confirmMeal(){
+  confirmMeal() {
     this.helperService.dimBackground.next(false);
     this.isEditMealVisible = false;
 
     this.pickedMeals = this.pickedMealsBeforeConfirm;
     this.pickedMealsValue = this.pickedMealsBeforeConfirmValues;
 
-    if(this.mainMealName == "breakfast"){
-      if(this.pickedBreakfastMeals.length == 0){
+    if (this.mainMealName == 'breakfast') {
+      if (this.pickedMealsBeforeConfirm.length == 0) {
         this.isBreakfastAdded = false;
+        this.pickedBreakfastMealsValue = this.pickedBreakfastBeforeConfirmValues;
       }
       this.pickedBreakfastMeals = this.pickedMeals;
       this.pickedBreakfastMealsValue = this.pickedMealsValue;
-    } else if (this.mainMealName == "lunch"){
-      if(this.pickedLunchMeals.length == 0){
+    } else if (this.mainMealName == 'lunch') {
+      if (this.pickedMealsBeforeConfirm.length == 0) {
         this.isLunchAdded = false;
+        this.pickedLunchMealsValue = this.pickedLunchBeforeConfirmValues;
       }
       this.pickedLunchMeals = this.pickedMeals;
       this.pickedLunchMealsValue = this.pickedMealsValue;
-    } else if (this.mainMealName == "dinner"){
-      if(this.pickedDinnerMeals.length == 0){
+    } else if (this.mainMealName == 'dinner') {
+      if (this.pickedMealsBeforeConfirm.length == 0) {
         this.isDinnerAdded = false;
+        this.pickedDinnerMealsValue = this.pickedDinnerBeforeConfirmValues;
       }
       this.pickedDinnerMeals = this.pickedMeals;
       this.pickedDinnerMealsValue = this.pickedMealsValue;
@@ -429,6 +409,6 @@ export class YourDayComponent {
       fats: this.totalMealsValue.fats - this.tempPickedMealsValue.fats + this.pickedMealsValue.fats,
       carbs: this.totalMealsValue.carbs - this.tempPickedMealsValue.carbs + this.pickedMealsValue.carbs,
       calories: this.totalMealsValue.calories - this.tempPickedMealsValue.calories + this.pickedMealsValue.calories,
-    }
+    };
   }
 }
