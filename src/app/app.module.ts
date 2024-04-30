@@ -27,6 +27,11 @@ import { DragScrollComponent, DragScrollItemDirective } from 'ngx-drag-scroll';
 import { GymEssentialsComponent } from './components/gym-essentials/gym-essentials.component';
 import { HamburgerSidebarComponent } from './components/hamburger-sidebar/hamburger-sidebar.component';
 import { KitchenEssentialsComponent } from './components/kitchen-essentials/kitchen-essentials.component';
+import { LoginComponent } from './components/login/login.component';
+import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
+import { RegisterComponent } from './components/register/register.component';
+import { AvatarPickerComponent } from './components/avatar-picker/avatar-picker.component';
+
 
 @NgModule({
   declarations: [
@@ -41,7 +46,10 @@ import { KitchenEssentialsComponent } from './components/kitchen-essentials/kitc
     StreetWorkoutComponent,
     GymEssentialsComponent,
     HamburgerSidebarComponent,
-    KitchenEssentialsComponent
+    KitchenEssentialsComponent,
+    LoginComponent,
+    RegisterComponent,
+    AvatarPickerComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +69,9 @@ import { KitchenEssentialsComponent } from './components/kitchen-essentials/kitc
     DragScrollItemDirective,
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    JwtHelperService
   ],
   bootstrap: [AppComponent]
 })
