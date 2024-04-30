@@ -10,6 +10,7 @@ export class HelperService {
   dimBackground : BehaviorSubject<boolean> = new BehaviorSubject(false);
   windowChoice : BehaviorSubject<string> = new BehaviorSubject("add");
   scrollTo : BehaviorSubject<string> = new BehaviorSubject("");
+  toggleRegisterWindow : BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   macros = [
     { name: "protein", value: 220, animatedValue: 0 },
