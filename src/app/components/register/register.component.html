@@ -1,0 +1,67 @@
+<div class="window" *ngIf="helperService.toggleRegisterWindow.value">
+    <div class="close">
+        <mat-icon (click)="closeRegister()">close</mat-icon>
+    </div>
+    <form [formGroup]="registerForm" class="login" (submit)="register(registerForm.value)">
+        <p>register.</p>
+
+        <hr>
+
+        <div class="first-name">
+            <label for="firstName">first name: </label>
+            <input formControlName="firstName" id="firstName" autocomplete="new-first-name">
+        </div>
+
+        <div class="last-name">
+            <label for="lastName">last name: </label>
+            <input formControlName="lastName" id="lastName" autocomplete="new-last-name">
+        </div>
+
+        <div class="user-name">
+            <label for="userName">user name: </label>
+            <input formControlName="userName" id="userName" autocomplete="new-user-name">
+        </div>
+
+        <div class="email">
+            <label for="email">email: </label>
+            <input formControlName="email" id="email" type="email" autocomplete="new-email">
+        </div>
+        <div class="email-error" *ngIf="registerForm.get('email').touched && registerForm.get('email').errors?.['required']">
+          <p>This field is required.</p>
+        </div>
+        <div class="email-error" *ngIf="registerForm.get('email').touched && registerForm.get('email').errors?.['email']">
+          <p>Please enter a valid email address.</p>
+        </div>
+
+        <div class="password">
+            <label for="password">password: </label>
+            <input formControlName="password" id="password" type="password" autocomplete="new-password">
+        </div>
+        <div class="password-error" *ngIf="registerForm.get('password').touched && registerForm.get('password').errors?.['required']">
+            <!-- <p>{{ passwordError }}</p> -->
+        </div>
+
+        <div class="confirm-password">
+            <label for="confirmPassword">confirm password: </label>
+            <input formControlName="confirmPassword" type="password">
+        </div>
+        <div class="password-error" *ngIf="registerForm.get('confirmPassword').touched && registerForm.get('confirmPassword').errors?.['required']">
+            <!-- <p>{{ passwordError }}</p> -->
+        </div>
+
+        <div class="avatar-picker">
+            <!-- <label for="imageUrl">pick an avatar: </label> -->
+            <img [src]="sidebarService.pickedAvatar.value.icon" alt="male-1" (click)="toggleAvatarPicker()">
+        </div>
+
+        <div class="button-container">
+            <button type="submit">
+                Register
+            </button>
+        </div>
+    </form>
+
+    <div class="register">
+        <p>already have an account? <u (click)="toggleLoginWindow()">click here to login.</u></p>
+    </div>
+</div>
