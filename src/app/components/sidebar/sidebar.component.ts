@@ -11,6 +11,8 @@ import { SidebarService } from '../../services/sidebar.service';
 import { Router } from '@angular/router';
 import { HelperService } from '../../services/helper.service';
 import { FooterService } from '../../services/footer.service';
+import { UserService } from '../../services/user.service';
+import { AccountService } from '../../services/account.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -75,7 +77,8 @@ export class SidebarComponent {
     public sidebarService : SidebarService,
     private router : Router,
     private helperService : HelperService,
-    private footerService : FooterService){
+    private userService : UserService,
+    public accountService : AccountService){
   }
 
   ngOnInit(){
@@ -95,5 +98,10 @@ export class SidebarComponent {
       this.router.navigate(['kitchen-essentials'])
     }
     this.helperService.scrollTo.next(path);
+  }
+
+  showLogin(){
+    this.sidebarService.toggleLogin.next(true);
+    this.helperService.dimBackground.next(true);
   }
 }
