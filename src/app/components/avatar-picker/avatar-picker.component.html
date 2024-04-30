@@ -1,0 +1,25 @@
+<div class="window" *ngIf="sidebarService.toggleAvatarPickerWindow.value">
+    <div class="close">
+        <mat-icon (click)="goBack()">arrow_back</mat-icon>
+        <mat-icon (click)="closeWindow()">close</mat-icon>
+    </div>
+
+    <p>pick an avatar.</p>
+    <hr>
+
+    <div class="avatars-container">
+        <div class="avatars" *ngFor="let avatar of sidebarService.avatars; let i = index">
+            <img 
+                [src]="avatar.icon" 
+                [alt]="avatar.name" 
+                height="100px" 
+                width="100px" 
+                (click)="pickAvatar(avatar.name, avatar.icon)" 
+                [ngStyle]="{'box-shadow': selectedAvatarName == avatar.name ? '0 0 15px 5px #F5F5DC' : '0 0 0 0'}">
+        </div>
+    </div>
+
+    <div class="button-container">
+        <button (click)="confirmPick()">Confirm</button>
+    </div>
+</div>
