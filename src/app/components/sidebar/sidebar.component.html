@@ -15,12 +15,23 @@
     <hr>
   </div>
 
-  <div class="icons" (click)="showLogin()">
+  <div class="icons" (click)="showLogin()" *ngIf="(accountService.loggedUser | async).id == -1">
     <img 
-      [src]="(accountService.loggedUser | async).imageURL != null ? (accountService.loggedUser | async).imageURL : sidebarService.userNotLoggedInAvatar.icon" 
-      [alt]="(accountService.loggedUser | async).imageURL != null ? (accountService.loggedUser | async).imageURL : sidebarService.userNotLoggedInAvatar.name" 
+      class="icon"
+      [src]="sidebarService.userNotLoggedInAvatar.icon" 
+      [alt]="sidebarService.userNotLoggedInAvatar.name" 
       height="50px" 
       width="50px">
-    <p [@showName]="showSidebar ? 'show' : 'hide'">{{ sidebarService.userNotLoggedInAvatar.name }}</p>
+    <p [@showName]="showSidebar ? 'show' : 'hide'">LOG IN</p>
+  </div>
+
+  <div class="icons" (click)="showProfile()" *ngIf="(accountService.loggedUser | async).id != -1">
+    <img 
+      class="icon"
+      [src]="(accountService.loggedUser | async).imageUrl" 
+      [alt]="(accountService.loggedUser | async).imageUrl" 
+      height="50px" 
+      width="50px">
+    <p [@showName]="showSidebar ? 'show' : 'hide'">YOUR PROFILE</p>
   </div>
 </div>
