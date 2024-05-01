@@ -31,6 +31,7 @@ import { LoginComponent } from './components/login/login.component';
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
 import { RegisterComponent } from './components/register/register.component';
 import { AvatarPickerComponent } from './components/avatar-picker/avatar-picker.component';
+import { YourProfileComponent } from './components/your-profile/your-profile.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { AvatarPickerComponent } from './components/avatar-picker/avatar-picker.
     KitchenEssentialsComponent,
     LoginComponent,
     RegisterComponent,
-    AvatarPickerComponent
+    AvatarPickerComponent,
+    YourProfileComponent
   ],
   imports: [
     BrowserModule,

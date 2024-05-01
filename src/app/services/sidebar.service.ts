@@ -7,6 +7,7 @@ import { Injectable } from '@angular/core';
 export class SidebarService {
 
   public toggleLogin : BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  public toggleProfile : BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   avatars = [
     { icon: '../../../assets/images/avatars/avatar-male-1.png', name: 'avatar-male-1'},

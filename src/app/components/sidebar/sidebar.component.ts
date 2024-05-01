@@ -82,7 +82,7 @@ export class SidebarComponent {
   }
 
   ngOnInit(){
-
+    
   }
 
   navigateTo(path){
@@ -102,6 +102,11 @@ export class SidebarComponent {
 
   showLogin(){
     this.sidebarService.toggleLogin.next(true);
+    this.helperService.dimBackground.next(true);
+  }
+
+  showProfile(){
+    this.sidebarService.toggleProfile.next(true);
     this.helperService.dimBackground.next(true);
   }
 }
