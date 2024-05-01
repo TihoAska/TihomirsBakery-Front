@@ -51,16 +51,16 @@ export class LoginComponent {
       } 
       this.accountService.login(userToLogin).subscribe(res => {
         if(res != null){
-          var user = this.userService.decodeUserFromToken((<any>res).accessToken);
+          var userFromToken = this.userService.decodeUserFromToken((<any>res).accessToken);
           localStorage.setItem('accessToken', (<any>res).accessToken);
           localStorage.setItem('refreshToken', (<any>res).refreshToken);
+
+          this.userService.getUserById(userFromToken.id).subscribe(res => {
+            this.accountService.loggedUser.next(res);
+          });
   
           this.sidebarService.toggleLogin.next(false);
           this.helperService.dimBackground.next(false);
-  
-          this.accountService.loggedUser.next(user);
-
-          console.log(this.accountService.loggedUser.value.imageURL);
         }
       })
     }
