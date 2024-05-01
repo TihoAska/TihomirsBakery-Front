@@ -15,7 +15,7 @@
                 height="100px" 
                 width="100px" 
                 (click)="pickAvatar(avatar.name, avatar.icon)" 
-                [ngStyle]="{'box-shadow': selectedAvatarName == avatar.name ? '0 0 15px 5px #F5F5DC' : '0 0 0 0'}">
+                [ngStyle]="{'box-shadow': (sidebarService.$selectedAvatar | async) == avatar.icon ? '0 0 15px 5px #F5F5DC' : '0 0 0 0'}">
         </div>
     </div>
 
