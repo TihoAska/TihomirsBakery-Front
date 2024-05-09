@@ -56,7 +56,8 @@ export class LoginComponent {
           localStorage.setItem('refreshToken', (<any>res).refreshToken);
 
           this.userService.getUserById(userFromToken.id).subscribe(res => {
-            this.accountService.loggedUser.next(res);
+            this.accountService.$loggedUser.next(res);
+            this.nutritionService.getDataForUser();
           });
   
           this.sidebarService.toggleLogin.next(false);
