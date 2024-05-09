@@ -6,6 +6,8 @@ import { HelperService } from './services/helper.service';
 import { Router } from '@angular/router';
 import { UserService } from './services/user.service';
 import { User } from './models/User';
+import { NutritionService } from './services/nutrition.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -40,7 +42,8 @@ export class AppComponent {
     public helperService : HelperService, 
     public router : Router,
     public accountService : AccountService,
-    public userService : UserService
+    public userService : UserService,
+    public nutritionService : NutritionService
     ){
 
   }
@@ -52,11 +55,12 @@ export class AppComponent {
       var userFromToken = this.userService.decodeUserFromToken(accessToken);
 
       this.userService.getUserById(userFromToken.id).subscribe(res => {
-          this.accountService.loggedUser.next(res);
+          this.accountService.$loggedUser.next(res);
+          this.nutritionService.getDataForUser();
       });
     } 
     else {
-      this.accountService.loggedUser.next(new User(-1))
+      this.accountService.$loggedUser.next(new User(-1))
     }
   }
 
