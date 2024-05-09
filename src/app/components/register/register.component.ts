@@ -7,6 +7,7 @@ import { UserToRegisterDTO } from '../../models/UserToRegisterDTO';
 import { AccountService } from '../../services/account.service';
 import { UserService } from '../../services/user.service';
 import { FooterService } from '../../services/footer.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -36,13 +37,15 @@ export class RegisterComponent {
     public sidebarService : SidebarService,
     public accountService : AccountService,
     public userService : UserService,
-    public footerService : FooterService) {
+    public footerService : FooterService,
+    private router : Router) {
       this.registerForm.valueChanges.subscribe(() => {
         this.updateErrorMessages();
       });
   }
 
   register(registerFormValue){
+
     if(this.registerForm.valid){
       const userToRegister : UserToRegisterDTO = {
         firstName : registerFormValue.firstName,
@@ -53,6 +56,7 @@ export class RegisterComponent {
         confirmPassword : registerFormValue.confirmPassword,
         imageUrl: this.sidebarService.pickedAvatar.value.icon
       } 
+
       this.accountService.register(userToRegister).subscribe(res => {
         if(res != null){
           var user = this.userService.decodeUserFromToken((<any>res).accessToken);
@@ -61,8 +65,13 @@ export class RegisterComponent {
   
           this.helperService.toggleRegisterWindow.next(false);
           this.helperService.dimBackground.next(false);
+
+          if(this.accountService.$isFromAuth.value){
+            this.accountService.$isFromAuth.next(false);
+            this.router.navigate(['your-day']);
+          }
   
-          this.accountService.loggedUser.next(user)
+          this.accountService.$loggedUser.next(user)
         }
       })
     }
@@ -71,6 +80,10 @@ export class RegisterComponent {
   closeRegister(){
     this.helperService.dimBackground.next(false);
     this.helperService.toggleRegisterWindow.next(false);
+
+    if(this.accountService.$isFromAuth.value){
+      this.accountService.$isFromAuth.next(false);
+    }
   }
 
   toggleLoginWindow(){
