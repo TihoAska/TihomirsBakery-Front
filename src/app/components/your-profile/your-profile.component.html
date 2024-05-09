@@ -8,23 +8,23 @@
         <hr>
 
         <div class="first-name">
-            <p>First name: <span style="color: wheat;">{{ (accountService.loggedUser | async).firstName }}</span></p>
+            <p>First name: <span style="color: wheat;">{{ (accountService.$loggedUser | async).firstName }}</span></p>
         </div>
     
         <div class="last-name">
-            <p>Last name: <span style="color: wheat;">{{ (accountService.loggedUser | async).lastName }}</span></p>
+            <p>Last name: <span style="color: wheat;">{{ (accountService.$loggedUser | async).lastName }}</span></p>
         </div>
     
         <div class="user-name">
-            <p>User name: <span style="color: wheat;">{{ (accountService.loggedUser | async).userName }}</span></p>
+            <p>User name: <span style="color: wheat;">{{ (accountService.$loggedUser | async).userName }}</span></p>
         </div>
     
         <div class="email">
-            <p>Email: <span style="color: wheat;">{{ (accountService.loggedUser | async).email }}</span></p>
+            <p>Email: <span style="color: wheat;">{{ (accountService.$loggedUser | async).email }}</span></p>
         </div>
 
         <div class="avatar">
-            <img [src]="(accountService.loggedUser | async).imageUrl" alt="avatar" height="100px" width="100px" (click)="toggleAvatarPicker()">
+            <img [src]="(accountService.$loggedUser | async).imageUrl" alt="avatar" height="100px" width="100px" (click)="toggleAvatarPicker()">
         </div>
     
         <div class="button-container">
