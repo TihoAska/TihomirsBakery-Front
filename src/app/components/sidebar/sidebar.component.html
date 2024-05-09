@@ -15,7 +15,7 @@
     <hr>
   </div>
 
-  <div class="icons" (click)="showLogin()" *ngIf="(accountService.loggedUser | async).id == -1">
+  <div class="icons" (click)="showLogin()" *ngIf="(accountService.$loggedUser | async).id == -1">
     <img 
       class="icon"
       [src]="sidebarService.userNotLoggedInAvatar.icon" 
@@ -25,11 +25,11 @@
     <p [@showName]="showSidebar ? 'show' : 'hide'">LOG IN</p>
   </div>
 
-  <div class="icons" (click)="showProfile()" *ngIf="(accountService.loggedUser | async).id != -1">
+  <div class="icons" (click)="showProfile()" *ngIf="(accountService.$loggedUser | async).id != -1">
     <img 
       class="icon"
-      [src]="(accountService.loggedUser | async).imageUrl" 
-      [alt]="(accountService.loggedUser | async).imageUrl" 
+      [src]="(accountService.$loggedUser | async).imageUrl" 
+      [alt]="(accountService.$loggedUser | async).imageUrl" 
       height="50px" 
       width="50px">
     <p [@showName]="showSidebar ? 'show' : 'hide'">YOUR PROFILE</p>
