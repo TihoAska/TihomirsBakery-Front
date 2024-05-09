@@ -13,7 +13,7 @@ import { UserService } from '../../services/user.service';
 export class AvatarPickerComponent {
 
   selectedAvatarName = 'avatar';
-  selectedAvatarIcon = (this.accountService.loggedUser.value.id === -1 || this.accountService.loggedUser.value.id === undefined) ? this.sidebarService.pickedAvatar.value.icon : this.accountService.loggedUser.value.imageUrl;
+  selectedAvatarIcon = (this.accountService.$loggedUser.value.id === -1 || this.accountService.$loggedUser.value.id === undefined) ? this.sidebarService.pickedAvatar.value.icon : this.accountService.$loggedUser.value.imageUrl;
 
 
   constructor(
@@ -26,7 +26,7 @@ export class AvatarPickerComponent {
   }
 
   ngOnInit(){
-    this.accountService.loggedUser.subscribe(res => {
+    this.accountService.$loggedUser.subscribe(res => {
       if(res.imageUrl){
         this.sidebarService.$selectedAvatar.next(res.imageUrl);
       }
@@ -63,12 +63,12 @@ export class AvatarPickerComponent {
 
     this.sidebarService.$selectedAvatar.next(this.selectedAvatarIcon);
 
-    if(this.accountService.loggedUser.value.id != -1){
-      this.accountService.loggedUser.value.imageUrl = this.selectedAvatarIcon;
+    if(this.accountService.$loggedUser.value.id != -1){
+      this.accountService.$loggedUser.value.imageUrl = this.selectedAvatarIcon;
       this.sidebarService.toggleAvatarPickerWindow.next(false);
       this.sidebarService.toggleProfile.next(true);
 
-      this.userService.updateUser(this.accountService.loggedUser.value).subscribe();
+      this.userService.updateUser(this.accountService.$loggedUser.value).subscribe();
 
     } 
     else{
@@ -83,7 +83,7 @@ export class AvatarPickerComponent {
 
     this.sidebarService.$selectedAvatar.next(this.selectedAvatarIcon);
 
-    if(this.accountService.loggedUser.value.id != -1){
+    if(this.accountService.$loggedUser.value.id != -1){
       this.sidebarService.toggleAvatarPickerWindow.next(false);  
       this.sidebarService.toggleProfile.next(true);
     } else{
