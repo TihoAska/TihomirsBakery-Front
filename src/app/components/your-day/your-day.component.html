@@ -14,7 +14,7 @@
             <div class="calories-and-chart">
                 <div class="calories">
                     <h3>Today's goal:</h3>
-                    <p>{{ totalMealsValue.calories | number:'1.0-2' }} kcal</p>
+                    <p>{{ (nutritionService.$totalMealsValue | async).totalCalories | number:'1.0-2' }} kcal</p>
                 </div>
                 <div id="chart">
                     <apx-chart
@@ -30,15 +30,15 @@
             <div class="macros">
                 <div class="protein">
                     <p class="macro">Protein: </p>
-                    <p class="macro-number">{{ totalMealsValue.protein | number:'1.0-2' }} g</p>
+                    <p class="macro-number">{{ (nutritionService.$totalMealsValue | async).totalProtein | number:'1.0-2' }} g</p>
                 </div>
                 <div class="fats">
                     <p class="macro">Fats:</p>
-                    <p class="macro-number">{{ totalMealsValue.fats | number:'1.0-2' }} g</p>
+                    <p class="macro-number">{{ (nutritionService.$totalMealsValue | async).totalFats | number:'1.0-2' }} g</p>
                 </div>
                 <div class="carbs">
                     <p class="macro">Carbs:</p>
-                    <p class="macro-number">{{ totalMealsValue.carbs | number:'1.0-2' }} g</p>
+                    <p class="macro-number">{{ (nutritionService.$totalMealsValue | async).totalCarbs | number:'1.0-2' }} g</p>
                 </div>
             </div>
         </div>
@@ -47,22 +47,22 @@
 
         <div class="workout-and-meals">
             <div class="meals">
-                <div class="breakfast" (click)="toggleAddMeal('breakfast')" *ngIf="!isBreakfastAdded">
+                <div class="breakfast" (click)="toggleAddMeal('breakfast')" *ngIf="!nutritionService.isBreakfastAdded">
                     <div class="breakfast-content">
                         <img [src]="footerService.pluses[0].icon" [alt]="footerService.pluses[0].name" height="100px" width="100px">
                         <p>ADD BREAKFAST</p>
                     </div>
                 </div>
-                <div class="edit-breakfast" *ngIf="isBreakfastAdded" (click)="toggleEditMeal('breakfast')">
+                <div class="edit-breakfast" *ngIf="nutritionService.isBreakfastAdded" (click)="toggleEditMeal('breakfast')">
                     <div class="edit-breakfast-content">
-                        <p id="edit-breakfast-calories">{{ pickedBreakfastMealsValue.calories | number:'1.0-2' }} kcal</p>
+                        <p id="edit-breakfast-calories">{{ (nutritionService.$pickedBreakfastMealsValues | async).calories | number:'1.0-2' }} kcal</p>
                         <hr>
                         <div class="edit-breakfast-macros">
-                            <p id="edit-breakfast-protein">P: {{ pickedBreakfastMealsValue.protein | number:'1.0-2' }} g</p>
+                            <p id="edit-breakfast-protein">P: {{ (nutritionService.$pickedBreakfastMealsValues | async).protein | number:'1.0-2' }} g</p>
                             <p style="color: red;">-</p>
-                            <p id="edit-breakfast-carbs">C: {{ pickedBreakfastMealsValue.carbs | number:'1.0-2' }} g</p>
+                            <p id="edit-breakfast-carbs">C: {{ (nutritionService.$pickedBreakfastMealsValues | async).carbs | number:'1.0-2' }} g</p>
                             <p style="color: red;">-</p>
-                            <p id="edit-breakfast-fats">F: {{ pickedBreakfastMealsValue.fats | number:'1.0-2' }} g</p>
+                            <p id="edit-breakfast-fats">F: {{ (nutritionService.$pickedBreakfastMealsValues | async).fats | number:'1.0-2' }} g</p>
                         </div>
                         
                     </div>
@@ -70,44 +70,44 @@
                         EDIT BREAKFAST
                     </p>
                 </div>
-                <div class="lunch" (click)="toggleAddMeal('lunch')" *ngIf="!isLunchAdded">
+                <div class="lunch" (click)="toggleAddMeal('lunch')" *ngIf="!nutritionService.isLunchAdded">
                     <div class="lunch-content">
                         <img [src]="footerService.pluses[1].icon" [alt]="footerService.pluses[1].name" height="100px" width="100px">
                         <p>ADD LUNCH</p>
                     </div>
                 </div>
-                <div class="edit-lunch" *ngIf="isLunchAdded" (click)="toggleEditMeal('lunch')">
+                <div class="edit-lunch" *ngIf="nutritionService.isLunchAdded" (click)="toggleEditMeal('lunch')">
                     <div class="edit-lunch-content">
-                        <p id="edit-lunch-calories">{{ pickedLunchMealsValue.calories }} kcal</p>
+                        <p id="edit-lunch-calories">{{ (nutritionService.$pickedLunchMealsValues | async).calories }} kcal</p>
                         <hr>
                         <div class="edit-lunch-macros">
-                            <p id="edit-lunch-protein">P: {{ pickedLunchMealsValue.protein | number:'1.0-2' }} g</p>
+                            <p id="edit-lunch-protein">P: {{ (nutritionService.$pickedLunchMealsValues | async).protein | number:'1.0-2' }} g</p>
                             <p style="color: orange;">-</p>
-                            <p id="edit-lunch-carbs">C: {{ pickedLunchMealsValue.carbs | number:'1.0-2' }} g</p>
+                            <p id="edit-lunch-carbs">C: {{ (nutritionService.$pickedLunchMealsValues | async).carbs | number:'1.0-2' }} g</p>
                             <p style="color: orange;">-</p>
-                            <p id="edit-lunch-fats">F: {{ pickedLunchMealsValue.fats | number:'1.0-2' }} g</p>
+                            <p id="edit-lunch-fats">F: {{ (nutritionService.$pickedLunchMealsValues | async).fats | number:'1.0-2' }} g</p>
                         </div>
                     </div>
                     <p id="edit-lunch-title">
                         EDIT LUNCH
                     </p>
                 </div>
-                <div class="dinner" (click)="toggleAddMeal('dinner')" *ngIf="!isDinnerAdded">
+                <div class="dinner" (click)="toggleAddMeal('dinner')" *ngIf="!nutritionService.isDinnerAdded">
                     <div class="dinner-content">
                         <img [src]="footerService.pluses[2].icon" [alt]="footerService.pluses[2].name" height="100px" width="100px">
                         <p>ADD DINNER</p>
                     </div>
                 </div>
-                <div class="edit-dinner" *ngIf="isDinnerAdded" (click)="toggleEditMeal('dinner')">
+                <div class="edit-dinner" *ngIf="nutritionService.isDinnerAdded" (click)="toggleEditMeal('dinner')">
                     <div class="edit-dinner-content">
-                        <p id="edit-dinner-calories">{{ pickedDinnerMealsValue.calories }} kcal</p>
+                        <p id="edit-dinner-calories">{{ (nutritionService.$pickedDinnerMealsValues | async).calories }} kcal</p>
                         <hr>
                         <div class="edit-dinner-macros">
-                            <p id="edit-dinner-protein">P: {{ pickedDinnerMealsValue.protein | number:'1.0-2' }} g</p>
+                            <p id="edit-dinner-protein">P: {{ (nutritionService.$pickedDinnerMealsValues | async).protein | number:'1.0-2' }} g</p>
                             <p style="color: orange;">-</p>
-                            <p id="edit-dinner-carbs">C: {{ pickedDinnerMealsValue.carbs | number:'1.0-2' }} g</p>
+                            <p id="edit-dinner-carbs">C: {{ (nutritionService.$pickedDinnerMealsValues | async).carbs | number:'1.0-2' }} g</p>
                             <p style="color: orange;">-</p>
-                            <p id="edit-dinner-fats">F: {{ pickedDinnerMealsValue.fats | number:'1.0-2' }} g</p>
+                            <p id="edit-dinner-fats">F: {{ (nutritionService.$pickedDinnerMealsValues | async).fats | number:'1.0-2' }} g</p>
                         </div>
                     </div>
                     <p id="edit-dinner-title">
@@ -161,9 +161,9 @@
                     </div>
                     
                     <div class="searched-macros-container">
-                        <p style="color: orange;">Protein: {{ meal.proteins }} g</p>
-                        <p style="color: green;">Carbs: {{ meal.carbs }} g</p>
-                        <p style="color: lightblue;">Fats: {{ meal.fats }} g</p>
+                        <p style="color: orange;">Protein: {{ meal.protein | number:'1.0-2' }} g</p>
+                        <p style="color: green;">Carbs: {{ meal.carbs | number:'1.0-2' }} g</p>
+                        <p style="color: lightblue;">Fats: {{ meal.fats | number:'1.0-2' }} g</p>
                         <p>Calories: {{ meal.calories }} kcal</p>
                     </div>
                 </div>
@@ -177,11 +177,11 @@
         <div class="picked-meals" *ngIf="pickedMeals.length > 0">
             <div class="picked-meal" *ngFor="let meal of pickedMeals; let i = index">
                 <p>{{ meal.name }} - 
-                    <span style="color: orange;">P: {{ meal.proteins }} g</span>
+                    <span style="color: orange;">P: {{ meal.protein | number:'1.0-2' }} g</span>
                       - 
-                    <span style="color: greenyellow;"> C: {{ meal.carbs }} g </span> 
+                    <span style="color: greenyellow;"> C: {{ meal.carbs | number:'1.0-2' }} g </span> 
                       - 
-                    <span style="color: lightblue;">F: {{ meal.fats }} g</span>
+                    <span style="color: lightblue;">F: {{ meal.fats | number:'1.0-2' }} g</span>
 
                     - Cal: {{ meal.calories }} kcal
 
@@ -216,7 +216,7 @@
             </div>
     
             <div class="macros">
-                <p id="protein">Protein: {{ pickedMealsBeforeConfirmValues.protein| number:'1.0-2' }} g</p>
+                <p id="protein">Protein: {{ pickedMealsBeforeConfirmValues.protein | number:'1.0-2' }} g</p>
                 <p id="carbs">Carbs: {{ pickedMealsBeforeConfirmValues.carbs | number:'1.0-2' }} g</p>
                 <p id="fats">Fats: {{ pickedMealsBeforeConfirmValues.fats | number:'1.0-2' }} g</p>
             </div>
@@ -230,9 +230,9 @@
                     </div>
                     
                     <div class="searched-macros-container">
-                        <p style="color: orange;">Protein: {{ meal.proteins }} g</p>
-                        <p style="color: green;">Carbs: {{ meal.carbs }} g</p>
-                        <p style="color: lightblue;">Fats: {{ meal.fats }} g</p>
+                        <p style="color: orange;">Protein: {{ meal.protein | number:'1.0-2' }} g</p>
+                        <p style="color: green;">Carbs: {{ meal.carbs | number:'1.0-2' }} g</p>
+                        <p style="color: lightblue;">Fats: {{ meal.fats | number:'1.0-2'}} g</p>
                         <p>Calories: {{ meal.calories }} kcal</p>
                     </div>
                 </div>
@@ -246,11 +246,11 @@
         <div class="picked-meals" *ngIf="pickedMealsBeforeConfirm.length > 0">
             <div class="picked-meal" *ngFor="let meal of pickedMealsBeforeConfirm; let i = index">
                 <p>{{ meal.name }} - 
-                    <span style="color: orange;">P: {{ meal.proteins }} g</span>
+                    <span style="color: orange;">P: {{ meal.protein | number:'1.0-2'}} g</span>
                       - 
-                    <span style="color: greenyellow;"> C: {{ meal.carbs }} g </span> 
+                    <span style="color: greenyellow;"> C: {{ meal.carbs | number:'1.0-2'}} g </span> 
                       - 
-                    <span style="color: lightblue;">F: {{ meal.fats }} g</span>
+                    <span style="color: lightblue;">F: {{ meal.fats | number:'1.0-2'}} g</span>
 
                     - Cal: {{ meal.calories }} kcal
 
