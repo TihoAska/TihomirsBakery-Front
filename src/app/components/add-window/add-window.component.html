@@ -30,7 +30,7 @@
             <ul class="search-list" *ngIf="searchQuery.trim() !== '' && searchResults.length > 0 && isQueryClicked == false">
                 <li *ngFor="let meal of searchResults" (click)="fillForm(meal)">{{ meal.name }}
                     <div class="search-macros-container">
-                        <p>P: {{ meal.proteins }}</p>
+                        <p>P: {{ meal.protein }}</p>
                         <p>C: {{ meal.fats }}</p>
                         <p>C: {{ meal.carbs }}</p>
                         <p>CAL: {{ meal.calories }}</p>

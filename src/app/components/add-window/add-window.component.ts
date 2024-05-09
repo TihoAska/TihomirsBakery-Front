@@ -144,7 +144,7 @@ export class AddWindowComponent {
   fillForm(meal : any){
     this.mealForm.patchValue({
       name: meal.name,
-      protein: meal.proteins,
+      protein: meal.protein,
       fats: meal.fats,
       carbs: meal.carbs,
       calories: meal.calories
@@ -159,7 +159,7 @@ export class AddWindowComponent {
 
   addMeal(){
     this.mealService.mealFormValues.next({
-      proteins: this.mealForm.get('protein')?.value,
+      protein: this.mealForm.get('protein')?.value,
       fats: this.mealForm.get('fats')?.value,
       carbs: this.mealForm.get('carbs')?.value,
       calories: this.mealForm.get('calories')?.value
