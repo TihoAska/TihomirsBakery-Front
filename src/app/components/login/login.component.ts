@@ -5,6 +5,8 @@ import { HelperService } from '../../services/helper.service';
 import { AccountService } from '../../services/account.service';
 import { UserToLoginDTO } from '../../models/UserToLoginDTO';
 import { UserService } from '../../services/user.service';
+import { Router } from '@angular/router';
+import { NutritionService } from '../../services/nutrition.service';
 
 @Component({
   selector: 'app-login',
@@ -28,7 +30,9 @@ export class LoginComponent {
     public sidebarService : SidebarService, 
     private helperService : HelperService,
     private accountService : AccountService,
-    private userService : UserService) {
+    private userService : UserService,
+    private nutritionService : NutritionService,
+    private router : Router) {
       this.loginForm.valueChanges.subscribe(() => {
         this.updateErrorMessages();
       });
@@ -41,6 +45,10 @@ export class LoginComponent {
   closeLogin(){
     this.sidebarService.toggleLogin.next(false);
     this.helperService.dimBackground.next(false);
+
+    if(this.accountService.$isFromAuth.value){
+      this.accountService.$isFromAuth.next(false);
+    }
   }
 
   login(loginFormValue){
@@ -59,9 +67,14 @@ export class LoginComponent {
             this.accountService.$loggedUser.next(res);
             this.nutritionService.getDataForUser();
           });
-  
+
           this.sidebarService.toggleLogin.next(false);
           this.helperService.dimBackground.next(false);
+
+          if(this.accountService.$isFromAuth.value){
+            this.accountService.$isFromAuth.next(false);
+            this.router.navigate(['your-day']);
+          }
         }
       })
     }
