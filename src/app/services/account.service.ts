@@ -3,15 +3,26 @@ import { Injectable } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from '../models/User';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { UserService } from './user.service';
+import { Router } from '@angular/router';
+import { SidebarService } from './sidebar.service';
+import { HelperService } from './helper.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
 
-  public loggedUser : BehaviorSubject<User> = new BehaviorSubject<User>(new User)
+  public $loggedUser : BehaviorSubject<User> = new BehaviorSubject<User>(new User);
+  public $isFromAuth : BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-  constructor(private http : HttpClient) { }
+  constructor(
+    private http : HttpClient,
+    private jwtHelper : JwtHelperService,
+    private helperService : HelperService,
+    private sidebarService : SidebarService,
+  ) { }
 
   login(loginFormValue) : Observable<HttpEvent<any[]>>{
     return this.http.post<HttpEvent<any[]>>('https://localhost:7069/api/account/Login', loginFormValue);
