@@ -7,6 +7,7 @@ import { HomeComponent } from './components/home/home.component';
 import { StreetWorkoutComponent } from './components/street-workout/street-workout.component';
 import { GymEssentialsComponent } from './components/gym-essentials/gym-essentials.component';
 import { KitchenEssentialsComponent } from './components/kitchen-essentials/kitchen-essentials.component';
+import { UserSignedInGuard } from './guards/userSignedInGuard';
 
 const routes: Routes = [
   {
@@ -16,22 +17,7 @@ const routes: Routes = [
   {
     path: 'your-day',
     component: YourDayComponent,
-    children: [
-      {
-        path: 'add',
-        component: AddWindowComponent,
-        children: [
-          {
-            path: 'meal',
-            component: AddWindowComponent,
-          },
-          {
-            path: 'workout',
-            component: AddWindowComponent,
-          }
-        ]
-      }
-    ]
+    canActivate : [UserSignedInGuard],
   },
   {
     path: 'map',
