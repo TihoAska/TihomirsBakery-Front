@@ -1,3 +1,4 @@
+import { addedMeal } from './../../services/nutrition.service';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ApexDataLabels, ApexFill, ApexLegend, ApexMarkers, ApexOptions, ApexPlotOptions, ApexTooltip, ChartComponent } from "ng-apexcharts";
 
@@ -11,9 +12,12 @@ import { FooterService } from '../../services/footer.service';
 import { HelperService } from '../../services/helper.service';
 import { Router } from '@angular/router';
 import { MealService } from '../../services/meal.service';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { provideProtractorTestingSupport } from '@angular/platform-browser';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { NutritionService } from '../../services/nutrition.service';
+import { AccountService } from '../../services/account.service';
+import { SidebarService } from '../../services/sidebar.service';
 
 export type ChartOptions = {
   series: ApexNonAxisChartSeries;
@@ -56,19 +60,12 @@ export class YourDayComponent {
   filteredMeals: any[] = [];
   pickedMeals: any[] = [];
 
-  pickedBreakfastMeals: any[] = [];
-  pickedLunchMeals: any[] = [];
-  pickedDinnerMeals: any[] = [];
-
   pickedMealsBeforeConfirm: any[] = [];
 
   isAddMealVisible = false;
   isEditMealVisible = false;
   showQuery = true;
   isFoodPicked = false;
-  isBreakfastAdded = false;
-  isLunchAdded = false;
-  isDinnerAdded = false;
 
   mainMealName = '';
 
@@ -80,18 +77,14 @@ export class YourDayComponent {
   pickedBreakfastBeforeConfirmValues = { protein: 0, fats: 0, carbs: 0, calories: 0 };
   pickedLunchBeforeConfirmValues = { protein: 0, fats: 0, carbs: 0, calories: 0 };
   pickedDinnerBeforeConfirmValues = { protein: 0, fats: 0, carbs: 0, calories: 0 };
-
-  pickedBreakfastMealsValue = { protein: 0, fats: 0, carbs: 0, calories: 0 };
-  pickedLunchMealsValue = { protein: 0, fats: 0, carbs: 0, calories: 0 };
-  pickedDinnerMealsValue = { protein: 0, fats: 0, carbs: 0, calories: 0 };
-
-  totalMealsValue = { protein: 0, fats: 0, carbs: 0, calories: 0 };
   
-
   constructor(
     public footerService: FooterService,
     public helperService: HelperService,
-    public mealService: MealService
+    public mealService: MealService,
+    public nutritionService : NutritionService,
+    public accountService : AccountService,
+    public sidebarService : SidebarService
   ) {}
 
   ngOnInit() {
@@ -103,7 +96,10 @@ export class YourDayComponent {
       .pipe(distinctUntilChanged())
       .subscribe((query) => {
         this.filterMeals(query);
-      });
+    });
+
+    console.log("DailyIntakeFromDb: ");
+    console.log(this.nutritionService.$dailyIntakeFromDb.value);
   }
 
   filterMeals(query: string) {
@@ -122,14 +118,14 @@ export class YourDayComponent {
     this.helperService.dimBackground.next(true);
 
     if (mainMealName == 'breakfast') {
-      this.pickedMeals = this.pickedBreakfastMeals;
-      this.pickedMealsValue = this.pickedBreakfastMealsValue;
+      this.pickedMeals = this.nutritionService.$pickedBreakfastMeals.value.slice();
+      this.pickedMealsValue = { ...this.nutritionService.$pickedBreakfastMealsValues.value }
     } else if (mainMealName == 'lunch') {
-      this.pickedMeals = this.pickedLunchMeals;
-      this.pickedMealsValue = this.pickedLunchMealsValue;
+      this.pickedMeals = this.nutritionService.$pickedLunchMeals.value.slice();
+      this.pickedMealsValue = { ...this.nutritionService.$pickedLunchMealsValues.value }
     } else if (mainMealName == 'dinner') {
-      this.pickedMeals = this.pickedDinnerMeals;
-      this.pickedMealsValue = this.pickedDinnerMealsValue;
+      this.pickedMeals = this.nutritionService.$pickedDinnerMeals.value.slice();
+      this.pickedMealsValue = { ...this.nutritionService.$pickedDinnerMealsValues.value }
     }
 
     if (this.mainMealName == mainMealName) {
@@ -146,35 +142,35 @@ export class YourDayComponent {
     this.isFoodPicked = false;
 
     if (this.mainMealName == 'breakfast') {
-      this.pickedBreakfastMealsValue = {
+      this.nutritionService.$pickedBreakfastMealsValues.next({
         protein: 0,
         fats: 0,
         carbs: 0,
         calories: 0,
-      };
-      this.pickedBreakfastMeals = [];
+      })
+      this.nutritionService.$pickedBreakfastMeals.next([]);
       this.pickedMeals = [];
-      this.pickedMealsValue = this.pickedBreakfastMealsValue;
+      this.pickedMealsValue = this.nutritionService.$pickedBreakfastMealsValues.value;
     } else if (this.mainMealName == 'lunch') {
-      this.pickedLunchMealsValue = {
+      this.nutritionService.$pickedLunchMealsValues.next({
         protein: 0,
         fats: 0,
         carbs: 0,
         calories: 0,
-      };
-      this.pickedLunchMeals = [];
+      });
+      this.nutritionService.$pickedLunchMeals.next([]);
       this.pickedMeals = [];
-      this.pickedMealsValue = this.pickedLunchMealsValue;
+      this.pickedMealsValue = this.nutritionService.$pickedLunchMealsValues.value;
     } else if (this.mainMealName == 'dinner') {
-      this.pickedDinnerMealsValue = {
+      this.nutritionService.$pickedDinnerMealsValues.next({
         protein: 0,
         fats: 0,
         carbs: 0,
         calories: 0,
-      };
-      this.pickedDinnerMeals = [];
+      });
+      this.nutritionService.$pickedDinnerMeals.next([]);
       this.pickedMeals = [];
-      this.pickedMealsValue = this.pickedDinnerMealsValue;
+      this.pickedMealsValue = this.nutritionService.$pickedDinnerMealsValues.value;
     }
   }
 
@@ -199,48 +195,48 @@ export class YourDayComponent {
     if (window == 'add') {
       this.pickedMeals.push(meal);
       if (this.mainMealName == 'breakfast') {
-        this.pickedBreakfastMealsValue = {
-          protein: this.pickedBreakfastMealsValue.protein + meal.proteins,
-          carbs: this.pickedBreakfastMealsValue.carbs + meal.carbs,
-          fats: this.pickedBreakfastMealsValue.fats + meal.fats,
-          calories: this.pickedBreakfastMealsValue.calories + meal.calories,
-        };
-        this.pickedMealsValue = this.pickedBreakfastMealsValue;
+        this.nutritionService.$pickedBreakfastMealsValues.next({
+          protein: this.nutritionService.$pickedBreakfastMealsValues.value.protein + meal.protein,
+          carbs: this.nutritionService.$pickedBreakfastMealsValues.value.carbs + meal.carbs,
+          fats: this.nutritionService.$pickedBreakfastMealsValues.value.fats + meal.fats,
+          calories: this.nutritionService.$pickedBreakfastMealsValues.value.calories + meal.calories,
+        });
+        this.pickedMealsValue = this.nutritionService.$pickedBreakfastMealsValues.value;
       } else if (this.mainMealName == 'lunch') {
-        this.pickedLunchMealsValue = {
-          protein: this.pickedLunchMealsValue.protein + meal.proteins,
-          carbs: this.pickedLunchMealsValue.carbs + meal.carbs,
-          fats: this.pickedLunchMealsValue.fats + meal.fats,
-          calories: this.pickedLunchMealsValue.calories + meal.calories,
-        };
-        this.pickedMealsValue = this.pickedLunchMealsValue;
+        this.nutritionService.$pickedLunchMealsValues.next({
+          protein: this.nutritionService.$pickedLunchMealsValues.value.protein + meal.protein,
+          carbs: this.nutritionService.$pickedLunchMealsValues.value.carbs + meal.carbs,
+          fats: this.nutritionService.$pickedLunchMealsValues.value.fats + meal.fats,
+          calories: this.nutritionService.$pickedLunchMealsValues.value.calories + meal.calories,
+        })
+        this.pickedMealsValue = this.nutritionService.$pickedLunchMealsValues.value;
       } else if (this.mainMealName == 'dinner') {
-        this.pickedDinnerMealsValue = {
-          protein: this.pickedDinnerMealsValue.protein + meal.proteins,
-          carbs: this.pickedDinnerMealsValue.carbs + meal.carbs,
-          fats: this.pickedDinnerMealsValue.fats + meal.fats,
-          calories: this.pickedDinnerMealsValue.calories + meal.calories,
-        };
-        this.pickedMealsValue = this.pickedDinnerMealsValue;
+        this.nutritionService.$pickedDinnerMealsValues.next({
+          protein: this.nutritionService.$pickedDinnerMealsValues.value.protein + meal.protein,
+          carbs: this.nutritionService.$pickedDinnerMealsValues.value.carbs + meal.carbs,
+          fats: this.nutritionService.$pickedDinnerMealsValues.value.fats + meal.fats,
+          calories: this.nutritionService.$pickedDinnerMealsValues.value.calories + meal.calories,
+        })
+        this.pickedMealsValue = this.nutritionService.$pickedDinnerMealsValues.value;
       }
     } else if (window == 'edit') {
       if (this.mainMealName == 'breakfast') {
         this.pickedMealsBeforeConfirmValues = {
-          protein: this.pickedBreakfastBeforeConfirmValues.protein += meal.proteins,
+          protein: this.pickedBreakfastBeforeConfirmValues.protein += meal.protein,
           carbs: this.pickedBreakfastBeforeConfirmValues.carbs += meal.carbs,
           fats: this.pickedBreakfastBeforeConfirmValues.fats += meal.fats,
           calories: this.pickedBreakfastBeforeConfirmValues.calories += meal.calories,
         };
       } else if (this.mainMealName == 'lunch') {
         this.pickedMealsBeforeConfirmValues = {
-          protein: this.pickedLunchBeforeConfirmValues.protein += meal.proteins,
+          protein: this.pickedLunchBeforeConfirmValues.protein += meal.protein,
           carbs: this.pickedLunchBeforeConfirmValues.carbs += meal.carbs,
           fats:this.pickedLunchBeforeConfirmValues.fats += meal.fats,
           calories: this.pickedLunchBeforeConfirmValues.calories += meal.calories,
         };
       } else if (this.mainMealName == 'dinner') {
         this.pickedMealsBeforeConfirmValues = {
-          protein: this.pickedDinnerBeforeConfirmValues.protein += meal.proteins,
+          protein: this.pickedDinnerBeforeConfirmValues.protein += meal.protein,
           carbs: this.pickedDinnerBeforeConfirmValues.carbs += meal.carbs,
           fats: this.pickedDinnerBeforeConfirmValues.fats += meal.fats,
           calories: this.pickedDinnerBeforeConfirmValues.calories += meal.calories,
@@ -255,20 +251,51 @@ export class YourDayComponent {
     this.isAddMealVisible = false;
     this.isFoodPicked = false;
 
+    var addedMeals = [];
+
+    this.pickedMeals.forEach(pickedMeal => {
+      addedMeals.push({
+        name: pickedMeal.name,
+        calories: pickedMeal.calories,
+        protein: pickedMeal.protein,
+        carbs: pickedMeal.carbs,
+        fats: pickedMeal.fats
+      })
+    });
+
     if (this.mainMealName == 'breakfast') {
-      this.isBreakfastAdded = true;
+      this.nutritionService.isBreakfastAdded = true;
+      const currentMeals = this.nutritionService.$pickedBreakfastMeals.value;
+      const updatedMeals = currentMeals.concat(addedMeals);
+      this.nutritionService.$pickedBreakfastMeals.next(updatedMeals);
     } else if (this.mainMealName == 'lunch') {
-      this.isLunchAdded = true;
+      this.nutritionService.isLunchAdded = true;
+      const currentMeals = this.nutritionService.$pickedLunchMeals.value;
+      const updatedMeals = currentMeals.concat(addedMeals);
+      this.nutritionService.$pickedLunchMeals.next(updatedMeals);
     } else if (this.mainMealName == 'dinner') {
-      this.isDinnerAdded = true;
+      this.nutritionService.isDinnerAdded = true;
+      const currentMeals = this.nutritionService.$pickedDinnerMeals.value;
+      const updatedMeals = currentMeals.concat(addedMeals);
+      this.nutritionService.$pickedDinnerMeals.next(updatedMeals);
     }
 
-    this.totalMealsValue = {
-      protein: this.totalMealsValue.protein + this.pickedMealsValue.protein,
-      carbs: this.totalMealsValue.carbs + this.pickedMealsValue.carbs,
-      fats: this.totalMealsValue.fats + this.pickedMealsValue.fats,
-      calories: this.totalMealsValue.calories + this.pickedMealsValue.calories,
-    };
+    this.nutritionService.addMeal({
+      calories: this.pickedMealsValue.calories,
+      carbs: this.pickedMealsValue.carbs,
+      fats: this.pickedMealsValue.fats,
+      protein: this.pickedMealsValue.protein,
+      mealType: this.mainMealName,
+      addedMeals: addedMeals
+    });
+
+    this.nutritionService.$totalMealsValue.next({
+        totalProtein: this.nutritionService.$totalMealsValue.value.totalProtein + this.pickedMealsValue.protein,
+        totalCarbs: this.nutritionService.$totalMealsValue.value.totalCarbs + this.pickedMealsValue.carbs,
+        totalFats: this.nutritionService.$totalMealsValue.value.totalFats + this.pickedMealsValue.fats,
+        totalCalories: this.nutritionService.$totalMealsValue.value.totalCalories + this.pickedMealsValue.calories,
+      }
+    );
   }
 
   removeMeal(index: number, type: string) {
@@ -276,89 +303,83 @@ export class YourDayComponent {
       const meal = this.pickedMeals[index];
 
       if (this.mainMealName == 'breakfast') {
-        this.pickedBreakfastMealsValue = {
-          protein: this.pickedBreakfastMealsValue.protein - meal.proteins,
-          carbs: this.pickedBreakfastMealsValue.carbs - meal.carbs,
-          fats: this.pickedBreakfastMealsValue.fats - meal.fats,
-          calories: this.pickedBreakfastMealsValue.calories - meal.calories,
-        };
-        this.pickedMealsValue = this.pickedBreakfastMealsValue;
+        this.nutritionService.$pickedBreakfastMealsValues.next({
+          protein: this.nutritionService.$pickedBreakfastMealsValues.value.protein - meal.protein,
+          carbs: this.nutritionService.$pickedBreakfastMealsValues.value.carbs - meal.carbs,
+          fats: this.nutritionService.$pickedBreakfastMealsValues.value.fats - meal.fats,
+          calories: this.nutritionService.$pickedBreakfastMealsValues.value.calories - meal.calories,
+        });
+        this.pickedMealsValue = { ...this.nutritionService.$pickedBreakfastMealsValues.value }
       } else if (this.mainMealName == 'lunch') {
-        this.pickedLunchMealsValue = {
-          protein: this.pickedLunchMealsValue.protein - meal.proteins,
-          carbs: this.pickedLunchMealsValue.carbs - meal.carbs,
-          fats: this.pickedLunchMealsValue.fats - meal.fats,
-          calories: this.pickedLunchMealsValue.calories - meal.calories,
-        };
-        this.pickedMealsValue = this.pickedLunchMealsValue;
+        this.nutritionService.$pickedLunchMealsValues.next({
+          protein: this.nutritionService.$pickedLunchMealsValues.value.protein - meal.protein,
+          carbs: this.nutritionService.$pickedLunchMealsValues.value.carbs - meal.carbs,
+          fats: this.nutritionService.$pickedLunchMealsValues.value.fats - meal.fats,
+          calories: this.nutritionService.$pickedLunchMealsValues.value.calories - meal.calories,
+        });
+        this.pickedMealsValue = { ...this.nutritionService.$pickedLunchMealsValues.value }
       } else if (this.mainMealName == 'dinner') {
-        this.pickedDinnerMealsValue = {
-          protein: this.pickedDinnerMealsValue.protein - meal.proteins,
-          carbs: this.pickedDinnerMealsValue.carbs - meal.carbs,
-          fats: this.pickedDinnerMealsValue.fats - meal.fats,
-          calories: this.pickedDinnerMealsValue.calories - meal.calories,
-        };
-        this.pickedMealsValue = this.pickedDinnerMealsValue;
+        this.nutritionService.$pickedDinnerMealsValues.next({
+          protein: this.nutritionService.$pickedDinnerMealsValues.value.protein - meal.protein,
+          carbs: this.nutritionService.$pickedDinnerMealsValues.value.carbs - meal.carbs,
+          fats: this.nutritionService.$pickedDinnerMealsValues.value.fats - meal.fats,
+          calories: this.nutritionService.$pickedDinnerMealsValues.value.calories - meal.calories,
+        })
+        this.pickedMealsValue = { ...this.nutritionService.$pickedDinnerMealsValues.value }
       }
 
       this.pickedMeals.splice(index, 1);
-    } else if (type == 'editMeal') {
+    } 
+    else if (type == 'editMeal') {
       const meal = this.pickedMealsBeforeConfirm[index];
 
       if (this.mainMealName == 'breakfast') {
         this.pickedMealsBeforeConfirmValues = {
-          protein: this.pickedMealsBeforeConfirmValues.protein - meal.proteins,
-          fats: this.pickedMealsBeforeConfirmValues.fats - meal.fats,
-          carbs: this.pickedMealsBeforeConfirmValues.carbs - meal.carbs,
-          calories:
-            this.pickedMealsBeforeConfirmValues.calories - meal.calories,
+          protein: this.pickedBreakfastBeforeConfirmValues.protein -= meal.protein,
+          carbs: this.pickedBreakfastBeforeConfirmValues.carbs -= meal.carbs,
+          fats: this.pickedBreakfastBeforeConfirmValues.fats -= meal.fats,
+          calories: this.pickedBreakfastBeforeConfirmValues.calories -= meal.calories,
         };
       } 
       else if (this.mainMealName == 'lunch') {
         this.pickedMealsBeforeConfirmValues = {
-          protein: this.pickedMealsBeforeConfirmValues.protein - meal.proteins,
-          fats: this.pickedMealsBeforeConfirmValues.fats - meal.fats,
-          carbs: this.pickedMealsBeforeConfirmValues.carbs - meal.carbs,
-          calories:
-            this.pickedMealsBeforeConfirmValues.calories - meal.calories,
+          protein: this.pickedLunchBeforeConfirmValues.protein -= meal.protein,
+          carbs: this.pickedLunchBeforeConfirmValues.carbs -= meal.carbs,
+          fats:this.pickedLunchBeforeConfirmValues.fats -= meal.fats,
+          calories: this.pickedLunchBeforeConfirmValues.calories -= meal.calories,
         };
       } 
       else if (this.mainMealName == 'dinner') {
         this.pickedMealsBeforeConfirmValues = {
-          protein: this.pickedMealsBeforeConfirmValues.protein - meal.proteins,
-          fats: this.pickedMealsBeforeConfirmValues.fats - meal.fats,
-          carbs: this.pickedMealsBeforeConfirmValues.carbs - meal.carbs,
-          calories:
-            this.pickedMealsBeforeConfirmValues.calories - meal.calories,
+          protein: this.pickedDinnerBeforeConfirmValues.protein -= meal.protein,
+          carbs: this.pickedDinnerBeforeConfirmValues.carbs -= meal.carbs,
+          fats: this.pickedDinnerBeforeConfirmValues.fats -= meal.fats,
+          calories: this.pickedDinnerBeforeConfirmValues.calories -= meal.calories,
         };
       }
 
       this.pickedMealsBeforeConfirm.splice(index, 1);
     }
-
-    console.log('Before confirm: ');
-    console.log(this.pickedMealsBeforeConfirm);
-
-    console.log('Picked meals: ');
-    console.log(this.pickedMeals);
   }
 
   toggleEditMeal(mainMealName: string) {
     this.helperService.dimBackground.next(true);
     this.pickedMealsBeforeConfirm = this.pickedMeals.slice();
 
+    console.log("Breakfast: " + this.nutritionService.isBreakfastAdded + " Lunch: " + this.nutritionService.isLunchAdded + " Dinner: " + this.nutritionService.isDinnerAdded);
+
     if (mainMealName == 'breakfast') {
-      this.pickedBreakfastBeforeConfirmValues = { ...this.pickedBreakfastMealsValue };
-      this.pickedMeals = this.pickedBreakfastMeals;
-      this.pickedMealsValue = this.pickedBreakfastMealsValue;
+      this.pickedBreakfastBeforeConfirmValues = { ...this.nutritionService.$pickedBreakfastMealsValues.value };
+      this.pickedMeals = this.nutritionService.$pickedBreakfastMeals.value.slice();
+      this.pickedMealsValue = { ...this.nutritionService.$pickedBreakfastMealsValues.value }
     } else if (mainMealName == 'lunch') {
-      this.pickedLunchBeforeConfirmValues = { ...this.pickedLunchMealsValue };
-      this.pickedMeals = this.pickedLunchMeals;
-      this.pickedMealsValue = this.pickedLunchMealsValue;
+      this.pickedLunchBeforeConfirmValues = { ...this.nutritionService.$pickedLunchMealsValues.value };
+      this.pickedMeals = this.nutritionService.$pickedLunchMeals.value.slice();
+      this.pickedMealsValue = { ...this.nutritionService.$pickedLunchMealsValues.value }
     } else if (mainMealName == 'dinner') {
-      this.pickedDinnerBeforeConfirmValues = { ...this.pickedDinnerMealsValue };
-      this.pickedMeals = this.pickedDinnerMeals;
-      this.pickedMealsValue = this.pickedDinnerMealsValue;
+      this.pickedDinnerBeforeConfirmValues = { ...this.nutritionService.$pickedDinnerMealsValues.value };
+      this.pickedMeals = this.nutritionService.$pickedDinnerMeals.value.slice();
+      this.pickedMealsValue = { ...this.nutritionService.$pickedDinnerMealsValues.value }
     }
 
     this.tempPickedMealsValue = this.pickedMealsValue;
@@ -372,43 +393,54 @@ export class YourDayComponent {
       this.mainMealName = mainMealName;
       this.isEditMealVisible = true;
     }
+    console.log("Picked meals before confirm in toggle");
+    console.log(this.pickedMealsBeforeConfirm);
   }
 
   confirmMeal() {
     this.helperService.dimBackground.next(false);
     this.isEditMealVisible = false;
 
-    this.pickedMeals = this.pickedMealsBeforeConfirm;
-    this.pickedMealsValue = this.pickedMealsBeforeConfirmValues;
+    this.pickedMeals = this.pickedMealsBeforeConfirm.slice();
+    this.pickedMealsValue = { ...this.pickedMealsBeforeConfirmValues };
 
     if (this.mainMealName == 'breakfast') {
       if (this.pickedMealsBeforeConfirm.length == 0) {
-        this.isBreakfastAdded = false;
-        this.pickedBreakfastMealsValue = this.pickedBreakfastBeforeConfirmValues;
+        this.nutritionService.isBreakfastAdded = false;
+        this.nutritionService.$pickedBreakfastMealsValues.next(this.pickedBreakfastBeforeConfirmValues);
       }
-      this.pickedBreakfastMeals = this.pickedMeals;
-      this.pickedBreakfastMealsValue = this.pickedMealsValue;
+      this.nutritionService.$pickedBreakfastMeals.next(this.pickedMeals.slice());
+      this.nutritionService.$pickedBreakfastMealsValues.next(this.pickedMealsValue);
     } else if (this.mainMealName == 'lunch') {
       if (this.pickedMealsBeforeConfirm.length == 0) {
-        this.isLunchAdded = false;
-        this.pickedLunchMealsValue = this.pickedLunchBeforeConfirmValues;
+        this.nutritionService.isLunchAdded = false;
+        this.nutritionService.$pickedLunchMealsValues.next(this.pickedLunchBeforeConfirmValues);
       }
-      this.pickedLunchMeals = this.pickedMeals;
-      this.pickedLunchMealsValue = this.pickedMealsValue;
+      this.nutritionService.$pickedLunchMeals.next(this.pickedMeals.slice());
+      this.nutritionService.$pickedLunchMealsValues.next(this.pickedMealsValue);
     } else if (this.mainMealName == 'dinner') {
       if (this.pickedMealsBeforeConfirm.length == 0) {
-        this.isDinnerAdded = false;
-        this.pickedDinnerMealsValue = this.pickedDinnerBeforeConfirmValues;
+        this.nutritionService.isDinnerAdded = false;
+        this.nutritionService.$pickedDinnerMealsValues.next(this.pickedDinnerBeforeConfirmValues);
       }
-      this.pickedDinnerMeals = this.pickedMeals;
-      this.pickedDinnerMealsValue = this.pickedMealsValue;
+      this.nutritionService.$pickedDinnerMeals.next(this.pickedMeals.slice());
+      this.nutritionService.$pickedDinnerMealsValues.next(this.pickedMealsValue);
     }
 
-    this.totalMealsValue = {
-      protein: this.totalMealsValue.protein - this.tempPickedMealsValue.protein + this.pickedMealsValue.protein,
-      fats: this.totalMealsValue.fats - this.tempPickedMealsValue.fats + this.pickedMealsValue.fats,
-      carbs: this.totalMealsValue.carbs - this.tempPickedMealsValue.carbs + this.pickedMealsValue.carbs,
-      calories: this.totalMealsValue.calories - this.tempPickedMealsValue.calories + this.pickedMealsValue.calories,
-    };
+    this.nutritionService.editMeal({
+      calories: this.pickedMealsValue.calories,
+      carbs: this.pickedMealsValue.carbs,
+      fats: this.pickedMealsValue.fats,
+      protein: this.pickedMealsValue.protein,
+      mealType: this.mainMealName,
+      addedMeals: this.pickedMeals.slice(),
+    })
+
+    this.nutritionService.$totalMealsValue.next({
+      totalProtein: this.nutritionService.$totalMealsValue.value.totalProtein - this.tempPickedMealsValue.protein + this.pickedMealsValue.protein,
+      totalFats: this.nutritionService.$totalMealsValue.value.totalFats - this.tempPickedMealsValue.fats + this.pickedMealsValue.fats,
+      totalCarbs: this.nutritionService.$totalMealsValue.value.totalCarbs - this.tempPickedMealsValue.carbs + this.pickedMealsValue.carbs,
+      totalCalories: this.nutritionService.$totalMealsValue.value.totalCalories - this.tempPickedMealsValue.calories + this.pickedMealsValue.calories,
+    });
   }
 }
