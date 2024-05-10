@@ -73,6 +73,11 @@ export class YourProfileComponent {
       protein: 0,
       fats: 0,
     });
+
+    this.nutritionService.$pickedBreakfastMeals.next([]);
+    this.nutritionService.$pickedLunchMeals.next([]);
+    this.nutritionService.$pickedDinnerMeals.next([]);
+
     this.nutritionService.isBreakfastAdded = false;
     this.nutritionService.isLunchAdded = false;
     this.nutritionService.isDinnerAdded = false;
