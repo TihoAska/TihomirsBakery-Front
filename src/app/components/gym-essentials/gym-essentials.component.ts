@@ -7,15 +7,17 @@ import { Component } from '@angular/core';
 })
 export class GymEssentialsComponent {
 
-  background = { path: '../../../assets/pullup-bar-cartoonish.png', name: 'PULLUP-BAR'}
+  rootUrl = '../../../assets/images/gym-essentials/'
+
+  background = { path: this.rootUrl + 'pullup-bar-cartoonish.png', name: 'PULLUP-BAR'}
 
   images = [
-    { path: '../../../assets/gym-chalk.jpg', name: 'GYM-CHALK'},
-    { path: '../../../assets/gym-straps.jpg', name: 'GYM-STRAPS'},
-    { path: '../../../assets/chain-belt.png', name: 'GYM-CHALK'},
-    { path: '../../../assets/gym-gloves.jpg', name: 'GYM-STRAPS'},
-    { path: '../../../assets/gym-belt.jpg', name: 'GYM-CHALK'},
-    { path: '../../../assets/resistance-bands.jpg', name: 'GYM-STRAPS'},
+    { path: this.rootUrl +  'gym-chalk.jpg', name: 'GYM-CHALK'},
+    { path: this.rootUrl +  'gym-straps.jpg', name: 'GYM-STRAPS'},
+    { path: this.rootUrl +  'chain-belt.png', name: 'GYM-CHALK'},
+    { path: this.rootUrl +  'gym-gloves.jpg', name: 'GYM-STRAPS'},
+    { path: this.rootUrl +  'gym-belt.jpg', name: 'GYM-CHALK'},
+    { path: this.rootUrl +  'resistance-bands.jpg', name: 'GYM-STRAPS'},
   ]
 
   ngOnInit(){

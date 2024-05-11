@@ -14,8 +14,8 @@ export class MapComponent {
   private mapContainer!: ElementRef<HTMLElement>;
 
   markerIcons = [
-    { icon: '../../../assets/red-marker-icon.png', name: 'RED-MARKER' },
-    { icon: '../../../assets/green-marker-icon.png', name: 'GTREEN-MARKER' },
+    { icon: '../../../assets/images/map/red-marker-icon.png', name: 'RED-MARKER' },
+    { icon: '../../../assets/images/map/green-marker-icon.png', name: 'GTREEN-MARKER' },
   ]
 
   constructor() {

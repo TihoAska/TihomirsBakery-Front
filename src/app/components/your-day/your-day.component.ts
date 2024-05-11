@@ -48,10 +48,7 @@ export type ChartOptions = {
 })
 export class YourDayComponent {
   images = [
-    {
-      path: '../../../assets/your-day-kitchen.jpg',
-      name: 'KITCHEN-BACKGROUND',
-    },
+    { path: '../../../assets/images/your-day/your-day-kitchen.jpg', name: 'KITCHEN-BACKGROUND' },
   ];
 
   searchControl = new FormControl();

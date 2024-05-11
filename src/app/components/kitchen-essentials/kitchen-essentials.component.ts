@@ -6,17 +6,19 @@ import { Component } from '@angular/core';
   styleUrl: './kitchen-essentials.component.scss'
 })
 export class KitchenEssentialsComponent {
-  background = { path: '../../../assets/kitchen-background.jpg', name: 'KITCHEN'}
+  rootUrl = '../../../assets/images/kitchen-essentials/';
+
+  background = { path: this.rootUrl + 'kitchen-background.jpg', name: 'KITCHEN'}
 
   images = [
-    { path: '../../../assets/oats-cartoonish.png', name: 'OATS'},
-    { path: '../../../assets/peanut-butter-cartoonish.png', name: 'PEANUT-BUTTER'},
-    { path: '../../../assets/bananas-cartoonish.png', name: 'BANANAS'},
-    { path: '../../../assets/milk-cartoonish.png', name: 'GYM-MILK'},
-    { path: '../../../assets/chicken-cartoonish.png', name: 'CHICKEN'},
-    { path: '../../../assets/rice-cartoonish.png', name: 'RICE'},
-    { path: '../../../assets/whey-cartoonish.png', name: 'WHEY'},
-    { path: '../../../assets/creatine-cartoonish.png', name: 'CREATINE'},
+    { path: this.rootUrl + 'oats.jpeg', name: 'OATS'},
+    { path: this.rootUrl + 'peanut-butter.jpg', name: 'PEANUT-BUTTER'},
+    { path: this.rootUrl + 'bananas.jpg', name: 'BANANAS'},
+    { path: this.rootUrl + 'milk.jpg', name: 'GYM-MILK'},
+    { path: this.rootUrl + 'chicken.jpg', name: 'CHICKEN'},
+    { path: this.rootUrl + 'rice.jpg', name: 'RICE'},
+    { path: this.rootUrl + 'whey.jpg', name: 'WHEY'},
+    { path: this.rootUrl + 'creatine.jpg', name: 'CREATINE'},
   ]
 
   ngOnInit(){

@@ -12,15 +12,17 @@ export class HomeComponent {
   @ViewChild('workout') workoutContainer  : ElementRef;
   @ViewChild('cooking') cookingContainer  : ElementRef;
 
+  rootUrl = '../../../assets/images/home/';
+
   images = [
-    { path: '../../../assets/monkey-bar-cartoonish.png', name: 'MONKEY-BAR' },
-    { path: '../../../assets/oatmeal-with-fruit.jpg', name: 'OATMEAL' },
-    { path: '../../../assets/chicken-with-pasta.jpg', name: 'CHICKEN-PASTA' },
-    { path: '../../../assets/ham-sandwich.jpg', name: 'HAM-SANDWICH' },
-    { path: '../../../assets/fruit-salad.jpg', name: 'FRUIT-SALAD' },
-    { path: '../../../assets/pullup-bar-edited.jpg', name: 'PULLUP-BAR' },
-    { path: '../../../assets/home-gym.jpg', name: 'MUSCLE-UP' },
-    { path: '../../../assets/home-gym-2.jpeg', name: 'PULLS' },
+    { path: this.rootUrl + 'monkey-bar-cartoonish.png', name: 'MONKEY-BAR' },
+    { path: this.rootUrl + 'oatmeal-with-fruit.jpg', name: 'OATMEAL' },
+    { path: this.rootUrl + 'chicken-with-pasta.jpg', name: 'CHICKEN-PASTA' },
+    { path: this.rootUrl + 'ham-sandwich.jpg', name: 'HAM-SANDWICH' },
+    { path: this.rootUrl + 'fruit-salad.jpg', name: 'FRUIT-SALAD' },
+    { path: this.rootUrl + 'pullup-bar-edited.jpg', name: 'PULLUP-BAR' },
+    { path: this.rootUrl + 'home-gym.jpg', name: 'MUSCLE-UP' },
+    { path: this.rootUrl + 'home-gym-2.jpeg', name: 'PULLS' },
   ]
 
   constructor(

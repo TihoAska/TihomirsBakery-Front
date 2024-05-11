@@ -160,7 +160,7 @@
                     width: 300px;
                     border-radius: 50%;
                     transition: transform 0.3s ease;
-                    background-image: url('../../../assets/oatmeal-blurred.png'); 
+                    background-image: url('../../../assets/images/your-day/oatmeal-blurred.png'); 
                     background-size: cover; 
                     background-position: center;
                     display: flex;
@@ -186,7 +186,7 @@
                     box-shadow: 0 0 15px 5px red;
                     border-radius: 50%;
                     transition: transform 0.3s ease;
-                    background-image: url('../../../assets/oatmeal-blurred.png'); 
+                    background-image: url('../../../assets/images/your-day/oatmeal-blurred.png'); 
                     display: flex;
                     flex-direction: column;
                     justify-content: center;
@@ -248,7 +248,7 @@
                 }
 
                 .lunch{
-                    background-image: url('../../../assets/chicken-with-pasta-blurred.jpg'); 
+                    background-image: url('../../../assets/images/your-day/chicken-with-pasta-blurred.jpg'); 
                     border-radius: 10%;
                     background-size: cover; 
                     background-position: center;
@@ -272,7 +272,7 @@
 
                 .edit-lunch{
                     box-shadow: 0 0 15px 5px orange;
-                    background-image: url('../../../assets/chicken-with-pasta-blurred.jpg'); 
+                    background-image: url('../../../assets/images/your-day/chicken-with-pasta-blurred.jpg'); 
                     border-radius: 10%;
                     background-size: cover; 
                     background-position: center;
@@ -337,7 +337,7 @@
                 }
     
                 .dinner{ 
-                    background-image: url('../../../assets/ham-sandwich-blurred.jpg'); 
+                    background-image: url('../../../assets/images/your-day/ham-sandwich-blurred.jpg'); 
                     border-radius: 50%;
                     background-size: cover; 
                     background-position: center;
@@ -363,7 +363,7 @@
                     box-shadow: 0 0 15px 5px lightblue;
                     border-radius: 50%;
                     transition: transform 0.3s ease;
-                    background-image: url('../../../assets/ham-sandwich-blurred.jpg'); 
+                    background-image: url('../../../assets/images/your-day/ham-sandwich-blurred.jpg'); 
                     display: flex;
                     flex-direction: column;
                     justify-content: center;
@@ -452,7 +452,7 @@
             }
 
             .workout{
-                background-image: url('../../../assets/battle-ropes.jpg'); 
+                background-image: url('../../../assets/images/your-day/battle-ropes.jpg'); 
                 background-size: cover;
                 background-position: center;
                 height: 400px;
@@ -710,8 +710,6 @@
                     color: lightcoral
                 }
             }
-
-
         }
         
         .picked-meals::-webkit-scrollbar-track {
