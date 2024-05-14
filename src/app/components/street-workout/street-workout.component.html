@@ -1,18 +1,7 @@
 <div class="sw-container">
     <div class="sw">
-        <img [src]="images[0].path" [alt]="images[0].name">
+        <img id="background-image" [src]="images[0].path" [alt]="images[0].name">
         <div class="sw-description">
-            <!-- <h1>STREET WORKOUT</h1>
-            <p>STREET WORKOUT IS A WORKOUT STYLE IN A PARK OR ON A STREET, WHEREVER YOU CAN FIND BARS.</p>
-            <br>
-            <p>EXERCISES ARE DONE WITH YOUR OWN BODY AND RANGE FROM VERY EASY ONES THAT EVERYONE CAN DO TO VERY HARD ONES THAT ONLY EXPERIENCED ATHLETES CAN DO AND BEGINNERS CAN ONLY ADMIRE.</p>
-            <br>
-            <hr>
-            <p>HERE I WILL SHOW YOU SOME EXERCISES THAT ARE ENOUGH TO BUILD MUSCLES AND A FINE BODY.</p>
-            <br>
-            <p>EVEN THOUGH YOU CAN BUILD A NICE BODY WITH THESE EXERCISES, THERE ARE SOME MUSCLE GROUPS THAT WILL FALL BEHIND, BECAUSE YOU CANNOT TARGET EVERY SINGLE MUSCLE WITH THIS STYLE OF WORKOUT.</p>
-            <br>
-            <p>FOR BUILDING A MORE COMPLETE AND ALL ROUND BODY YOU SHOULD CHECK OUT THE <span style="color: darkslategray; text-shadow: 1px 1px 1px wheat;">GYM</span> PAGE.</p> -->
         </div>
         <div class="sw-description-2">
             <p id="title">street workout.</p>
@@ -29,50 +18,52 @@
     <div class="pullups-container">
         <div class="gradient-overlay-2">
         </div>
-        
-        <div class="pullups">
-            <video autoplay loop width="400px" height="400px">
-                <source [src]="videos[0].path" type="video/mp4">
-            </video>
-            <div class="description">
-                <h3>PULLUPS</h3>
-                <hr>
-                <p>
-                    Great exercise for building upper body strength that targets back and arm muscles. This is a <span style="color: orangered;">MUST DO</span> exercise. 
-                </p>
-                <p>
-                    Palms are facing away from you, retract your back, 
-                    tighten your core and legs and pull yourself up. 
-                </p>
-                <p>
-                    <span style="color: orangered;">MUSCLES:</span> Back, Biceps, Forearms
-                </p>
-                <p>
-                    <span style="color: orangered;">DIFFICULTY: </span><span style="color: orange;">Moderate</span>
-                </p>
+
+        <div class="pulls">
+            <div class="pullups">
+                <video autoplay loop width="400px" height="400px">
+                    <source [src]="videos[0].path" type="video/mp4">
+                </video>
+                <div class="description">
+                    <h3>PULLUPS</h3>
+                    <hr>
+                    <p>
+                        Great exercise for building upper body strength that targets back and arm muscles. This is a <span style="color: orangered;">MUST DO</span> exercise. 
+                    </p>
+                    <p>
+                        Palms are facing away from you, retract your back, 
+                        tighten your core and legs and pull yourself up. 
+                    </p>
+                    <p>
+                        <span style="color: orangered;">MUSCLES:</span> Back, Biceps, Forearms
+                    </p>
+                    <p>
+                        <span style="color: orangered;">DIFFICULTY: </span><span style="color: orange;">Moderate</span>
+                    </p>
+                </div>
             </div>
-        </div>
-        
-        <div class="pullups-wide">
-            <video autoplay loop width="400px" height="400px">
-                <source [src]="videos[1].path" type="video/mp4">
-            </video>
-            <div class="description">
-                <h3>INVERTED ROWS</h3>
-                <hr>
-                <p>
-                    The easiest variation of pulling exercises. Great for beginners, super sets and warming up.
-                </p>
-                <p>
-                    Find a low bar that suits your strength. The lower it is the harder the exercise. You can make it easier by bending your knees. 
-                    Try to put a thumb over the bar and pull with your back, not with your hands. 
-                </p>
-                <p>
-                    <span style="color: orangered;">MUSCLES:</span> Back, Biceps, Forearms
-                </p>
-                <p>
-                    <span style="color: orangered;">DIFFICULTY: </span> <span style="color: greenyellow;">Easy</span>
-                </p>
+            
+            <div class="pullups-wide">
+                <video autoplay loop width="400px" height="400px">
+                    <source [src]="videos[1].path" type="video/mp4">
+                </video>
+                <div class="description">
+                    <h3>INVERTED ROWS</h3>
+                    <hr>
+                    <p>
+                        The easiest variation of pulling exercises. Great for beginners, super sets and warming up.
+                    </p>
+                    <p>
+                        Find a low bar that suits your strength. The lower it is the harder the exercise. You can make it easier by bending your knees. 
+                        Try to put a thumb over the bar and pull with your back, not with your hands. 
+                    </p>
+                    <p>
+                        <span style="color: orangered;">MUSCLES:</span> Back, Biceps, Forearms
+                    </p>
+                    <p>
+                        <span style="color: orangered;">DIFFICULTY: </span> <span style="color: greenyellow;">Easy</span>
+                    </p>
+                </div>
             </div>
         </div>
     </div>

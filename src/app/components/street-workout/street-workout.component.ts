@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class StreetWorkoutComponent {
 
   images = [
-    { path: '../../../assets/pullup-bar-cartoonish.png', name: 'PULLUP-BAR' },
+    { path: '../../../assets/images/street-workout/pullup-bar-cartoonish.png', name: 'PULLUP-BAR' },
   ]
 
   videos = [
