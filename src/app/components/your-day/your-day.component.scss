@@ -4,15 +4,21 @@
     --darkgreen: #001011;
     --lightgreen: #08170d;
 
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     position: relative;
     overflow-x: hidden;
 
     .kitchen-background{
         position: relative;
-        height: 95%;
+        width: 100%;
+        height: 90%;
 
+        img{
+            width: 100%;
+            height: 100%;
+        }
+        
         .description{
             position: absolute;
             top: 65%;
@@ -63,28 +69,35 @@
     
         .todays-goal{
             width: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
             
             .calories-and-chart{   
+                width: 100%;
                 display: flex;
                 flex-direction: row;
 
                 .calories{
-                    width: 50%;
+                    width: 94%;
+                    height: 350px;
                     color: white;
                     display: flex;
-                    flex-direction: column;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: space-between;
                     font-weight: bold;
     
                     h3{
-                        margin-top: 30%;
-                        margin-left: 30%;
-                        margin-bottom: 0;                
-                        font-size: 70px;
+                        margin-left: 15%;
+                        margin-bottom: 0;            
+                        font-size: 80px;
                     }
     
                     p{
-                        margin-left: 30%; 
-                        font-size: 70px;
+                        font-size: 80px;
+                        margin-bottom: 0;
                     }
                 }
         
@@ -99,21 +112,21 @@
             .macros{
                 display: flex;
                 flex-direction: column;
+                justify-content: space-between;
+                width: 80%;
+                height: 400px;
 
                 .protein, .fats, .carbs{
                     height: 80px;
-                    width: 1000px;
+                    width: 100%;
                     background-color: var(--lightgreen);
-                    margin-bottom: 50px;
-                    margin-left: 200px;
+                    // margin-bottom: 50px;
+                    margin-left: 50px;
                     display: flex;
                     flex-direction: row;
+                    align-items: center;
                     justify-content: space-between;
                     font-size: 30px;
-
-                    p{
-                        margin-top: 20px;
-                    }
 
                     .macro{
                         margin-left: 30px;
@@ -152,6 +165,7 @@
             .meals{
                 display: flex;
                 flex-direction: row;
+                align-items: center;
                 justify-content: space-evenly;
                 font-weight: bold;
     
@@ -455,8 +469,8 @@
                 background-image: url('../../../assets/images/your-day/battle-ropes.jpg'); 
                 background-size: cover;
                 background-position: center;
-                height: 400px;
-                width: 1000px;
+                height: 35%;
+                width: 80%;
                 margin-top: 5%;
                 margin-left: 11%;
                 border-radius: 10px;
@@ -725,6 +739,479 @@
         .picked-meals::-webkit-scrollbar {
             width: 15px;
             height: 8px;
+        }
+    }
+}
+
+@media screen and (max-width: 2000px){
+    .container{
+        --h1-font-size: 80px;
+        --welcome-font-size: 30px;
+
+        .kitchen-background{
+            .description{
+                top: 60%;
+                margin-left: 10%;
+            }
+        }
+
+        .goal-and-meals{
+            height: 900px;
+
+            .workout-and-meals{
+
+                .meals{
+                    .breakfast, .lunch, .dinner{
+                        height: 250px;
+                        width: 250px;
+                    }
+                }
+            }
+
+            .todays-goal{
+                .calories-and-chart{
+                    .calories{
+                        h3, p{
+                            font-size: 70px;
+                        }
+                    }                        
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1700px){
+    .container{
+        --h1-font-size: 80px;
+        --welcome-font-size: 30px;
+
+        .kitchen-background{
+            .description{
+                top: 55%;
+                margin-left: 10%;
+            }
+        }
+
+        .goal-and-meals{
+            height: 800px;
+
+            .workout-and-meals{
+                .meals{
+                    padding-top: 5%;
+
+                    .breakfast, .lunch, .dinner{
+                        height: 200px;
+                        width: 200px;
+                    }
+                }
+            }
+
+            .todays-goal{
+                .calories-and-chart{
+                    .calories{
+                        margin-left: 2%;
+
+                        h3, p{
+                            font-size: 60px;
+                        }
+                    }                        
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1400px){
+    .container{
+        --h1-font-size: 80px;
+        --welcome-font-size: 30px;
+
+        .kitchen-background{
+            .description{
+                margin-left: 10%;
+                top: 50%;
+            }
+        }
+
+        .goal-and-meals{
+            height: 700px;
+
+            .workout-and-meals{
+
+                .workout{
+                    p{
+                        margin-top: 35%;
+                        font-size: 30px;
+                    }
+                }
+
+                .meals{
+                    padding-top: 5%;
+
+                    .breakfast, .lunch, .dinner{
+                        height: 180px;
+                        width: 180px;
+                    }
+                }
+            }
+
+            .todays-goal{
+                .calories-and-chart{
+                    .calories{
+                        margin-left: 4%;
+                        height: 100px;
+
+                        h3, p{
+                            font-size: 50px;
+                        }
+                    }
+                }
+
+                .macros{
+                    height: 250px;
+                    width: 70%;
+
+                    .protein, .fats, .carbs{
+                        height: 60px;
+                        p{
+                            font-size: 25px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1200px){
+    .container{
+        --h1-font-size: 60px;
+        --welcome-font-size: 25px;
+
+        .kitchen-background{
+            .description{
+                margin-left: 15%;
+                top: 50%;
+            }
+        }
+
+        .goal-and-meals{
+            height: 1700px;
+            flex-direction: column;
+
+            hr{
+                display: none;
+            }
+
+            .workout-and-meals{
+                width: 90%;
+                padding-left: 10%;
+                background-color: var(--darkgreen);
+                height: 1000px;
+
+                .workout{
+                    p{
+                        margin-top: 35%;
+                        font-size: 50px;
+                    }
+                }
+
+                .meals{
+                    padding-top: 5%;
+                    padding-bottom: 5%;
+
+                    .breakfast, .lunch, .dinner{
+                        height: 250px;
+                        width: 250px;
+                    }
+                }
+            }
+
+            .todays-goal{
+                height: 700px;
+                width: 100%;
+
+                .calories-and-chart{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: center;
+                    margin-left: 10%;
+
+                    .calories{
+                        width: 70%;
+                        height: 100px;
+                        justify-content: space-between;
+                        margin: 0;
+
+                        h3, p{
+                            margin: 0;
+                            font-size: 50px;
+                        }
+                    }
+                }
+
+                .macros{
+                    height: 250px;
+                    width: 70%;
+
+                    .protein, .fats, .carbs{
+                        height: 60px;
+                        p{
+                            font-size: 25px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 900px){
+    .container{
+        --h1-font-size: 50px;
+        --welcome-font-size: 20px;
+
+        .kitchen-background{
+            .description{
+                margin-left: 15%;
+                top: 50%;
+            }
+        }
+
+        .goal-and-meals{
+            height: 1400px;
+            flex-direction: column;
+
+            hr{
+                display: none;
+            }
+
+            .workout-and-meals{
+                width: 90%;
+                padding-left: 10%;
+                background-color: var(--darkgreen);
+                height: 700px;
+
+                .workout{
+                    p{
+                        margin-top: 30%;
+                        font-size: 30px;
+                    }
+                }
+
+                .meals{
+                    padding-top: 5%;
+
+                    .breakfast, .lunch, .dinner{
+                        height: 180px;
+                        width: 180px;
+                    }
+                }
+            }
+
+            .todays-goal{
+                height: 700px;
+                width: 100%;
+
+                .calories-and-chart{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: center;
+                    margin-left: 10%;
+
+                    .calories{
+                        width: 70%;
+                        height: 100px;
+                        justify-content: space-between;
+                        margin: 0;
+
+                        h3, p{
+                            margin: 0;
+                            font-size: 50px;
+                        }
+                    }
+                }
+
+                .macros{
+                    height: 250px;
+                    width: 70%;
+
+                    .protein, .fats, .carbs{
+                        height: 60px;
+                        p{
+                            font-size: 25px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 800px){
+    .container{
+        --h1-font-size: 50px;
+        --welcome-font-size: 20px;
+
+        .kitchen-background{
+            .description{
+                margin-left: 18%;
+                top: 50%;
+            }
+        }
+
+        .goal-and-meals{
+            height: 1300px;
+            flex-direction: column;
+
+            hr{
+                display: none;
+            }
+
+            .workout-and-meals{
+                width: 90%;
+                padding-left: 10%;
+                background-color: var(--darkgreen);
+                height: 600px;
+
+                .meals{
+                    padding-top: 5%;
+                    width: 90%;
+                    padding-left: 5%;
+
+                    .breakfast, .lunch, .dinner{
+                        height: 160px;
+                        width: 160px;
+                    }
+                }
+            }
+
+            .todays-goal{
+                height: 700px;
+                width: 100%;
+
+                .calories-and-chart{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: center;
+                    margin-left: 10%;
+
+                    .calories{
+                        width: 70%;
+                        height: 100px;
+                        justify-content: space-between;
+                        margin: 0;
+
+                        h3, p{
+                            margin: 0;
+                            font-size: 50px;
+                        }
+                    }
+                }
+
+                .macros{
+                    height: 250px;
+                    width: 70%;
+
+                    .protein, .fats, .carbs{
+                        height: 60px;
+                        p{
+                            font-size: 25px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 650px){
+    .container{
+        --h1-font-size: 50px;
+        --welcome-font-size: 18px;
+
+        .kitchen-background{
+            .description{
+                margin-left: 5%;
+                top: 50%;
+            }
+        }
+
+        .goal-and-meals{
+            height: 2000px;
+            flex-direction: column;
+
+            hr{
+                display: none;
+            }
+
+            .workout-and-meals{
+                width: 100%;
+                padding-left: 0;
+                margin-left: 0;
+                background-color: var(--darkgreen);
+                height: 1300px;
+
+                .workout{
+                    height: 20%;
+                    p{
+                        margin-top: 45%;
+                        font-size: 30px;
+                    }
+                }
+
+                .meals{
+                    padding-top: 5%;
+                    flex-direction: column;
+
+                    .breakfast, .lunch, .dinner{
+                        height: 220px;
+                        width: 220px;
+                    }
+                }
+            }
+
+            .todays-goal{
+                height: 700px;
+                width: 100%;
+
+                .calories-and-chart{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: center;
+                    margin-left: 0;
+
+                    .calories{
+                        width: 70%;
+                        height: 100px;
+                        justify-content: space-between;
+                        margin: 0;
+
+                        h3, p{
+                            margin: 0;
+                            font-size: 50px;
+                        }
+                    }
+                }
+
+                .macros{
+                    height: 250px;
+                    width: 70%;
+
+                    .protein, .fats, .carbs{
+                        height: 60px;
+                        margin-left: 0;
+                        p{
+                            font-size: 25px;
+                        }
+                    }
+                }
+            }
         }
     }
 }
