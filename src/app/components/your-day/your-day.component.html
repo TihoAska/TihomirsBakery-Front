@@ -1,6 +1,6 @@
 <div class="container">
     <div class="kitchen-background">
-        <img [src]="images[0].path" [alt]="images[0].name" height="100%" width="100%">
+        <img [src]="images[0].path" [alt]="images[0].name">
         <div class="description">
             <p id="title">your day.</p>
             <p id="welcome">here you can track your calories and macros by logging your food and workout.</p>
@@ -16,7 +16,7 @@
                     <h3>Today's goal:</h3>
                     <p>{{ (nutritionService.$totalMealsValue | async).totalCalories | number:'1.0-2' }} kcal</p>
                 </div>
-                <div id="chart">
+                <!-- <div id="chart">
                     <apx-chart
                         [series]="helperService.chartOptions.chartSeries"
                         [chart]="helperService.chartOptions.chartDetails"
@@ -24,7 +24,7 @@
                         [fill]="helperService.chartOptions.fill"
                         [tooltip]="helperService.chartOptions.tooltip"
                     ></apx-chart>
-                </div>
+                </div> -->
             </div>
 
             <div class="macros">
