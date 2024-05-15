@@ -21,7 +21,7 @@
         <div class="gradient-overlay-2"></div>
         <div class="meal-container">
             <div class="images">
-                <div class="oatmeal-container">
+                <div class="oatmeal-container" (click)="navigateToMeal('breakfast')">
                     <img id="oatmeal" [src]="images[1].path" [alt]="images[1].name">
                 </div>
                 <div class="rice-cakes-container">
