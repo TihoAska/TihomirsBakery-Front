@@ -53,4 +53,19 @@ export class HomeComponent {
   navigateToSw(){
     this.router.navigate(['street-workout']);
   }
+
+  navigateToMeal(mealType : string){
+    if(mealType == 'breakfast'){
+      this.router.navigate(['breakfast-ideas']);
+    } 
+    else if(mealType == 'lunch'){
+      this.router.navigate(['lunch-ideas']);
+    }
+    else if(mealType == 'snack'){
+      this.router.navigate(['snack-ideas']);
+    }
+    else if(mealType == 'dinner'){
+      this.router.navigate(['dinner-ideas']);
+    }
+  }
 }
