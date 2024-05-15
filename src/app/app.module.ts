@@ -32,6 +32,7 @@ import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
 import { RegisterComponent } from './components/register/register.component';
 import { AvatarPickerComponent } from './components/avatar-picker/avatar-picker.component';
 import { YourProfileComponent } from './components/your-profile/your-profile.component';
+import { BreakfastIdeasComponent } from './components/breakfast-ideas/breakfast-ideas.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { YourProfileComponent } from './components/your-profile/your-profile.com
     LoginComponent,
     RegisterComponent,
     AvatarPickerComponent,
-    YourProfileComponent
+    YourProfileComponent,
+    BreakfastIdeasComponent,
   ],
   imports: [
     BrowserModule,

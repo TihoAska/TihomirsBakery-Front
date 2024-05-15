@@ -1,0 +1,72 @@
+<div class="breakfast-ideas-wrapper">
+    <div class="background">
+        <img id="background-image" [src]="background.path" [alt]="background.name">
+        <div class="description-2">
+            <p id="title">breakfast ideas.</p>
+            <p id="welcome">
+                these are my ideas for a healthy breakfast. it doesn't take much time to make but will fill you up with healthy 
+                calories and helps you start your day the right way.
+            </p>
+        </div>
+        <div class="gradient-overlay"></div>
+    </div>
+    
+    <div class="breakfast-ideas">
+        <div class="gradient-overlay-2"></div>
+
+        <div class="omelette-and-oatmeal">
+            <div class="omelette">
+                <img class="equipment-img" [src]="images[0].path" [alt]="images[0].name">
+                <div class="omelette-description">
+                    <h3>PIZZA OMELETTE</h3>
+                    <hr>
+                    <p>
+                        A meal that tastes just like pizza, but is a lot healthier. Butter plays a key role here, so use it instead of oil.
+                        Origano and ketchup give you that pizza taste, just don't overdo it with cheese. <br><br> <span style="color: orange;">INGREDIENTS: 
+                        butter, eggs, cheese, origano, mushrooms.</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="oatmeal">
+                <img class="equipment-img" [src]="images[1].path" [alt]="images[1].name">
+                <div class="oatmeal-description">
+                    <h3>PROTEIN OATMEAL</h3>
+                    <hr>
+                    <p>
+                        So many variations of this meal can be made. Main ingredients are oats and whey protein. 
+                        Fruit can be of your choice, but my picks are banana or kiwi. <br><br> <span style="color: orange;">INGREDIENTS: 
+                        oats, whey, fruit, nuts/peanut butter.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="shake-and-fruit">
+            <div class="shake">
+                <img class="equipment-img" [src]="images[2].path" [alt]="images[2].name">
+                <div class="shake-description">
+                    <h3>OATMEAL SHAKE</h3>
+                    <hr>
+                    <p>
+                        If your oatmeal is hard to eat, you can just blend it and drink it. Blending stuff makes it easy to get your calories
+                        in if you don't feel like eating. You can also put some coffe in it.<br><br> <span style="color: orange;">INGREDIENTS: 
+                        oats, whey, fruit, nuts/peanut butter, coffee.</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="fruit">
+                <img class="equipment-img" [src]="images[3].path" [alt]="images[3].name">
+                <div class="fruit-description">
+                    <h3>WHEY WITH FRUIT</h3>
+                    <hr>
+                    <p>
+                        If you're in a hurry, just mix some whey protein with water and grab any fruit you like. You'll get the protein and nutrients
+                        for the morning, but you will be hungry soon, so make sure you pack yourself one of the meals mentioned before.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

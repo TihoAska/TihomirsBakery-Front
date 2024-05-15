@@ -8,11 +8,16 @@ import { StreetWorkoutComponent } from './components/street-workout/street-worko
 import { GymEssentialsComponent } from './components/gym-essentials/gym-essentials.component';
 import { KitchenEssentialsComponent } from './components/kitchen-essentials/kitchen-essentials.component';
 import { UserSignedInGuard } from './guards/userSignedInGuard';
+import { BreakfastIdeasComponent } from './components/breakfast-ideas/breakfast-ideas.component';
 
 const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
+  },
+  {
+    path: 'breakfast-ideas',
+    component: BreakfastIdeasComponent,
   },
   {
     path: 'your-day',
