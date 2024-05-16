@@ -33,6 +33,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { AvatarPickerComponent } from './components/avatar-picker/avatar-picker.component';
 import { YourProfileComponent } from './components/your-profile/your-profile.component';
 import { BreakfastIdeasComponent } from './components/breakfast-ideas/breakfast-ideas.component';
+import { DinnerIdeasComponent } from './components/dinner-ideas/dinner-ideas.component';
 
 
 @NgModule({
@@ -54,6 +55,7 @@ import { BreakfastIdeasComponent } from './components/breakfast-ideas/breakfast-
     AvatarPickerComponent,
     YourProfileComponent,
     BreakfastIdeasComponent,
+    DinnerIdeasComponent,
   ],
   imports: [
     BrowserModule,
