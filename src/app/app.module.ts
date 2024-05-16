@@ -33,6 +33,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { AvatarPickerComponent } from './components/avatar-picker/avatar-picker.component';
 import { YourProfileComponent } from './components/your-profile/your-profile.component';
 import { BreakfastIdeasComponent } from './components/breakfast-ideas/breakfast-ideas.component';
+import { SnackIdeasComponent } from './components/snack-ideas/snack-ideas.component';
 import { DinnerIdeasComponent } from './components/dinner-ideas/dinner-ideas.component';
 
 
@@ -55,6 +56,7 @@ import { DinnerIdeasComponent } from './components/dinner-ideas/dinner-ideas.com
     AvatarPickerComponent,
     YourProfileComponent,
     BreakfastIdeasComponent,
+    SnackIdeasComponent,
     DinnerIdeasComponent,
   ],
   imports: [

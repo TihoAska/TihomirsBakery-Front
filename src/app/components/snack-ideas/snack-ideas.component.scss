@@ -1,0 +1,503 @@
+.snack-ideas-wrapper{
+    --darkgreen: #001011;
+
+    --h1-font-size: 100px;
+    --welcome-font-size: 35px;
+    --h3-font-size: 30px;
+    --p-font-size: 25px;
+
+    position: relative;
+    width: 100%;
+    text-align: justify;
+    overflow-x: hidden;
+
+    .background{
+        position: relative;
+
+        img{
+            width: 100%;
+            height: 100%;
+        }
+
+        .gradient-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+        }
+    }
+
+    .description-2{
+        position: absolute;
+        top: 60%;
+        margin-left: 8%;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-weight: bold;
+        width: 90%;
+
+        #title{
+            font-size: var(--h1-font-size);
+            color: orange;
+            margin-bottom: 0;
+        }
+
+        #welcome{
+            font-size: var(--welcome-font-size);
+            color: whitesmoke;
+        }
+
+        z-index: 3;
+    }
+
+    .snack-ideas{
+        position: relative;
+        width: 100%;
+        height: 1200px;
+        background-color: var(--darkgreen);
+        padding-top: 5%;
+
+        .gradient-overlay-2 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 20vh;
+            background: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+            z-index: 2;
+        }
+
+        .snack-ideas-container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+
+            .sandwich-and-rice-cake{
+                background-color: var(--darkgreen);
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+                height: 600px;
+                align-items: center;
+                justify-content: space-evenly;
+    
+                .sandwich{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: center;
+                    width: 40%;
+                    z-index: 3;
+        
+                    img{
+                        border-radius: 10px;
+                        height: 400px;
+                        width: 400px;
+                    }
+        
+                    .sandwich-description{
+                        display: flex;
+                        flex-direction: column;
+                        color: orange;
+                        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        
+                        h3, p{
+                            margin-left: 10%;
+                            font-size: var(--p-font-size);
+                            color: white;
+                            text-shadow: 4px 4px 8px darkslategray;
+                        }
+        
+                        h3{
+                            font-size: var(--h3-font-size) !important;
+                            color: orange !important;
+                        }
+        
+                        hr{
+                            width: 90%;
+                            margin-left: 10%;
+                            border-color: orange;
+                        }
+                    }
+                }
+    
+                .rice-cake{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    width: 40%;
+                    z-index: 3;
+        
+                    img{
+                        border-radius: 10px;
+                        height: 400px;
+                        width: 400px;
+                    }
+        
+                    .rice-cake-description{
+                        display: flex;
+                        flex-direction: column;
+        
+                        h3, p{
+                            margin-left: 10%;
+                            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                            font-size: var(--p-font-size);
+                            color: white;
+                            text-shadow: 4px 4px 8px darkslategray;
+                        }
+        
+                        h3{
+                            font-size: var(--h3-font-size) !important;
+                            color: orange !important;
+                        }
+        
+                        hr{
+                            width: 90%;
+                            margin-left: 10%;
+                            border-color: orange;
+                        }
+                    }
+                }
+            }
+    
+            .salad-and-fruit{
+                background-color: var(--darkgreen);
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-evenly;
+                width: 100%;
+                height: 600px;
+    
+                .salad{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    width: 40%;
+        
+                    img{
+                        border-radius: 10px;
+                        height: 400px;
+                        width: 400px;
+                    }
+        
+                    .salad-description{
+                        display: flex;
+                        flex-direction: column;
+        
+                        h3, p{
+                            margin-left: 10%;
+                            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                            font-size: var(--p-font-size);
+                            color: white;
+                            text-shadow: 4px 4px 8px darkslategray;
+                        }
+        
+                        h3{
+                            font-size: var(--h3-font-size) !important;
+                            color: orange !important;
+                        }
+        
+                        hr{
+                            width: 90%;
+                            margin-left: 10%;
+                            border-color: orange;
+                        }
+                    }
+                }
+    
+                .fruit{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    width: 40%;
+        
+                    img{
+                        border-radius: 10px;
+                        height: 400px;
+                        width: 400px;
+                    }
+        
+                    .fruit-description{
+                        display: flex;
+                        flex-direction: column;
+        
+                        h3, p{
+                            margin-left: 10%;
+                            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                            font-size: var(--p-font-size);
+                            color: white;
+                            text-shadow: 4px 4px 8px darkslategray;
+                        }
+        
+                        h3{
+                            font-size: var(--h3-font-size) !important;
+                            color: orange !important;
+                        }
+        
+                        hr{
+                            width: 90%;
+                            margin-left: 10%;
+                            border-color: orange;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 2010px){
+    .snack-ideas-wrapper{
+        --h1-font-size: 80px;
+        --welcome-font-size: 30px;
+        --h3-font-size: 25px;
+        --p-font-size: 22px;
+        
+        .snack-ideas{
+            padding-left: 1%;
+        }
+    }
+
+    img:not(#background-image){
+        height: 350px;
+        width: 350px;
+    }
+}
+
+@media screen and (max-width: 1800px){
+    .snack-ideas-wrapper{
+        --h1-font-size: 60px;
+        --welcome-font-size: 25px;
+        --h3-font-size: 22px;
+        --p-font-size: 18px;
+
+        .snack-ideas{
+            padding-left: 2%;
+            height: 900px;
+
+            .snack-ideas-container{
+                .sandwich-and-rice-cake, .salad-and-fruit{
+                    height: 400px;
+                }
+            }
+
+        }
+
+        .description-2{
+            position: absolute;
+            top: 65%;
+            margin-left: 10%;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: bold;
+            width: 80%;
+    
+            #title{
+                font-size: var(--h1-font-size);
+                color: orange;
+                margin-bottom: 0;
+            }
+    
+            #welcome{
+                font-size: var(--welcome-font-size);
+                color: whitesmoke;
+            }
+    
+            z-index: 3;
+        }
+    }
+
+    img:not(#background-image){
+        height: 300px;
+        width: 300px;
+    }
+}
+
+@media screen and (max-width: 1480px){
+    .snack-ideas-wrapper{
+        --h1-font-size: 50px;
+        --welcome-font-size: 20px;
+        --h3-font-size: 18px;
+        --p-font-size: 15px;
+
+        .snack-ideas{
+            padding-left: 3%;
+        }
+
+    }
+
+    img:not(#background-image){
+        height: 250px;
+        width: 250px;
+    }
+}
+
+@media screen and (max-width: 1200px){
+    .snack-ideas-wrapper{
+        --h1-font-size: 40px;
+        --welcome-font-size: 18px;
+        --h3-font-size: 15px;
+        --p-font-size: 12px;
+
+        .snack-ideas{
+            padding-left: 5%;
+        }
+
+        .description-2{
+            position: absolute;
+            top: 65%;
+            margin-left: 15%;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: bold;
+            width: 80%;
+    
+            #title{
+                font-size: var(--h1-font-size);
+                color: orange;
+                margin-bottom: 0;
+            }
+    
+            #welcome{
+                font-size: var(--welcome-font-size);
+                color: whitesmoke;
+            }
+    
+            z-index: 3;
+        }
+    }
+
+    img:not(#background-image){
+        height: 200px;
+        width: 200px;
+    }
+}
+
+@media screen and (max-width: 950px){
+    .snack-ideas-wrapper{
+        --h1-font-size: 40px;
+        --welcome-font-size: 16px;
+        --h3-font-size: 18px;
+        --p-font-size: 16px;
+
+        .snack-ideas{
+            height: 1150px;
+
+            .snack-ideas-container{
+                height: 1000px;
+
+                .sandwich-and-rice-cake, .salad-and-fruit{
+                    flex-direction: column;
+                }
+
+                .sandwich-and-rice-cake{
+                    height: 500px;
+                    .sandwich, .rice-cake{
+                        width: 70%;
+                    }
+                }
+
+                .salad-and-fruit{
+                    height: 500px;
+                    .salad, .fruit{
+                        width: 70%;
+                    }
+                }
+            }
+        }
+
+        .description-2{
+            position: absolute;
+            top: 50%;
+            margin-left: 17%;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: bold;
+            width: 80%;
+    
+            #title{
+                font-size: var(--h1-font-size);
+                color: orange;
+                margin-bottom: 0;
+            }
+    
+            #welcome{
+                font-size: var(--welcome-font-size);
+                color: whitesmoke;
+            }
+    
+            z-index: 3;
+        }
+    }
+
+    img:not(#background-image){
+        height: 200px;
+        width: 200px;
+    }
+}
+
+@media screen and (max-width: 650px){
+    .snack-ideas-wrapper{
+        --h1-font-size: 35px;
+        --welcome-font-size: 14px;
+        --h3-font-size: 16px;
+        --p-font-size: 14px;
+
+        .snack-ideas{
+            height: 1100px;
+            padding-left: 0;
+
+            .snack-ideas-container{
+                height: 1000px;
+
+                .sandwich-and-rice-cake, .salad-and-fruit{
+                    flex-direction: column;
+                }
+
+                .sandwich-and-rice-cake{
+                    height: 500px;
+
+                    .sandwich, .rice-cake{
+                        width: 80%;
+                    }
+                }
+
+                .salad-and-fruit{
+                    height: 500px;
+
+                    .salad, .fruit{
+                        width: 80%;
+                    }
+                }
+            }
+        }
+
+        .description-2{
+            position: absolute;
+            top: 40%;
+            margin-left: 10%;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: bold;
+            width: 80%;
+    
+            #title{
+                font-size: var(--h1-font-size);
+                color: orange;
+                margin-bottom: 0;
+            }
+    
+            #welcome{
+                font-size: var(--welcome-font-size);
+                color: whitesmoke;
+            }
+    
+            z-index: 3;
+        }
+    }
+
+    img:not(#background-image){
+        height: 200px;
+        width: 200px;
+    }
+}

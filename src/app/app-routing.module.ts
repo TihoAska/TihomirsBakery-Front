@@ -9,6 +9,7 @@ import { GymEssentialsComponent } from './components/gym-essentials/gym-essentia
 import { KitchenEssentialsComponent } from './components/kitchen-essentials/kitchen-essentials.component';
 import { UserSignedInGuard } from './guards/userSignedInGuard';
 import { BreakfastIdeasComponent } from './components/breakfast-ideas/breakfast-ideas.component';
+import { SnackIdeasComponent } from './components/snack-ideas/snack-ideas.component';
 import { DinnerIdeasComponent } from './components/dinner-ideas/dinner-ideas.component';
 
 const routes: Routes = [
@@ -19,6 +20,10 @@ const routes: Routes = [
   {
     path: 'breakfast-ideas',
     component: BreakfastIdeasComponent,
+  },
+  {
+    path: 'snack-ideas',
+    component: SnackIdeasComponent,
   },
   {
     path: 'dinner-ideas',
