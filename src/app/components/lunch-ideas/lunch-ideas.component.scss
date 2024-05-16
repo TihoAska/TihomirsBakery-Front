@@ -1,0 +1,492 @@
+.lunch-ideas-wrapper{
+    --darkgreen: #001011;
+
+    --h1-font-size: 100px;
+    --welcome-font-size: 35px;
+    --h3-font-size: 30px;
+    --p-font-size: 25px;
+
+    position: relative;
+    width: 100%;
+    text-align: justify;
+    overflow-x: hidden;
+
+    .background{
+        position: relative;
+
+        img{
+            width: 100%;
+            height: 100%;
+        }
+
+        .gradient-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+        }
+    }
+
+    .description-2{
+        position: absolute;
+        top: 60%;
+        margin-left: 8%;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-weight: bold;
+        width: 90%;
+
+        #title{
+            font-size: var(--h1-font-size);
+            color: orange;
+            margin-bottom: 0;
+        }
+
+        #welcome{
+            font-size: var(--welcome-font-size);
+            color: whitesmoke;
+        }
+
+        z-index: 3;
+    }
+
+    .lunch-ideas{
+        position: relative;
+        width: 100%;
+        height: 1400px;
+        background-color: var(--darkgreen);
+        padding-top: 5%;
+
+        .gradient-overlay-2 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 20vh;
+            background: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+            z-index: 2;
+        }
+
+        .lunch-ideas-container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+
+
+            .pasta-and-beef{
+                background-color: var(--darkgreen);
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-evenly;
+                width: 100%;
+                height: 600px;
+    
+                .pasta{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    width: 40%;
+                    z-index: 3;
+        
+                    img{
+                        border-radius: 10px;
+                        height: 400px;
+                        width: 400px;
+                    }
+        
+                    .pasta-description{
+                        display: flex;
+                        flex-direction: column;
+                        color: orange;
+                        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        
+                        h3, p{
+                            margin-left: 10%;
+                            font-size: var(--p-font-size);
+                            color: white;
+                            text-shadow: 4px 4px 8px darkslategray;
+                        }
+        
+                        h3{
+                            font-size: var(--h3-font-size) !important;
+                            color: orange !important;
+                        }
+        
+                        hr{
+                            width: 90%;
+                            margin-left: 10%;
+                            border-color: orange;
+                        }
+                    }
+                }
+    
+                .beef{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    width: 40%;
+                    z-index: 3;
+        
+                    img{
+                        border-radius: 10px;
+                        height: 400px;
+                        width: 400px;
+                    }
+        
+                    .beef-description{
+                        display: flex;
+                        flex-direction: column;
+        
+                        h3, p{
+                            margin-left: 10%;
+                            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                            font-size: var(--p-font-size);
+                            color: white;
+                            text-shadow: 4px 4px 8px darkslategray;
+                        }
+        
+                        h3{
+                            font-size: var(--h3-font-size) !important;
+                            color: orange !important;
+                        }
+        
+                        hr{
+                            width: 90%;
+                            margin-left: 10%;
+                            border-color: orange;
+                        }
+                    }
+                }
+            }
+    
+            .chicken-and-tortilla{
+                background-color: var(--darkgreen);
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-evenly;
+                width: 100%;
+                height: 600px;
+    
+                .chicken{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    width: 40%;
+        
+                    img{
+                        border-radius: 10px;
+                        height: 400px;
+                        width: 400px;
+                    }
+        
+                    .chicken-description{
+                        display: flex;
+                        flex-direction: column;
+        
+                        h3, p{
+                            margin-left: 10%;
+                            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                            font-size: var(--p-font-size);
+                            color: white;
+                            text-shadow: 4px 4px 8px darkslategray;
+                        }
+        
+                        h3{
+                            font-size: var(--h3-font-size) !important;
+                            color: orange !important;
+                        }
+        
+                        hr{
+                            width: 90%;
+                            margin-left: 10%;
+                            border-color: orange;
+                        }
+                    }
+                }
+    
+                .tortilla{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    width: 40%;
+        
+                    img{
+                        border-radius: 10px;
+                        height: 400px;
+                        width: 400px;
+                    }
+        
+                    .tortilla-description{
+                        display: flex;
+                        flex-direction: column;
+        
+                        h3, p{
+                            margin-left: 10%;
+                            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                            font-size: var(--p-font-size);
+                            color: white;
+                            text-shadow: 4px 4px 8px darkslategray;
+                        }
+        
+                        h3{
+                            font-size: var(--h3-font-size) !important;
+                            color: orange !important;
+                        }
+        
+                        hr{
+                            width: 90%;
+                            margin-left: 10%;
+                            border-color: orange;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 2010px){
+    .lunch-ideas-wrapper{
+        --h1-font-size: 80px;
+        --welcome-font-size: 30px;
+        --h3-font-size: 25px;
+        --p-font-size: 22px;
+
+        .lunch-ideas{
+            padding-left: 2%;
+        }
+    }
+
+    img:not(#background-image){
+        height: 350px;
+        width: 350px;
+    }
+}
+
+@media screen and (max-width: 1800px){
+    .lunch-ideas-wrapper{
+        --h1-font-size: 60px;
+        --welcome-font-size: 25px;
+        --h3-font-size: 22px;
+        --p-font-size: 18px;
+
+        .lunch-ideas{
+            padding-left: 2%;
+        }
+
+        .description-2{
+            position: absolute;
+            top: 65%;
+            margin-left: 10%;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: bold;
+            width: 80%;
+    
+            #title{
+                font-size: var(--h1-font-size);
+                color: orange;
+                margin-bottom: 0;
+            }
+    
+            #welcome{
+                font-size: var(--welcome-font-size);
+                color: whitesmoke;
+            }
+    
+            z-index: 3;
+        }
+    }
+
+    img:not(#background-image){
+        height: 300px;
+        width: 300px;
+    }
+}
+
+@media screen and (max-width: 1480px){
+    .lunch-ideas-wrapper{
+        --h1-font-size: 50px;
+        --welcome-font-size: 20px;
+        --h3-font-size: 18px;
+        --p-font-size: 15px;
+
+        .lunch-ideas{
+            padding-left: 3%;
+            height: 900px;
+
+            .lunch-ideas-container{
+
+                .pasta-and-beef, .chicken-and-tortilla{
+                    height: 400px;
+                }
+            }
+        }
+    }
+
+    img:not(#background-image){
+        height: 250px;
+        width: 250px;
+    }
+}
+
+@media screen and (max-width: 1200px){
+    .lunch-ideas-wrapper{
+        --h1-font-size: 40px;
+        --welcome-font-size: 18px;
+        --h3-font-size: 15px;
+        --p-font-size: 12px;
+
+        .lunch-ideas{
+            padding-left: 5%;
+            height: 800px;
+
+            .lunch-ideas-container{
+
+                .pasta-and-beef, .chicken-and-tortilla{
+                    height: 350px;
+                }
+            }
+        }
+
+        .description-2{
+            position: absolute;
+            top: 65%;
+            margin-left: 12%;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: bold;
+            width: 80%;
+    
+            #title{
+                font-size: var(--h1-font-size);
+                color: orange;
+                margin-bottom: 0;
+            }
+    
+            #welcome{
+                font-size: var(--welcome-font-size);
+                color: whitesmoke;
+            }
+    
+            z-index: 3;
+        }       
+    }
+
+
+    img:not(#background-image){
+        height: 200px;
+        width: 200px;
+    }
+}
+
+@media screen and (max-width: 950px){
+    .lunch-ideas-wrapper{
+        --h1-font-size: 50px;
+        --welcome-font-size: 15px;
+        --h3-font-size: 18px;
+        --p-font-size: 15px;
+
+        .lunch-ideas{
+            padding-left: 3%;
+            height: 1150px;
+
+            .lunch-ideas-container{
+
+                .pasta-and-beef, .chicken-and-tortilla{
+                    display: flex;
+                    flex-direction: column;
+                    height: 550px;
+
+                    .pasta, .beef, .chicken, .tortilla{
+                        width: 70%;
+                    }
+                }
+            }
+        }
+
+
+        .description-2{
+            position: absolute;
+            top: 50%;
+            margin-left: 17%;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: bold;
+            width: 80%;
+    
+            #title{
+                font-size: var(--h1-font-size);
+                color: orange;
+                margin-bottom: 0;
+            }
+    
+            #welcome{
+                font-size: var(--welcome-font-size);
+                color: whitesmoke;
+            }
+    
+            z-index: 3;
+        }
+    }
+
+    img:not(#background-image){
+        height: 200px;
+        width: 200px;
+    }
+}
+
+@media screen and (max-width: 650px){
+    .lunch-ideas-wrapper{
+        --h1-font-size: 35px;
+        --welcome-font-size: 14px;
+        --h3-font-size: 18px;
+        --p-font-size: 14px;
+
+        .lunch-ideas{
+            height: 1150px;
+            padding-left: 0;
+
+            .lunch-ideas-container{
+
+                .pasta-and-beef, .chicken-and-tortilla{
+                    display: flex;
+                    flex-direction: column;
+                    height: 550px;
+
+                    .pasta, .beef, .chicken, .tortilla{
+                        width: 80%;
+                    }
+                }
+            }
+        }
+
+        .description-2{
+            position: absolute;
+            top: 45%;
+            margin-left: 5%;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: bold;
+            width: 90%;
+    
+            #title{
+                font-size: var(--h1-font-size);
+                color: orange;
+                margin-bottom: 0;
+            }
+    
+            #welcome{
+                font-size: var(--welcome-font-size);
+                color: whitesmoke;
+            }
+    
+            z-index: 3;
+        }
+    }
+
+    img:not(#background-image){
+        height: 200px;
+        width: 200px;
+    }
+}
