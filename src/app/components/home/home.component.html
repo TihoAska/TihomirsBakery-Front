@@ -8,30 +8,23 @@
             </div>
             <div class="gradient-overlay"></div>
         </div>
-        <!-- <div class="description">
-            <p>WELCOME TO <span style="color: rgb(67, 177, 177); text-shadow: 2px 2px 4px black;">TIHOMIR'S WORKSHOP</span></p>
-            <hr color="darkslategray">
-            <p>HERE I WILL SHARE MY EXPERIENCE</p>
-            <p>IN COOKING AND WORKING OUT</p>
-        </div> -->
-
         
     </div>
     <div #cooking class="cooking">
         <div class="gradient-overlay-2"></div>
         <div class="meal-container">
             <div class="images">
-                <div class="oatmeal-container" (click)="navigateToMeal('breakfast')">
-                    <img id="oatmeal" [src]="images[1].path" [alt]="images[1].name">
+                <div class="oatmeal-container">
+                    <img id="oatmeal" [src]="images[1].path" [alt]="images[1].name" (click)="navigateToMeal('breakfast')">
                 </div>
                 <div class="rice-cakes-container">
-                    <img id="rice-cakes" [src]="images[2].path" [alt]="images[2].name">
+                    <img id="rice-cakes" [src]="images[2].path" [alt]="images[2].name" (click)="navigateToMeal('lunch')">
                 </div>
                 <div class="ham-sandwich-container">
-                    <img id="ham-sandwich" [src]="images[3].path" [alt]="images[3].name">
+                    <img id="ham-sandwich" [src]="images[3].path" [alt]="images[3].name" (click)="navigateToMeal('snack')">
                 </div>
                 <div class="fruit-salad-container">
-                    <img id="fruit-salad" [src]="images[4].path" [alt]="images[4].name">
+                    <img id="fruit-salad" [src]="images[4].path" [alt]="images[4].name" (click)="navigateToMeal('dinner')">
                 </div>
             </div>
             
