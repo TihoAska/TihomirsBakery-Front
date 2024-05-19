@@ -54,6 +54,10 @@ export class HomeComponent {
     this.router.navigate(['street-workout']);
   }
 
+  navigateToGym(){
+    this.router.navigate(['gym']);
+  }
+
   navigateToMeal(mealType : string){
     if(mealType == 'breakfast'){
       this.router.navigate(['breakfast-ideas']);

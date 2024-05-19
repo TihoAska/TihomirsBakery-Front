@@ -1,0 +1,1046 @@
+.gym-container{
+    --lightgreen: #08170d;
+    --darkgreen: #060e08;
+    --h1-font-size: 100px;
+    --welcome-font-size: 35px;
+    --h3-font-size: 35px;
+    --p-font-size: 20px;
+    --description-width: 35%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+
+    .gym{
+        width: 100vw;
+        position: relative;
+    
+        .gym-description-2{
+            position: absolute;
+            top: 60%;
+            margin-left: 8%;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: bold;
+            width: 90%;
+    
+            #title{
+                font-size: var(--h1-font-size);
+                color: aqua;
+                margin-bottom: 0;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                text-shadow: none;
+            }
+    
+            #welcome{
+                font-size: var(--welcome-font-size);
+                color: whitesmoke;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                text-shadow: none;
+            }
+    
+            z-index: 2;
+        }
+    
+        img{
+            height: 100%;
+            width: 100vw;
+        }
+    
+        hr{
+            width: 95%;
+            border-color: darkslategray;
+            margin-bottom: 2%;
+        }
+    
+        p{
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-size: var(--p-font-size);
+            color: white;
+            text-shadow: 4px 4px 8px darkslategray;
+        }
+    
+        .gradient-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+        }
+    }
+    
+    .bench-press-container{
+        position: relative;
+        background-color: var(--darkgreen);
+        height: 768px;
+        width: 100vw;
+    
+        .gradient-overlay-2 {
+            position: absolute;
+            top: 100;
+            left: 0;
+            width: 100%;
+            height: 20%;
+            background: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+        }
+
+        .bench{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-evenly;
+            height: 100%;
+        
+            .flat-bench-press, .incline-bench-press{
+                display: flex;
+                flex-direction: row;
+                width: var(--description-width);
+                height: 400px;
+                text-align: justify;
+        
+                video{
+                    border-radius: 10px;
+                }
+        
+                .description{
+                    display: flex;
+                    flex-direction: column;
+                    margin-left: 5%;
+                
+                    h3{
+                        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                        font-size: var(--h3-font-size);
+                        color: cyan;
+                        margin: 0;
+                        text-align: center;
+                    }
+                
+                    hr{
+                        width: 100%;
+                        border-color: cyan;
+                    }
+                
+                    p{
+                        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                        font-size: var(--p-font-size);
+                        color: white;
+                        text-shadow: 4px 4px 8px darkslategray;
+                    }
+                }
+            }
+        }
+    }
+    
+    .shoulders-container{
+        background-color: var(--lightgreen);
+        height: 768px;
+        width: 100vw;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+    
+        .overhead-press, .shoulder-flies{
+            display: flex;
+            flex-direction: row;
+            width: var(--description-width);
+            height: 400px;
+            text-align: justify;
+    
+            video{
+                border-radius: 10px;
+            }
+    
+            .description{
+                display: flex;
+                flex-direction: column;
+                margin-left: 5%;
+            
+                h3{
+                    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                    font-size: var(--h3-font-size);
+                    color: cyan;
+                    margin: 0;
+                    text-align: center;
+                }
+            
+                hr{
+                    width: 100%;
+                    border-color: darkslategray;
+                }
+            
+                p{
+                    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                    font-size: var(--p-font-size);
+                    color: white;
+                    text-shadow: 4px 4px 8px darkslategray;
+                }
+    
+                hr{
+                    border-color: cyan;
+                }
+            }
+        }
+    }
+    
+    .lower-upper-chest-container{
+        background-color: var(--darkgreen);
+        height: 768px;
+        width: 100vw;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+    
+        .weighted-dips, .incline-shoulder-flies{
+            display: flex;
+            flex-direction: row;
+            width: var(--description-width);
+            height: 400px;
+            text-align: justify;
+    
+            video{
+                border-radius: 10px;
+            }
+    
+            .description{
+                display: flex;
+                flex-direction: column;
+                margin-left: 5%;
+            
+                h3{
+                    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                    font-size: var(--h3-font-size);
+                    color: cyan;
+                    margin: 0;
+                    text-align: center;
+                }
+            
+                hr{
+                    width: 100%;
+                    border-color: darkslategray;
+                }
+            
+                p{
+                    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                    font-size: var(--p-font-size);
+                    color: white;
+                    text-shadow: 4px 4px 8px darkslategray;
+                }
+    
+                hr{
+                    border-color: cyan;
+                }
+            }
+        }
+    }
+    
+    .back-container{
+        background-color: var(--lightgreen);
+        height: 768px;
+        width: 100vw;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+    
+        .bent-over-rows, .one-arm-rows{
+            display: flex;
+            flex-direction: row;
+            width: var(--description-width);
+            height: 400px;
+            text-align: justify;
+    
+            video{
+                border-radius: 10px;
+            }
+    
+            .description{
+                display: flex;
+                flex-direction: column;
+                margin-left: 5%;
+            
+                h3{
+                    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                    font-size: var(--h3-font-size);
+                    color: orangered;
+                    margin: 0;
+                    text-align: center;
+                }
+            
+                hr{
+                    width: 100%;
+                    border-color: darkslategray;
+                }
+            
+                p{
+                    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                    font-size: var(--p-font-size);
+                    color: white;
+                    text-shadow: 4px 4px 8px darkslategray;
+                }
+    
+                hr{
+                    border-color: orangered;
+                }
+    
+                span{
+                    color: orangered;
+                }
+            }
+        }
+    }
+    
+    .split-squat-container{
+        position: relative;
+        background-color: var(--darkgreen);
+        height: 768px;
+        width: 100vw;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+    
+        .split-squat{
+            display: flex;
+            flex-direction: row;
+            width: var(--description-width);
+            height: 400px;
+            text-align: justify;
+    
+            video{
+                border-radius: 10px;
+            }
+    
+            .description{
+                display: flex;
+                flex-direction: column;
+                margin-left: 5%;
+            
+                h3{
+                    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                    font-size: var(--h3-font-size);
+                    color: yellow;
+                    margin: 0;
+                    text-align: center;
+                }
+            
+                hr{
+                    width: 100%;
+                    border-color: darkslategray;
+                }
+            
+                p{
+                    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                    font-size: var(--p-font-size);
+                    color: white;
+                    text-shadow: 4px 4px 8px darkslategray;
+                }
+    
+                hr{
+                    border-color: yellow;
+                }
+    
+                span{
+                    color: yellow;
+                }
+            }
+        }
+    }
+    
+    .curls-and-squats-container{
+        background-color: var(--darkgreen);
+        height: 768px;
+        width: 100vw;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+
+        .curls{
+            display: flex;
+            flex-direction: row;
+            width: var(--description-width);
+            height: 400px;
+            text-align: justify;
+    
+            video{
+                border-radius: 10px;
+            }
+    
+            .description{
+                display: flex;
+                flex-direction: column;
+                margin-left: 5%;
+            
+                h3{
+                    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                    font-size: var(--h3-font-size);
+                    color: orangered;
+                    margin: 0;
+                    text-align: center;
+                }
+            
+                hr{
+                    width: 100%;
+                    border-color: orangered;
+                }
+            
+                p{
+                    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                    font-size: var(--p-font-size);
+                    color: white;
+                    text-shadow: 4px 4px 8px darkslategray;
+                }
+    
+                span{
+                    color: orangered;
+                }
+            }
+        }
+
+        .squats{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            width: var(--description-width);
+            height: 400px;
+            text-align: justify;
+    
+            video{
+                border-radius: 10px;
+            }
+    
+            .description{
+                display: flex;
+                flex-direction: column;
+                margin-left: 5%;
+            
+                h3{
+                    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                    font-size: var(--h3-font-size);
+                    color: yellow;
+                    margin: 0;
+                    text-align: center;
+                }
+            
+                hr{
+                    width: 100%;
+                    border-color: yellow;
+                }
+            
+                p{
+                    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                    font-size: var(--p-font-size);
+                    color: white;
+                    text-shadow: 4px 4px 8px darkslategray;
+                }
+    
+                span{
+                    color: yellow;
+                }
+            }
+        }
+    }
+    
+    .deadlifts-container{
+        background-color: var(--lightgreen);
+        height: 768px;
+        width: 100vw;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+    
+        .romanian-deadlift, .conventional-deadlift{
+            display: flex;
+            flex-direction: row;
+            width: var(--description-width);
+            height: 400px;
+            text-align: justify;
+    
+            video{
+                border-radius: 10px;
+            }
+    
+            .description{
+                display: flex;
+                flex-direction: column;
+                margin-left: 5%;
+            
+                h3{
+                    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                    font-size: var(--h3-font-size);
+                    color: yellow;
+                    margin: 0;
+                    text-align: center;
+                }
+            
+                hr{
+                    width: 100%;
+                    border-color: yellow;
+                }
+            
+                p{
+                    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                    font-size: var(--p-font-size);
+                    color: white;
+                    text-shadow: 4px 4px 8px darkslategray;
+                }
+    
+                span{
+                    color: yellow;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 2400px){
+    .gym-container{
+        --description-width: 40%;
+    }
+}
+
+@media screen and (max-width: 2010px){
+    .gym-container{
+        --h1-font-size: 80px;
+        --welcome-font-size: 30px;
+        --h3-font-size: 25px;
+        --p-font-size: 18px;
+    }
+
+    video{
+        height: 350px;
+        width: 350px;
+    }
+}
+
+@media screen and (max-width: 1800px){
+    .gym-container{
+        --h1-font-size: 60px;
+        --welcome-font-size: 25px;
+        --h3-font-size: 22px;
+        --p-font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 1650px){
+    .gym-container{
+        --p-font-size: 15px;
+
+        .gym{       
+            .gym-description-2{
+                margin-left: 10%;
+            }
+        }
+
+        .bench-press-container, .shoulders-container, .back-container, .split-squat-container, .deadlifts-container, .curls-and-squats-container, .lower-upper-chest-container{
+            padding-left: 2%;
+        }
+
+        video{
+            height: 300px;
+            width: 300px;
+        }
+    }
+}
+
+@media screen and (max-width: 1300px){
+    .gym-container{
+        --h1-font-size: 40px;
+        --welcome-font-size: 18px;
+
+        video{
+            height: 250px;
+            width: 250px;
+        }
+
+        .gym{       
+            .gym-description-2{
+                position: absolute;
+                top: 65%;
+                margin-left: 13%;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                font-weight: bold;
+                width: 80%;
+            }
+        }
+
+        .bench-press-container{
+            .bench{
+                .flat-bench-press, .incline-bench-press{
+                    display: flex;
+                    flex-direction: column;
+                    width: 30%;
+                    height: 600px;
+                    align-items: center;
+                    justify-content: space-between;
+                }
+            }
+        }
+
+        .shoulders-container{
+            .overhead-press, .shoulder-flies{
+                display: flex;
+                flex-direction: column;
+                width: 30%;
+                height: 650px;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+
+        .lower-upper-chest-container{
+            .weighted-dips, .incline-shoulder-flies{
+                display: flex;
+                flex-direction: column;
+                width: 30%;
+                height: 650px;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+
+        .back-container{
+            .bent-over-rows, .one-arm-rows{
+                display: flex;
+                flex-direction: column;
+                width: 30%;
+                height: 650px;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+
+        .deadlifts-container{
+            .romanian-deadlift, .conventional-deadlift{
+                display: flex;
+                flex-direction: column;
+                width: 30%;
+                height: 650px;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+
+        .curls-and-squats-container{
+            .curls, .squats{
+                display: flex;
+                flex-direction: column;
+                width: 30%;
+                height: 650px;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+
+        .split-squat-container{      
+            .split-squat{
+                display: flex;
+                flex-direction: column;
+                width: 30%;
+                height: 650px;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1000px){
+    .gym-container{
+        --h1-font-size: 40px;
+        --welcome-font-size: 16px;
+
+        video{
+            height: 250px;
+            width: 250px;
+        }
+
+        .gym{       
+            .gym-description-2{
+                position: absolute;
+                top: 65%;
+                margin-left: 15%;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                font-weight: bold;
+                width: 80%;
+            }
+        }
+
+        .bench-press-container{
+            .bench{
+                .flat-bench-press, .incline-bench-press{
+                    display: flex;
+                    flex-direction: column;
+                    width: 30%;
+                    height: 600px;
+                    align-items: center;
+                    justify-content: space-between;
+                }
+            }
+        }
+
+        .shoulders-container{
+            .overhead-press, .shoulder-flies{
+                display: flex;
+                flex-direction: column;
+                width: 30%;
+                height: 650px;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+
+        .lower-upper-chest-container{
+            .weighted-dips, .incline-shoulder-flies{
+                display: flex;
+                flex-direction: column;
+                width: 30%;
+                height: 650px;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+
+        .back-container{
+            .bent-over-rows, .one-arm-rows{
+                display: flex;
+                flex-direction: column;
+                width: 30%;
+                height: 650px;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+
+        .deadlifts-container{
+            .romanian-deadlift, .conventional-deadlift{
+                display: flex;
+                flex-direction: column;
+                width: 30%;
+                height: 650px;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+
+        .curls-and-squats-container{
+            .curls, .squats{
+                display: flex;
+                flex-direction: column;
+                width: 30%;
+                height: 650px;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+
+        .split-squat-container{      
+            .split-squat{
+                display: flex;
+                flex-direction: column;
+                width: 30%;
+                height: 650px;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 850px){
+        .gym-container{
+        --h1-font-size: 40px;
+        --welcome-font-size: 16px;
+
+        video{
+            height: 250px;
+            width: 250px;
+        }
+
+        .gym{       
+            .gym-description-2{
+                position: absolute;
+                top: 65%;
+                margin-left: 17%;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                font-weight: bold;
+                width: 80%;
+            }
+        }
+
+        .bench-press-container{
+            height: 1700px;
+
+            .bench{
+                padding-top: 5%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-evenly;
+
+                .flat-bench-press, .incline-bench-press{
+                    display: flex;
+                    flex-direction: column;
+                    width: 50%;
+                    height: 600px;
+                    align-items: center;
+                    justify-content: space-evenly;
+                }
+            }
+        }
+
+        .shoulders-container{
+            height: 1500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+
+            .overhead-press, .shoulder-flies{
+                display: flex;
+                flex-direction: column;
+                width: 50%;
+                height: 600px;
+                align-items: center;
+                justify-content: space-evenly;
+            }
+        }
+
+        .lower-upper-chest-container{
+            height: 1500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+
+            .weighted-dips, .incline-shoulder-flies{
+                display: flex;
+                flex-direction: column;
+                width: 50%;
+                height: 600px;
+                align-items: center;
+                justify-content: space-evenly;
+            }
+        }
+
+        .back-container{
+            height: 1700px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+
+            .bent-over-rows, .one-arm-rows{
+                display: flex;
+                flex-direction: column;
+                width: 50%;
+                height: 700px;
+                align-items: center;
+                justify-content: space-evenly;
+            }
+        }
+
+        
+        .curls-and-squats-container{
+            height: 1500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+
+            .curls, .squats{
+                display: flex;
+                flex-direction: column;
+                width: 50%;
+                height: 600px;
+                align-items: center;
+                justify-content: space-evenly;
+            }
+        }
+        
+        .split-squat-container{      
+            height: 700px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+
+            .split-squat{
+                display: flex;
+                flex-direction: column;
+                width: 50%;
+                height: 600px;
+                align-items: center;
+                justify-content: space-evenly;
+            }
+        }
+
+        .deadlifts-container{
+            height: 1500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+
+            .romanian-deadlift, .conventional-deadlift{
+                display: flex;
+                flex-direction: column;
+                width: 50%;
+                height: 600px;
+                align-items: center;
+                justify-content: space-evenly;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 650px){
+    .gym-container{
+        --h1-font-size: 40px;
+        --welcome-font-size: 14px;
+
+        video{
+            height: 250px;
+            width: 250px;
+        }
+
+        .bench-press-container, .shoulders-container, .back-container, .split-squat-container, .deadlifts-container, .curls-and-squats-container, .lower-upper-chest-container{
+            padding-left: 0;
+        }
+
+        .gym{       
+            .gym-description-2{
+                position: absolute;
+                top: 65%;
+                margin-left: 10%;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                font-weight: bold;
+                width: 80%;
+            }
+        }
+
+        .bench-press-container{
+            height: 1700px;
+
+            .bench{
+                padding-top: 5%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-evenly;
+                
+                .bench-press, .incline-bench-press{
+                    display: flex;
+                    flex-direction: column;
+                    width: 50%;
+                    height: 700px;
+                    align-items: center;
+                    justify-content: space-evenly;
+                }
+            }
+        }
+
+        .shoulders-container{
+            height: 1500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+            
+            .overhead-press, .shoulder-flies{
+                display: flex;
+                flex-direction: column;
+                width: 50%;
+                height: 700px;
+                align-items: center;
+                justify-content: space-evenly;
+            }
+        }
+
+        .lower-upper-chest-container{
+            height: 1500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+
+            .weighted-dips, .incline-shoulder-flies{
+                display: flex;
+                flex-direction: column;
+                width: 50%;
+                height: 700px;
+                align-items: center;
+                justify-content: space-evenly;
+            }
+        }
+
+        .back-container{
+            height: 1700px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+
+            .bent-over-rows, .one-arm-rows{
+                display: flex;
+                flex-direction: column;
+                width: 50%;
+                height: 700px;
+                align-items: center;
+                justify-content: space-evenly;
+            }
+        }
+        
+        .curls-and-squats-container{
+            height: 1500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+
+            .curls, .squats{
+                display: flex;
+                flex-direction: column;
+                width: 50%;
+                height: 700px;
+                align-items: center;
+                justify-content: space-evenly;
+            }
+        }
+        
+        .split-squat-container{      
+            height: 800px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+
+            .split-squat{
+                display: flex;
+                flex-direction: column;
+                width: 50%;
+                height: 700px;
+                align-items: center;
+                justify-content: space-evenly;
+            }
+        }
+
+        .deadlifts-container{
+            height: 1500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+
+            .romanian-deadlift, .conventional-deadlift{
+                display: flex;
+                flex-direction: column;
+                width: 50%;
+                height: 700px;
+                align-items: center;
+                justify-content: space-evenly;
+            }
+        }
+    }
+}

@@ -36,6 +36,7 @@ import { BreakfastIdeasComponent } from './components/breakfast-ideas/breakfast-
 import { LunchIdeasComponent } from './components/lunch-ideas/lunch-ideas.component';
 import { SnackIdeasComponent } from './components/snack-ideas/snack-ideas.component';
 import { DinnerIdeasComponent } from './components/dinner-ideas/dinner-ideas.component';
+import { GymComponent } from './components/gym/gym.component';
 
 
 @NgModule({
@@ -60,6 +61,7 @@ import { DinnerIdeasComponent } from './components/dinner-ideas/dinner-ideas.com
     LunchIdeasComponent,
     SnackIdeasComponent,
     DinnerIdeasComponent,
+    GymComponent,
   ],
   imports: [
     BrowserModule,

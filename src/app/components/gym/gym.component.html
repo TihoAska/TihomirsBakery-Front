@@ -1,0 +1,357 @@
+<div class="gym-container">
+    <div class="gym">
+        <img id="background-image" [src]="images[0].path" [alt]="images[0].name">
+        <div class="gym-description">
+        </div>
+        <div class="gym-description-2">
+            <p id="title">gym.</p>
+            <p id="welcome">
+                gym is not only lifting weights and building big muscles. there's a lot of stuff and workouts you can do at the gym, but here
+                I will show you what I did, and I'm still doing, for building muscles.
+            </p>
+        </div>
+    
+        <div class="gradient-overlay"></div>
+    </div>
+    
+    <div class="bench-press-container">
+        <div class="gradient-overlay-2">
+        </div>
+
+        <div class="bench">
+            <div class="flat-bench-press">
+                <video autoplay loop width="400px" height="400px">
+                    <source [src]="videos[0].path" type="video/mp4">
+                </video>
+                <div class="description">
+                    <h3>FLAT BENCH PRESS</h3>
+                    <hr>
+                    <p>
+                        Great exercise for building upper body strength that targets back and arm muscles. This is a <span style="color: cyan;">MUST DO</span> exercise. 
+                    </p>
+                    <p>
+                        Palms are facing away from you, retract your back, 
+                        tighten your core and legs and pull yourself up. 
+                    </p>
+                    <p>
+                        <span style="color: cyan;">MUSCLES:</span> Back, Biceps, Forearms
+                    </p>
+                    <p>
+                        <span style="color: cyan;">DIFFICULTY: </span><span style="color: greenyellow;">Easy</span>
+                    </p>
+                </div>
+            </div>
+            
+            <div class="incline-bench-press">
+                <video autoplay loop width="400px" height="400px">
+                    <source [src]="videos[1].path" type="video/mp4">
+                </video>
+                <div class="description">
+                    <h3>INCLINE BENCH PRESS</h3>
+                    <hr>
+                    <p>
+                        The easiest variation of pulling exercises. Great for beginners, super sets and warming up.
+                    </p>
+                    <p>
+                        Find a low bar that suits your strength. The lower it is the harder the exercise. You can make it easier by bending your knees. 
+                        Try to put a thumb over the bar and pull with your back, not with your hands. 
+                    </p>
+                    <p>
+                        <span style="color: cyan;">MUSCLES:</span> Back, Biceps, Forearms
+                    </p>
+                    <p>
+                        <span style="color: cyan;">DIFFICULTY: </span> <span style="color: orange;">Medium</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="shoulders-container">
+        <div class="overhead-press">
+            <video autoplay loop width="400px" height="400px">
+                <source [src]="videos[2].path" type="video/mp4">
+            </video>
+            <div class="description">
+                <h3>OVERHEAD PRESS</h3>
+                <hr>
+                <p>
+                    This exercise puts more focus on your biceps, but your back is still a primary muslce group. You can target your biceps even more 
+                    with your palms facing you. 
+                </p>
+                <p>
+                    Palms are facing away from you, retract your back, 
+                    tighten your core and legs and pull yourself up. 
+                </p>
+                <p>
+                    <span style="color: cyan;">MUSCLES:</span> Back, Biceps, Forearms
+                </p>
+                <p>
+                    <span style="color: cyan;">DIFFICULTY: </span><span style="color: greenyellow;">Easy</span>
+                </p>
+            </div>
+        </div>
+    
+        <div class="shoulder-flies">
+            <video autoplay loop width="400px" height="400px">
+                <source [src]="videos[3].path" type="video/mp4">
+            </video>
+            <div class="description">
+                <h3>SHOULDER FLIES</h3>
+                <hr>
+                <p>
+                    If you don't have a monkey bar or gymnastic rings, you can do this exercise instead, but neutral grip bench-press, especially wide variation, is a way 
+                    better option for building a good back.
+                </p>
+                <p>
+                    Grab a bar with opposite grips, one hand in front of the other, retract your back muscles, tighten your core and legs and pull yourself up side to side.
+                </p> 
+                <p>
+                    <span style="color: cyan;">MUSCLES:</span> Back, Biceps, Forearms
+                </p>
+                <p>
+                    <span style="color: cyan;">DIFFICULTY: </span><span style="color: greenyellow;">Easy</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="lower-upper-chest-container">
+        <div class="weighted-dips">
+            <video autoplay loop width="400px" height="400px">
+                <source [src]="videos[4].path" type="video/mp4">
+            </video>
+            <div class="description">
+                <h3>WEIGHTED DIPS</h3>
+                <hr>
+                <p>
+                    A pullup variation where your palms are facing you is called a chinup. This exercise targets more of your biceps, a bit less than a close grip pullup.
+                    This is a <span style="color: cyan;">MUST DO</span> exercise. This is a pullup variation where you are the strongest.
+                </p>
+                <p>
+                    Palms are facing you, retract your back, 
+                    tighten your core and legs and pull yourself up. 
+                </p>
+                <p>
+                    <span style="color: cyan;">MUSCLES:</span> Back, Biceps, Forearms
+                </p>
+                <p>
+                    <span style="color: cyan;">DIFFICULTY: </span><span style="color: orange;">Medium</span>
+                </p>
+            </div>
+        </div>
+    
+        <div class="incline-shoulder-flies">
+            <video autoplay loop width="400px" height="400px">
+                <source [src]="videos[5].path" type="video/mp4">
+            </video>
+            <div class="description">
+                <h3>INCLINE CHEST FLIES</h3>
+                <hr>
+                <p>
+                    This is a workout finisher. Your biceps are, with your back, working the most here. Do this at the end of your workout.
+                </p>
+                <p>
+                    Palms are facing you, retract your back, 
+                    tighten your core and legs and pull yourself up. 
+                </p>
+                <p>
+                    <span style="color: cyan;">MUSCLES:</span> Back, Biceps, Forearms
+                </p>
+                <p>
+                    <span style="color: cyan;">DIFFICULTY: </span><span style="color: greenyellow;">Easy</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="back-container">
+        <div class="bent-over-rows">
+            <video autoplay loop width="400px" height="400px">
+                <source [src]="videos[6].path" type="video/mp4">
+            </video>
+            <div class="description">
+                <h3>BENT OVER ROWS</h3>
+                <hr>
+                <p>
+                    This is what some people call a perfect pullup. The load is balanced between your back and arm muscles. This is a <span style="color: orangered;">MUST DO</span> exercise.
+                </p>
+                <p>
+                    Palms are facing opposite of each other, retract your back, tighten your core and legs and pull yourself up.
+                </p>
+                <p>
+                    <span style="color: orangered;">MUSCLES:</span> Back, Biceps, Forearms
+                </p>
+                <p>
+                    <span style="color: orangered;">DIFFICULTY: </span><span style="color: orange;">Medium</span>
+                </p>
+            </div>
+        </div>
+    
+        <div class="one-arm-rows">
+            <video autoplay loop width="400px" height="400px">
+                <source [src]="videos[7].path" type="video/mp4">
+            </video>
+            <div class="description">
+                <h3>ONE ARM ROWS</h3>
+                <hr>
+                <p>
+                    Harder variation of neutral bench-press, but great for building a wide back. If you can, do this instead of regular neutral bench-press.
+                </p>
+                <p>
+                    Palms are facing opposite of each other, retract your back, tighten your core and legs and pull yourself up.
+                </p>
+                <p>
+                    <span style="color: orangered;">MUSCLES:</span> Back, Biceps, Forearms
+                </p>
+                <p>
+                    <span style="color: orangered;">DIFFICULTY: </span><span style="color: greenyellow;">Easy</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="curls-and-squats-container">
+        <div class="curls">
+            <video autoplay loop width="400px" height="400px">
+                <source [src]="videos[8].path" type="video/mp4">
+            </video>
+            <div class="description">
+                <h3>BICEPS CURLS</h3>
+                <hr>
+                <p>
+                    They say what squats are for legs, dips are for triceps. One of the best upper body exercises, alongside bench-press, that you can do.
+                    This is a <span>MUST DO</span> exercise.
+                </p>
+                <p>
+                    Find bars that are not too wide or too narrow, tighten your core, put your legs in front of you, bend over a bit and never change your form during the exercise.
+                    Your body has to stay tight at all times. 
+                </p>
+                <p>
+                    <span>MUSCLES:</span> Triceps, Lower chest, Front shoulder
+                </p>
+                <p>
+                    <span>DIFFICULTY: </span><span style="color: greenyellow;">Easy</span>
+                </p>
+            </div>
+        </div>
+    
+        <div class="squats">
+            <video autoplay loop width="400px" height="400px">
+                <source [src]="videos[9].path" type="video/mp4">
+            </video>
+            <div class="description">
+                <h3>SQUATS</h3>
+                <hr>
+                <p>
+                    Harder variation of dips. This variation puts more stress on your shoulders and triceps. Since your front shoulder and triceps are working
+                    in every pushing exercise, you should stick to regular dips, since they target more of your chest muscles.
+                </p>
+                <p>
+                    Grab a bar a bit wider than your sholder length, tighten your core, put your legs in front, bend over a bit and stay stable during the exercise.
+                </p>
+                <p>
+                    <span>MUSCLES:</span> Triceps, Lower chest, Front shoulder
+                </p>
+                <p>
+                    <span>DIFFICULTY: </span><span style="color: orange;">Medium</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="deadlifts-container">
+        <div class="romanian-deadlift">
+            <video autoplay loop width="400px" height="400px">
+                <source [src]="videos[11].path" type="video/mp4">
+            </video>
+            <div class="description">
+                <h3>CONVENTIONAL DEADLIFT</h3>
+                <hr>
+                <p>
+                    A show-off exercise. Doesn't really build muscle or require strength. It takes time to learn the technique.
+                </p>
+                <p>
+                    Get into pullup position, gyming yourself forward, pull yourself up with back muscles, gyming your legs and lean forward at the top.
+                </p>
+                <p>
+                    <span>MUSCLES:</span> Back, Triceps
+                </p>
+                <p>
+                    <span>DIFFICULTY: </span><span style="color: orange;">Medium</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="conventional-deadlift">
+            <video autoplay loop width="400px" height="400px">
+                <source [src]="videos[12].path" type="video/mp4">
+            </video>
+            <div class="description">
+                <h3>MUSCLE UP</h3>
+                <hr>
+                <p>
+                    A show-off exercise. Doesn't really build muscle or require strength. It takes time to learn the technique.
+                </p>
+                <p>
+                    Get into pullup position, gyming yourself forward, pull yourself up with back muscles, gyming your legs and lean forward at the top.
+                </p>
+                <p>
+                    <span>MUSCLES:</span> Back, Triceps
+                </p>
+                <p>
+                    <span>DIFFICULTY: </span><span style="color: orange;">Medium</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="split-squat-container">
+        <div class="split-squat">
+            <video autoplay loop width="400px" height="400px">
+                <source [src]="videos[10].path" type="video/mp4">
+            </video>
+            <div class="description">
+                <h3>SPLIT SQUAT</h3>
+                <hr>
+                <p>
+                    In my opinion the best pushing exercise after dips. If you can do a lot of pushups do them at the end of your workout. There are a 
+                    lot of variations, but this regular pushups will do just fine. This is a <span>MUST DO</span> exercise. 
+                </p>
+                <p>
+                    Put your hands a bit wider than your shoulder length, tighten your core and legs and stay stable during the exercise.
+                </p>
+                <p>
+                    <span>MUSCLES:</span> Triceps, Chest, Front shoulder
+                </p>
+                <p>
+                    <span>DIFFICULTY: </span><span style="color: orangered;">Hard</span>
+                </p>
+            </div>
+        </div>
+    
+        <!-- <div class="skull-crushers">
+            <video autoplay loop width="400px" height="400px">
+                <source [src]="videos[11].path" type="video/mp4">
+            </video>
+            <div class="description">
+                <h3>ROMANIAN DEADLIFT</h3>
+                <hr>
+                <p>
+                    A workout finisher. Targets the long (inside) head of your triceps that is hard to target and makes your arm look big. 
+                    This is a <span>MUST DO</span> exercise. 
+                </p>
+                <p>
+                    Grab a bar as narrow as you can, tighten your whole body and don't push yourself with your legs.
+                </p>
+                <p>
+                    <span>MUSCLES:</span> Triceps
+                </p>
+                <p>
+                    <span>DIFFICULTY: </span><span style="color: greenyellow;">Easy</span>
+                </p>
+            </div>
+        </div> -->
+    </div>
+</div>
+
