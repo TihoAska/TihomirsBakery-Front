@@ -493,8 +493,6 @@
     .sw-container{
         --h1-font-size: 40px;
         --welcome-font-size: 18px;
-        // --h3-font-size: 15px;
-        // --p-font-size: 12px;
 
         video{
             height: 250px;
@@ -718,12 +716,14 @@
 
         .pullups-container{
             height: 1700px;
+
             .pulls{
                 padding-top: 5%;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 justify-content: space-evenly;
+
                 .pullups, .pullups-wide{
                     display: flex;
                     flex-direction: column;
@@ -741,6 +741,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: space-evenly;
+
             .pullups-narrow, .pullups-alternate{
                 display: flex;
                 flex-direction: column;
@@ -757,6 +758,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: space-evenly;
+
             .chinups, .chinups-narrow{
                 display: flex;
                 flex-direction: column;
@@ -773,6 +775,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: space-evenly;
+
             .dips, .straight-bar-dips{
                 display: flex;
                 flex-direction: column;
@@ -790,6 +793,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: space-evenly;
+
             .neutral-pullups-narrow, .neutral-pullups-wide{
                 display: flex;
                 flex-direction: column;
@@ -806,6 +810,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: space-evenly;
+
             .pushups, .skull-crushers{
                 display: flex;
                 flex-direction: column;
@@ -852,12 +857,14 @@
 
         .pullups-container{
             height: 1700px;
+
             .pulls{
                 padding-top: 5%;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 justify-content: space-evenly;
+
                 .pullups, .pullups-wide{
                     display: flex;
                     flex-direction: column;
@@ -892,6 +899,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: space-evenly;
+
             .chinups, .chinups-narrow{
                 display: flex;
                 flex-direction: column;
@@ -908,6 +916,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: space-evenly;
+
             .dips, .straight-bar-dips{
                 display: flex;
                 flex-direction: column;
@@ -924,6 +933,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: space-evenly;
+
             .neutral-pullups-narrow, .neutral-pullups-wide{
                 display: flex;
                 flex-direction: column;
@@ -940,6 +950,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: space-evenly;
+            
             .pushups, .skull-crushers{
                 display: flex;
                 flex-direction: column;
