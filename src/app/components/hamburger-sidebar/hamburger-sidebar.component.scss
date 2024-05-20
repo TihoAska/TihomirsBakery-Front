@@ -1,12 +1,13 @@
 .sidebar {
-    position: relative;
     height: 100vh;
     width: 300px;
     background-color: black;
     position: fixed;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 20px;
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     z-index: 5;
     transition: transform 0.3s ease-out;
 

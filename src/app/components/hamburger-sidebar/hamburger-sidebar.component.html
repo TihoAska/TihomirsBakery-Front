@@ -1,4 +1,5 @@
 <div class="sidebar" [@sidebarAnimation]="isHamburgerClicked ? 'open' : 'closed'">
+  <div class="icons-container">
     <div class="profile" (click)="navigateTo('HOME')">
       <img id="profile-photo" [src]="sidebarService.home.icon" [alt]="sidebarService.home.name" height="50px" width="50px">
       <p id="profile-name">{{ sidebarService.home.name }}</p>
@@ -13,3 +14,24 @@
     </ng-container>
     <hr>
   </div>
+  
+  <div class="icons" (click)="showLogin()" *ngIf="(accountService.$loggedUser | async).id == -1">
+    <img 
+      class="icon"
+      [src]="sidebarService.userNotLoggedInAvatar.icon" 
+      [alt]="sidebarService.userNotLoggedInAvatar.name" 
+      height="50px" 
+      width="50px">
+    <p>LOG IN</p>
+  </div>
+
+  <div class="icons" (click)="showProfile()" *ngIf="(accountService.$loggedUser | async).id != -1">
+    <img 
+      class="icon"
+      [src]="(accountService.$loggedUser | async).imageUrl" 
+      [alt]="(accountService.$loggedUser | async).imageUrl" 
+      height="50px" 
+      width="50px">
+    <p>YOUR PROFILE</p>
+  </div>
+</div>

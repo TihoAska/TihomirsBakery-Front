@@ -11,6 +11,7 @@ import { SidebarService } from '../../services/sidebar.service';
 import { Router } from '@angular/router';
 import { HelperService } from '../../services/helper.service';
 import { FooterService } from '../../services/footer.service';
+import { AccountService } from '../../services/account.service';
 
 @Component({
   selector: 'app-hamburger-sidebar',
@@ -36,7 +37,8 @@ export class HamburgerSidebarComponent {
     public sidebarService : SidebarService,
     private router : Router,
     private helperService : HelperService,
-    private footerService : FooterService){
+    private footerService : FooterService,
+    public accountService : AccountService){
   }
 
   ngOnInit(){
@@ -48,7 +50,7 @@ export class HamburgerSidebarComponent {
 
   navigateTo(path){
     if(path == 'HOME'){
-      this.router.navigate([''])
+      this.router.navigate(['']);
     } else if(path == 'YOUR DAY'){
       this.router.navigate(['your-day']);
     } else if (path == 'WORKOUT SPOTS'){
@@ -57,5 +59,16 @@ export class HamburgerSidebarComponent {
       this.router.navigate(['gym-essentials'])
     }
     this.helperService.scrollTo.next(path);
+    this.footerService.isHamburgerClicked.next(false);
+  }
+
+  showLogin(){
+    this.sidebarService.toggleLogin.next(true);
+    this.helperService.dimBackground.next(true);
+  }
+
+  showProfile(){
+    this.sidebarService.toggleProfile.next(true);
+    this.helperService.dimBackground.next(true);
   }
 }
