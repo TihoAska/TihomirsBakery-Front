@@ -6,9 +6,9 @@ import { Injectable } from '@angular/core';
 })
 export class SidebarService {
 
-  public toggleLogin : BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  public toggleProfile : BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  public $selectedAvatar : BehaviorSubject<string> = new BehaviorSubject<string>('');
+  public toggleLogin: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  public toggleProfile: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  public $selectedAvatar: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
   rootUrl = '../../../assets/images/'
 
