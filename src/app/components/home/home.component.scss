@@ -550,7 +550,7 @@ body{
 
         .monkey-bar{
             .description-2{
-                margin-left: 20%;
+                margin-left: 17%;
                 top: 60%;
             }
         }
@@ -643,8 +643,8 @@ body{
                     margin-top: 0;
                 }
 
-                margin-left: 16%;
-                top: 20%;
+                margin-left: 7%;
+                top: 60%;
             }
         }
 
@@ -738,6 +738,18 @@ body{
         --h1-font-size: 15px;
         --p-font-size: 17px;
         --base-image-width: 170px;
+
+        .monkey-bar{
+            .description-2{
+                
+                #title{
+                    margin-top: 0;
+                }
+
+                margin-left: 5%;
+                top: 50%;
+            }
+        }
 
         .cooking{
             height: 1000px;
