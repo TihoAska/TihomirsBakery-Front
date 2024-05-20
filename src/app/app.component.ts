@@ -64,6 +64,10 @@ export class AppComponent {
     }
   }
 
+  toggleSidebar(){
+    this.footerService.isHamburgerClicked.next(!this.footerService.isHamburgerClicked.value);
+  }
+
   undim(){
     // this.footerService.isPlusClicked.next(false);
     this.helperService.windowChoice.next('add');
