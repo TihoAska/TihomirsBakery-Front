@@ -98,7 +98,6 @@ export class SidebarComponent {
       this.router.navigate(['kitchen-essentials']);
     } else if(path == 'GYM' || path == 'KITCHEN'){
       this.router.navigate(['']);
-      this.helperService.scrollTo.next(path);
     }
     this.helperService.scrollTo.next(path);
   }
