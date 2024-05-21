@@ -133,7 +133,7 @@ export class MapComponent {
       .addTo(this.map);
   }
 
-  ngOnDestroy() {
-    this.map?.remove();
-  }
+  // ngOnDestroy() {
+  //   this.map?.remove();
+  // }
 }
