@@ -351,16 +351,18 @@ body{
         }
 
         .workout-container{
+            height: 800px;
+
             .descriptions{
                 .street-workout-container{
                     .sw-desc{
-                        margin-top: 30%;
+                        margin-top: 25%;
                     }
                 }
 
                 .gym-container{
                     .gym-desc{
-                        margin-top: 30%;
+                        margin-top: 25%;
                     }
                 }
             }
@@ -388,16 +390,18 @@ body{
         }
 
         .workout-container{
+            height: 800px;
+
             .descriptions{
                 .street-workout-container{
                     .sw-desc{
-                        margin-top: 35%;
+                        margin-top: 25%;
                     }
                 }
 
                 .gym-container{
                     .gym-desc{
-                        margin-top: 35%;
+                        margin-top: 25%;
                     }
                 }
             }
@@ -418,16 +422,18 @@ body{
         }
 
         .workout-container{
+            height: 700px;
+
             .descriptions{
                 .street-workout-container{
                     .sw-desc{
-                        margin-top: 45%;
+                        margin-top: 30%;
                     }
                 }
 
                 .gym-container{
                     .gym-desc{
-                        margin-top: 45%;
+                        margin-top: 30%;
                     }
                 }
             }
@@ -463,7 +469,7 @@ body{
             .descriptions{
                 .street-workout-container{
                     .sw-desc{
-                        margin-top: 55%;
+                        margin-top: 40%;
 
                         p{
                             font-size: 20px;
@@ -473,7 +479,7 @@ body{
 
                 .gym-container{
                     .gym-desc{
-                        margin-top: 55%;
+                        margin-top: 40%;
 
                         p{
                             font-size: 20px;
@@ -511,6 +517,8 @@ body{
         }
 
         .workout-container{
+            height: 1000px;
+
             .descriptions{
                 display: flex;
                 flex-direction: column;
@@ -701,8 +709,9 @@ body{
 
                 .street-workout-container{
                     height: 50%;
+
                     .sw-desc{
-                        margin-top: 20%;
+                        margin-top: 30%;
 
                         h3{
                             font-size: 20px;
@@ -716,8 +725,9 @@ body{
 
                 .gym-container{
                     height: 50%;
+
                     .gym-desc{
-                        margin-top: 20%;
+                        margin-top: 30%;
                         
                         h3{
                             font-size: 20px;
@@ -806,7 +816,7 @@ body{
                     height: 50%;
 
                     .sw-desc{
-                        margin-top: 20%;
+                        margin-top: 30%;
 
                         h3{
                             font-size: 20px;
@@ -822,7 +832,7 @@ body{
                     height: 50%;
                     
                     .gym-desc{
-                        margin-top: 20%;
+                        margin-top: 30%;
                         
                         h3{
                             font-size: 20px;
