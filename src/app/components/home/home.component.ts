@@ -1,4 +1,4 @@
-import { Component, ElementRef, Renderer2, ViewChild  } from '@angular/core';
+import { Component, ElementRef, ViewChild  } from '@angular/core';
 import { Router } from '@angular/router';
 import { HelperService } from '../../services/helper.service';
 import { SidebarService } from '../../services/sidebar.service';
@@ -42,7 +42,7 @@ export class HomeComponent {
         this.router.navigate(['/']).then(() => {
           const yOffset = -200;
           const cookingContainerRect = this.cookingContainer.nativeElement.getBoundingClientRect();
-          const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+          const scrollTop = window.scrollY || document.documentElement.scrollTop;
           const targetOffset = cookingContainerRect.top + scrollTop - yOffset;
           window.scrollTo({ top: targetOffset, behavior: "smooth" });
         });
