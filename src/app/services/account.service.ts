@@ -22,6 +22,7 @@ export class AccountService {
     private jwtHelper : JwtHelperService,
     private helperService : HelperService,
     private sidebarService : SidebarService,
+    private router : Router,
   ) { }
 
   login(loginFormValue) : Observable<HttpEvent<any[]>>{
@@ -52,6 +53,7 @@ export class AccountService {
         this.$isFromAuth.next(true);
         this.helperService.dimBackground.next(true);
         this.sidebarService.toggleLogin.next(true);
+        this.router.navigate(['']);
 
         return false;
       }
