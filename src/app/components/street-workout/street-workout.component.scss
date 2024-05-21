@@ -92,6 +92,7 @@
             .pullups, .pullups-wide{
                 display: flex;
                 flex-direction: row;
+                align-items: center;
                 width: var(--description-width);
                 height: 400px;
                 text-align: justify;
@@ -141,6 +142,7 @@
         .pullups-narrow, .pullups-alternate{
             display: flex;
             flex-direction: row;
+            align-items: center;
             width: var(--description-width);
             height: 400px;
             text-align: justify;
@@ -193,6 +195,7 @@
         .chinups, .chinups-narrow{
             display: flex;
             flex-direction: row;
+            align-items: center;
             width: var(--description-width);
             height: 400px;
             text-align: justify;
@@ -245,6 +248,7 @@
         .dips, .straight-bar-dips{
             display: flex;
             flex-direction: row;
+            align-items: center;
             width: var(--description-width);
             height: 400px;
             text-align: justify;
@@ -302,6 +306,7 @@
         .pushups, .skull-crushers{
             display: flex;
             flex-direction: row;
+            align-items: center;
             width: var(--description-width);
             height: 400px;
             text-align: justify;
@@ -358,6 +363,7 @@
         .neutral-pullups-narrow, .neutral-pullups-wide{
             display: flex;
             flex-direction: row;
+            align-items: center;
             width: var(--description-width);
             height: 400px;
             text-align: justify;
@@ -408,6 +414,7 @@
             position: absolute;
             display: flex;
             flex-direction: row;
+            align-items: center;
             width: var(--description-width);
             height: 400px;
             text-align: justify;
@@ -475,6 +482,10 @@
         --welcome-font-size: 25px;
         --h3-font-size: 22px;
         --p-font-size: 18px;
+
+        .pullups-container, .pullups-container-2, .chinups-container, .neutral-pullups-container, .dips-container, .pushups-container, .muscle-ups-container{
+            padding-left: 2%;
+        }
     }
 }
 
@@ -485,6 +496,86 @@
         video{
             height: 300px;
             width: 300px;
+        }
+
+        .sw{       
+            .sw-description-2{
+                position: absolute;
+                top: 65%;
+                margin-left: 15%;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                font-weight: bold;
+                width: 80%;
+            }
+        }
+
+        .pullups-container{
+            height: 850px;
+
+            .pulls{
+                padding: 5%;
+
+                .pullups, .pullups-wide{
+                    flex-direction: column;
+                    justify-content: space-between;
+                    height: 650px;
+                    width: 30%;
+                }
+            }
+        }
+
+        .pullups-container-2{
+            .pullups-narrow, .pullups-alternate{
+                flex-direction: column;
+                justify-content: space-between;
+                height: 650px;
+                width: 30%;
+            }
+        }
+
+        .chinups-container{
+            .chinups, .chinups-narrow{
+                flex-direction: column;
+                justify-content: space-between;
+                height: 650px;
+                width: 30%;
+            }
+        }
+
+        .neutral-pullups-container{
+            .neutral-pullups-narrow, .neutral-pullups-wide{
+                flex-direction: column;
+                justify-content: space-between;
+                height: 650px;
+                width: 30%;
+            }
+        }
+
+        .dips-container{
+            .dips, .straight-bar-dips{
+                flex-direction: column;
+                justify-content: space-between;
+                height: 650px;
+                width: 30%;
+            }
+        }
+
+        .pushups-container{
+            .skull-crushers, .pushups{
+                flex-direction: column;
+                justify-content: space-between;
+                height: 650px;
+                width: 30%;
+            }
+        }
+
+        .muscle-ups-container{
+            .muscle-ups{
+                flex-direction: column;
+                justify-content: space-between;
+                height: 600px;
+                width: 30%; 
+            }
         }
     }
 }
@@ -509,85 +600,6 @@
                 width: 80%;
             }
         }
-
-        .pullups-container{
-            .pulls{
-                .pullups, .pullups-wide{
-                    display: flex;
-                    flex-direction: column;
-                    width: 25%;
-                    height: 600px;
-                    align-items: center;
-                    justify-content: space-between;
-                }
-            }
-        }
-
-        .pullups-container-2{
-            .pullups-narrow, .pullups-alternate{
-                display: flex;
-                flex-direction: column;
-                width: 25%;
-                height: 650px;
-                align-items: center;
-                justify-content: space-between;
-            }
-        }
-
-        .chinups-container{
-            .chinups, .chinups-narrow{
-                display: flex;
-                flex-direction: column;
-                width: 25%;
-                height: 650px;
-                align-items: center;
-                justify-content: space-between;
-            }
-        }
-
-        .dips-container{
-            .dips, .straight-bar-dips{
-                display: flex;
-                flex-direction: column;
-                width: 25%;
-                height: 650px;
-                align-items: center;
-                justify-content: space-between;
-            }
-        }
-
-        .muscle-ups-container{
-            .muscle-ups{
-                display: flex;
-                flex-direction: column;
-                width: 25%;
-                height: 650px;
-                align-items: center;
-                justify-content: space-between;
-            }
-        }
-
-        .neutral-pullups-container{
-            .neutral-pullups-narrow, .neutral-pullups-wide{
-                display: flex;
-                flex-direction: column;
-                width: 25%;
-                height: 650px;
-                align-items: center;
-                justify-content: space-between;
-            }
-        }
-
-        .pushups-container{      
-            .pushups, .skull-crushers{
-                display: flex;
-                flex-direction: column;
-                width: 25%;
-                height: 650px;
-                align-items: center;
-                justify-content: space-between;
-            }
-        }
     }
 }
 
@@ -609,85 +621,6 @@
                 font-family: Verdana, Geneva, Tahoma, sans-serif;
                 font-weight: bold;
                 width: 80%;
-            }
-        }
-
-        .pullups-container{
-            .pulls{
-                .pullups, .pullups-wide{
-                    display: flex;
-                    flex-direction: column;
-                    width: 25%;
-                    height: 600px;
-                    align-items: center;
-                    justify-content: space-between;
-                }
-            }
-        }
-
-        .pullups-container-2{
-            .pullups-narrow, .pullups-alternate{
-                display: flex;
-                flex-direction: column;
-                width: 25%;
-                height: 650px;
-                align-items: center;
-                justify-content: space-between;
-            }
-        }
-
-        .chinups-container{
-            .chinups, .chinups-narrow{
-                display: flex;
-                flex-direction: column;
-                width: 25%;
-                height: 650px;
-                align-items: center;
-                justify-content: space-between;
-            }
-        }
-
-        .dips-container{
-            .dips, .straight-bar-dips{
-                display: flex;
-                flex-direction: column;
-                width: 25%;
-                height: 650px;
-                align-items: center;
-                justify-content: space-between;
-            }
-        }
-
-        .muscle-ups-container{
-            .muscle-ups{
-                display: flex;
-                flex-direction: column;
-                width: 25%;
-                height: 650px;
-                align-items: center;
-                justify-content: space-between;
-            }
-        }
-
-        .neutral-pullups-container{
-            .neutral-pullups-narrow, .neutral-pullups-wide{
-                display: flex;
-                flex-direction: column;
-                width: 25%;
-                height: 650px;
-                align-items: center;
-                justify-content: space-between;
-            }
-        }
-
-        .pushups-container{      
-            .pushups, .skull-crushers{
-                display: flex;
-                flex-direction: column;
-                width: 25%;
-                height: 650px;
-                align-items: center;
-                justify-content: space-between;
             }
         }
     }
@@ -719,15 +652,12 @@
 
             .pulls{
                 padding-top: 5%;
-                display: flex;
                 flex-direction: column;
-                align-items: center;
-                justify-content: space-evenly;
 
                 .pullups, .pullups-wide{
-                    display: flex;
+                    z-index: 5;
                     flex-direction: column;
-                    width: 40%;
+                    width: 50%;
                     height: 600px;
                     align-items: center;
                     justify-content: space-between;
@@ -737,15 +667,11 @@
 
         .pullups-container-2{
             height: 1500px;
-            display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: space-evenly;
 
             .pullups-narrow, .pullups-alternate{
-                display: flex;
                 flex-direction: column;
-                width: 40%;
+                width: 50%;
                 height: 600px;
                 align-items: center;
                 justify-content: space-between;
@@ -754,15 +680,11 @@
 
         .chinups-container{
             height: 1500px;
-            display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: space-evenly;
 
             .chinups, .chinups-narrow{
-                display: flex;
                 flex-direction: column;
-                width: 40%;
+                width: 50%;
                 height: 600px;
                 align-items: center;
                 justify-content: space-between;
@@ -771,16 +693,12 @@
 
         .dips-container{
             height: 1700px;
-            display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: space-evenly;
 
             .dips, .straight-bar-dips{
-                display: flex;
                 flex-direction: column;
-                width: 40%;
-                height: 700px;
+                width: 50%;
+                height: 600px;
                 align-items: center;
                 justify-content: space-between;
             }
@@ -789,15 +707,11 @@
         
         .neutral-pullups-container{
             height: 1500px;
-            display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: space-evenly;
 
             .neutral-pullups-narrow, .neutral-pullups-wide{
-                display: flex;
                 flex-direction: column;
-                width: 40%;
+                width: 50%;
                 height: 600px;
                 align-items: center;
                 justify-content: space-between;
@@ -806,15 +720,11 @@
         
         .pushups-container{      
             height: 1500px;
-            display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: space-evenly;
 
             .pushups, .skull-crushers{
-                display: flex;
                 flex-direction: column;
-                width: 40%;
+                width: 50%;
                 height: 600px;
                 align-items: center;
                 justify-content: space-between;
@@ -823,9 +733,8 @@
 
         .muscle-ups-container{
             .muscle-ups{
-                display: flex;
                 flex-direction: column;
-                width: 40%;
+                width: 50%;
                 height: 600px;
                 align-items: center;
                 justify-content: space-between;
@@ -834,7 +743,7 @@
     }
 }
 
-@media screen and (max-width: 630px){
+@media screen and (max-width: 650px){
     .sw-container{
         --h1-font-size: 40px;
         --welcome-font-size: 14px;
@@ -856,119 +765,91 @@
         }
 
         .pullups-container{
-            height: 1700px;
+            padding-left: 0;
 
             .pulls{
-                padding-top: 5%;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: space-evenly;
+                padding-left: 0;
 
                 .pullups, .pullups-wide{
-                    display: flex;
-                    flex-direction: column;
-                    width: 50%;
-                    height: 600px;
-                    align-items: center;
-                    justify-content: space-between;
+                    width: 70%;
+
+                    .description{
+                        margin-left: 0;
+                    }
                 }
             }
         }
 
         .pullups-container-2{
-            height: 1500px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-evenly;
-            
+            padding-left: 0;
+
             .pullups-narrow, .pullups-alternate{
-                display: flex;
-                flex-direction: column;
-                width: 50%;
-                height: 600px;
-                align-items: center;
-                justify-content: space-between;
+                width: 70%;
+
+                .description{
+                    margin-left: 0;
+                }
             }
         }
 
         .chinups-container{
-            height: 1500px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-evenly;
+            padding-left: 0;
 
             .chinups, .chinups-narrow{
-                display: flex;
-                flex-direction: column;
-                width: 50%;
-                height: 600px;
-                align-items: center;
-                justify-content: space-between;
+                width: 70%;
+
+                .description{
+                    margin-left: 0;
+                }
             }
         }
 
         .dips-container{
-            height: 1700px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-evenly;
+            padding-left: 0;
 
             .dips, .straight-bar-dips{
-                display: flex;
-                flex-direction: column;
-                width: 50%;
-                height: 700px;
-                align-items: center;
-                justify-content: space-between;
+                width: 70%;
+
+                .description{
+                    margin-left: 0;
+                }
             }
         }
+
         
         .neutral-pullups-container{
-            height: 1500px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-evenly;
+            padding-left: 0;
 
             .neutral-pullups-narrow, .neutral-pullups-wide{
-                display: flex;
-                flex-direction: column;
-                width: 50%;
-                height: 600px;
-                align-items: center;
-                justify-content: space-between;
+                width: 70%;
+
+                .description{
+                    margin-left: 0;
+                }
             }
         }
         
-        .pushups-container{      
-            height: 1500px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-evenly;
-            
+        .pushups-container{     
+            padding-left: 0;
+
             .pushups, .skull-crushers{
-                display: flex;
-                flex-direction: column;
-                width: 50%;
-                height: 600px;
-                align-items: center;
-                justify-content: space-between;
+                width: 70%;
+
+                .description{
+                    margin-left: 0;
+                }
             }
         }
 
         .muscle-ups-container{
+            padding-left: 0;
+            
             .muscle-ups{
-                display: flex;
-                flex-direction: column;
-                width: 50%;
-                height: 600px;
-                align-items: center;
-                justify-content: space-between;
+                width: 70%;
+
+                .description{
+                    margin-left: 0;
+                }
             }
         }
     }
