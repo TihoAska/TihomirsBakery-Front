@@ -87,15 +87,18 @@ export class SidebarComponent {
 
   navigateTo(path){
     if(path == 'HOME'){
-      this.router.navigate([''])
+      this.router.navigate(['']);
     } else if(path == 'YOUR DAY'){
       this.router.navigate(['your-day']);
-    } else if (path == 'WORKOUT SPOTS'){
+    } else if(path == 'WORKOUT SPOTS'){
       this.router.navigate(['map']);
-    } else if (path == 'GYM ESSENTIALS'){
-      this.router.navigate(['gym-essentials'])
-    } else if (path == 'KITCHEN ESSENTIALS'){
-      this.router.navigate(['kitchen-essentials'])
+    } else if(path == 'GYM ESSENTIALS'){
+      this.router.navigate(['gym-essentials']);
+    } else if(path == 'KITCHEN ESSENTIALS'){
+      this.router.navigate(['kitchen-essentials']);
+    } else if(path == 'GYM' || path == 'KITCHEN'){
+      this.router.navigate(['']);
+      this.helperService.scrollTo.next(path);
     }
     this.helperService.scrollTo.next(path);
   }
