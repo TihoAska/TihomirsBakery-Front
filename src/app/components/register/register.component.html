@@ -51,8 +51,8 @@
             <label for="confirmPassword">confirm password: </label>
             <input formControlName="confirmPassword" type="password">
         </div>
-        <div class="password-error" *ngIf="registerForm.get('confirmPassword').touched && registerForm.get('confirmPassword').errors?.['required']">
-            <p>{{ passwordError }}</p>
+        <div class="password-error" *ngIf="registerForm.get('confirmPassword').touched && ($passwordError | async) != ''">
+            <p>{{ $passwordError | async }}</p>
         </div>
 
         <div class="avatar-picker">

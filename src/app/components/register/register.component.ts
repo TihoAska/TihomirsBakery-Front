@@ -25,6 +25,7 @@ export class RegisterComponent {
 
   public $emailError: BehaviorSubject<string> = new BehaviorSubject<string>('');
   public $userNameError: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  public $passwordError: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
   registerForm = new FormGroup({
     firstName : new FormControl('', Validators.required),
@@ -54,11 +55,21 @@ export class RegisterComponent {
       this.registerForm.get('userName').valueChanges.subscribe(() => {
         this.$userNameError.next('');
       });
+
+      this.registerForm.get('confirmPassword').valueChanges.subscribe(() => {
+        this.$passwordError.next('');
+      });
   }
 
   register(registerFormValue){
 
     if(this.registerForm.valid){
+
+      if(this.registerForm.get('password').value != this.registerForm.get('confirmPassword').value){
+        this.$passwordError.next("Passwords do not match!");
+        return;
+      }
+
       const userToRegister : UserToRegisterDTO = {
         firstName : registerFormValue.firstName,
         lastName : registerFormValue.lastName,
