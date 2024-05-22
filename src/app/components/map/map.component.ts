@@ -1,5 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Map, MapStyle, Marker, Popup, config } from '@maptiler/sdk';
+import { environment } from '../../../environments/environment';
 import '@maptiler/sdk/dist/maptiler-sdk.css';
 
 @Component({
@@ -22,7 +23,7 @@ export class MapComponent {
   }
 
   ngOnInit(): void {
-    config.apiKey = 'MZNDyCXZInU2EavUZBab';
+    config.apiKey = environment.map_api_key;
     console.log("in map");
   }
 
