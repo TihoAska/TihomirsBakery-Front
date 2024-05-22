@@ -22,6 +22,8 @@ export class UserService {
       email: tokenPayload.Email,
       userName: tokenPayload.UserName,
       imageUrl: tokenPayload.ImageUrl,
+      firstName: tokenPayload.FirstName,
+      lastName: tokenPayload.LastName,
     }
 
     return user;
