@@ -7,6 +7,7 @@ import { UserToLoginDTO } from '../../models/UserToLoginDTO';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 import { NutritionService } from '../../services/nutrition.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,9 @@ export class LoginComponent {
   emailError = '';
 
   passwordIsValid = true;
-  passwordError = '';
+
+  public $emailError : BehaviorSubject<string> = new BehaviorSubject<string>('');
+  public $passwordError : BehaviorSubject<string> = new BehaviorSubject<string>('');
 
   loginForm = new FormGroup({
       email : new FormControl('', [Validators.required, Validators.email]),
@@ -40,11 +43,20 @@ export class LoginComponent {
 
   ngOnInit(){
     this.loginForm.reset();
+
+    this.loginForm.get('email').valueChanges.subscribe(() => {
+      this.$emailError.next('');
+    });
+
+    this.loginForm.get('password').valueChanges.subscribe(() => {
+      this.$passwordError.next('');
+    });
   }
 
   closeLogin(){
     this.sidebarService.toggleLogin.next(false);
     this.helperService.dimBackground.next(false);
+    this.$passwordError.next('');
 
     if(this.accountService.$isFromAuth.value){
       this.accountService.$isFromAuth.next(false);
@@ -58,7 +70,7 @@ export class LoginComponent {
         password : loginFormValue.password
       } 
       this.accountService.login(userToLogin).subscribe(res => {
-        if(res != null){
+        if(res != null && res.isAuthSuccessful){
           var userFromToken = this.userService.decodeUserFromToken((<any>res).accessToken);
           localStorage.setItem('accessToken', (<any>res).accessToken);
           localStorage.setItem('refreshToken', (<any>res).refreshToken);
@@ -75,8 +87,16 @@ export class LoginComponent {
             this.accountService.$isFromAuth.next(false);
             this.router.navigate(['your-day']);
           }
+        } else {
+          // this.passwordError = res.errorMessage;
+          if(res.type == "Password"){
+            this.$passwordError.next(res.errorMessage);
+          }
+          if (res.type == "Email"){
+            this.$emailError.next(res.errorMessage);
+          }
         }
-      })
+      });
     }
   }
 
@@ -98,5 +118,6 @@ export class LoginComponent {
   toggleRegisterWindow(){
     this.sidebarService.toggleLogin.next(false);
     this.helperService.toggleRegisterWindow.next(true);
+    this.$passwordError.next('');
   }
 }

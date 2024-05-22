@@ -25,11 +25,11 @@ export class AccountService {
     private router : Router,
   ) { }
 
-  login(loginFormValue) : Observable<HttpEvent<any[]>>{
+  login(loginFormValue) : Observable<any>{
     return this.http.post<HttpEvent<any[]>>('https://localhost:7069/api/account/Login', loginFormValue);
   }
 
-  register(registerFormValue) : Observable<HttpEvent<any[]>>{
+  register(registerFormValue) : Observable<any>{
     return this.http.post<HttpEvent<any[]>>('https://localhost:7069/api/account/Register', registerFormValue);
   }
 

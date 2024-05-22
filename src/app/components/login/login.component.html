@@ -17,13 +17,19 @@
         <div class="email-error" *ngIf="loginForm.get('email').touched && loginForm.get('email').errors?.['email']">
           <p>Please enter a valid email address.</p>
         </div>
+        <div class="email-error" *ngIf="loginForm.get('email').touched && ($emailError | async) != ''">
+            <p>{{ $emailError | async }}</p>
+          </div>
 
         <div class="password">
             <label for="password">Password</label>
             <input formControlName="password" id="password" type="password" autocomplete="new-password">
         </div>
-        <div class="password-error" *ngIf="loginForm.get('password').touched && loginForm.get('password').errors?.['required']">
-            <p>{{ passwordError }}</p>
+        <!-- <div class="password-error" *ngIf="loginForm.get('password').touched && loginForm.get('password').errors?.['required']">
+            {{ passwordError }}
+        </div> -->
+        <div class="password-error" *ngIf="loginForm.get('password').touched && ($passwordError | async) != ''">
+            <p>{{ $passwordError | async }}</p>
         </div>
 
         <div class="button-container">

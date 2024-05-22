@@ -8,6 +8,7 @@ import { AccountService } from '../../services/account.service';
 import { UserService } from '../../services/user.service';
 import { FooterService } from '../../services/footer.service';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -21,6 +22,9 @@ export class RegisterComponent {
 
   passwordIsValid = true;
   passwordError = '';
+
+  public $emailError: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  public $userNameError: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
   registerForm = new FormGroup({
     firstName : new FormControl('', Validators.required),
@@ -42,6 +46,14 @@ export class RegisterComponent {
       this.registerForm.valueChanges.subscribe(() => {
         this.updateErrorMessages();
       });
+
+      this.registerForm.get('email').valueChanges.subscribe(() => {
+        this.$emailError.next('');
+      });
+
+      this.registerForm.get('userName').valueChanges.subscribe(() => {
+        this.$userNameError.next('');
+      });
   }
 
   register(registerFormValue){
@@ -58,7 +70,7 @@ export class RegisterComponent {
       } 
 
       this.accountService.register(userToRegister).subscribe(res => {
-        if(res != null){
+        if(res != null && res.isAuthSuccessful){
           var user = this.userService.decodeUserFromToken((<any>res).accessToken);
           localStorage.setItem('accessToken', (<any>res).accessToken);
           localStorage.setItem('refreshToken', (<any>res).refreshToken);
@@ -72,8 +84,17 @@ export class RegisterComponent {
           }
   
           this.accountService.$loggedUser.next(user)
+          this.registerForm.reset();
+        } 
+        else{
+          if(res.type == "Email"){
+            this.$emailError.next(res.errorMessage);
+          }  
+          if(res.type == "UserName"){
+            this.$userNameError.next(res.errorMessage);
+          }
         }
-      })
+      });
     }
   }
 

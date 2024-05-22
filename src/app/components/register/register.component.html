@@ -21,6 +21,9 @@
             <label for="userName">user name: </label>
             <input formControlName="userName" id="userName" autocomplete="new-user-name">
         </div>
+        <div class="user-name-error" *ngIf="registerForm.get('userName').touched && ($userNameError | async) != ''">
+            <p>{{ $userNameError | async }}</p>
+        </div>
 
         <div class="email">
             <label for="email">email: </label>
@@ -32,13 +35,16 @@
         <div class="email-error" *ngIf="registerForm.get('email').touched && registerForm.get('email').errors?.['email']">
           <p>Please enter a valid email address.</p>
         </div>
+        <div class="email-error" *ngIf="registerForm.get('email').touched && ($emailError | async) != ''">
+            <p>{{ $emailError | async }}</p>
+        </div>
 
         <div class="password">
             <label for="password">password: </label>
             <input formControlName="password" id="password" type="password" autocomplete="new-password">
         </div>
         <div class="password-error" *ngIf="registerForm.get('password').touched && registerForm.get('password').errors?.['required']">
-            <!-- <p>{{ passwordError }}</p> -->
+            <p>This field is required.</p>
         </div>
 
         <div class="confirm-password">
@@ -46,7 +52,7 @@
             <input formControlName="confirmPassword" type="password">
         </div>
         <div class="password-error" *ngIf="registerForm.get('confirmPassword').touched && registerForm.get('confirmPassword').errors?.['required']">
-            <!-- <p>{{ passwordError }}</p> -->
+            <p>{{ passwordError }}</p>
         </div>
 
         <div class="avatar-picker">
