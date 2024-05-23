@@ -74,6 +74,10 @@ export class YourDayComponent {
   pickedBreakfastBeforeConfirmValues = { protein: 0, fats: 0, carbs: 0, calories: 0 };
   pickedLunchBeforeConfirmValues = { protein: 0, fats: 0, carbs: 0, calories: 0 };
   pickedDinnerBeforeConfirmValues = { protein: 0, fats: 0, carbs: 0, calories: 0 };
+
+  maxProteinValue = 200;
+  maxFatsValue = 100;
+  maxCarbsValue = 400;
   
   constructor(
     public footerService: FooterService,
@@ -439,5 +443,21 @@ export class YourDayComponent {
       totalCarbs: this.nutritionService.$totalMealsValue.value.totalCarbs - this.tempPickedMealsValue.carbs + this.pickedMealsValue.carbs,
       totalCalories: this.nutritionService.$totalMealsValue.value.totalCalories - this.tempPickedMealsValue.calories + this.pickedMealsValue.calories,
     });
+  }
+
+  getBackgroundColor(value: number, maxValue: number, color: string, meal : string): string {
+    const opacity = Math.min(value / maxValue, 1);
+    const rgbaColor = this.hexToRgba(color, opacity);
+    return rgbaColor;
+  }
+
+  hexToRgba(hex: string, opacity: number): string {
+    let r = 0, g = 0, b = 0;
+    if (hex.length == 7) {
+      r = parseInt(hex.slice(1, 3), 16);
+      g = parseInt(hex.slice(3, 5), 16);
+      b = parseInt(hex.slice(5, 7), 16);
+    }
+    return `rgba(${r}, ${g}, ${b}, ${opacity})`;
   }
 }

@@ -28,15 +28,15 @@
             </div>
 
             <div class="macros">
-                <div class="protein">
+                <div class="protein" [ngStyle]="{'background': getBackgroundColor((nutritionService.$totalMealsValue | async)?.totalProtein, maxProteinValue, '#FFA07A', 'protein')}">
                     <p class="macro">Protein: </p>
                     <p class="macro-number">{{ (nutritionService.$totalMealsValue | async).totalProtein | number:'1.0-2' }} g</p>
                 </div>
-                <div class="fats">
+                <div class="fats" [ngStyle]="{'background': getBackgroundColor((nutritionService.$totalMealsValue | async)?.totalFats, maxFatsValue, '#ADD8E6', 'fats')}">
                     <p class="macro">Fats:</p>
                     <p class="macro-number">{{ (nutritionService.$totalMealsValue | async).totalFats | number:'1.0-2' }} g</p>
                 </div>
-                <div class="carbs">
+                <div class="carbs" [ngStyle]="{'background': getBackgroundColor((nutritionService.$totalMealsValue | async)?.totalCarbs, maxCarbsValue, '#90EE90', 'carbs')}">
                     <p class="macro">Carbs:</p>
                     <p class="macro-number">{{ (nutritionService.$totalMealsValue | async).totalCarbs | number:'1.0-2' }} g</p>
                 </div>

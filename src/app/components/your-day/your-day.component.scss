@@ -119,8 +119,6 @@
                 .protein, .fats, .carbs{
                     height: 80px;
                     width: 100%;
-                    background-color: var(--lightgreen);
-                    // margin-bottom: 50px;
                     margin-left: 50px;
                     display: flex;
                     flex-direction: row;
@@ -130,10 +128,12 @@
 
                     .macro{
                         margin-left: 30px;
+                        text-shadow: 2px 2px 1px black;
                     }
 
                     .macro-number{
                         margin-right: 30px;
+                        text-shadow: 1.5px 3px 2.5px black;
                     }
                 }
 
