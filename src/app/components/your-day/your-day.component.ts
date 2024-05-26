@@ -89,6 +89,8 @@ export class YourDayComponent {
   ) {}
 
   ngOnInit() {
+    window.scrollTo(0,0);
+
     this.mealService.getAll().subscribe((data) => {
       this.mealService.allMeals.next(data);
       this.allMeals = data;
