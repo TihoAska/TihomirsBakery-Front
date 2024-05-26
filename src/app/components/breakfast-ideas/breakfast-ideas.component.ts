@@ -14,4 +14,8 @@ export class BreakfastIdeasComponent {
     { path: '../../../assets/images/breakfast-ideas/oatmeal-shake.jpg', name: 'OATMEAL-SHAKE' },
     { path: '../../../assets/images/breakfast-ideas/whey-with-banana.jpg', name: 'OATMEAL-SHAKE' },
   ];
+
+  ngOnInit(){
+    window.scrollTo(0,0);
+  }
 }

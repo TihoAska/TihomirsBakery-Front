@@ -14,4 +14,8 @@ export class SnackIdeasComponent {
     { path: '../../../assets/images/snack-ideas/fruit-salad.jpg', name: 'FRUIT-SALAD' },
     { path: '../../../assets/images/snack-ideas/whey-with-banana.jpg', name: 'OATMEAL-SHAKE' },
   ];
+
+  ngOnInit(){
+    window.scrollTo(0,0);
+  }
 }

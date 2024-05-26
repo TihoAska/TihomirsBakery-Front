@@ -14,4 +14,8 @@ export class DinnerIdeasComponent {
     { path: '../../../assets/images/dinner-ideas/sardines-on-toast.jpg', name: 'OATMEAL-SHAKE' },
     { path: '../../../assets/images/dinner-ideas/semolina-with-whey.jpg', name: 'OATMEAL-SHAKE' },
   ];
+
+  ngOnInit(){
+    window.scrollTo(0,0);
+  }
 }

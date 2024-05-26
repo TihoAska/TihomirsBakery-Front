@@ -14,4 +14,8 @@ export class LunchIdeasComponent {
     { path: '../../../assets/images/lunch-ideas/chicken-and-broccoli.jpg', name: 'CHICKEN WITH BROCCOLI' },
     { path: '../../../assets/images/lunch-ideas/chicken-tortilla.jpg', name: 'CHICKEN TORTILLA' },
   ];
+
+  ngOnInit(){
+    window.scrollTo(0,0);
+  }
 }

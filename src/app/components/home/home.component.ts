@@ -33,6 +33,8 @@ export class HomeComponent {
   }
 
   ngOnInit() {
+    window.scrollTo(0,0);
+    
     this.helperService.scrollTo.subscribe(res => {
       if (res === "GYM") {
         this.router.navigate(['/']).then(() => {
