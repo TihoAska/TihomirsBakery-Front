@@ -519,10 +519,10 @@
             transition: transform 0.3s ease;
         }
 
-        mat-icon:hover{
-            transform: scale(1.1);
-            cursor: pointer;
-        }
+        // mat-icon:hover{
+        //     transform: scale(1.1);
+        //     cursor: pointer;
+        // }
 
         p{
             font-size: 30px;
@@ -551,10 +551,12 @@
             .magnifier-container{
                 margin-left: 0;
                 margin-top: 0;
-                background-color: #f6f6c2;
-                height: 40px;
+                background-color: #F5F5DC;
+                height: 37px;
+                margin-top: 2px;
                 width: 40px;
                 border-radius: 0px 20px 20px 0;
+                border-left: none;
 
                 mat-icon{
                     margin-left: 5%;
@@ -761,7 +763,7 @@
             .workout-and-meals{
 
                 .meals{
-                    .breakfast, .lunch, .dinner{
+                    .breakfast, .lunch, .dinner, .edit-breakfast, .edit-lunch, .edit-dinner{
                         height: 250px;
                         width: 250px;
                     }
@@ -777,6 +779,21 @@
                     }                        
                 }
             }
+        }
+
+        .add-meal, .edit-meal{
+            left: 32%;
+        }
+    }
+}
+
+@media screen and (max-width: 1800px){
+    .container{
+        .add-meal, .edit-meal{
+            top: 30%;
+            left: 30%;
+            height: 500px;
+            width: 800px;
         }
     }
 }
@@ -800,9 +817,39 @@
                 .meals{
                     padding-top: 5%;
 
-                    .breakfast, .lunch, .dinner{
+                    .breakfast, .lunch, .dinner, .edit-breakfast, .edit-lunch, .edit-dinner{
                         height: 200px;
                         width: 200px;
+                    }
+
+                    .edit-breakfast > .edit-breakfast-content{
+                        #edit-breakfast-calories{
+                            font-size: 25px;
+                        }   
+
+                        p{
+                            font-size: 12px;
+                        }
+                    }
+
+                    .edit-lunch > .edit-lunch-content{
+                        #edit-lunch-calories{
+                            font-size: 25px;
+                        }
+
+                        p{
+                            font-size: 12px;
+                        }
+                    }
+
+                    .edit-diner > .edit-dinner-content{
+                        #edit-dinner-calories{
+                            font-size: 25px;
+                        }
+
+                        p{
+                            font-size: 12px;
+                        }
                     }
                 }
             }
@@ -813,11 +860,19 @@
                         margin-left: 2%;
 
                         h3, p{
-                            font-size: 60px;
+                            font-size: 50px;
                         }
                     }                        
                 }
             }
+        }
+    }
+}
+
+@media screen and (max-width: 1600px){
+    .container{
+        .add-meal, .edit-meal{
+            left: 26%;
         }
     }
 }
@@ -849,9 +904,43 @@
                 .meals{
                     padding-top: 5%;
 
-                    .breakfast, .lunch, .dinner{
+                    .breakfast, .lunch, .dinner, .edit-breakfast, .edit-lunch, .edit-dinner{
                         height: 180px;
                         width: 180px;
+
+                        p{
+                            font-size: 12px;
+                        }
+                    }
+
+                    .edit-breakfast > .edit-breakfast-content{
+                        #edit-breakfast-calories{
+                            font-size: 20px;
+                        }   
+
+                        p{
+                            font-size: 10px;
+                        }
+                    }
+
+                    .edit-lunch > .edit-lunch-content{
+                        #edit-lunch-calories{
+                            font-size: 20px;
+                        }
+
+                        p{
+                            font-size: 10px;
+                        }
+                    }
+
+                    .edit-diner > .edit-dinner-content{
+                        #edit-dinner-calories{
+                            font-size: 20px;
+                        }
+
+                        p{
+                            font-size: 10px;
+                        }
                     }
                 }
             }
@@ -863,7 +952,7 @@
                         height: 100px;
 
                         h3, p{
-                            font-size: 50px;
+                            font-size: 48px;
                         }
                     }
                 }
@@ -880,6 +969,13 @@
                     }
                 }
             }
+        }
+
+        .add-meal, .edit-meal{
+            top: 30%;
+            left: 22%;
+            height: 500px;
+            width: 800px;
         }
     }
 }
@@ -921,9 +1017,39 @@
                     padding-top: 5%;
                     padding-bottom: 5%;
 
-                    .breakfast, .lunch, .dinner{
+                    .breakfast, .lunch, .dinner, .edit-breakfast, .edit-lunch, .edit-dinner{
                         height: 250px;
                         width: 250px;
+                    }
+
+                    .edit-breakfast > .edit-breakfast-content{
+                        #edit-breakfast-calories{
+                            font-size: 32px;
+                        }   
+
+                        p{
+                            font-size: 14px;
+                        }
+                    }
+
+                    .edit-lunch > .edit-lunch-content{
+                        #edit-lunch-calories{
+                            font-size: 32px;
+                        }
+
+                        p{
+                            font-size: 14px;
+                        }
+                    }
+
+                    .edit-diner > .edit-dinner-content{
+                        #edit-dinner-calories{
+                            font-size: 32px;
+                        }
+
+                        p{
+                            font-size: 14px;
+                        }
                     }
                 }
             }
@@ -965,8 +1091,35 @@
                 }
             }
         }
+
+        .add-meal, .edit-meal{
+            top: 30%;
+            left: 15%;
+            height: 500px;
+            width: 800px;
+        }
     }
 }
+
+@media screen and (max-width: 1000px){
+    .container{
+        .add-meal, .edit-meal{
+            top: 30%;
+            left: 15%;
+            height: 500px;
+            width: 700px;
+
+            .picked-meals{
+                .picked-meal{
+                    p{
+                        font-size: 26px;
+                    }
+                }
+            }
+        }
+    }
+}
+
 
 @media screen and (max-width: 900px){
     .container{
@@ -1004,9 +1157,39 @@
                 .meals{
                     padding-top: 5%;
 
-                    .breakfast, .lunch, .dinner{
+                    .breakfast, .lunch, .dinner, .edit-breakfast, .edit-lunch, .edit-dinner{
                         height: 180px;
                         width: 180px;
+                    }
+
+                    .edit-breakfast > .edit-breakfast-content{
+                        #edit-breakfast-calories{
+                            font-size: 24px;
+                        }   
+
+                        p{
+                            font-size: 12px;
+                        }
+                    }
+
+                    .edit-lunch > .edit-lunch-content{
+                        #edit-lunch-calories{
+                            font-size: 24px;
+                        }
+
+                        p{
+                            font-size: 12px;
+                        }
+                    }
+
+                    .edit-diner > .edit-dinner-content{
+                        #edit-dinner-calories{
+                            font-size: 24px;
+                        }
+
+                        p{
+                            font-size: 12px;
+                        }
                     }
                 }
             }
@@ -1048,6 +1231,21 @@
                 }
             }
         }
+
+        .add-meal, .edit-meal{
+            top: 30%;
+            left: 12%;
+            height: 500px;
+            width: 700px;
+        }
+    }
+}
+
+@media screen and (max-width: 840px){
+    .container{
+        .add-meal, .edit-meal{
+            left: 8%;
+        }
     }
 }
 
@@ -1082,7 +1280,7 @@
                     width: 90%;
                     padding-left: 5%;
 
-                    .breakfast, .lunch, .dinner{
+                    .breakfast, .lunch, .dinner, .edit-breakfast, .edit-lunch, .edit-dinner{
                         height: 160px;
                         width: 160px;
                     }
@@ -1122,6 +1320,271 @@
                         p{
                             font-size: 25px;
                         }
+                    }
+                }
+            }
+        }
+
+        .add-meal, .edit-meal{
+            top: 30%;
+            left: 7%;
+            height: 500px;
+            width: 650px;
+
+            .search-results{
+                .searched-meal{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+    
+                    .searched-macros-container{
+                        width: 75%;
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 750px){
+    .container{
+        .add-meal, .edit-meal{
+            top: 30%;
+            left: 7%;
+            height: 500px;
+            width: 620px;
+
+            .search-results{
+                .searched-meal{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+    
+                    .searched-macros-container{
+                        width: 80%;
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 700px){
+    .container{
+        .goal-and-meals > .todays-goal > .calories-and-chart > .calories{
+            h3, p{
+                font-size: 40px;
+            }
+        }
+
+        .add-meal, .edit-meal{
+            position: fixed;
+            top: 30%;
+            left: 4.5%;
+            height: 500px;
+            width: 600px;
+            background-color: var(--darkgreen);
+            border-radius: 50px;
+            z-index: 11;
+    
+            mat-icon{
+                color: #F5F5DC;
+                margin-top: 3%;
+                margin-left: 93%;
+                font-size: 30px;
+                transition: transform 0.3s ease;
+            }
+    
+            p{
+                font-size: 30px;
+                color: #F5F5DC;
+                margin-left: 10%;
+                margin-bottom: 2%;
+                font-weight: bold;
+            }
+    
+            .search{
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+                height: 50px;
+    
+                #search-bar{
+                    margin-left: 10%;
+                    width: 75%;
+                    height: 40px;
+                    background-color: #F5F5DC;
+                    border-radius: 20px 0px 0px 20px;
+                    text-align: left;
+                    color: var(--darkgreen);
+                }
+    
+                .magnifier-container{
+                    margin-left: 0;
+                    margin-top: 0;
+                    background-color: #F5F5DC;
+                    height: 37px;
+                    margin-top: 2px;
+                    width: 40px;
+                    border-radius: 0px 20px 20px 0;
+                    border-left: none;
+    
+                    mat-icon{
+                        margin-left: 5%;
+                        margin-top: 10%;
+                        color: var(--darkgreen)
+                    }
+                }
+    
+            }
+    
+            .calories{
+                p{
+                    font-weight: bold;
+                    font-size: 36px;
+                }
+            }
+        
+            .calories-and-macros{
+                margin-left: 5%;
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-evenly;
+    
+                .calories{
+                    width: 50%;
+                }
+    
+                .macros{
+                    margin-top: 2%;
+                    width: 50%;
+
+                    p{
+                        font-size: 25px;
+                    }
+    
+                    #protein{
+                        color: orange;
+                    }
+    
+                    #carbs{
+                        color: greenyellow;
+                    }
+    
+                    #fats{
+                        color: lightblue;
+                    }
+                }
+            }
+            
+            .search-results{
+                width: 80%;
+                margin-top: 10px;
+                margin-left: 10%;
+                background-color: #F5F5DC;
+                color: var(--darkgreen);
+                border-radius: 20px 20px 20px 20px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                position: absolute;
+                top: 33%;
+                left: 0;
+                z-index: 5;
+                overflow-y: auto;
+                max-height: 200px;
+    
+                .searched-meal{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    border: 0;
+                    height: 20px;
+    
+                    .searched-meal-name-container{
+                        border: 0;
+                        padding: 0;
+    
+                        #searched-meal-name{
+                            color: var(--darkgreen);
+                            font-size: 20px;
+                            margin: 0;
+                            border: 0;
+
+                            font-size: 16px;
+                        }
+                    }
+    
+                    .searched-macros-container{
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-evenly;
+                        width: 80%;
+                        border: 0;
+                        padding: 0;
+                        
+                        p{
+                            margin: 0;
+                            // margin-right: 1%;
+                            color: var(--darkgreen);
+                            font-size: 12px;
+                            border: 0;
+                        }
+                    }
+                }
+            }
+        
+            .search-results{
+                div{
+                    padding: 10px;
+                    border-bottom: 1px solid #ddd;
+                }
+    
+                div:hover{
+                    background-color: #eee;
+                    cursor: pointer;
+                }
+            }
+    
+            .picked-meals{
+                background-color: var(--darkgreen);
+                border-radius: 0px 0px 20px 20px;
+                max-height: 300px;
+                overflow-y: auto;
+    
+                .picked-meal{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: center;
+                    width: 100%;
+                    height: 55px;
+                    background-color: var(--darkgreen);
+                    border-radius: 0 0 20px 20px;
+                    border-bottom: 2px solid #F5F5DC;
+                    box-sizing: border-box;
+    
+                    p{
+                        padding: 10px;
+                        margin: 0;
+                        font-size: 22px;
+                    }
+    
+                    mat-icon{
+                        margin: 0;
+                        vertical-align: middle;
+                        height: 33px;
+                        width: 28px;
+                        font-size: 30px;
+                    }
+    
+                    mat-icon:hover{
+                        color: lightcoral
                     }
                 }
             }
@@ -1168,9 +1631,39 @@
                     padding-top: 5%;
                     flex-direction: column;
 
-                    .breakfast, .lunch, .dinner{
+                    .breakfast, .lunch, .dinner, .edit-breakfast, .edit-lunch, .edit-dinner{
                         height: 220px;
                         width: 220px;
+                    }
+
+                    .edit-breakfast > .edit-breakfast-content{
+                        #edit-breakfast-calories{
+                            font-size: 32px;
+                        }   
+
+                        p{
+                            font-size: 14px;
+                        }
+                    }
+
+                    .edit-lunch > .edit-lunch-content{
+                        #edit-lunch-calories{
+                            font-size: 32px;
+                        }
+
+                        p{
+                            font-size: 14px;
+                        }
+                    }
+
+                    .edit-diner > .edit-dinner-content{
+                        #edit-dinner-calories{
+                            font-size: 32px;
+                        }
+
+                        p{
+                            font-size: 14px;
+                        }
                     }
                 }
             }
@@ -1212,6 +1705,149 @@
                     }
                 }
             }
+        }
+
+        .add-meal, .edit-meal{
+            position: fixed;
+            top: 30%;
+            left: 4.5%;
+            height: 500px;
+            width: 550px;
+    
+            p{
+                font-size: 30px;
+            }
+    
+            .calories{
+                p{
+                    font-weight: bold;
+                    font-size: 40px;
+                }
+            }
+            
+            .search-results{   
+                .searched-meal{ 
+                    .searched-meal-name-container{
+                        #searched-meal-name{
+                            font-size: 16px;
+                        }
+                    }
+    
+                    .searched-macros-container{
+                        width: 80%;
+                        
+                        p{
+                            font-size: 12px;
+                        }
+                    }
+                }
+            }
+    
+            .picked-meals{
+                .picked-meal{
+                    p{
+                        padding: 10px;
+                        margin: 0;
+                        font-size: 22px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 600px){
+    .container{
+        .add-meal, .edit-meal{
+            left: 5.5%;
+            height: 500px;
+            width: 500px;
+            
+            .search-results{   
+                .searched-meal{   
+                    .searched-macros-container{
+                        p{
+                            font-size: 12px;
+                        }
+                    }
+                }
+            }
+   
+            .picked-meals{
+                .picked-meal{
+                    p{
+                        font-size: 20px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 560px){
+    .container{
+
+        .add-meal, .edit-meal{
+            position: fixed;
+            top: 30%;
+            left: 5.5%;
+            height: 500px;
+            width: 470px;
+    
+            p{
+                font-size: 30px;
+            }
+
+            .calories-and-macros{
+                .calories{
+                    p{
+                        font-weight: bold;
+                        font-size: 35px;
+                    }
+                }
+    
+                .macros{
+                    p{
+                        font-size: 22px;
+                    }
+                }
+            }
+    
+            .search-results{   
+                .searched-meal{ 
+                    .searched-meal-name-container{
+                        #searched-meal-name{
+                            font-size: 16px;
+                        }
+                    }
+    
+                    .searched-macros-container{
+                        width: 80%;
+                        
+                        p{
+                            font-size: 12px;
+                        }
+                    }
+                }
+            }
+    
+            .picked-meals{
+                .picked-meal{
+                    p{
+                        font-size: 18px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 530px){
+    .container{
+        .add-meal, .edit-meal{
+            left: 4.5%;
+            width: 450px;
         }
     }
 }
