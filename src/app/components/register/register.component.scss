@@ -52,26 +52,6 @@
             margin: 20px 0px 30px 0;
         }
 
-        // .email{
-        //     margin: 0;
-        //     padding: 0;
-        //     display: flex;
-        //     flex-direction: column;
-        //     font-size: 20px;
-            
-        //     label{
-        //         color: #F5F5DC;
-        //         padding-bottom: 5px;
-        //     }
-            
-        //     input{
-        //         width: 80%;
-        //         height: 30px;
-        //         border-radius: 10px;
-        //         background-color: #F5F5DC;
-        //     }
-        // }
-
         .email-error{
             p{
                 color: lightcoral;
@@ -174,5 +154,85 @@
         u:hover{
             cursor: pointer;
         }
+    }
+}
+
+@media screen and (max-width: 2000px){
+    .window{
+        left: 30%;
+    }
+}
+
+@media screen and (max-width: 1600px){
+    .window{
+        left: 26%;
+    }
+}
+
+@media screen and (max-width: 1600px){
+    .window{
+        left: 22%;
+    }
+}
+
+@media screen and (max-width: 1200px){
+    .window{
+        left: 16%;
+    }
+}
+
+@media screen and (max-width: 1050px){
+    .window{
+        left: 16%;
+        width: 700px;
+    }
+}
+
+@media screen and (max-width: 900px){
+    .window{
+        left: 12%;
+        width: 650px;
+    }
+}
+
+@media screen and (max-width: 800px){
+    .window{
+        left: 12%;
+        width: 570px;
+    }
+}
+
+@media screen and (max-width: 720px){
+    .window{
+        left: 12%;
+        width: 520px;
+    }
+}
+
+@media screen and (max-width: 650px){
+    .window{
+        left: 6%;
+        width: 520px;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .window{
+        left: 8%;
+        width: 470px;
+    }
+}
+
+@media screen and (max-width: 560px){
+    .window{
+        left: 7%;
+        width: 450px;
+    }
+}
+
+@media screen and (max-width: 530px){
+    .window{
+        left: 5%;
+        width: 450px;
     }
 }
