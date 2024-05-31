@@ -61,7 +61,7 @@ export class HamburgerSidebarComponent {
     } else if(path == 'GYM' || path == 'KITCHEN'){
       this.router.navigate(['']);
     }
-    this.helperService.scrollTo.next(path);
+    this.helperService.$scrollTo.next(path);
     this.footerService.isHamburgerClicked.next(false);
   }
 

@@ -70,8 +70,8 @@ export class LoginComponent {
   }
 
   closeLogin(){
-    this.sidebarService.toggleLogin.next(false);
-    this.helperService.dimBackground.next(false);
+    this.sidebarService.$toggleLogin.next(false);
+    this.helperService.$dimBackground.next(false);
     this.$passwordError.next('');
 
     if(this.accountService.$isFromAuth.value){
@@ -96,8 +96,8 @@ export class LoginComponent {
             this.nutritionService.getDataForUser();
           });
 
-          this.sidebarService.toggleLogin.next(false);
-          this.helperService.dimBackground.next(false);
+          this.sidebarService.$toggleLogin.next(false);
+          this.helperService.$dimBackground.next(false);
 
           if(this.accountService.$isFromAuth.value){
             this.accountService.$isFromAuth.next(false);
@@ -132,8 +132,8 @@ export class LoginComponent {
   }
 
   toggleRegisterWindow(){
-    this.sidebarService.toggleLogin.next(false);
-    this.helperService.toggleRegisterWindow.next(true);
+    this.sidebarService.$toggleLogin.next(false);
+    this.helperService.$toggleRegisterWindow.next(true);
     this.$passwordError.next('');
   }
 }

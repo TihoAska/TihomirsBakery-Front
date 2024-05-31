@@ -92,7 +92,7 @@ export class YourDayComponent {
     window.scrollTo(0,0);
 
     this.mealService.getAll().subscribe((data) => {
-      this.mealService.allMeals.next(data);
+      this.mealService.$allMeals.next(data);
       this.allMeals = data;
     });
     this.searchControl.valueChanges
@@ -117,7 +117,7 @@ export class YourDayComponent {
   }
 
   toggleAddMeal(mainMealName: string) {
-    this.helperService.dimBackground.next(true);
+    this.helperService.$dimBackground.next(true);
 
     if (mainMealName == 'breakfast') {
       this.pickedMeals = this.nutritionService.$pickedBreakfastMeals.value.slice();
