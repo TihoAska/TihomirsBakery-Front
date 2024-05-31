@@ -19,16 +19,6 @@ export class FooterComponent {
     
   }
 
-  togglePlus(){
-    this.footerService.isPlusClicked.next(!this.footerService.isPlusClicked.value);
-    if(this.footerService.isPlusClicked.value){
-      this.router.navigate(['add']);
-    } else{
-      this.helperService.windowChoice.next('add');
-      this.router.navigate(['']);
-    }
-  }
-
   navigateToSocial(social){
     if(social == 'GH'){
       window.open('https://github.com/TihoAska');

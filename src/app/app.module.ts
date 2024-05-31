@@ -10,7 +10,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './components/footer/footer.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { NgApexchartsModule } from 'ng-apexcharts';
-import { AddWindowComponent } from './components/add-window/add-window.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -46,7 +45,6 @@ import { GymComponent } from './components/gym/gym.component';
     YourDayComponent,
     SidebarComponent,
     FooterComponent,
-    AddWindowComponent,
     MapComponent,
     HomeComponent,
     StreetWorkoutComponent,

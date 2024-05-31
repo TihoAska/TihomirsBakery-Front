@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { YourDayComponent } from './components/your-day/your-day.component';
-import { AddWindowComponent } from './components/add-window/add-window.component';
 import { MapComponent } from './components/map/map.component';
 import { HomeComponent } from './components/home/home.component';
 import { StreetWorkoutComponent } from './components/street-workout/street-workout.component';
