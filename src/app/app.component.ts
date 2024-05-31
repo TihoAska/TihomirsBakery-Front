@@ -12,26 +12,7 @@ import { BehaviorSubject } from 'rxjs';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
-  animations: [
-    trigger(
-      'dimBackground', [
-        state(
-          'dim',
-          style({
-            opacity: 0.5,
-          })
-        ),
-        state(
-          'undim',
-          style({
-            opacity: 1,
-          })
-        ),
-        transition('dim <=> undim', animate('200ms ease-in-out')),
-      ],
-    )
-  ]
+  styleUrl: './app.component.scss'
 })
 export class AppComponent {
 
