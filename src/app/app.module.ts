@@ -36,6 +36,9 @@ import { LunchIdeasComponent } from './components/lunch-ideas/lunch-ideas.compon
 import { SnackIdeasComponent } from './components/snack-ideas/snack-ideas.component';
 import { DinnerIdeasComponent } from './components/dinner-ideas/dinner-ideas.component';
 import { GymComponent } from './components/gym/gym.component';
+import { NgParticlesModule } from 'ng-particles';
+import { ParticlesModule } from 'angular-particle';
+
 
 
 @NgModule({
@@ -65,8 +68,6 @@ import { GymComponent } from './components/gym/gym.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    NgxSkeletonLoaderModule.forRoot(),
-    NgApexchartsModule,
     MatFormFieldModule,
     MatIconModule,
     ReactiveFormsModule,
@@ -75,8 +76,7 @@ import { GymComponent } from './components/gym/gym.component';
     MatSelectModule,
     FormsModule,
     HttpClientModule,
-    DragScrollComponent,
-    DragScrollItemDirective,
+    NgParticlesModule,
   ],
   providers: [
     provideAnimationsAsync(),
