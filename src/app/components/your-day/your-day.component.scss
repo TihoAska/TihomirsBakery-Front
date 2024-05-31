@@ -161,6 +161,7 @@
             width: 50%;
             display: flex;
             flex-direction: column;
+            z-index: 4;
             
             .meals{
                 display: flex;
@@ -466,7 +467,7 @@
             }
 
             .workout{
-                background-image: url('../../../assets/images/your-day/battle-ropes.jpg'); 
+                background-image: url('../../../assets/images/your-day/add-workout.jpg'); 
                 background-size: cover;
                 background-position: center;
                 height: 35%;
@@ -489,6 +490,48 @@
             }
 
             .workout:hover{
+                transform: scale(1.02);
+                cursor: pointer;
+            }
+
+            .edit-workout{
+                background-image: url('../../../assets/images/your-day/edit-workout.png'); 
+                background-size: cover;
+                background-position: center;
+                height: 35%;
+                width: 80%;
+                margin-top: 5%;
+                margin-left: 11%;
+                border-radius: 10px;
+                border: 2px solid yellow;
+                transition: transform 0.3s ease;
+                overflow: hidden;
+                font-weight: bold;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+                .workout-data{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: space-between;
+                    width: 90%;
+
+                    p{
+                        color: yellow;
+                        font-size: 30px;
+                        margin-top: 5%;
+                    }
+                }
+
+                p{
+                    margin-top: 15%;
+                    margin-left: 5%;
+                    font-size: 50px;
+                    color: yellow;
+                }
+            }
+
+            .edit-workout:hover{
                 transform: scale(1.02);
                 cursor: pointer;
             }
@@ -519,10 +562,10 @@
             transition: transform 0.3s ease;
         }
 
-        // mat-icon:hover{
-        //     transform: scale(1.1);
-        //     cursor: pointer;
-        // }
+        mat-icon:hover{
+            transform: scale(1.05);
+            cursor: pointer;
+        }
 
         p{
             font-size: 30px;
@@ -743,6 +786,336 @@
             height: 8px;
         }
     }
+    
+    .add-workout{
+        position: fixed;
+        top: 30%;
+        left: 34%;
+        height: 650px;
+        width: 800px;
+        background-color: var(--darkgreen);
+        border-radius: 50px;
+        z-index: 11;
+
+        mat-icon{
+            color: #F5F5DC;
+            margin-top: 3%;
+            margin-left: 93%;
+            font-size: 30px;
+            transition: transform 0.3s ease;
+        }
+
+        mat-icon:hover{
+            transform: scale(1.05);
+            cursor: pointer;
+        }
+
+        p{
+            font-size: 30px;
+            color: #F5F5DC;
+            margin-left: 10%;
+            margin-bottom: 2%;
+            font-weight: bold;
+        }
+
+        hr{
+            width: 80%;
+        }
+
+        .name-input, .duration-input, .total-calories-input{
+            margin: 0;
+            padding: 0;
+            margin-left: 10%;
+            padding-top: 30px;
+            display: flex;
+            flex-direction: column;
+            font-size: 20px;
+            width: 90%;
+
+            label{
+                color: #F5F5DC;
+                padding-bottom: 5px;
+            }
+
+            input{
+                width: 85%;
+                height: 30px;
+                border-radius: 10px;
+                background-color: #F5F5DC;
+            }
+        }
+
+        .name-error{
+            p{
+                color: lightcoral;
+                font-size: 14px;
+                margin-bottom: 0;
+            }
+        }
+
+        .total-calories-input{
+            input{
+                text-align: end;
+            }
+        }
+
+        .type-input{
+            margin: 0;
+            padding: 0;
+            margin-left: 10%;
+            padding-top: 30px;
+            display: flex;
+            flex-direction: column;
+            font-size: 20px;
+            width: 90%;
+
+            label{
+                color: #F5F5DC;
+                padding-bottom: 5px;
+            }
+
+            select{
+                width: 86%;
+                height: 35px;
+                border-radius: 10px;
+                background-color: #F5F5DC;
+            }
+
+            select option:disabled {
+                color: gray !important;
+            }
+        }
+
+        .duration-container{
+            display: flex;
+            flex-direction: column;
+
+            input{
+                width: 70%;
+            }
+
+            p{
+                font-size: 20px;
+                font-weight: unset;
+            }
+
+            .duration-times{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                width: 80%;
+                margin-left: 10%;
+
+                label{
+                    color: #F5F5DC;
+                    padding-bottom: 5px;
+                }
+
+                input{
+                    background-color: #F5F5DC;
+                    border-radius: 7px;
+                    height: 25px;
+                    text-align: end;
+                }
+
+                .duration-hour-input, .duration-minutes-input, .duration-seconds-input{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                }
+            }
+        }
+
+        .button-container{
+            padding-top: 40px;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+
+            button{
+                height: 40px;
+                width: 70px;
+                background-color: lightsalmon;
+                border: none;
+                border-radius: 10px;
+                color: var(--darkgreen);
+                transition: transform 0.3s ease;
+            }
+
+            button:hover{
+                transform: scale(1.02);
+                cursor: pointer;
+            }
+        }
+    }
+
+    .edit-workout-window{
+        position: fixed;
+        top: 30%;
+        left: 34%;
+        height: 650px;
+        width: 800px;
+        background-color: var(--darkgreen);
+        border-radius: 50px;
+        z-index: 11;
+
+        mat-icon{
+            color: #F5F5DC;
+            margin-top: 3%;
+            margin-left: 93%;
+            font-size: 30px;
+            transition: transform 0.3s ease;
+        }
+
+        mat-icon:hover{
+            transform: scale(1.05);
+            cursor: pointer;
+        }
+
+        p{
+            font-size: 30px;
+            color: #F5F5DC;
+            margin-left: 10%;
+            margin-bottom: 2%;
+            font-weight: bold;
+        }
+
+        hr{
+            width: 80%;
+        }
+
+        .name-input, .duration-input, .total-calories-input{
+            margin: 0;
+            padding: 0;
+            margin-left: 10%;
+            padding-top: 30px;
+            display: flex;
+            flex-direction: column;
+            font-size: 20px;
+            width: 90%;
+
+            label{
+                color: #F5F5DC;
+                padding-bottom: 5px;
+            }
+
+            input{
+                width: 85%;
+                height: 30px;
+                border-radius: 10px;
+                background-color: #F5F5DC;
+            }
+        }
+
+        .name-error{
+            p{
+                color: lightcoral;
+                font-size: 14px;
+                margin-bottom: 0;
+            }
+        }
+
+        .total-calories-input{
+            input{
+                text-align: end;
+            }
+        }
+
+        .type-input{
+            margin: 0;
+            padding: 0;
+            margin-left: 10%;
+            padding-top: 30px;
+            display: flex;
+            flex-direction: column;
+            font-size: 20px;
+            width: 90%;
+
+            label{
+                color: #F5F5DC;
+                padding-bottom: 5px;
+            }
+
+            select{
+                width: 86%;
+                height: 35px;
+                border-radius: 10px;
+                background-color: #F5F5DC;
+            }
+        }
+
+        .duration-container{
+            display: flex;
+            flex-direction: column;
+
+            input{
+                width: 70%;
+            }
+
+            p{
+                font-size: 20px;
+                font-weight: unset;
+            }
+
+            .duration-times{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                width: 80%;
+                margin-left: 10%;
+
+                label{
+                    color: #F5F5DC;
+                    padding-bottom: 5px;
+                }
+
+                input{
+                    background-color: #F5F5DC;
+                    border-radius: 7px;
+                    height: 25px;
+                    text-align: end;
+                }
+
+                .duration-hour-input, .duration-minutes-input, .duration-seconds-input{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                }
+            }
+        }
+
+        .button-container{
+            padding-top: 40px;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-evenly;
+
+            button{
+                height: 40px;
+                width: 70px;
+                background-color: #F5F5DC;
+                border: none;
+                border-radius: 10px;
+                color: var(--darkgreen);
+                transition: transform 0.3s ease;
+            }
+
+            #delete-workout{
+                background-color: lightcoral !important;
+            }
+
+            button:hover{
+                transform: scale(1.02);
+                cursor: pointer;
+            }
+        }
+    }
 }
 
 @media screen and (max-width: 2000px){
@@ -761,11 +1134,18 @@
             height: 900px;
 
             .workout-and-meals{
-
                 .meals{
                     .breakfast, .lunch, .dinner, .edit-breakfast, .edit-lunch, .edit-dinner{
                         height: 250px;
                         width: 250px;
+                    }
+                }
+
+                .edit-workout{
+                    .workout-data{
+                        p{
+                            font-size: 25px;
+                        }   
                     }
                 }
             }
@@ -781,7 +1161,7 @@
             }
         }
 
-        .add-meal, .edit-meal{
+        .add-meal, .edit-meal, .add-workout-window, .edit-workout-window{
             left: 32%;
         }
     }
@@ -789,11 +1169,8 @@
 
 @media screen and (max-width: 1800px){
     .container{
-        .add-meal, .edit-meal{
-            top: 30%;
+        .add-meal, .edit-meal, .add-workout-window, .edit-workout-window{
             left: 30%;
-            height: 500px;
-            width: 800px;
         }
     }
 }
@@ -852,6 +1229,14 @@
                         }
                     }
                 }
+
+                .edit-workout{
+                    .workout-data{
+                        p{
+                            font-size: 20px;
+                        }   
+                    }
+                }
             }
 
             .todays-goal{
@@ -871,7 +1256,7 @@
 
 @media screen and (max-width: 1600px){
     .container{
-        .add-meal, .edit-meal{
+        .add-meal, .edit-meal, .add-workout-window, .edit-workout-window{
             left: 26%;
         }
     }
@@ -943,6 +1328,14 @@
                         }
                     }
                 }
+
+                .edit-workout{
+                    .workout-data{
+                        p{
+                            font-size: 17px;
+                        }   
+                    }
+                }
             }
 
             .todays-goal{
@@ -976,6 +1369,10 @@
             left: 22%;
             height: 500px;
             width: 800px;
+        }
+
+        .add-workout-window, .edit-workout-window{
+            left: 22%;
         }
     }
 }
@@ -1052,6 +1449,14 @@
                         }
                     }
                 }
+
+                .edit-workout{
+                    .workout-data{
+                        p{
+                            font-size: 27px;
+                        }   
+                    }
+                }
             }
 
             .todays-goal{
@@ -1098,11 +1503,30 @@
             height: 500px;
             width: 800px;
         }
+
+        .add-workout-window, .edit-workout-window{
+            left: 15%;
+        }
     }
 }
 
 @media screen and (max-width: 1000px){
     .container{
+        .goal-and-meals > .workout-and-meals > .edit-workout{
+            p{
+                margin-top: 13%;
+                margin-left: 5%;
+                font-size: 30px;
+            }
+        }
+
+        .goal-and-meals{
+            height: 1600px;
+            .workout-and-meals{
+                height: 900px;
+            }
+        }
+
         .add-meal, .edit-meal{
             top: 30%;
             left: 15%;
@@ -1117,6 +1541,11 @@
                 }
             }
         }
+
+        .add-workout-window, .edit-workout-window{
+            left: 15%;
+            width: 700px;
+        }
     }
 }
 
@@ -1130,6 +1559,14 @@
             .description{
                 margin-left: 15%;
                 top: 50%;
+            }
+        }
+
+        .goal-and-meals > .workout-and-meals > .edit-workout{
+            p{
+                margin-top: 13%;
+                margin-left: 5%;
+                font-size: 30px;
             }
         }
 
@@ -1192,6 +1629,14 @@
                         }
                     }
                 }
+
+                .edit-workout{
+                    .workout-data{
+                        p{
+                            font-size: 20px;
+                        }   
+                    }
+                }
             }
 
             .todays-goal{
@@ -1238,12 +1683,32 @@
             height: 500px;
             width: 700px;
         }
+
+        .add-workout-window, .edit-workout-window{
+            left: 12%;
+        }
     }
 }
 
 @media screen and (max-width: 840px){
     .container{
+        .goal-and-meals{
+            .workout-and-meals{
+                .edit-workout{
+                    .workout-data{
+                        p{
+                            font-size: 17px;
+                        }
+                    }
+                }
+            }
+        }
+
         .add-meal, .edit-meal{
+            left: 8%;
+        }
+
+        .add-workout-window, .edit-workout-window{
             left: 8%;
         }
     }
@@ -1258,6 +1723,14 @@
             .description{
                 margin-left: 18%;
                 top: 50%;
+            }
+        }
+
+        .goal-and-meals > .workout-and-meals > .edit-workout{
+            p{
+                margin-top: 13%;
+                margin-left: 5%;
+                font-size: 30px;
             }
         }
 
@@ -1346,11 +1819,24 @@
                 }
             }
         }
+
+        .add-workout-window, .edit-workout-window{
+            left: 7%;
+            width: 650px;
+        }
     }
 }
 
 @media screen and (max-width: 750px){
     .container{
+        .goal-and-meals > .workout-and-meals > .edit-workout{
+            p{
+                margin-top: 13%;
+                margin-left: 5%;
+                font-size: 30px;
+            }
+        }
+
         .add-meal, .edit-meal{
             top: 30%;
             left: 7%;
@@ -1372,11 +1858,24 @@
                 }
             }
         }
+
+        .add-workout-window, .edit-workout-window{
+            left: 7%;
+            width: 620px;
+        }
     }
 }
 
 @media screen and (max-width: 700px){
     .container{
+        .goal-and-meals > .workout-and-meals > .edit-workout{
+            p{
+                margin-top: 13%;
+                margin-left: 5%;
+                font-size: 30px;
+            }
+        }
+
         .goal-and-meals > .todays-goal > .calories-and-chart > .calories{
             h3, p{
                 font-size: 40px;
@@ -1589,6 +2088,11 @@
                 }
             }
         }
+
+        .add-workout-window, .edit-workout-window{
+            left: 4.5%;
+            width: 600px;
+        }
     }
 }
 
@@ -1605,7 +2109,7 @@
         }
 
         .goal-and-meals{
-            height: 2000px;
+            height: 2100px;
             flex-direction: column;
 
             hr{
@@ -1621,6 +2125,7 @@
 
                 .workout{
                     height: 20%;
+
                     p{
                         margin-top: 45%;
                         font-size: 30px;
@@ -1664,6 +2169,14 @@
                         p{
                             font-size: 14px;
                         }
+                    }
+                }
+
+                .edit-workout{
+                    p{
+                        margin-top: 40%;
+                        margin-left: 5%;
+                        font-size: 45px;
                     }
                 }
             }
@@ -1753,6 +2266,11 @@
                 }
             }
         }
+
+        .add-workout-window, .edit-workout-window{
+            left: 7%;
+            width: 550px;
+        }
     }
 }
 
@@ -1781,6 +2299,11 @@
                     }
                 }
             }
+        }
+
+        .add-workout-window, .edit-workout-window{
+            left: 5.5%;
+            width: 500px;
         }
     }
 }
@@ -1840,12 +2363,22 @@
                 }
             }
         }
+
+        .add-workout-window, .edit-workout-window{
+            left: 5.5%;
+            width: 470px;
+        }
     }
 }
 
 @media screen and (max-width: 530px){
     .container{
         .add-meal, .edit-meal{
+            left: 4.5%;
+            width: 450px;
+        }
+
+        .add-workout-window, .edit-workout-window{
             left: 4.5%;
             width: 450px;
         }

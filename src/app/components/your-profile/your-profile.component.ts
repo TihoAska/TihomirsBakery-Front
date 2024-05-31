@@ -35,6 +35,7 @@ export class YourProfileComponent {
     public accountService : AccountService,
     public helperService : HelperService,
     public nutritionService : NutritionService,
+    public workoutService : WorkoutService,
     private router : Router) {
     
   }
@@ -98,5 +99,13 @@ export class YourProfileComponent {
     this.nutritionService.isBreakfastAdded = false;
     this.nutritionService.isLunchAdded = false;
     this.nutritionService.isDinnerAdded = false;
+
+    this.workoutService.isWorkoutAdded = false;
+    this.workoutService.$workoutValues.next({
+      name: '',
+      type: '',
+      duration: '',
+      totalCalories: 0,
+    });
   }
 }

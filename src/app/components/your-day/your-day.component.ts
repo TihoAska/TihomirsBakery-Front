@@ -7,17 +7,18 @@ import {
   ApexResponsive,
   ApexChart
 } from "ng-apexcharts";
-import { BehaviorSubject, debounceTime, distinctUntilChanged, interval, take } from 'rxjs';
+import { distinctUntilChanged, interval, take } from 'rxjs';
 import { FooterService } from '../../services/footer.service';
 import { HelperService } from '../../services/helper.service';
 import { Router } from '@angular/router';
 import { MealService } from '../../services/meal.service';
-import { FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { provideProtractorTestingSupport } from '@angular/platform-browser';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { NutritionService } from '../../services/nutrition.service';
 import { AccountService } from '../../services/account.service';
 import { SidebarService } from '../../services/sidebar.service';
+import { WorkoutService } from '../../services/workout.service';
 
 export type ChartOptions = {
   series: ApexNonAxisChartSeries;
@@ -61,6 +62,9 @@ export class YourDayComponent {
 
   isAddMealVisible = false;
   isEditMealVisible = false;
+  isAddWorkoutVisible = false;
+  isEditWorkoutVisible = false;
+
   showQuery = true;
   isFoodPicked = false;
 
@@ -78,6 +82,8 @@ export class YourDayComponent {
   maxProteinValue = 200;
   maxFatsValue = 100;
   maxCarbsValue = 400;
+
+  workoutForm: FormGroup;
   
   constructor(
     public footerService: FooterService,
@@ -85,7 +91,9 @@ export class YourDayComponent {
     public mealService: MealService,
     public nutritionService : NutritionService,
     public accountService : AccountService,
-    public sidebarService : SidebarService
+    public sidebarService : SidebarService,
+    public workoutService : WorkoutService,
+    private fb : FormBuilder,
   ) {}
 
   ngOnInit() {
@@ -101,8 +109,62 @@ export class YourDayComponent {
         this.filterMeals(query);
     });
 
-    console.log("DailyIntakeFromDb: ");
-    console.log(this.nutritionService.$dailyIntakeFromDb.value);
+    this.workoutForm = this.fb.group({
+      name: ['', [Validators.required, Validators.maxLength(10)]],
+      type: ['', Validators.required],
+      durationHrs: [0],
+      durationMin: [0],
+      durationSec: [0],
+      totalCalories: [0, Validators.required]
+    });
+
+    this.workoutService.$workoutValues.subscribe(res => {
+      var workoutType = this.checkWorkoutType(res);
+
+      this.workoutForm.patchValue({
+        name: res.name,
+        type: workoutType,
+        durationHrs: res.duration[0] + res.duration[1],
+        durationMin: res.duration[3] + res.duration[4],
+        durationSec: res.duration[6] + res.duration[7],
+        totalCalories: res.totalCalories
+      });
+    })
+  }
+
+  checkWorkoutType(workout){
+    if(
+      workout.workoutType == 0 || 
+      workout.workoutType == "Cardio" || 
+      workout.type == 0 || 
+      workout.type == "Cardio")
+    {
+      return "Cardio"
+    } 
+    else if(
+      workout.workoutType == 1 || 
+      workout.workoutType == "StrengthTraining" || 
+      workout.type == 1 || 
+      workout.type == "StrengthTraining")
+    {
+      return "StrengthTraining"
+    } 
+    else if(workout.workoutType == 2 || 
+      workout.workoutType == "BallSports" || 
+      workout.type == 2 || 
+      workout.type == "BallSports")
+    {
+      return "BallSports"
+    } 
+    else if(workout.workoutType == 3 || 
+      workout.workoutType == "RacquetSports" || 
+      workout.type == 3 || 
+      workout.type == "RacquetSports")
+    {
+      return "RacquetSports"
+    } 
+
+    return "Cardio";
   }
 
   filterMeals(query: string) {
@@ -437,6 +499,144 @@ export class YourDayComponent {
       totalCarbs: this.nutritionService.$totalMealsValue.value.totalCarbs - this.tempPickedMealsValue.carbs + this.pickedMealsValue.carbs,
       totalCalories: this.nutritionService.$totalMealsValue.value.totalCalories - this.tempPickedMealsValue.calories + this.pickedMealsValue.calories,
     });
+  }
+
+  toggleAddWorkout(){
+    this.helperService.$dimBackground.next(true);
+    this.isAddWorkoutVisible = true;
+  }
+
+  toggleEditWorkout(){
+    this.helperService.$dimBackground.next(true);
+    this.isEditWorkoutVisible = true;
+  }
+
+  closeAddWorkout(){
+    this.helperService.$dimBackground.next(false);
+    this.isAddWorkoutVisible = false;
+  }
+
+  closeEditWorkout(){
+    this.helperService.$dimBackground.next(false);
+    this.isEditWorkoutVisible = false;
+  }
+  
+  addWorkout(addWorkoutFormValue){
+    this.checkDurationValues(addWorkoutFormValue);
+    this.checkDurationLength(addWorkoutFormValue);
+
+    if(this.workoutForm.valid){
+      this.workoutService.isWorkoutAdded = true;
+
+      this.workoutService.createWorkout({
+          name: addWorkoutFormValue.name,
+          type: addWorkoutFormValue.type,
+          duration : addWorkoutFormValue.durationHrs + ':' + addWorkoutFormValue.durationMin + ':' + addWorkoutFormValue.durationSec,
+          totalCalories : addWorkoutFormValue.totalCalories,
+        }
+      ).subscribe(res => {
+        res.workoutType = this.checkWorkoutType(res);
+        this.helperService.$dimBackground.next(false);
+        this.isAddWorkoutVisible = false;
+        
+        this.workoutService.isWorkoutAdded = true;
+        this.workoutService.$workoutValues.next(res);
+  
+        this.workoutForm.patchValue({
+          name: res.name,
+          type: res.workoutType,
+          durationHrs: res.duration[0] + res.duration[1],
+          durationMin: res.duration[3] + res.duration[4],
+          durationSec: res.duration[6] + res.duration[7],
+          totalCalories: res.totalCalories
+        });
+      });
+    }
+
+    
+  }
+
+  editWorkout(editWorkoutFormValue){
+    this.checkDurationValues(editWorkoutFormValue);
+    this.checkDurationLength(editWorkoutFormValue);
+
+    if(this.workoutForm.valid){
+      this.workoutService.updateWorkout({
+        name: editWorkoutFormValue.name,
+        type: editWorkoutFormValue.type,
+        duration : editWorkoutFormValue.durationHrs + ':' + editWorkoutFormValue.durationMin + ':' + editWorkoutFormValue.durationSec,
+        totalCalories : editWorkoutFormValue.totalCalories,
+      }).subscribe(res => {
+        res.workoutType = this.checkWorkoutType(res);
+        this.helperService.$dimBackground.next(false);
+        this.isEditWorkoutVisible = false;
+  
+        this.workoutService.isWorkoutAdded = true;
+        this.workoutService.$workoutValues.next(res);
+  
+        this.workoutForm.patchValue({
+          name: res.name,
+          type: res.workoutType,
+          durationHrs: res.duration[0] + res.duration[1],
+          durationMin: res.duration[3] + res.duration[4],
+          durationSec: res.duration[6] + res.duration[7],
+          totalCalories: res.totalCalories
+        });
+      });
+    }
+  }
+
+  deleteWorkout(){
+    this.workoutForm.reset();
+    this.workoutService.deleteWorkout();
+    this.workoutService.isWorkoutAdded = false;
+    this.isEditWorkoutVisible = false;
+    this.workoutService.$workoutValues.next({name : '', type: '', duration: '', totalCalories: 0})
+  }
+
+  checkDurationLength(addWorkoutFormValue){
+    if(addWorkoutFormValue.durationHrs == undefined || Number.isNaN(addWorkoutFormValue.durationHrs)){
+      addWorkoutFormValue.durationHrs = '00'
+    } 
+    else if(addWorkoutFormValue.durationHrs.toString().length == 1){
+      addWorkoutFormValue.durationHrs = '0' + addWorkoutFormValue.durationHrs;
+    }
+
+    if(addWorkoutFormValue.durationMin == undefined || Number.isNaN(addWorkoutFormValue.durationMin)){
+      addWorkoutFormValue.durationMin = '00'
+    } 
+    else if(addWorkoutFormValue.durationMin.toString().length == 1){
+      addWorkoutFormValue.durationMin = '0' + addWorkoutFormValue.durationMin;
+    }
+
+    if(addWorkoutFormValue.durationSec == undefined || Number.isNaN(addWorkoutFormValue.durationSec)){
+      addWorkoutFormValue.durationSec = '00'
+    } 
+    else if(addWorkoutFormValue.durationSec.toString().length == 1){
+      addWorkoutFormValue.durationSec = '0' + addWorkoutFormValue.durationSec;
+    }
+  }
+
+  checkDurationValues(addWorkoutFormValue){
+    if(addWorkoutFormValue.durationHrs < 0){
+      addWorkoutFormValue.durationHrs = 0;
+    }
+    if(addWorkoutFormValue.durationMin < 0){
+      addWorkoutFormValue.durationMin = 0;
+    }
+    if(addWorkoutFormValue.durationSec < 0){
+      addWorkoutFormValue.durationSec = 0;
+    }
+
+    if(addWorkoutFormValue.durationHrs > 24){
+      addWorkoutFormValue.durationHrs = 24;
+    } 
+    if(addWorkoutFormValue.durationMin > 60){
+      addWorkoutFormValue.durationMin = 60;
+    }
+    if(addWorkoutFormValue.durationSec > 60){
+      addWorkoutFormValue.durationSec = 60;
+    }
   }
 
   getBackgroundColor(value: number, maxValue: number, color: string, meal : string): string {

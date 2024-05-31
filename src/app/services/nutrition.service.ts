@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { AccountService } from './account.service';
+import { WorkoutService } from './workout.service';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +27,7 @@ export class NutritionService {
 
   constructor(
     public accountService : AccountService,
+    public workoutService : WorkoutService,
     private http : HttpClient) {
 
   }
@@ -124,8 +126,20 @@ export class NutritionService {
         this.isDinnerAdded = false;
       }
     });
-  }
 
+    this.workoutService.getWorkoutForTodayByUserId(this.accountService.$loggedUser.value.id).subscribe(res => {
+      if(res){
+        this.workoutService.$workoutValues.next({
+          name: res.name,
+          type: res.workoutType,
+          duration: res.duration,
+          totalCalories: res.totalCalories,
+        });
+
+        this.workoutService.isWorkoutAdded = true;
+      }
+    });
+  }
 }
 
 export interface mealRequest {

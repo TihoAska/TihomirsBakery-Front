@@ -107,8 +107,17 @@
                 </div>
             </div>
             <hr>
-            <div class="workout">
+            <div class="workout" (click)="toggleAddWorkout()" *ngIf="!workoutService.isWorkoutAdded">
                 <p>add workout.</p>
+            </div>
+
+            <div class="edit-workout" (click)="toggleEditWorkout()" *ngIf="workoutService.isWorkoutAdded">
+                <div class="workout-data">
+                    <p>{{ (workoutService.$workoutValues | async).name }}</p>
+                    <p>time elapsed: {{ (workoutService.$workoutValues | async).duration }}</p>
+                    <p>total calories: {{ (workoutService.$workoutValues | async).totalCalories }} kcal</p>
+                </div>
+                <p>edit workout.</p>
             </div>
         </div>
     </div>
@@ -249,5 +258,137 @@
                 </p>
             </div>
         </div>
+    </div>
+
+    <div 
+        @fadeInOut 
+        class="add-workout"
+        *ngIf="isAddWorkoutVisible"
+    >
+        <mat-icon (click)="closeAddWorkout()">close</mat-icon>
+        <p>add workout.</p>   
+
+        <hr>
+
+        <form [formGroup]="workoutForm" (ngSubmit)="addWorkout(workoutForm.value)">
+            <div class="name-input">
+                <label for="name-input">name: </label>
+                <input type="text" formControlName="name" id="name">
+            </div>
+            <div class="name-error" *ngIf="workoutForm.get('name').touched && workoutForm.get('name').errors?.['required']">
+                <p>This field is required.</p>
+            </div>
+            <div class="name-error" *ngIf="workoutForm.get('name').touched && workoutForm.get('name').errors?.['maxlength']">
+                <p>Name can't have more than 10 characters.</p>
+            </div>
+    
+            <div class="type-input">
+                <label for="type-input">type: </label>
+                <select name="type-input" id="type-input" formControlName="type" id="type">
+                    <option selected disabled value="select">select a workout type...</option>
+                    <option value="Cardio">cardio</option>
+                    <option value="StrengthTraining">strength training</option>
+                    <option value="BallSports">ball sports</option>
+                    <option value="RacquetSports">racquet sports</option>
+                </select>
+            </div>
+    
+            <div class="duration-container">
+                <p>duration:</p>
+                <div class="duration-times">
+                    <div class="duration-hour-input">
+                        <input type="number" min="0" max="24" value="00" formControlName="durationHrs" id="durationHrs">
+                        <label for="duration-input">hrs</label>
+                    </div>
+                    <div class="duration-minutes-input">
+                        <input type="number" min="0" max="60" value="00" formControlName="durationMin" id="durationMin">
+                        <label for="duration-input">min</label>
+                    </div>
+                    <div class="duration-seconds-input">
+                        <input type="number" min="0" max="60" value="00" formControlName="durationSec" id="durationSec">
+                        <label for="duration-input">sec</label>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="total-calories-input">
+                <label for="total-calories-input">total calories: </label>
+                <input type="number" min="0" value="0" formControlName="totalCalories" id="totalCalories">
+            </div>
+    
+            <div class="button-container">
+                <button type="submit">
+                    Add
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <div
+        @fadeInOut  
+        class="edit-workout-window"
+        *ngIf="isEditWorkoutVisible"
+    >
+        <mat-icon (click)="closeEditWorkout()">close</mat-icon>
+        <p>edit workout.</p>   
+        
+        <hr>
+
+        <form [formGroup]="workoutForm" (ngSubmit)="editWorkout(workoutForm.value)">
+            <div class="name-input">
+                <label for="name-input">name: </label>
+                <input type="text" formControlName="name" id="name">
+            </div>
+            <div class="name-error" *ngIf="workoutForm.get('name').touched && workoutForm.get('name').errors?.['required']">
+                <p>This field is required.</p>
+            </div>
+            <div class="name-error" *ngIf="workoutForm.get('name').touched && workoutForm.get('name').errors?.['maxlength']">
+                <p>Name can't have more than 10 characters.</p>
+            </div>
+    
+            <div class="type-input">
+                <label for="type-input">type: </label>
+                <select name="type-input" id="type-input" formControlName="type" id="type">
+                    <option selected disabled value="select">select a workout type...</option>
+                    <option value="Cardio">cardio</option>
+                    <option value="StrengthTraining">strength training</option>
+                    <option value="BallSports">ball sports</option>
+                    <option value="RacquetSports">racquet sports</option>
+                </select>
+            </div>
+    
+            <div class="duration-container">
+                <p>duration:</p>
+                <div class="duration-times">
+                    <div class="duration-hour-input">
+                        <input type="number" min="0" max="24" value="00" formControlName="durationHrs" id="durationHrs">
+                        <label for="duration-input">hrs</label>
+                    </div>
+                    <div class="duration-minutes-input">
+                        <input type="number" min="0" max="60" value="00" formControlName="durationMin" id="durationMin">
+                        <label for="duration-input">min</label>
+                    </div>
+                    <div class="duration-seconds-input">
+                        <input type="number" min="0" max="60" value="00" formControlName="durationSec" id="durationSec">
+                        <label for="duration-input">sec</label>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="total-calories-input">
+                <label for="total-calories-input">total calories: </label>
+                <input type="number" min="0" value="0" formControlName="totalCalories" id="totalCalories">
+            </div>
+    
+            <div class="button-container">
+                <button type="submit">
+                    Confirm
+                </button>
+
+                <button id="delete-workout" (click)="deleteWorkout()">
+                    Delete
+                </button>
+            </div>
+        </form>
     </div>
 </div>
