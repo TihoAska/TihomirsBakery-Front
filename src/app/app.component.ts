@@ -8,6 +8,7 @@ import { UserService } from './services/user.service';
 import { User } from './models/User';
 import { NutritionService } from './services/nutrition.service';
 import { BehaviorSubject } from 'rxjs';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-root',
@@ -24,13 +25,15 @@ export class AppComponent {
     public router : Router,
     public accountService : AccountService,
     public userService : UserService,
-    public nutritionService : NutritionService
+    public nutritionService : NutritionService,
+    public jwtHelper : JwtHelperService,
     ){
 
   }
 
   ngOnInit(){
-    var accessToken = localStorage.getItem('accessToken')
+    var accessToken = localStorage.getItem('accessToken');
+    let tokenPayload = this.jwtHelper.decodeToken(accessToken);
 
     if(accessToken){
       var userFromToken = this.userService.decodeUserFromToken(accessToken);
@@ -43,6 +46,10 @@ export class AppComponent {
     else {
       this.accountService.$loggedUser.next(new User(-1))
     }
+
+    setInterval(() => {
+      this.accountService.checkAccessToken();
+    }, (new Date(tokenPayload.exp * 1000).getTime()) - (new Date()).getTime());
   }
 
   toggleSidebar(){
