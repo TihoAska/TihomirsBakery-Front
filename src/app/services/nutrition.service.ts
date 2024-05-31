@@ -62,10 +62,6 @@ export class NutritionService {
             totalProtein: res.totalProtein,
           }
         );
-
-        // this.$pickedBreakfastMeals.next([]);
-        // this.$pickedLunchMeals.next([]);
-        // this.$pickedDinnerMeals.next([]);
   
         this.$dailyIntakeFromDb.value.mealIntakes.forEach(element => {
   
@@ -148,4 +144,3 @@ export interface addedMeal {
   carbs : number,
   fats : number,
 }
-
