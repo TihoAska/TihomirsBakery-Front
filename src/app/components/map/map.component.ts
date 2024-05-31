@@ -24,7 +24,6 @@ export class MapComponent {
 
   ngOnInit(): void {
     config.apiKey = environment.map_api_key;
-    console.log("in map");
   }
 
   ngAfterViewInit() {

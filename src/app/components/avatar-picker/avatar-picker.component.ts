@@ -67,8 +67,6 @@ export class AvatarPickerComponent {
     this.selectedAvatarIcon = avatarIcon;
 
     this.sidebarService.$selectedAvatar.next(this.selectedAvatarIcon);
-    
-    console.log('avatar icon: ', avatarIcon)
   }
 
   confirmPick(){

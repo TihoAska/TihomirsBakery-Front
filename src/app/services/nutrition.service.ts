@@ -52,8 +52,6 @@ export class NutritionService {
 
   getDataForUser(){
     this.getDailyIntakeForTodayByUserId(this.accountService.$loggedUser.value.id).subscribe(res => {
-      console.log(res);
-
       if(res){
         this.$dailyIntakeFromDb.next(res);
 

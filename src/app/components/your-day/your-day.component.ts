@@ -113,7 +113,6 @@ export class YourDayComponent {
       this.filteredMeals = this.allMeals.filter((meal) =>
         meal.name.toLowerCase().includes(query.toLowerCase())
       );
-      console.log(this.filteredMeals);
     }
   }
 
@@ -191,9 +190,6 @@ export class YourDayComponent {
   pickMeal(meal: any, window: string) {
     this.showQuery = false;
     this.isFoodPicked = true;
-    
-    console.log("Picked meals before confirm: ");
-    console.log(this.pickedMealsBeforeConfirm);
 
     if (window == 'add') {
       this.pickedMeals.push(meal);
@@ -369,8 +365,6 @@ export class YourDayComponent {
     this.helperService.$dimBackground.next(true);
     this.pickedMealsBeforeConfirm = this.pickedMeals.slice();
 
-    console.log("Breakfast: " + this.nutritionService.isBreakfastAdded + " Lunch: " + this.nutritionService.isLunchAdded + " Dinner: " + this.nutritionService.isDinnerAdded);
-
     if (mainMealName == 'breakfast') {
       this.pickedBreakfastBeforeConfirmValues = { ...this.nutritionService.$pickedBreakfastMealsValues.value };
       this.pickedMeals = this.nutritionService.$pickedBreakfastMeals.value.slice();
@@ -396,8 +390,6 @@ export class YourDayComponent {
       this.mainMealName = mainMealName;
       this.isEditMealVisible = true;
     }
-    console.log("Picked meals before confirm in toggle");
-    console.log(this.pickedMealsBeforeConfirm);
   }
 
   confirmMeal() {

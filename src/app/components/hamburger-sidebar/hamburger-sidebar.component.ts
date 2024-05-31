@@ -44,7 +44,6 @@ export class HamburgerSidebarComponent {
   ngOnInit(){
     this.footerService.isHamburgerClicked.subscribe(res => {
       this.isHamburgerClicked = res;
-      console.log(res)
     })
   }
 
