@@ -50,8 +50,6 @@ export class AppComponent {
   }
 
   undim(){
-    // this.footerService.isPlusClicked.next(false);
-    this.helperService.windowChoice.next('add');
     this.router.navigate([''])
   }
 }
