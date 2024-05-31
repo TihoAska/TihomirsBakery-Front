@@ -99,16 +99,16 @@ export class SidebarComponent {
     } else if(path == 'GYM' || path == 'KITCHEN'){
       this.router.navigate(['']);
     }
-    this.helperService.scrollTo.next(path);
+    this.helperService.$scrollTo.next(path);
   }
 
   showLogin(){
-    this.sidebarService.toggleLogin.next(true);
-    this.helperService.dimBackground.next(true);
+    this.sidebarService.$toggleLogin.next(true);
+    this.helperService.$dimBackground.next(true);
   }
 
   showProfile(){
-    this.sidebarService.toggleProfile.next(true);
-    this.helperService.dimBackground.next(true);
+    this.sidebarService.$toggleProfile.next(true);
+    this.helperService.$dimBackground.next(true);
   }
 }

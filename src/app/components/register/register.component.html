@@ -1,4 +1,4 @@
-<div class="window" *ngIf="helperService.toggleRegisterWindow.value">
+<div @fadeInOut class="window" *ngIf="helperService.$toggleRegisterWindow.value">
     <div class="close">
         <mat-icon (click)="closeRegister()">close</mat-icon>
     </div>
@@ -57,7 +57,7 @@
 
         <div class="avatar-picker">
             <!-- <label for="imageUrl">pick an avatar: </label> -->
-            <img [src]="sidebarService.pickedAvatar.value.icon" alt="male-1" (click)="toggleAvatarPicker()">
+            <img [src]="sidebarService.$pickedAvatar.value.icon" alt="male-1" (click)="toggleAvatarPicker()">
         </div>
 
         <div class="button-container">

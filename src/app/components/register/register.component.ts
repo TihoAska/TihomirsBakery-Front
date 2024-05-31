@@ -34,7 +34,7 @@ export class RegisterComponent {
     email : new FormControl('', [Validators.email, Validators.required]),
     password : new FormControl('', Validators.required),
     confirmPassword : new FormControl('', Validators.required),
-    imageUrl : new FormControl(this.sidebarService.pickedAvatar.value),
+    imageUrl : new FormControl(this.sidebarService.$pickedAvatar.value),
   })
 
   constructor(
@@ -77,7 +77,7 @@ export class RegisterComponent {
         email : registerFormValue.email,
         password : registerFormValue.password,
         confirmPassword : registerFormValue.confirmPassword,
-        imageUrl: this.sidebarService.pickedAvatar.value.icon
+        imageUrl: this.sidebarService.$pickedAvatar.value.icon
       } 
 
       this.accountService.register(userToRegister).subscribe(res => {
@@ -86,8 +86,8 @@ export class RegisterComponent {
           localStorage.setItem('accessToken', (<any>res).accessToken);
           localStorage.setItem('refreshToken', (<any>res).refreshToken);
   
-          this.helperService.toggleRegisterWindow.next(false);
-          this.helperService.dimBackground.next(false);
+          this.helperService.$toggleRegisterWindow.next(false);
+          this.helperService.$dimBackground.next(false);
 
           if(this.accountService.$isFromAuth.value){
             this.accountService.$isFromAuth.next(false);
@@ -110,8 +110,8 @@ export class RegisterComponent {
   }
 
   closeRegister(){
-    this.helperService.dimBackground.next(false);
-    this.helperService.toggleRegisterWindow.next(false);
+    this.helperService.$dimBackground.next(false);
+    this.helperService.$toggleRegisterWindow.next(false);
 
     if(this.accountService.$isFromAuth.value){
       this.accountService.$isFromAuth.next(false);
@@ -119,8 +119,8 @@ export class RegisterComponent {
   }
 
   toggleLoginWindow(){
-    this.helperService.toggleRegisterWindow.next(false);
-    this.sidebarService.toggleLogin.next(true);
+    this.helperService.$toggleRegisterWindow.next(false);
+    this.sidebarService.$toggleLogin.next(true);
   }
 
   updateErrorMessages() {
@@ -139,7 +139,7 @@ export class RegisterComponent {
   }
 
   toggleAvatarPicker(){
-    this.helperService.toggleRegisterWindow.next(false);
-    this.sidebarService.toggleAvatarPickerWindow.next(true);
+    this.helperService.$toggleRegisterWindow.next(false);
+    this.sidebarService.$toggleAvatarPickerWindow.next(true);
   }
 }

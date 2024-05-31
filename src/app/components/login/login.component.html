@@ -1,4 +1,4 @@
-<div class="window" *ngIf="sidebarService.toggleLogin.value">
+<div @fadeInOut class="window" *ngIf="sidebarService.$toggleLogin.value">
     <div class="close">
         <mat-icon (click)="closeLogin()">close</mat-icon>
     </div>

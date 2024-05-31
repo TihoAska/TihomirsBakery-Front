@@ -67,12 +67,12 @@ export class HamburgerSidebarComponent {
   }
 
   showLogin(){
-    this.sidebarService.toggleLogin.next(true);
-    this.helperService.dimBackground.next(true);
+    this.sidebarService.$toggleLogin.next(true);
+    this.helperService.$dimBackground.next(true);
   }
 
   showProfile(){
-    this.sidebarService.toggleProfile.next(true);
-    this.helperService.dimBackground.next(true);
+    this.sidebarService.$toggleProfile.next(true);
+    this.helperService.$dimBackground.next(true);
   }
 }

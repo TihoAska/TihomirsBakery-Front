@@ -6,8 +6,8 @@ import { Injectable } from '@angular/core';
 })
 export class SidebarService {
 
-  public toggleLogin: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  public toggleProfile: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  public $toggleLogin: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  public $toggleProfile: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   public $selectedAvatar: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
   rootUrl = '../../../assets/images/'
@@ -30,8 +30,8 @@ export class SidebarService {
     { icon: this.rootUrl + 'avatars/avatar-female-7.png', name: 'avatar-female-7'},
   ]
   
-  public toggleAvatarPickerWindow : BehaviorSubject<boolean> = new BehaviorSubject(false);
-  public pickedAvatar : BehaviorSubject<Avatar> = new BehaviorSubject({ icon: this.avatars[0].icon, name : this.avatars[0].name});
+  public $toggleAvatarPickerWindow : BehaviorSubject<boolean> = new BehaviorSubject(false);
+  public $pickedAvatar : BehaviorSubject<Avatar> = new BehaviorSubject({ icon: this.avatars[0].icon, name : this.avatars[0].name});
 
   items = [
     { icon: this.rootUrl + 'sidebar-icons/your-day-white.png', name: 'YOUR DAY' },

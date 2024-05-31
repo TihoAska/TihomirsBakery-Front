@@ -140,7 +140,7 @@ export class YourDayComponent {
   }
 
   closeAddMeal() {
-    this.helperService.dimBackground.next(false);
+    this.helperService.$dimBackground.next(false);
     this.isAddMealVisible = false;
     this.isFoodPicked = false;
 
@@ -178,7 +178,7 @@ export class YourDayComponent {
   }
 
   closeEditMeal() {
-    this.helperService.dimBackground.next(false);
+    this.helperService.$dimBackground.next(false);
     this.isEditMealVisible = false;
 
     this.pickedBreakfastBeforeConfirmValues = { protein: 0, fats: 0, carbs: 0, calories: 0 }
@@ -250,7 +250,7 @@ export class YourDayComponent {
   }
 
   addMeal() {
-    this.helperService.dimBackground.next(false);
+    this.helperService.$dimBackground.next(false);
     this.isAddMealVisible = false;
     this.isFoodPicked = false;
 
@@ -366,7 +366,7 @@ export class YourDayComponent {
   }
 
   toggleEditMeal(mainMealName: string) {
-    this.helperService.dimBackground.next(true);
+    this.helperService.$dimBackground.next(true);
     this.pickedMealsBeforeConfirm = this.pickedMeals.slice();
 
     console.log("Breakfast: " + this.nutritionService.isBreakfastAdded + " Lunch: " + this.nutritionService.isLunchAdded + " Dinner: " + this.nutritionService.isDinnerAdded);
@@ -401,7 +401,7 @@ export class YourDayComponent {
   }
 
   confirmMeal() {
-    this.helperService.dimBackground.next(false);
+    this.helperService.$dimBackground.next(false);
     this.isEditMealVisible = false;
 
     this.pickedMeals = this.pickedMealsBeforeConfirm.slice();

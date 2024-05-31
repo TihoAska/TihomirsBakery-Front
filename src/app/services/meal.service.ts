@@ -7,7 +7,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class MealService {
 
-  allMeals : BehaviorSubject<any> = new BehaviorSubject([]);
+  $allMeals : BehaviorSubject<any> = new BehaviorSubject([]);
 
   public mealFormValues : BehaviorSubject<any> = new BehaviorSubject({
     protein: 0,

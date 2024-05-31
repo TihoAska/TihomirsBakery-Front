@@ -23,16 +23,16 @@ export class YourProfileComponent {
   }
 
   closeProfile(){
-    this.sidebarService.toggleProfile.next(false);
-    this.helperService.dimBackground.next(false);
+    this.sidebarService.$toggleProfile.next(false);
+    this.helperService.$dimBackground.next(false);
   }
 
   logOut(){
     localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');
 
-    this.sidebarService.toggleProfile.next(false);
-    this.helperService.dimBackground.next(false);
+    this.sidebarService.$toggleProfile.next(false);
+    this.helperService.$dimBackground.next(false);
 
     if(this.router.url == '/your-day'){
       this.router.navigate(['']);
@@ -44,8 +44,8 @@ export class YourProfileComponent {
   }
 
   toggleAvatarPicker(){
-    this.sidebarService.toggleProfile.next(false);
-    this.sidebarService.toggleAvatarPickerWindow.next(true);
+    this.sidebarService.$toggleProfile.next(false);
+    this.sidebarService.$toggleAvatarPickerWindow.next(true);
   }
 
   emptyValues(){

@@ -51,8 +51,8 @@ export class AccountService {
       else
       {
         this.$isFromAuth.next(true);
-        this.helperService.dimBackground.next(true);
-        this.sidebarService.toggleLogin.next(true);
+        this.helperService.$dimBackground.next(true);
+        this.sidebarService.$toggleLogin.next(true);
         this.router.navigate(['']);
 
         return false;

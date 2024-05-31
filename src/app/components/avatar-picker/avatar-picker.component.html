@@ -1,4 +1,4 @@
-<div class="window" *ngIf="sidebarService.toggleAvatarPickerWindow.value">
+<div @fadeInOut class="window" *ngIf="sidebarService.$toggleAvatarPickerWindow.value">
     <div class="close">
         <mat-icon (click)="goBack()">arrow_back</mat-icon>
         <mat-icon (click)="closeWindow()">close</mat-icon>
