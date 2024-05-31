@@ -4,11 +4,27 @@ import { HelperService } from '../../services/helper.service';
 import { AccountService } from '../../services/account.service';
 import { BehaviorSubject } from 'rxjs';
 import { UserService } from '../../services/user.service';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-avatar-picker',
   templateUrl: './avatar-picker.component.html',
-  styleUrl: './avatar-picker.component.scss'
+  styleUrl: './avatar-picker.component.scss',
+  animations: [
+    trigger('fadeInOut', [
+      state('in', style({ opacity: 1, transform: 'scale(1)' })),
+      transition('void => *', [
+        style({ opacity: 0, transform: 'scale(0.5)' }),
+        animate('0.3s ease-in'),
+      ]),
+      transition('* => void', [
+        animate(
+          '0.3s ease-out',
+          style({ opacity: 0, transform: 'scale(0.5)' })
+        ),
+      ]),
+    ]),
+  ],
 })
 export class AvatarPickerComponent {
 

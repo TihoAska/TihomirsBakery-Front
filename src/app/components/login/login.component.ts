@@ -8,11 +8,27 @@ import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 import { NutritionService } from '../../services/nutrition.service';
 import { BehaviorSubject } from 'rxjs';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+  styleUrl: './login.component.scss',
+  animations: [
+    trigger('fadeInOut', [
+      state('in', style({ opacity: 1, transform: 'scale(1)' })),
+      transition('void => *', [
+        style({ opacity: 0, transform: 'scale(0.5)' }),
+        animate('0.3s ease-in'),
+      ]),
+      transition('* => void', [
+        animate(
+          '0.3s ease-out',
+          style({ opacity: 0, transform: 'scale(0.5)' })
+        ),
+      ]),
+    ]),
+  ],
 })
 export class LoginComponent {
 

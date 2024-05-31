@@ -9,11 +9,27 @@ import { UserService } from '../../services/user.service';
 import { FooterService } from '../../services/footer.service';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrl: './register.component.scss'
+  styleUrl: './register.component.scss',
+  animations: [
+    trigger('fadeInOut', [
+      state('in', style({ opacity: 1, transform: 'scale(1)' })),
+      transition('void => *', [
+        style({ opacity: 0, transform: 'scale(0.5)' }),
+        animate('0.3s ease-in'),
+      ]),
+      transition('* => void', [
+        animate(
+          '0.3s ease-out',
+          style({ opacity: 0, transform: 'scale(0.5)' })
+        ),
+      ]),
+    ]),
+  ],
 })
 export class RegisterComponent {
 
