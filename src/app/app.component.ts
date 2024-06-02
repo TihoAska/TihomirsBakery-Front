@@ -42,14 +42,17 @@ export class AppComponent {
           this.accountService.$loggedUser.next(res);
           this.nutritionService.getDataForUser();
       });
+
+      setInterval(() => {
+        this.accountService.checkAccessToken();
+      }, (new Date(tokenPayload.exp * 1000).getTime()) - (new Date()).getTime());
+
+      console.log("New token in: ");
+      console.log((new Date(tokenPayload.exp * 1000).getTime()) - (new Date()).getTime());
     } 
     else {
       this.accountService.$loggedUser.next(new User(-1))
     }
-
-    setInterval(() => {
-      this.accountService.checkAccessToken();
-    }, (new Date(tokenPayload.exp * 1000).getTime()) - (new Date()).getTime());
   }
 
   toggleSidebar(){
