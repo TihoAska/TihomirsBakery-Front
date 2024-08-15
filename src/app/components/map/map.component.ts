@@ -1,6 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Map, MapStyle, Marker, Popup, config } from '@maptiler/sdk';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../environments/environment.prod';
 import '@maptiler/sdk/dist/maptiler-sdk.css';
 
 @Component({
