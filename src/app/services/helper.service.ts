@@ -1,5 +1,4 @@
 import { Injectable, Renderer2 } from '@angular/core';
-import { ApexChart, ApexFill, ApexLegend, ApexNonAxisChartSeries, ApexTooltip } from 'ng-apexcharts';
 import { BehaviorSubject, interval, take } from 'rxjs';
 
 @Injectable({
@@ -24,14 +23,6 @@ export class HelperService {
     { name: "snack", macros: [{ name: "protein", value: 0}, { name: "fats", value: 0}, { name: "carbs", value: 0}, { name: "calories", value: 0}]},
     { name: "dinner", macros: [{ name: "protein", value: 0}, { name: "fats", value: 0}, { name: "carbs", value: 0}, { name: "calories", value: 0}]},
   ]
-  
-  chartOptions : ChartOptions = {
-    chartSeries : [this.macros[0].value, this.macros[1].value, this.macros[2].value],
-    chartDetails : { type : 'radialBar', },
-    legendOptions : { show: false },
-    fill : { colors: ['darkorange', 'greenyellow', 'lightblue'] },
-    tooltip : { enabled: false }
-  }
 
   constructor() { 
     this.animateMacroValues();
@@ -51,12 +42,4 @@ export class HelperService {
       });
     });
   }
-}
-
-export interface ChartOptions {
-  chartSeries : ApexNonAxisChartSeries,
-  chartDetails : ApexChart,
-  legendOptions: ApexLegend,
-  fill : ApexFill,
-  tooltip : ApexTooltip
 }

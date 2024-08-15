@@ -2,9 +2,6 @@ import { Component, ElementRef, ViewChild  } from '@angular/core';
 import { Router } from '@angular/router';
 import { HelperService } from '../../services/helper.service';
 import { SidebarService } from '../../services/sidebar.service';
-import { loadFull } from 'tsparticles';
-import type { Engine, Container } from "@tsparticles/engine";
-
 
 @Component({
   selector: 'app-home',
@@ -16,9 +13,6 @@ export class HomeComponent {
   @ViewChild('cooking') cookingContainer  : ElementRef;
 
   rootUrl = '../../../assets/images/home/';
-
-  // id = "tsparticles";
-  // particlesUrl = "http://foo.bar/particles.json";
 
   images = [
     { path: this.rootUrl + 'monkey-bar-cartoonish.png', name: 'MONKEY-BAR' },
@@ -57,14 +51,6 @@ export class HomeComponent {
       }
     });
   }
-
-  // particlesLoaded(container: Container): void {
-  //   console.log(container);
-  // }
-
-  // async particlesInit(engine: Engine): Promise<void> {
-  //   await loadFull(engine);
-  // }
 
   navigateToSw(){
     this.router.navigate(['street-workout']);

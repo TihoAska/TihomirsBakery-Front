@@ -1,4 +1,4 @@
-import { ApexDataLabels } from 'ng-apexcharts';
+
 import { Component } from '@angular/core';
 import { HelperService } from '../../services/helper.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';

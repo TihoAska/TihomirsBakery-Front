@@ -1,12 +1,5 @@
 import { addedMeal } from './../../services/nutrition.service';
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { ApexDataLabels, ApexFill, ApexLegend, ApexMarkers, ApexOptions, ApexPlotOptions, ApexTooltip, ChartComponent } from "ng-apexcharts";
-
-import {
-  ApexNonAxisChartSeries,
-  ApexResponsive,
-  ApexChart
-} from "ng-apexcharts";
 import { distinctUntilChanged, interval, take } from 'rxjs';
 import { FooterService } from '../../services/footer.service';
 import { HelperService } from '../../services/helper.service';
@@ -19,13 +12,6 @@ import { NutritionService } from '../../services/nutrition.service';
 import { AccountService } from '../../services/account.service';
 import { SidebarService } from '../../services/sidebar.service';
 import { WorkoutService } from '../../services/workout.service';
-
-export type ChartOptions = {
-  series: ApexNonAxisChartSeries;
-  chart: ApexChart;
-  responsive: ApexResponsive[];
-  labels: any;
-};
 
 @Component({
   selector: 'app-your-day',

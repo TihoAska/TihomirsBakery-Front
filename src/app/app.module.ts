@@ -9,7 +9,6 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './components/footer/footer.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
-import { NgApexchartsModule } from 'ng-apexcharts';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -36,8 +35,6 @@ import { LunchIdeasComponent } from './components/lunch-ideas/lunch-ideas.compon
 import { SnackIdeasComponent } from './components/snack-ideas/snack-ideas.component';
 import { DinnerIdeasComponent } from './components/dinner-ideas/dinner-ideas.component';
 import { GymComponent } from './components/gym/gym.component';
-import { NgParticlesModule } from 'ng-particles';
-import { ParticlesModule } from 'angular-particle';
 
 
 
@@ -76,7 +73,6 @@ import { ParticlesModule } from 'angular-particle';
     MatSelectModule,
     FormsModule,
     HttpClientModule,
-    NgParticlesModule,
   ],
   providers: [
     provideAnimationsAsync(),
