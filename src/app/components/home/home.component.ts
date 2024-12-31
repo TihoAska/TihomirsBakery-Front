@@ -9,26 +9,13 @@ import { SidebarService } from '../../services/sidebar.service';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-  @ViewChild('workout') workoutContainer  : ElementRef;
-  @ViewChild('cooking') cookingContainer  : ElementRef;
-
-  rootUrl = '../../../assets/images/home/';
-
-  images = [
-    { path: this.rootUrl + 'monkey-bar-cartoonish.png', name: 'MONKEY-BAR' },
-    { path: this.rootUrl + 'oatmeal-with-fruit.jpg', name: 'OATMEAL' },
-    { path: this.rootUrl + 'chicken-with-pasta.jpg', name: 'CHICKEN-PASTA' },
-    { path: this.rootUrl + 'ham-sandwich.jpg', name: 'HAM-SANDWICH' },
-    { path: this.rootUrl + 'fruit-salad.jpg', name: 'FRUIT-SALAD' },
-    { path: this.rootUrl + 'pullup-bar-edited.jpg', name: 'PULLUP-BAR' },
-    { path: this.rootUrl + 'home-gym.jpg', name: 'MUSCLE-UP' },
-    { path: this.rootUrl + 'home-gym-2.jpeg', name: 'PULLS' },
-  ];
+  @ViewChild('workout') workoutContainer: ElementRef;
+  @ViewChild('cooking') cookingContainer: ElementRef;
 
   constructor(
-    private router : Router, 
-    private helperService : HelperService,
-    public sidebarService : SidebarService) {    
+    private router: Router, 
+    private helperService: HelperService,
+    public sidebarService: SidebarService) {    
 
   }
 
@@ -38,15 +25,11 @@ export class HomeComponent {
     this.helperService.$scrollTo.subscribe(res => {
       if (res === "GYM") {
         this.router.navigate(['/']).then(() => {
-          this.workoutContainer.nativeElement.scrollIntoView({ behavior: "smooth", block: "start" });
+          this.scrollToGymPartOfThePage();
         });
       } else if (res === "KITCHEN") {
         this.router.navigate(['/']).then(() => {
-          const yOffset = -200;
-          const cookingContainerRect = this.cookingContainer.nativeElement.getBoundingClientRect();
-          const scrollTop = window.scrollY || document.documentElement.scrollTop;
-          const targetOffset = cookingContainerRect.top + scrollTop - yOffset;
-          window.scrollTo({ top: targetOffset, behavior: "smooth" });
+          this.scrollToKitchenPartOfThePage();
         });
       }
     });
@@ -73,5 +56,17 @@ export class HomeComponent {
     else if(mealType == 'dinner'){
       this.router.navigate(['dinner-ideas']);
     }
+  }
+
+  scrollToGymPartOfThePage(){
+    this.workoutContainer.nativeElement.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  scrollToKitchenPartOfThePage(){
+    const yOffset = -200;
+    const cookingContainerRect = this.cookingContainer.nativeElement.getBoundingClientRect();
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const targetOffset = cookingContainerRect.top + scrollTop - yOffset;
+    window.scrollTo({ top: targetOffset, behavior: "smooth" });
   }
 }

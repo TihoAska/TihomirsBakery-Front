@@ -1,15 +1,17 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { AccountService } from './account.service';
 import { WorkoutService } from './workout.service';
+import { BACKEND_URL } from './tokens.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NutritionService {
-
-  public $dailyIntakeFromDb: BehaviorSubject<any> = new BehaviorSubject<any>({});
+  private _isBreakfastAdded = false;
+  private _isLunchAdded = false;
+  private _isDinnerAdded = false;
 
   public $pickedBreakfastMeals: BehaviorSubject<any> = new BehaviorSubject<any>([]);
   public $pickedLunchMeals: BehaviorSubject<any> = new BehaviorSubject<any>([]);
@@ -19,44 +21,63 @@ export class NutritionService {
   public $pickedLunchMealsValues: BehaviorSubject<any> = new BehaviorSubject<any>({ protein: 0, fats: 0, carbs: 0, calories: 0 });
   public $pickedDinnerMealsValues: BehaviorSubject<any> = new BehaviorSubject<any>({ protein: 0, fats: 0, carbs: 0, calories: 0 });
 
-  public isBreakfastAdded = false;
-  public isLunchAdded = false;
-  public isDinnerAdded = false;
-
   public $totalMealsValue: BehaviorSubject<any> = new BehaviorSubject<any>({ totalProtein: 0, totalFats: 0, totalCarbs: 0, totalCalories: 0 });
 
   constructor(
+    @Inject(BACKEND_URL) private backendUrl: string,
     public accountService : AccountService,
     public workoutService : WorkoutService,
     private http : HttpClient) {
 
   }
 
+  setIsBreakfastAdded(value: boolean){
+    this._isBreakfastAdded = value;
+  }
+
+  isBreakfastAdded(){
+    return this._isBreakfastAdded;
+  }
+
+  setIsLunchAdded(value: boolean){
+    this._isLunchAdded = value;
+  }
+
+  isLunchAdded(){
+    return this._isLunchAdded;
+  }
+
+  setIsDinnerAdded(value: boolean){
+    this._isDinnerAdded = value;
+  }
+
+  isDinnerAdded(){
+    return this._isDinnerAdded;
+  }
+
   public addMeal(addMealRequest : mealRequest){
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+      'Authorization': `Bearer ${localStorage.getItem('accessTokenTihomirsWorkshop')}`
     });
     
-    this.http.post<any>('https://localhost:7069/api/nutrition/AddMeal', addMealRequest, { headers: headers }).subscribe();
+    return this.http.post<any>(this.backendUrl + 'api/nutrition/AddMeal', addMealRequest, { headers: headers });
   }
 
   public editMeal(editMealRequest : mealRequest){
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+      'Authorization': `Bearer ${localStorage.getItem('accessTokenTihomirsWorkshop')}`
     });
 
-    this.http.put<any>('https://localhost:7069/api/nutrition/EditMeal', editMealRequest, { headers: headers }).subscribe();
+    return this.http.put<any>(this.backendUrl + 'api/nutrition/EditMeal', editMealRequest, { headers: headers });
   }
 
   public getDailyIntakeForTodayByUserId(userId : number){
-    return this.http.get<any>('https://localhost:7069/api/nutrition/GetDailyIntakeForTodayByUserId?userId=' + userId);
+    return this.http.get<any>(this.backendUrl + 'api/nutrition/GetDailyIntakeForTodayByUserId?userId=' + userId);
   }
 
-  getDataForUser(){
+  public getDataForUser(){
     this.getDailyIntakeForTodayByUserId(this.accountService.$loggedUser.value.id).subscribe(res => {
       if(res){
-        this.$dailyIntakeFromDb.next(res);
-
         this.$totalMealsValue.next({
             totalCalories: res.totalCalories,
             totalFats: res.totalFats,
@@ -65,10 +86,9 @@ export class NutritionService {
           }
         );
   
-        this.$dailyIntakeFromDb.value.mealIntakes.forEach(element => {
-  
+        res.mealIntakes.forEach(element => {
           if(element.mealType == 0){
-            this.isBreakfastAdded = true;
+            this.setIsBreakfastAdded(true);
             this.$pickedBreakfastMeals.next(element.addedMeals);
             this.$pickedBreakfastMealsValues.next({
               calories: element.calories,
@@ -77,7 +97,7 @@ export class NutritionService {
               protein: element.protein,
             });
           } else if (element.mealType == 1){
-            this.isLunchAdded = true;
+            this.setIsLunchAdded(true);
             this.$pickedLunchMeals.next(element.addedMeals);
             this.$pickedLunchMealsValues.next({
               calories: element.calories,
@@ -86,7 +106,7 @@ export class NutritionService {
               protein: element.protein,
             });
           } else if (element.mealType == 2){
-            this.isDinnerAdded = true;
+            this.setIsDinnerAdded(true);
             this.$pickedDinnerMeals.next(element.addedMeals);
             this.$pickedDinnerMealsValues.next({
               calories: element.calories,
@@ -121,9 +141,9 @@ export class NutritionService {
           protein: 0,
           fats: 0,
         });
-        this.isBreakfastAdded = false;
-        this.isLunchAdded = false;
-        this.isDinnerAdded = false;
+        this.setIsBreakfastAdded(false);
+        this.setIsLunchAdded(false);
+        this.setIsDinnerAdded(false);
       }
     });
 
@@ -136,7 +156,7 @@ export class NutritionService {
           totalCalories: res.totalCalories,
         });
 
-        this.workoutService.isWorkoutAdded = true;
+        this.workoutService.setIsWorkoutAdded(true);
       }
     });
   }

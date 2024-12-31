@@ -1,8 +1,12 @@
-import { HttpClient, HttpEvent } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { User } from './../models/User';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs';
+import { BACKEND_URL } from './tokens.service';
+import { AccountService } from './account.service';
+import { SidebarService } from './sidebar.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -10,30 +14,32 @@ import { Observable } from 'rxjs';
 export class UserService {
 
   constructor(
+    @Inject(BACKEND_URL) private backendUrl: string,
     public jwtHelper : JwtHelperService,
-    public http : HttpClient) { }
+    public http : HttpClient,
+    private accountService: AccountService,
+    private sidebarService: SidebarService,
+    private router: Router) { 
 
+  }
 
-  public decodeUserFromToken(accessToken : string){
-    let tokenPayload = this.jwtHelper.decodeToken(accessToken);
+  logOut(){
+    this.accountService.removeTokensFromLocalStorage();
 
-    let user : User = {
-      id: tokenPayload.Id,
-      email: tokenPayload.Email,
-      userName: tokenPayload.UserName,
-      imageUrl: tokenPayload.ImageUrl,
-      firstName: tokenPayload.FirstName,
-      lastName: tokenPayload.LastName,
+    this.sidebarService.closeProfileWindow();
+
+    if(this.router.url == '/your-day'){
+      this.router.navigate(['']);
     }
-
-    return user;
-  } 
+    
+    this.accountService.$loggedUser.next(new User(-1));
+  }
 
   public getUserById(id : number) : Observable<User>{
-    return this.http.get<User>('https://localhost:7069/api/user/GetById?id=' + id);
+    return this.http.get<User>(this.backendUrl + 'api/user/GetById?id=' + id);
   }
 
   public updateUser(user : User) : Observable<User>{
-    return this.http.put<User>('https://localhost:7069/api/user/Update', user);
+    return this.http.put<User>(this.backendUrl + 'api/user/Update', user);
   }
 }

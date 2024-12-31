@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { SidebarService } from '../../services/sidebar.service';
 import { HelperService } from '../../services/helper.service';
 import { AccountService } from '../../services/account.service';
-import { BehaviorSubject } from 'rxjs';
 import { UserService } from '../../services/user.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 
@@ -12,31 +11,29 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
   styleUrl: './avatar-picker.component.scss',
   animations: [
     trigger('fadeInOut', [
-      state('in', style({ opacity: 1, transform: 'scale(1)' })),
+      state('in', style({ opacity: 1, transform: 'translate(-50%, -50%) scale(1)' })),
       transition('void => *', [
-        style({ opacity: 0, transform: 'scale(0.5)' }),
+        style({ opacity: 0, transform: 'translate(-50%, -50%) scale(0.5)' }),
         animate('0.3s ease-in'),
       ]),
       transition('* => void', [
         animate(
           '0.3s ease-out',
-          style({ opacity: 0, transform: 'scale(0.5)' })
+          style({ opacity: 0, transform: 'translate(-50%, -50%) scale(0.5)' })
         ),
       ]),
     ]),
   ],
 })
 export class AvatarPickerComponent {
-
-  selectedAvatarName = 'avatar';
-  selectedAvatarIcon = (this.accountService.$loggedUser.value.id === -1 || this.accountService.$loggedUser.value.id === undefined) ? this.sidebarService.$pickedAvatar.value.icon : this.accountService.$loggedUser.value.imageUrl;
-
+  selectedAvatarIcon = '';
+  confirmedAvatarIcon = '';
 
   constructor(
-    public sidebarService : SidebarService,
-    public helperService : HelperService,
-    public accountService : AccountService,
-    public userService : UserService
+    public sidebarService: SidebarService,
+    public helperService: HelperService,
+    public accountService: AccountService,
+    public userService: UserService
   ) {
     
   }
@@ -44,65 +41,53 @@ export class AvatarPickerComponent {
   ngOnInit(){
     this.accountService.$loggedUser.subscribe(res => {
       if(res.imageUrl){
-        this.sidebarService.$selectedAvatar.next(res.imageUrl);
+        this.selectedAvatarIcon = res.imageUrl;
+        this.confirmedAvatarIcon = res.imageUrl;
+        this.sidebarService.setSelectedAvatar(res.imageUrl);
       }
       else{
-        this.sidebarService.$selectedAvatar.next(this.selectedAvatarIcon)
+        this.selectedAvatarIcon = this.sidebarService.getDefaultAvatar();
+        this.confirmedAvatarIcon = this.sidebarService.getDefaultAvatar();
+        this.sidebarService.setSelectedAvatar(this.selectedAvatarIcon)
       }
     });
   }
 
   closeWindow(){
-    this.selectedAvatarName = this.sidebarService.$pickedAvatar.value.name;
-    this.selectedAvatarIcon = this.sidebarService.$pickedAvatar.value.icon;
-
-    this.sidebarService.$selectedAvatar.next(this.selectedAvatarIcon);
-
-    this.sidebarService.$toggleAvatarPickerWindow.next(false);
-    this.helperService.$dimBackground.next(false);
+    this.sidebarService.setSelectedAvatar(this.confirmedAvatarIcon);
+    this.sidebarService.closeAvatarPickerWindow();
+    this.helperService.undimBackground();
   }
 
-  pickAvatar(avatarName, avatarIcon){
-    this.selectedAvatarName = avatarName;
-    this.selectedAvatarIcon = avatarIcon;
-
-    this.sidebarService.$selectedAvatar.next(this.selectedAvatarIcon);
+  selectAvatar(avatarIcon){
+    this.sidebarService.setSelectedAvatar(avatarIcon);
   }
 
-  confirmPick(){
-    this.sidebarService.$pickedAvatar.next({
-      icon: this.selectedAvatarIcon,
-      name: this.selectedAvatarName
-    });
+  confirmSelectedAvatar(){
+    this.sidebarService.confirmSelectedAvatar();
+    this.confirmedAvatarIcon = this.sidebarService.getConfirmedAvatar();
 
-    this.sidebarService.$selectedAvatar.next(this.selectedAvatarIcon);
-
-    if(this.accountService.$loggedUser.value.id != -1){
-      this.accountService.$loggedUser.value.imageUrl = this.selectedAvatarIcon;
-      this.sidebarService.$toggleAvatarPickerWindow.next(false);
-      this.sidebarService.$toggleProfile.next(true);
-
+    if(this.accountService.isUserLoggedIn()){
+      this.sidebarService.closeAvatarPickerWindow();
+      this.sidebarService.openProfileWindow();
       this.userService.updateUser(this.accountService.$loggedUser.value).subscribe();
-
     } 
     else{
-      this.sidebarService.$toggleAvatarPickerWindow.next(false);
-      this.helperService.$toggleRegisterWindow.next(true);
+      this.sidebarService.setConfirmedAvatarForRegister(this.sidebarService.getSelectedAvatar());
+      this.sidebarService.closeAvatarPickerWindow();
+      this.sidebarService.openRegisterWindow();
     }
   }
 
   goBack(){
-    this.selectedAvatarName = this.sidebarService.$pickedAvatar.value.name;
-    this.selectedAvatarIcon = this.sidebarService.$pickedAvatar.value.icon;
-
-    this.sidebarService.$selectedAvatar.next(this.selectedAvatarIcon);
-
-    if(this.accountService.$loggedUser.value.id != -1){
-      this.sidebarService.$toggleAvatarPickerWindow.next(false);  
-      this.sidebarService.$toggleProfile.next(true);
+    if(this.accountService.isUserLoggedIn()){
+      this.sidebarService.setSelectedAvatar(this.confirmedAvatarIcon);
+      this.sidebarService.closeAvatarPickerWindow();
+      this.sidebarService.openProfileWindow();
     } else{
-      this.sidebarService.$toggleAvatarPickerWindow.next(false);
-      this.helperService.$toggleRegisterWindow.next(true);
+      this.sidebarService.setSelectedAvatar(this.sidebarService.getConfirmedAvatarForRegister());
+      this.sidebarService.closeAvatarPickerWindow();
+      this.sidebarService.openRegisterWindow();
     }
   }
 }

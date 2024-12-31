@@ -1,45 +1,36 @@
-import { Injectable, Renderer2 } from '@angular/core';
-import { BehaviorSubject, interval, take } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HelperService {
 
-  $dimBackground : BehaviorSubject<boolean> = new BehaviorSubject(false);
-  $scrollTo : BehaviorSubject<string> = new BehaviorSubject("");
-  $toggleRegisterWindow : BehaviorSubject<boolean> = new BehaviorSubject(false);
-
-  macros = [
-    { name: "protein", value: 220, animatedValue: 0 },
-    { name: "fats", value: 82, animatedValue: 0 },
-    { name: "carbs", value: 255, animatedValue: 0 },
-    { name: "calories", value: 2555, animatedValue: 0}
-  ]
-
-  meals = [
-    { name: "breakfast", macros: [{ name: "protein", value: 0}, { name: "fats", value: 0}, { name: "carbs", value: 0}, { name: "calories", value: 0}]},
-    { name: "lunch", macros: [{ name: "protein", value: 0}, { name: "fats", value: 0}, { name: "carbs", value: 0}, { name: "calories", value: 0}]},
-    { name: "snack", macros: [{ name: "protein", value: 0}, { name: "fats", value: 0}, { name: "carbs", value: 0}, { name: "calories", value: 0}]},
-    { name: "dinner", macros: [{ name: "protein", value: 0}, { name: "fats", value: 0}, { name: "carbs", value: 0}, { name: "calories", value: 0}]},
-  ]
+  private _dimBackground = false;
+  $scrollTo : BehaviorSubject<string> = new BehaviorSubject('');
+  $isSessionExpired: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   constructor() { 
-    this.animateMacroValues();
+
   }
 
-  animateMacroValues() {
-    this.macros.forEach(macro => {
-      const duration = macro.value > 100 ? 20 : 200; // Adjust duration for larger values
-      const step = Math.ceil(macro.value / (macro.value > 100 ? 100 : 10)); // Adjust step size for larger values
-      let currentValue = 0;
-  
-      interval(duration).pipe(
-        take(Math.ceil(macro.value / step) + 1)
-      ).subscribe(() => {
-        currentValue += step;
-        macro.animatedValue = Math.min(currentValue, macro.value); // Ensure animated value doesn't exceed target value
-      });
-    });
+  dimBackground(){
+    this._dimBackground = true;
+  }
+
+  undimBackground(){
+    this._dimBackground = false;
+  }
+
+  isBackgroundDimmed(){
+    return this._dimBackground;
+  }
+
+  scrollTo(path){
+    this.$scrollTo.next(path);
+  }
+
+  isResponseValid(res){
+    return res && Object.keys(res).length > 0;
   }
 }

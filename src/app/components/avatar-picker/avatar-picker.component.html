@@ -1,4 +1,4 @@
-<div @fadeInOut class="window" *ngIf="sidebarService.$toggleAvatarPickerWindow.value">
+<div @fadeInOut class="window" *ngIf="sidebarService.isAvatarPickerWindowOpen()">
     <div class="close">
         <mat-icon (click)="goBack()">arrow_back</mat-icon>
         <mat-icon (click)="closeWindow()">close</mat-icon>
@@ -14,14 +14,13 @@
                 [alt]="avatar.name" 
                 height="100px" 
                 width="100px" 
-                (click)="pickAvatar(avatar.name, avatar.icon)" 
-                [ngStyle]="{'box-shadow': (sidebarService.$selectedAvatar | async) == avatar.icon ? '0 0 15px 5px #F5F5DC' : '0 0 0 0'}">
+                (click)="selectAvatar(avatar.icon)" 
+                [ngStyle]="{'box-shadow': sidebarService.getSelectedAvatar() == avatar.icon ? '0 0 15px 5px #F5F5DC' : '0 0 0 0'}">
         </div>
     </div>
-
     
     <div class="button-container">
-        <button (click)="confirmPick()">Confirm</button>
+        <button (click)="confirmSelectedAvatar()">Confirm</button>
     </div>
 
     <div class="attribution">

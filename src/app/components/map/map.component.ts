@@ -1,7 +1,7 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, Inject, ViewChild } from '@angular/core';
 import { Map, MapStyle, Marker, Popup, config } from '@maptiler/sdk';
-import { environment } from '../../../environments/environment.prod';
 import '@maptiler/sdk/dist/maptiler-sdk.css';
+import { MAP_API_KEY } from '../../services/tokens.service';
 
 @Component({
   selector: 'app-map',
@@ -10,20 +10,17 @@ import '@maptiler/sdk/dist/maptiler-sdk.css';
 })
 export class MapComponent {
   map: Map | undefined;
+  isLoading = true;
 
   @ViewChild('map')
   private mapContainer!: ElementRef<HTMLElement>;
 
-  markerIcons = [
-    { icon: '../../../assets/images/map/red-marker-icon.png', name: 'RED-MARKER' },
-    { icon: '../../../assets/images/map/green-marker-icon.png', name: 'GTREEN-MARKER' },
-  ]
-
-  constructor() {
+  constructor(@Inject(MAP_API_KEY) private mapApiKey: string) {
+    
   }
 
   ngOnInit(): void {
-    config.apiKey = environment.map_api_key;
+    config.apiKey = this.mapApiKey;
   }
 
   ngAfterViewInit() {
@@ -34,6 +31,10 @@ export class MapComponent {
       zoom: 14
     });
     this.createMarkers();
+
+    this.map.on('load', () => {
+      this.isLoading = false;
+    });
   }
 
   createMarkers(){
@@ -55,7 +56,7 @@ export class MapComponent {
       .setPopup(new Popup().setHTML("<h3>Street workout park</h3><p>31000, Novi Grad, Osijek</p>"))
       .addTo(this.map);
     new Marker({color: "#FF0000"})
-      .setLngLat([18.67011270429651, 45.568036156015374]) //45.568036156015374, 18.67011270429651
+      .setLngLat([18.67011270429651, 45.568036156015374])
       .setPopup(new Popup().setHTML("<h3>Sportski park - Osječko-baranjske županije</h3><p>Sjevernodravska obala 700, 31000, Tvrđavica</p>"))
       .addTo(this.map);
       //gym
@@ -132,8 +133,4 @@ export class MapComponent {
       .setPopup(new Popup().setHTML("<h3>Fitness Blue Gym</h3><p>Ul. Leopolda Mandića 118, 31431, Livana</p>"))
       .addTo(this.map);
   }
-
-  // ngOnDestroy() {
-  //   this.map?.remove();
-  // }
 }

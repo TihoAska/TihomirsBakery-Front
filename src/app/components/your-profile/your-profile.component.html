@@ -1,6 +1,6 @@
-<div @fadeInOut class="window" *ngIf="sidebarService.$toggleProfile.value">
+<div @fadeInOut class="window" *ngIf="sidebarService.isProfileWindowOpen()">
     <div class="close">
-        <mat-icon (click)="closeProfile()">close</mat-icon>
+        <mat-icon (click)="sidebarService.closeProfileWindow()">close</mat-icon>
     </div>
     <div class="edit-profile">
         <p id="edit-profile-p">your profile.</p>

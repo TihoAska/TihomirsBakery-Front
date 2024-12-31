@@ -1,12 +1,16 @@
+<div class="loading" *ngIf="isLoading">
+    <div class="spinner"></div>
+    <span>loading map...</span>
+</div>
 <div class="map-wrap">
     <div class="map" #map></div>
     <div class="legend">
         <div class="red-marker">
-            <img [src]="markerIcons[0].icon" [alt]="markerIcons[0].name" height="40px" width="40px">
+            <img src="../../../assets/images/map/red-marker-icon.png" alt="RED-MARKER" height="40px" width="40px">
             <p style="color: red;">STREET WORKOUT PARK</p>
         </div>
         <div class="green-marker">
-            <img [src]="markerIcons[1].icon" [alt]="markerIcons[1].name" height="40px" width="40px">
+            <img src="../../../assets/images/map/green-marker-icon.png" alt="GREEN-MARKER" height="40px" width="40px">
             <p style="color: greenyellow;">GYM</p>
         </div>
     </div>

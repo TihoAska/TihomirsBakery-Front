@@ -3,8 +3,9 @@
     --lightgreen: #08170d;
 
     position: fixed;
-    top: 20%;
-    left: 34%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     height: 800px;
     width: 800px;
     background-color: var(--darkgreen);
@@ -114,33 +115,8 @@
     }
 }
 
-@media screen and (max-width: 2000px){
-    .window{
-        left: 30%;
-    }
-}
-
-@media screen and (max-width: 1600px){
-    .window{
-        left: 26%;
-    }
-}
-
-@media screen and (max-width: 1600px){
-    .window{
-        left: 22%;
-    }
-}
-
-@media screen and (max-width: 1200px){
-    .window{
-        left: 16%;
-    }
-}
-
 @media screen and (max-width: 1050px){
     .window{
-        left: 16%;
         height: 800px;
         width: 700px;
 
@@ -157,21 +133,18 @@
 
 @media screen and (max-width: 900px){
     .window{
-        left: 12%;
         width: 650px;
     }
 }
 
 @media screen and (max-width: 800px){
     .window{
-        left: 12%;
         width: 570px;
     }
 }
 
 @media screen and (max-width: 720px){
     .window{
-        left: 12%;
         height: 650px;
         width: 520px;
 
@@ -190,7 +163,6 @@
 
 @media screen and (max-width: 650px){
     .window{
-        left: 6%;
         width: 520px;
 
         .avatars-container{
@@ -206,21 +178,18 @@
 
 @media screen and (max-width: 600px){
     .window{
-        left: 8%;
         width: 470px;
     }
 }
 
 @media screen and (max-width: 560px){
     .window{
-        left: 7%;
         width: 450px;
     }
 }
 
 @media screen and (max-width: 530px){
     .window{
-        left: 5%;
         width: 450px;
     }
 }

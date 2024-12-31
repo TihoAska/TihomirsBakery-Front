@@ -1,7 +1,7 @@
 <div #scrollContainer id="scroll-container">
     <div class="monkey-bar">
         <div class="image-wrapper">
-            <img id="bar" [src]="images[0].path" [alt]="images[0].name">
+            <img id="bar" src="../../../assets/images/home/monkey-bar-cartoonish.png" alt="MONKEY-BAR">
             <div class="description-2">
                 <p id="title">tihomir's workshop.</p>
                 <p id="welcome">welcome to tihomir's workshop. here I will share my experience in cooking and working out.</p>
@@ -15,16 +15,16 @@
         <div class="meal-container">
             <div class="images">
                 <div class="oatmeal-container">
-                    <img id="oatmeal" [src]="images[1].path" [alt]="images[1].name" (click)="navigateToMeal('breakfast')">
+                    <img id="oatmeal" src="../../../assets/images/home/oatmeal-with-fruit.jpg" alt="OATMEAL" (click)="navigateToMeal('breakfast')">
                 </div>
                 <div class="rice-cakes-container">
-                    <img id="rice-cakes" [src]="images[2].path" [alt]="images[2].name" (click)="navigateToMeal('lunch')">
+                    <img id="rice-cakes" src="../../../assets/images/home/chicken-with-pasta.jpg" alt="CHICKEN-PASTA" (click)="navigateToMeal('lunch')">
                 </div>
                 <div class="ham-sandwich-container">
-                    <img id="ham-sandwich" [src]="images[3].path" [alt]="images[3].name" (click)="navigateToMeal('snack')">
+                    <img id="ham-sandwich" src="../../../assets/images/home/ham-sandwich.jpg" alt="HAM-SANDWICH" (click)="navigateToMeal('snack')">
                 </div>
                 <div class="fruit-salad-container">
-                    <img id="fruit-salad" [src]="images[4].path" [alt]="images[4].name" (click)="navigateToMeal('dinner')">
+                    <img id="fruit-salad" src="../../../assets/images/home/fruit-salad.jpg" alt="FRUIT-SALAD" (click)="navigateToMeal('dinner')">
                 </div>
             </div>
             
@@ -58,7 +58,7 @@
     
         <div class="descriptions">
             <div class="street-workout-container" (click)="navigateToSw()" [ngStyle]="{
-                'background-image': 'url(' + images[6].path + ')',
+                'background-image': 'url(' + '../../../assets/images/home/home-gym.jpg' + ')',
                 'background-size': 'cover',
                 'background-repeat': 'no-repeat',
                 'background-position': 'center center'}">
@@ -70,7 +70,7 @@
             </div>
         
             <div class="gym-container" (click)="navigateToGym()" [ngStyle]="{
-                'background-image': 'url(' + images[7].path + ')',
+                'background-image': 'url(' + '../../../assets/images/home/home-gym-2.jpeg' + ')',
                 'background-size': 'cover',
                 'background-repeat': 'no-repeat',
                 'background-position': 'center center'}">

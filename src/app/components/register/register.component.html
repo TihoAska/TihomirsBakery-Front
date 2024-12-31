@@ -1,63 +1,71 @@
-<div @fadeInOut class="window" *ngIf="helperService.$toggleRegisterWindow.value">
+<div @fadeInOut class="window" *ngIf="sidebarService.isRegisterWindowOpen()">
     <div class="close">
-        <mat-icon (click)="closeRegister()">close</mat-icon>
+        <mat-icon (click)="closeRegisterWindow()">close</mat-icon>
     </div>
     <form [formGroup]="registerForm" class="login" (submit)="register(registerForm.value)">
         <p>register.</p>
-
+        
         <hr>
-
+        <div class="email-error" *ngIf="
+            registerForm.get('firstName').touched && registerForm.get('firstName').errors?.['required'] || 
+            registerForm.get('lastName').touched && registerForm.get('lastName').errors?.['required'] ||
+            registerForm.get('userName').touched && registerForm.get('userName').errors?.['required'] ||
+            registerForm.get('email').touched && registerForm.get('email').errors?.['required'] ||
+            registerForm.get('password').touched && registerForm.get('password').errors?.['required'] ||
+            registerForm.get('confirmPassword').touched && registerForm.get('confirmPassword').errors?.['required']">
+            <span>marked fields are required</span>
+        </div>
+        
         <div class="first-name">
             <label for="firstName">first name: </label>
-            <input formControlName="firstName" id="firstName" autocomplete="new-first-name">
+            <input formControlName="firstName" id="firstName" autocomplete="off" type="text"
+                [ngStyle]="{'background-color': registerForm.get('firstName').touched && registerForm.get('firstName').errors?.['required'] ? 'lightcoral' : '#F5F5DC'}">
         </div>
 
         <div class="last-name">
             <label for="lastName">last name: </label>
-            <input formControlName="lastName" id="lastName" autocomplete="new-last-name">
+            <input formControlName="lastName" id="lastName" autocomplete="off" type="text"
+                [ngStyle]="{'background-color': registerForm.get('lastName').touched && registerForm.get('lastName').errors?.['required'] ? 'lightcoral' : '#F5F5DC'}">
         </div>
 
         <div class="user-name">
             <label for="userName">user name: </label>
-            <input formControlName="userName" id="userName" autocomplete="new-user-name">
+            <input formControlName="userName" id="userName" autocomplete="new-password" type="text"
+                [ngStyle]="{'background-color': registerForm.get('userName').touched && registerForm.get('userName').errors?.['required'] ? 'lightcoral' : '#F5F5DC'}">
         </div>
-        <div class="user-name-error" *ngIf="registerForm.get('userName').touched && ($userNameError | async) != ''">
-            <p>{{ $userNameError | async }}</p>
-        </div>
+        <div class="email-error" *ngIf="showTakenUserNameError">
+            <p>{{ ($userNameError | async) }}</p>
+          </div>
 
         <div class="email">
             <label for="email">email: </label>
-            <input formControlName="email" id="email" type="email" autocomplete="new-email">
+            <input formControlName="email" id="email" type="email" autocomplete="off"
+                [ngStyle]="{'background-color': registerForm.get('email').touched && registerForm.get('email').errors?.['required'] ? 'lightcoral' : '#F5F5DC'}">
         </div>
-        <div class="email-error" *ngIf="registerForm.get('email').touched && registerForm.get('email').errors?.['required']">
-          <p>This field is required.</p>
-        </div>
-        <div class="email-error" *ngIf="registerForm.get('email').touched && registerForm.get('email').errors?.['email']">
+        <div class="email-error" *ngIf="registerForm.get('email').errors?.['email']">
           <p>Please enter a valid email address.</p>
         </div>
-        <div class="email-error" *ngIf="registerForm.get('email').touched && ($emailError | async) != ''">
-            <p>{{ $emailError | async }}</p>
+        <div class="email-error" *ngIf="showTakenEmailError">
+          <p>{{ ($emailError | async) }}</p>
         </div>
-
+        
         <div class="password">
             <label for="password">password: </label>
-            <input formControlName="password" id="password" type="password" autocomplete="new-password">
-        </div>
-        <div class="password-error" *ngIf="registerForm.get('password').touched && registerForm.get('password').errors?.['required']">
-            <p>This field is required.</p>
+            <input formControlName="password" id="password" type="password"
+                [ngStyle]="{'background-color': registerForm.get('password').touched && registerForm.get('password').errors?.['required'] ? 'lightcoral' : '#F5F5DC'}">
         </div>
 
         <div class="confirm-password">
             <label for="confirmPassword">confirm password: </label>
-            <input formControlName="confirmPassword" type="password">
+            <input formControlName="confirmPassword" type="password"
+                [ngStyle]="{'background-color': registerForm.get('confirmPassword').touched && registerForm.get('confirmPassword').errors?.['required'] ? 'lightcoral' : '#F5F5DC'}">
         </div>
-        <div class="password-error" *ngIf="registerForm.get('confirmPassword').touched && ($passwordError | async) != ''">
-            <p>{{ $passwordError | async }}</p>
+        <div class="password-error" *ngIf="registerForm.get('confirmPassword').touched && passwordError != ''">
+            <p>{{ passwordError }}</p>
         </div>
 
         <div class="avatar-picker">
-            <!-- <label for="imageUrl">pick an avatar: </label> -->
-            <img [src]="sidebarService.$pickedAvatar.value.icon" alt="male-1" (click)="toggleAvatarPicker()">
+            <img [src]="sidebarService.getConfirmedAvatarForRegister()" alt="male-1" (click)="toggleAvatarPicker()">
         </div>
 
         <div class="button-container">
@@ -68,6 +76,6 @@
     </form>
 
     <div class="register">
-        <p>already have an account? <u (click)="toggleLoginWindow()">click here to login.</u></p>
+        <p>already have an account? <u (click)="openLoginWindow()">click here to login.</u></p>
     </div>
 </div>

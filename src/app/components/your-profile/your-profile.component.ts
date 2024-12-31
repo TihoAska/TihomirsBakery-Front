@@ -2,11 +2,10 @@ import { HelperService } from './../../services/helper.service';
 import { Component } from '@angular/core';
 import { SidebarService } from '../../services/sidebar.service';
 import { AccountService } from '../../services/account.service';
-import { User } from '../../models/User';
-import { Router } from '@angular/router';
 import { NutritionService } from '../../services/nutrition.service';
 import { WorkoutService } from '../../services/workout.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-your-profile',
@@ -14,15 +13,15 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
   styleUrl: './your-profile.component.scss',
   animations: [
     trigger('fadeInOut', [
-      state('in', style({ opacity: 1, transform: 'scale(1)' })),
+      state('in', style({ opacity: 1, transform: 'translate(-50%, -50%) scale(1)' })),
       transition('void => *', [
-        style({ opacity: 0, transform: 'scale(0.5)' }),
+        style({ opacity: 0, transform: 'translate(-50%, -50%) scale(0.5)' }),
         animate('0.3s ease-in'),
       ]),
       transition('* => void', [
         animate(
           '0.3s ease-out',
-          style({ opacity: 0, transform: 'scale(0.5)' })
+          style({ opacity: 0, transform: 'translate(-50%, -50%) scale(0.5)' })
         ),
       ]),
     ]),
@@ -36,37 +35,21 @@ export class YourProfileComponent {
     public helperService : HelperService,
     public nutritionService : NutritionService,
     public workoutService : WorkoutService,
-    private router : Router) {
+    private userService: UserService) {
     
-  }
-
-  closeProfile(){
-    this.sidebarService.$toggleProfile.next(false);
-    this.helperService.$dimBackground.next(false);
   }
 
   logOut(){
-    localStorage.removeItem('accessToken');
-    localStorage.removeItem('refreshToken');
-
-    this.sidebarService.$toggleProfile.next(false);
-    this.helperService.$dimBackground.next(false);
-
-    if(this.router.url == '/your-day'){
-      this.router.navigate(['']);
-    }
-
-    this.emptyValues();
-    
-    this.accountService.$loggedUser.next(new User(-1));
+    this.userService.logOut();
+    this.resetValues();
   }
 
   toggleAvatarPicker(){
-    this.sidebarService.$toggleProfile.next(false);
-    this.sidebarService.$toggleAvatarPickerWindow.next(true);
+    this.sidebarService.closeProfileWindow();
+    this.sidebarService.openAvatarPickerWindow();
   }
 
-  emptyValues(){
+  resetValues(){
     this.nutritionService.$totalMealsValue.next({
       totalCalories: 0,
       totalFats: 0,
@@ -96,11 +79,11 @@ export class YourProfileComponent {
     this.nutritionService.$pickedLunchMeals.next([]);
     this.nutritionService.$pickedDinnerMeals.next([]);
 
-    this.nutritionService.isBreakfastAdded = false;
-    this.nutritionService.isLunchAdded = false;
-    this.nutritionService.isDinnerAdded = false;
+    this.nutritionService.setIsBreakfastAdded(false);
+    this.nutritionService.setIsLunchAdded(false);
+    this.nutritionService.setIsDinnerAdded(false);
 
-    this.workoutService.isWorkoutAdded = false;
+    this.workoutService.setIsWorkoutAdded(false);
     this.workoutService.$workoutValues.next({
       name: '',
       type: '',

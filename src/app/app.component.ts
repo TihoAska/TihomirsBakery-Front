@@ -1,13 +1,11 @@
 import { AccountService } from './services/account.service';
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { FooterService } from './services/footer.service';
-import { animate, state, style, transition, trigger } from '@angular/animations';
 import { HelperService } from './services/helper.service';
 import { Router } from '@angular/router';
 import { UserService } from './services/user.service';
 import { User } from './models/User';
 import { NutritionService } from './services/nutrition.service';
-import { BehaviorSubject } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
@@ -32,23 +30,15 @@ export class AppComponent {
   }
 
   ngOnInit(){
-    var accessToken = localStorage.getItem('accessToken');
-    let tokenPayload = this.jwtHelper.decodeToken(accessToken);
+    var accessToken = localStorage.getItem('accessTokenTihomirsWorkshop');
 
     if(accessToken){
-      var userFromToken = this.userService.decodeUserFromToken(accessToken);
+      var userFromToken = this.accountService.decodeUserFromToken(accessToken);
 
       this.userService.getUserById(userFromToken.id).subscribe(res => {
           this.accountService.$loggedUser.next(res);
           this.nutritionService.getDataForUser();
       });
-
-      setInterval(() => {
-        this.accountService.checkAccessToken();
-      }, (new Date(tokenPayload.exp * 1000).getTime()) - (new Date()).getTime());
-
-      console.log("New token in: ");
-      console.log((new Date(tokenPayload.exp * 1000).getTime()) - (new Date()).getTime());
     } 
     else {
       this.accountService.$loggedUser.next(new User(-1))
@@ -56,7 +46,7 @@ export class AppComponent {
   }
 
   toggleSidebar(){
-    this.footerService.isHamburgerClicked.next(!this.footerService.isHamburgerClicked.value);
+    this.footerService.setIsHamburgerClicked(!this.footerService.isHamburgerClicked());
   }
 
   undim(){

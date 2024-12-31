@@ -1,48 +1,58 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { AccountService } from './account.service';
+import { BACKEND_URL } from './tokens.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WorkoutService {
+  private _isWorkoutAdded = false;
 
   public $workoutValues: BehaviorSubject<any> = new BehaviorSubject<any>({name : '', type: '', duration: '', totalCalories: 0});
 
-  public isWorkoutAdded = false;
-
   constructor(
+    @Inject(BACKEND_URL) private backendUrl: string,
     private http : HttpClient,
-    private accountService : AccountService,
-  ) { }
+    private accountService : AccountService) { 
+
+  }
+
+  setIsWorkoutAdded(value: boolean){
+    this._isWorkoutAdded = value;
+  }
+
+  isWorkoutAdded(){
+    return this._isWorkoutAdded;
+  }
 
   public getWorkoutForTodayByUserId(userId){
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+      'Authorization': `Bearer ${localStorage.getItem('accessTokenTihomirsWorkshop')}`
     });
     
-    return this.http.get<any>('https://localhost:7069/api/Workout/GetWorkoutForTodayByUserId?userId=' + userId, { headers: headers });
+    return this.http.get<any>(this.backendUrl + 'api/Workout/GetWorkoutForTodayByUserId?userId=' + userId, { headers: headers });
   }
 
   public createWorkout(workout : Workout){
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+      'Authorization': `Bearer ${localStorage.getItem('accessTokenTihomirsWorkshop')}`
     });
     
-    return this.http.post<any>('https://localhost:7069/api/Workout/Create', workout, { headers: headers });
+    return this.http.post<any>(this.backendUrl + 'api/Workout/Create', workout, { headers: headers });
   }
 
   public updateWorkout(workout : Workout){
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+      'Authorization': `Bearer ${localStorage.getItem('accessTokenTihomirsWorkshop')}`
     });
 
-    return this.http.put<any>('https://localhost:7069/api/Workout/Update', workout, { headers: headers })
+    return this.http.put<any>(this.backendUrl + 'api/Workout/Update', workout, { headers: headers })
   }
 
   public deleteWorkout(){
-    return this.http.delete('https://localhost:7069/api/Workout/DeleteTodaysWorkoutByUserId?userId=' + this.accountService.$loggedUser.value.id).subscribe();
+    return this.http.delete(this.backendUrl + 'api/Workout/DeleteTodaysWorkoutByUserId?userId=' + this.accountService.$loggedUser.value.id).subscribe();
   }
 }
 

@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 import { NutritionService } from '../../services/nutrition.service';
 import { BehaviorSubject } from 'rxjs';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { NgZone } from '@angular/core';
+
 
 @Component({
   selector: 'app-login',
@@ -16,15 +18,15 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
   styleUrl: './login.component.scss',
   animations: [
     trigger('fadeInOut', [
-      state('in', style({ opacity: 1, transform: 'scale(1)' })),
+      state('in', style({ opacity: 1, transform: 'translate(-50%, -50%) scale(1)' })),
       transition('void => *', [
-        style({ opacity: 0, transform: 'scale(0.5)' }),
+        style({ opacity: 0, transform: 'translate(-50%, -50%) scale(0.5)' }),
         animate('0.3s ease-in'),
       ]),
       transition('* => void', [
         animate(
           '0.3s ease-out',
-          style({ opacity: 0, transform: 'scale(0.5)' })
+          style({ opacity: 0, transform: 'translate(-50%, -50%) scale(0.5)' })
         ),
       ]),
     ]),
@@ -35,7 +37,7 @@ export class LoginComponent {
   emailIsValid = true;
   emailError = '';
 
-  passwordIsValid = true;
+  passwordError = '';
 
   public $emailError : BehaviorSubject<string> = new BehaviorSubject<string>('');
   public $passwordError : BehaviorSubject<string> = new BehaviorSubject<string>('');
@@ -47,14 +49,13 @@ export class LoginComponent {
   
   constructor(
     public sidebarService : SidebarService, 
-    private helperService : HelperService,
+    public helperService : HelperService,
     private accountService : AccountService,
     private userService : UserService,
     private nutritionService : NutritionService,
-    private router : Router) {
-      this.loginForm.valueChanges.subscribe(() => {
-        this.updateErrorMessages();
-      });
+    private router : Router,
+    private zone: NgZone) {
+
   }
 
   ngOnInit(){
@@ -67,58 +68,62 @@ export class LoginComponent {
     this.loginForm.get('password').valueChanges.subscribe(() => {
       this.$passwordError.next('');
     });
+
+    this.$passwordError.subscribe(res => {
+      this.passwordError = res;
+    })
   }
 
   closeLogin(){
-    this.sidebarService.$toggleLogin.next(false);
-    this.helperService.$dimBackground.next(false);
+    this.sidebarService.closeLoginWindow();
+    this.helperService.undimBackground();
     this.$passwordError.next('');
 
-    if(this.accountService.$isFromAuth.value){
-      this.accountService.$isFromAuth.next(false);
+    if(this.accountService.isFromAuth()){
+      this.accountService.setIsFromAuth(false);
     }
   }
 
   login(loginFormValue){
     if(this.loginForm.valid){
+
       const userToLogin : UserToLoginDTO = {
         email : loginFormValue.email,
         password : loginFormValue.password
-      } 
+      }
+
       this.accountService.login(userToLogin).subscribe(res => {
-        if(res != null && res.isAuthSuccessful){
-          var userFromToken = this.userService.decodeUserFromToken((<any>res).accessToken);
-          localStorage.setItem('accessToken', (<any>res).accessToken);
-          localStorage.setItem('refreshToken', (<any>res).refreshToken);
+        if(this.helperService.isResponseValid(res) && res.isAuthSuccessful){
+          var userFromToken = this.accountService.decodeUserFromToken((<any>res).accessToken);
+          this.accountService.storeTokensInLocalStorage(res);
 
           this.userService.getUserById(userFromToken.id).subscribe(res => {
-            this.accountService.$loggedUser.next(res);
-            this.nutritionService.getDataForUser();
+            if(this.helperService.isResponseValid(res)){
+              this.accountService.setUser(res)
+              this.nutritionService.getDataForUser();
+            }
           });
 
-          this.sidebarService.$toggleLogin.next(false);
-          this.helperService.$dimBackground.next(false);
+          this.sidebarService.closeLoginWindow();
 
-          if(this.accountService.$isFromAuth.value){
-            this.accountService.$isFromAuth.next(false);
+          if(this.accountService.isFromAuth()){
+            this.accountService.setIsFromAuth(false);
             this.router.navigate(['your-day']);
           }
         } else {
-          // this.passwordError = res.errorMessage;
           if(res.type == "Password"){
-            this.$passwordError.next(res.errorMessage);
+            this.zone.run(() => {
+              this.$passwordError.next(res.errorMessage); // Update within Angular's zone
+            });
           }
           if (res.type == "Email"){
             this.$emailError.next(res.errorMessage);
           }
         }
       });
+    } else {
+      this.loginForm.markAllAsTouched();
     }
-  }
-
-  updateErrorMessages() {
-    this.emailIsValid = this.isEmailValid();
-    this.passwordIsValid = this.isPasswordValid();
   }
 
   isEmailValid() {
@@ -131,9 +136,9 @@ export class LoginComponent {
     return !control.errors;
   }
 
-  toggleRegisterWindow(){
-    this.sidebarService.$toggleLogin.next(false);
-    this.helperService.$toggleRegisterWindow.next(true);
+  openRegisterWindow(){
+    this.sidebarService.closeLoginWindow();
+    this.sidebarService.openRegisterWindow();
     this.$passwordError.next('');
   }
 }

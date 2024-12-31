@@ -1,35 +1,36 @@
-<div @fadeInOut class="window" *ngIf="sidebarService.$toggleLogin.value">
+<div @fadeInOut class="window" *ngIf="sidebarService.isLoginWindowOpen()">
     <div class="close">
         <mat-icon (click)="closeLogin()">close</mat-icon>
     </div>
     <form [formGroup]="loginForm" class="login" (submit)="login(loginForm.value)">
         <p>login.</p>
+        <span *ngIf="(helperService.$isSessionExpired | async)" id="session-expired">your session has expired. please log in again.</span>
 
         <hr>
 
         <div class="email">
-            <label for="email">Email</label>
+            <label for="email">email:</label>
             <input formControlName="email" id="email" type="email" autocomplete="new-email">
         </div>
         <div class="email-error" *ngIf="loginForm.get('email').touched && loginForm.get('email').errors?.['required']">
-          <p>This field is required.</p>
+          <p>email is required.</p>
         </div>
         <div class="email-error" *ngIf="loginForm.get('email').touched && loginForm.get('email').errors?.['email']">
-          <p>Please enter a valid email address.</p>
+          <p>please enter a valid email address.</p>
         </div>
         <div class="email-error" *ngIf="loginForm.get('email').touched && ($emailError | async) != ''">
             <p>{{ $emailError | async }}</p>
           </div>
 
         <div class="password">
-            <label for="password">Password</label>
+            <label for="password">password:</label>
             <input formControlName="password" id="password" type="password" autocomplete="new-password">
         </div>
-        <!-- <div class="password-error" *ngIf="loginForm.get('password').touched && loginForm.get('password').errors?.['required']">
-            {{ passwordError }}
-        </div> -->
-        <div class="password-error" *ngIf="loginForm.get('password').touched && ($passwordError | async) != ''">
-            <p>{{ $passwordError | async }}</p>
+        <div class="password-error" *ngIf="loginForm.get('password').touched && loginForm.get('password').errors?.['required']">
+            <p>password is required</p>
+        </div>
+        <div class="password-error" *ngIf="($passwordError | async) != ''">
+            <p>{{ ($passwordError | async) }}</p>
         </div>
 
         <div class="button-container">
@@ -40,6 +41,6 @@
     </form>
 
     <div class="register">
-        <p>don't have an account? <u (click)="toggleRegisterWindow()">click here to register.</u></p>
+        <p>don't have an account? <u (click)="openRegisterWindow()">click here to register.</u></p>
     </div>
 </div>

@@ -1,14 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
 import { YourDayComponent } from './components/your-day/your-day.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FooterComponent } from './components/footer/footer.component';
-import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -17,11 +13,10 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { MapComponent } from './components/map/map.component';
 import { HomeComponent } from './components/home/home.component';
 import { StreetWorkoutComponent } from './components/street-workout/street-workout.component';
-import { DragScrollComponent, DragScrollItemDirective } from 'ngx-drag-scroll';
 import { GymEssentialsComponent } from './components/gym-essentials/gym-essentials.component';
 import { HamburgerSidebarComponent } from './components/hamburger-sidebar/hamburger-sidebar.component';
 import { KitchenEssentialsComponent } from './components/kitchen-essentials/kitchen-essentials.component';
@@ -35,16 +30,15 @@ import { LunchIdeasComponent } from './components/lunch-ideas/lunch-ideas.compon
 import { SnackIdeasComponent } from './components/snack-ideas/snack-ideas.component';
 import { DinnerIdeasComponent } from './components/dinner-ideas/dinner-ideas.component';
 import { GymComponent } from './components/gym/gym.component';
-
-
+import { BACKEND_URL, MAP_API_KEY } from './services/tokens.service';
+import { environment } from '../environments/environment';
+import { tokenInterceptor } from './auth/token.interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
     YourDayComponent,
     SidebarComponent,
-    FooterComponent,
     MapComponent,
     HomeComponent,
     StreetWorkoutComponent,
@@ -77,7 +71,10 @@ import { GymComponent } from './components/gym/gym.component';
   providers: [
     provideAnimationsAsync(),
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
-    JwtHelperService
+    JwtHelperService,
+    provideHttpClient(withFetch(), withInterceptors([tokenInterceptor])),
+    { provide: BACKEND_URL, useValue: environment.backendUrl },
+    { provide: MAP_API_KEY, useValue: environment.map_api_key},
   ],
   bootstrap: [AppComponent]
 })

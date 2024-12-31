@@ -1,12 +1,5 @@
-import { Component, HostListener } from '@angular/core';
-import { HeaderService } from '../../services/header.service';
-import {
-  trigger,
-  state,
-  style,
-  animate, 
-  transition
-} from '@angular/animations'
+import { Component } from '@angular/core';
+import { trigger, state, style, animate, transition } from '@angular/animations'
 import { SidebarService } from '../../services/sidebar.service';
 import { Router } from '@angular/router';
 import { HelperService } from '../../services/helper.service';
@@ -23,7 +16,7 @@ import { AccountService } from '../../services/account.service';
         transform: 'translateX(0)'
       })),
       state('closed', style({
-        transform: 'translateX(-300px)' // Adjust the value to match your sidebar width
+        transform: 'translateX(-300px)'
       })),
       transition('open <=> closed', animate('0.3s ease'))
     ])
@@ -31,20 +24,12 @@ import { AccountService } from '../../services/account.service';
 })
 export class HamburgerSidebarComponent {
 
-  isHamburgerClicked = false;
-
   constructor(
-    public sidebarService : SidebarService,
-    private router : Router,
-    private helperService : HelperService,
-    private footerService : FooterService,
-    public accountService : AccountService){
-  }
-
-  ngOnInit(){
-    this.footerService.isHamburgerClicked.subscribe(res => {
-      this.isHamburgerClicked = res;
-    })
+    public sidebarService: SidebarService,
+    private router: Router,
+    public helperService: HelperService,
+    public footerService: FooterService,
+    public accountService: AccountService){
   }
 
   navigateTo(path){
@@ -61,17 +46,7 @@ export class HamburgerSidebarComponent {
     } else if(path == 'GYM' || path == 'KITCHEN'){
       this.router.navigate(['']);
     }
-    this.helperService.$scrollTo.next(path);
-    this.footerService.isHamburgerClicked.next(false);
-  }
-
-  showLogin(){
-    this.sidebarService.$toggleLogin.next(true);
-    this.helperService.$dimBackground.next(true);
-  }
-
-  showProfile(){
-    this.sidebarService.$toggleProfile.next(true);
-    this.helperService.$dimBackground.next(true);
+    this.helperService.scrollTo(path);
+    this.footerService.setIsHamburgerClicked(false);
   }
 }

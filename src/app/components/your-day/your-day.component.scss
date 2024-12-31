@@ -546,8 +546,9 @@
 
     .add-meal, .edit-meal{
         position: fixed;
-        top: 30%;
-        left: 34%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         height: 500px;
         width: 800px;
         background-color: var(--darkgreen);
@@ -580,6 +581,11 @@
             flex-direction: row;
             width: 100%;
             height: 50px;
+
+            input{
+                font-weight: bold;
+                font-size: 16px;
+            }
 
             #search-bar{
                 margin-left: 10%;
@@ -712,6 +718,21 @@
             }
         }
 
+        .search-results::-webkit-scrollbar {
+            width: 20px;
+        }
+        
+        .search-results::-webkit-scrollbar-thumb {
+            background-color: #8FBC8F; 
+            border-radius: 10px;
+            border: 2px solid #F5F5DC;
+        }
+        
+        .search-results::-webkit-scrollbar-track {
+            background-color: #F5F5DC;
+            border-radius: 0 10px 10px 0; 
+        }
+
         .button-container{
             display: flex;
             flex-direction: row;
@@ -753,6 +774,7 @@
                 box-sizing: border-box;
 
                 p{
+                    font-size: 28px;
                     padding: 10px;
                     margin: 0;
                 }
@@ -787,15 +809,21 @@
         }
     }
     
-    .add-workout{
+    .add-workout-window{
         position: fixed;
-        top: 30%;
-        left: 34%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         height: 650px;
         width: 800px;
         background-color: var(--darkgreen);
         border-radius: 50px;
         z-index: 11;
+
+        input{
+            font-weight: bold;
+            font-size: 14px;
+        }
 
         mat-icon{
             color: #F5F5DC;
@@ -954,8 +982,9 @@
 
     .edit-workout-window{
         position: fixed;
-        top: 30%;
-        left: 34%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         height: 650px;
         width: 800px;
         background-color: var(--darkgreen);
@@ -1160,18 +1189,6 @@
                 }
             }
         }
-
-        .add-meal, .edit-meal, .add-workout-window, .edit-workout-window{
-            left: 32%;
-        }
-    }
-}
-
-@media screen and (max-width: 1800px){
-    .container{
-        .add-meal, .edit-meal, .add-workout-window, .edit-workout-window{
-            left: 30%;
-        }
     }
 }
 
@@ -1250,14 +1267,6 @@
                     }                        
                 }
             }
-        }
-    }
-}
-
-@media screen and (max-width: 1600px){
-    .container{
-        .add-meal, .edit-meal, .add-workout-window, .edit-workout-window{
-            left: 26%;
         }
     }
 }
@@ -1365,14 +1374,8 @@
         }
 
         .add-meal, .edit-meal{
-            top: 30%;
-            left: 22%;
             height: 500px;
             width: 800px;
-        }
-
-        .add-workout-window, .edit-workout-window{
-            left: 22%;
         }
     }
 }
@@ -1498,14 +1501,8 @@
         }
 
         .add-meal, .edit-meal{
-            top: 30%;
-            left: 15%;
             height: 500px;
             width: 800px;
-        }
-
-        .add-workout-window, .edit-workout-window{
-            left: 15%;
         }
     }
 }
@@ -1528,8 +1525,6 @@
         }
 
         .add-meal, .edit-meal{
-            top: 30%;
-            left: 15%;
             height: 500px;
             width: 700px;
 
@@ -1543,7 +1538,6 @@
         }
 
         .add-workout-window, .edit-workout-window{
-            left: 15%;
             width: 700px;
         }
     }
@@ -1677,15 +1671,9 @@
             }
         }
 
-        .add-meal, .edit-meal{
-            top: 30%;
-            left: 12%;
+        .add-meal, .edit-meal{ 
             height: 500px;
             width: 700px;
-        }
-
-        .add-workout-window, .edit-workout-window{
-            left: 12%;
         }
     }
 }
@@ -1702,14 +1690,6 @@
                     }
                 }
             }
-        }
-
-        .add-meal, .edit-meal{
-            left: 8%;
-        }
-
-        .add-workout-window, .edit-workout-window{
-            left: 8%;
         }
     }
 }
@@ -1799,8 +1779,6 @@
         }
 
         .add-meal, .edit-meal{
-            top: 30%;
-            left: 7%;
             height: 500px;
             width: 650px;
 
@@ -1821,7 +1799,6 @@
         }
 
         .add-workout-window, .edit-workout-window{
-            left: 7%;
             width: 650px;
         }
     }
@@ -1838,8 +1815,6 @@
         }
 
         .add-meal, .edit-meal{
-            top: 30%;
-            left: 7%;
             height: 500px;
             width: 620px;
 
@@ -1860,7 +1835,6 @@
         }
 
         .add-workout-window, .edit-workout-window{
-            left: 7%;
             width: 620px;
         }
     }
@@ -1883,9 +1857,6 @@
         }
 
         .add-meal, .edit-meal{
-            position: fixed;
-            top: 30%;
-            left: 4.5%;
             height: 500px;
             width: 600px;
             background-color: var(--darkgreen);
@@ -2090,7 +2061,6 @@
         }
 
         .add-workout-window, .edit-workout-window{
-            left: 4.5%;
             width: 600px;
         }
     }
@@ -2221,9 +2191,6 @@
         }
 
         .add-meal, .edit-meal{
-            position: fixed;
-            top: 30%;
-            left: 4.5%;
             height: 500px;
             width: 550px;
     
@@ -2268,7 +2235,6 @@
         }
 
         .add-workout-window, .edit-workout-window{
-            left: 7%;
             width: 550px;
         }
     }
@@ -2278,7 +2244,6 @@
 @media screen and (max-width: 600px){
     .container{
         .add-meal, .edit-meal{
-            left: 5.5%;
             height: 500px;
             width: 500px;
             
@@ -2302,7 +2267,6 @@
         }
 
         .add-workout-window, .edit-workout-window{
-            left: 5.5%;
             width: 500px;
         }
     }
@@ -2312,9 +2276,6 @@
     .container{
 
         .add-meal, .edit-meal{
-            position: fixed;
-            top: 30%;
-            left: 5.5%;
             height: 500px;
             width: 470px;
     
@@ -2365,7 +2326,6 @@
         }
 
         .add-workout-window, .edit-workout-window{
-            left: 5.5%;
             width: 470px;
         }
     }
@@ -2374,12 +2334,10 @@
 @media screen and (max-width: 530px){
     .container{
         .add-meal, .edit-meal{
-            left: 4.5%;
             width: 450px;
         }
 
         .add-workout-window, .edit-workout-window{
-            left: 4.5%;
             width: 450px;
         }
     }

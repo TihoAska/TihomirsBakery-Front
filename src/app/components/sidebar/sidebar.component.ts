@@ -1,17 +1,8 @@
 import { Component, HostListener } from '@angular/core';
-import { HeaderService } from '../../services/header.service';
-import {
-  trigger,
-  state,
-  style,
-  animate, 
-  transition
-} from '@angular/animations'
+import { trigger, state, style, animate, transition } from '@angular/animations'
 import { SidebarService } from '../../services/sidebar.service';
 import { Router } from '@angular/router';
 import { HelperService } from '../../services/helper.service';
-import { FooterService } from '../../services/footer.service';
-import { UserService } from '../../services/user.service';
 import { AccountService } from '../../services/account.service';
 
 @Component({
@@ -71,13 +62,11 @@ export class SidebarComponent {
   }
   
   showSidebar = false;
-  isHamburgerClicked = false;
 
   constructor(
     public sidebarService : SidebarService,
     private router : Router,
-    private helperService : HelperService,
-    private userService : UserService,
+    public helperService : HelperService,
     public accountService : AccountService){
   }
 
@@ -99,16 +88,6 @@ export class SidebarComponent {
     } else if(path == 'GYM' || path == 'KITCHEN'){
       this.router.navigate(['']);
     }
-    this.helperService.$scrollTo.next(path);
-  }
-
-  showLogin(){
-    this.sidebarService.$toggleLogin.next(true);
-    this.helperService.$dimBackground.next(true);
-  }
-
-  showProfile(){
-    this.sidebarService.$toggleProfile.next(true);
-    this.helperService.$dimBackground.next(true);
+    this.helperService.scrollTo(path);
   }
 }

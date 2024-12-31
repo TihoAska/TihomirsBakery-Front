@@ -1,4 +1,3 @@
-
 import { Component } from '@angular/core';
 import { HelperService } from '../../services/helper.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -17,31 +16,42 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
   styleUrl: './register.component.scss',
   animations: [
     trigger('fadeInOut', [
-      state('in', style({ opacity: 1, transform: 'scale(1)' })),
+      state(
+        'in',
+        style({
+          opacity: 1,
+          transform: 'translate(-50%, -50%) scale(1)',
+        })
+      ),
       transition('void => *', [
-        style({ opacity: 0, transform: 'scale(0.5)' }),
+        style({
+          opacity: 0,
+          transform: 'translate(-50%, -50%) scale(0.5)',
+        }),
         animate('0.3s ease-in'),
       ]),
       transition('* => void', [
         animate(
           '0.3s ease-out',
-          style({ opacity: 0, transform: 'scale(0.5)' })
+          style({
+            opacity: 0,
+            transform: 'translate(-50%, -50%) scale(0.5)',
+          })
         ),
       ]),
     ]),
-  ],
+  ]
 })
 export class RegisterComponent {
 
-  emailIsValid = true;
+  showTakenEmailError = false;
+  showTakenUserNameError = false;
+  
   emailError = '';
-
-  passwordIsValid = true;
   passwordError = '';
 
   public $emailError: BehaviorSubject<string> = new BehaviorSubject<string>('');
   public $userNameError: BehaviorSubject<string> = new BehaviorSubject<string>('');
-  public $passwordError: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
   registerForm = new FormGroup({
     firstName : new FormControl('', Validators.required),
@@ -50,7 +60,7 @@ export class RegisterComponent {
     email : new FormControl('', [Validators.email, Validators.required]),
     password : new FormControl('', Validators.required),
     confirmPassword : new FormControl('', Validators.required),
-    imageUrl : new FormControl(this.sidebarService.$pickedAvatar.value),
+    imageUrl : new FormControl(this.sidebarService.getSelectedAvatar()),
   })
 
   constructor(
@@ -58,31 +68,31 @@ export class RegisterComponent {
     public sidebarService : SidebarService,
     public accountService : AccountService,
     public userService : UserService,
-    public footerService : FooterService,
+    public footerService: FooterService,
     private router : Router) {
-      this.registerForm.valueChanges.subscribe(() => {
-        this.updateErrorMessages();
-      });
-
       this.registerForm.get('email').valueChanges.subscribe(() => {
         this.$emailError.next('');
+        this.showTakenEmailError = false;
       });
 
       this.registerForm.get('userName').valueChanges.subscribe(() => {
         this.$userNameError.next('');
+        this.showTakenUserNameError = false;
+      });
+
+      this.registerForm.get('password').valueChanges.subscribe(() => {
+        this.passwordError = '';
       });
 
       this.registerForm.get('confirmPassword').valueChanges.subscribe(() => {
-        this.$passwordError.next('');
+        this.passwordError = '';
       });
   }
 
   register(registerFormValue){
-
     if(this.registerForm.valid){
-
       if(this.registerForm.get('password').value != this.registerForm.get('confirmPassword').value){
-        this.$passwordError.next("Passwords do not match!");
+        this.passwordError = 'Passwords do not match';
         return;
       }
 
@@ -93,55 +103,57 @@ export class RegisterComponent {
         email : registerFormValue.email,
         password : registerFormValue.password,
         confirmPassword : registerFormValue.confirmPassword,
-        imageUrl: this.sidebarService.$pickedAvatar.value.icon
+        imageUrl: this.sidebarService.getSelectedAvatar(),
       } 
 
-      this.accountService.register(userToRegister).subscribe(res => {
-        if(res != null && res.isAuthSuccessful){
-          var user = this.userService.decodeUserFromToken((<any>res).accessToken);
-          localStorage.setItem('accessToken', (<any>res).accessToken);
-          localStorage.setItem('refreshToken', (<any>res).refreshToken);
+      this.accountService.register(userToRegister).subscribe( {
+        next: (res: any) => {
+          if(this.helperService.isResponseValid(res) && res.isAuthSuccessful){
+            var user = this.accountService.decodeUserFromToken((res).accessToken);
+            this.accountService.storeTokensInLocalStorage(res);
+    
+            this.sidebarService.closeRegisterWindow();
   
-          this.helperService.$toggleRegisterWindow.next(false);
-          this.helperService.$dimBackground.next(false);
-
-          if(this.accountService.$isFromAuth.value){
-            this.accountService.$isFromAuth.next(false);
-            this.router.navigate(['your-day']);
+            if(this.accountService.isFromAuth()){
+              this.accountService.setIsFromAuth(false);
+              this.router.navigate(['your-day']);
+            }
+    
+            this.accountService.setUser(user);
+            this.registerForm.reset();
+          } 
+          else{
+            if(res.type == "Email"){
+              this.$emailError.next(res.errorMessage);
+              this.showTakenEmailError = true;
+            }  
+            if(res.type == "UserName"){
+              this.$userNameError.next(res.errorMessage);
+              this.showTakenUserNameError = true;
+            }
           }
-  
-          this.accountService.$loggedUser.next(user)
-          this.registerForm.reset();
-        } 
-        else{
-          if(res.type == "Email"){
-            this.$emailError.next(res.errorMessage);
-          }  
-          if(res.type == "UserName"){
-            this.$userNameError.next(res.errorMessage);
-          }
+        }, 
+        error: (error: any) => {
+          this.emailError = error.error.errors.Email[0];
+          this.passwordError = error.error.errors.Password[0];
         }
       });
+    } else{
+      this.registerForm.markAllAsTouched();
     }
   }
 
-  closeRegister(){
-    this.helperService.$dimBackground.next(false);
-    this.helperService.$toggleRegisterWindow.next(false);
+  closeRegisterWindow(){
+    this.sidebarService.closeRegisterWindow();
 
-    if(this.accountService.$isFromAuth.value){
-      this.accountService.$isFromAuth.next(false);
+    if(this.accountService.isFromAuth()){
+      this.accountService.setIsFromAuth(false);
     }
   }
 
-  toggleLoginWindow(){
-    this.helperService.$toggleRegisterWindow.next(false);
-    this.sidebarService.$toggleLogin.next(true);
-  }
-
-  updateErrorMessages() {
-    this.emailIsValid = this.isEmailValid();
-    this.passwordIsValid = this.isPasswordValid();
+  openLoginWindow(){
+    this.sidebarService.closeRegisterWindow();
+    this.sidebarService.openLoginWindow();
   }
 
   isEmailValid() {
@@ -155,7 +167,7 @@ export class RegisterComponent {
   }
 
   toggleAvatarPicker(){
-    this.helperService.$toggleRegisterWindow.next(false);
-    this.sidebarService.$toggleAvatarPickerWindow.next(true);
+    this.sidebarService.closeRegisterWindow();
+    this.sidebarService.openAvatarPickerWindow();
   }
 }
