@@ -45,17 +45,16 @@
           },
           "configurations": {
             "production": {
-              "baseHref": "/TihomirsWorkshop-Front/",
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "1mb",
+                  "maximumWarning": "2mb",
                   "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "50kb",
-                  "maximumError": "100kb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
                 }
               ],
               "fileReplacements": [
@@ -64,7 +63,13 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "all"
+              "baseHref": "/TihomirsWorkshop-Front/",
+              "outputHashing": "all",
+              "optimization": true,
+              "sourceMap": false,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true
             },
             "development": {
               "optimization": false,
