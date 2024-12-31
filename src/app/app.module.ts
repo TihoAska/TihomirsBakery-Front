@@ -74,7 +74,7 @@ import { tokenInterceptor } from './auth/token.interceptor';
     JwtHelperService,
     provideHttpClient(withFetch(), withInterceptors([tokenInterceptor])),
     { provide: BACKEND_URL, useValue: environment.backendUrl },
-    { provide: MAP_API_KEY, useValue: environment.map_api_key},
+    { provide: MAP_API_KEY, useValue: environment.mapApiKey},
   ],
   bootstrap: [AppComponent]
 })
