@@ -13,6 +13,66 @@ body {
   z-index: 10;
 }
 
+.loading-overlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(6, 14, 8, 1);
+  height: 100%;
+  width: 100%;
+  z-index: 100;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  .bread-container {
+    height: 500px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+
+    .bread {
+      animation: pulsate 2s infinite ease-in-out;
+    }
+
+    .wave1 {
+      animation: rise 2s infinite ease-in-out;
+      opacity: 0; 
+    }
+  }
+
+  @keyframes rise {
+    0% {
+        transform: translateY(30px); /* Start below the bread */
+        opacity: 0; /* Invisible */
+    }
+    50% {
+        transform: translateY(0); /* Align with bread */
+        opacity: 1; /* Fully visible */
+    }
+    100% {
+        transform: translateY(-30px); /* Move above the bread */
+        opacity: 0; /* Disappear */
+    }
+  }
+
+  @keyframes pulsate{
+    0%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+  }
+}
+
 .hamburger-container{
   display: none;
 }
