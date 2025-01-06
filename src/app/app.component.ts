@@ -30,18 +30,21 @@ export class AppComponent {
   }
 
   ngOnInit(){
+    this.helperService.showLoadingOverlay();
     var accessToken = localStorage.getItem('accessTokenTihomirsWorkshop');
 
     if(accessToken){
       var userFromToken = this.accountService.decodeUserFromToken(accessToken);
 
       this.userService.getUserById(userFromToken.id).subscribe(res => {
+          this.helperService.hideLoadingOverlay();
           this.accountService.$loggedUser.next(res);
           this.nutritionService.getDataForUser();
       });
     } 
     else {
-      this.accountService.$loggedUser.next(new User(-1))
+      this.accountService.$loggedUser.next(new User(-1));
+      this.helperService.hideLoadingOverlay();
     }
   }
 
