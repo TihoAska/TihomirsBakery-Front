@@ -31,7 +31,7 @@ import { SnackIdeasComponent } from './components/snack-ideas/snack-ideas.compon
 import { DinnerIdeasComponent } from './components/dinner-ideas/dinner-ideas.component';
 import { GymComponent } from './components/gym/gym.component';
 import { BACKEND_URL, MAP_API_KEY } from './services/tokens.service';
-import { environment } from '../environments/environment';
+import { environment } from '../environments/environment.prod';
 import { tokenInterceptor } from './auth/token.interceptor';
 
 @NgModule({
