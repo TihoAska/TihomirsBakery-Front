@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
 import { NutritionService } from '../../services/nutrition.service';
 import { BehaviorSubject } from 'rxjs';
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { NgZone } from '@angular/core';
 
 
 @Component({
@@ -36,6 +35,7 @@ export class LoginComponent {
 
   emailIsValid = true;
   emailError = '';
+  isLoggingIn = false;
 
   passwordError = '';
 
@@ -53,8 +53,7 @@ export class LoginComponent {
     private accountService : AccountService,
     private userService : UserService,
     private nutritionService : NutritionService,
-    private router : Router,
-    private zone: NgZone) {
+    private router : Router) {
 
   }
 
@@ -86,6 +85,7 @@ export class LoginComponent {
 
   login(loginFormValue){
     if(this.loginForm.valid){
+      this.isLoggingIn = true;
 
       const userToLogin : UserToLoginDTO = {
         email : loginFormValue.email,
@@ -95,6 +95,7 @@ export class LoginComponent {
       this.accountService.login(userToLogin).subscribe(res => {
         if(this.helperService.isResponseValid(res) && res.isAuthSuccessful){
           var userFromToken = this.accountService.decodeUserFromToken((<any>res).accessToken);
+          this.isLoggingIn = false;
           this.accountService.storeTokensInLocalStorage(res);
 
           this.userService.getUserById(userFromToken.id).subscribe(res => {
@@ -111,10 +112,9 @@ export class LoginComponent {
             this.router.navigate(['your-day']);
           }
         } else {
+          this.isLoggingIn = false;
           if(res.type == "Password"){
-            this.zone.run(() => {
-              this.$passwordError.next(res.errorMessage); // Update within Angular's zone
-            });
+            this.$passwordError.next(res.errorMessage);
           }
           if (res.type == "Email"){
             this.$emailError.next(res.errorMessage);

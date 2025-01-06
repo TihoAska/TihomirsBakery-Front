@@ -49,6 +49,7 @@ export class RegisterComponent {
   
   emailError = '';
   passwordError = '';
+  isRegistering = false;
 
   public $emailError: BehaviorSubject<string> = new BehaviorSubject<string>('');
   public $userNameError: BehaviorSubject<string> = new BehaviorSubject<string>('');
@@ -106,9 +107,12 @@ export class RegisterComponent {
         imageUrl: this.sidebarService.getSelectedAvatar(),
       } 
 
+      this.isRegistering = true;
+
       this.accountService.register(userToRegister).subscribe( {
         next: (res: any) => {
           if(this.helperService.isResponseValid(res) && res.isAuthSuccessful){
+            this.isRegistering = false;
             var user = this.accountService.decodeUserFromToken((res).accessToken);
             this.accountService.storeTokensInLocalStorage(res);
     
@@ -123,6 +127,7 @@ export class RegisterComponent {
             this.registerForm.reset();
           } 
           else{
+            this.isRegistering = false;
             if(res.type == "Email"){
               this.$emailError.next(res.errorMessage);
               this.showTakenEmailError = true;
@@ -134,6 +139,7 @@ export class RegisterComponent {
           }
         }, 
         error: (error: any) => {
+          this.isRegistering = false;
           this.emailError = error.error.errors.Email[0];
           this.passwordError = error.error.errors.Password[0];
         }

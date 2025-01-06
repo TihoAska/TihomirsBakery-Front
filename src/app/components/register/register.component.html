@@ -69,9 +69,10 @@
         </div>
 
         <div class="button-container">
-            <button type="submit">
+            <button type="submit" *ngIf="!isRegistering">
                 Register
             </button>
+            <span *ngIf="isRegistering">registering...</span>
         </div>
     </form>
 

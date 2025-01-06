@@ -34,9 +34,10 @@
         </div>
 
         <div class="button-container">
-            <button type="submit">
+            <button type="submit" *ngIf="!isLoggingIn">
                 Log in
             </button>
+            <span *ngIf="isLoggingIn">logging in...</span>
         </div>
     </form>
 
