@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class LoadingService {
   private _displayLoadingOverlay = false;
-  private _loadingText = 'loading...'
+  private _loadingText = 'loading...';
   private _loadingTextIndex = 1;
   private _intervalId;
   private _displayStreetWorkoutLoadingOverlay = false;
@@ -21,7 +21,7 @@ export class LoadingService {
   loadGymVideo(){
     this._gymVideosLoadedCoutner++;
 
-    if (this._gymVideosLoadedCoutner >= 10) {
+    if (this._gymVideosLoadedCoutner >= 12) {
       this.hideGymLoadingOverlay();
     }
   }
@@ -29,7 +29,7 @@ export class LoadingService {
   loadStreetWorkoutVideo(){
     this._streetWorkoutVideosLoadedCounter++;
 
-    if (this._streetWorkoutVideosLoadedCounter >= 10) {
+    if (this._streetWorkoutVideosLoadedCounter >= 12) {
       this.hideStreetWorkoutLoadingOverlay();
     }
   }
@@ -52,7 +52,21 @@ export class LoadingService {
     }, 5000);
   }
 
+  stopGymTextRotation(){
+    if(this._intervalId){
+      clearInterval(this._intervalId);
+      this._intervalId = null;
+    }
+  }
+
   stopTextRotation(){
+    if(this._intervalId){
+      clearInterval(this._intervalId);
+      this._intervalId = null;
+    }
+  }
+
+  stopStreetWorkoutRotation(){
     if(this._intervalId){
       clearInterval(this._intervalId);
       this._intervalId = null;
@@ -66,7 +80,7 @@ export class LoadingService {
 
   hideGymLoadingOverlay(){
     this._displayGymLoadingOverlay = false;
-    this.stopTextRotation();
+    this.stopGymTextRotation();
   }
 
   isGymLoadingOverlayDisplayed(){
@@ -80,7 +94,7 @@ export class LoadingService {
 
   hideStreetWorkoutLoadingOverlay(){
     this._displayStreetWorkoutLoadingOverlay = false;
-    this.stopTextRotation();
+    this.stopStreetWorkoutRotation();
   }
 
   isStreetWorkoutLoadingOverlayDisplayed(){

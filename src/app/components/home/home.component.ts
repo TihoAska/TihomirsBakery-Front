@@ -13,7 +13,7 @@ export class HomeComponent {
   @ViewChild('workout') workoutContainer: ElementRef;
   @ViewChild('cooking') cookingContainer: ElementRef;
   isImageLoaded = false;
-  loadingTexts = ['loading...', 'baking bread...', 'kneading dough...', 'oven on fire...', 'house burning down...'];
+  loadingTexts = ['loading....', 'loading.....'];
 
   constructor(
     private router: Router, 
@@ -43,6 +43,10 @@ export class HomeComponent {
         });
       }
     });
+  }
+
+  ngOnDestroy(){
+    this.loadingService.hideLoadingOverlay();
   }
 
   navigateToSw(){

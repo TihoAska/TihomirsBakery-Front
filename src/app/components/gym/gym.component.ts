@@ -21,7 +21,6 @@ export class GymComponent {
     this.loadingService.showGymLoadingOverlay();
   }
 
-
   ngOnDestroy(){
     this.loadingService.hideGymLoadingOverlay();
   }
