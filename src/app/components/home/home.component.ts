@@ -2,6 +2,7 @@ import { Component, ElementRef, ViewChild  } from '@angular/core';
 import { Router } from '@angular/router';
 import { HelperService } from '../../services/helper.service';
 import { SidebarService } from '../../services/sidebar.service';
+import { LoadingService } from '../../services/loading.service';
 
 @Component({
   selector: 'app-home',
@@ -11,15 +12,24 @@ import { SidebarService } from '../../services/sidebar.service';
 export class HomeComponent {
   @ViewChild('workout') workoutContainer: ElementRef;
   @ViewChild('cooking') cookingContainer: ElementRef;
+  isImageLoaded = false;
+  loadingTexts = ['loading...', 'baking bread...', 'kneading dough...', 'oven on fire...', 'house burning down...'];
 
   constructor(
     private router: Router, 
     private helperService: HelperService,
-    public sidebarService: SidebarService) {    
+    public sidebarService: SidebarService,
+    public loadingService: LoadingService) {    
 
   }
 
+  onImageLoad(){
+    this.isImageLoaded = true;
+    this.loadingService.hideLoadingOverlay();
+  }
+
   ngOnInit() {
+    this.loadingService.showLoadingOverlay(this.loadingTexts);
     window.scrollTo(0,0);
     
     this.helperService.$scrollTo.subscribe(res => {
