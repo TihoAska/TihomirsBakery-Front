@@ -33,6 +33,7 @@ import { GymComponent } from './components/gym/gym.component';
 import { BACKEND_URL, MAP_API_KEY } from './services/tokens.service';
 import { environment } from '../environments/environment.prod';
 import { tokenInterceptor } from './auth/token.interceptor';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { tokenInterceptor } from './auth/token.interceptor';
     MatSelectModule,
     FormsModule,
     HttpClientModule,
+    NgxSkeletonLoaderModule,
   ],
   providers: [
     provideAnimationsAsync(),

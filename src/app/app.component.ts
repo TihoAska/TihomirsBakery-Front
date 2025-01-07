@@ -7,6 +7,7 @@ import { UserService } from './services/user.service';
 import { User } from './models/User';
 import { NutritionService } from './services/nutrition.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { LoadingService } from './services/loading.service';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 export class AppComponent {
 
   title = 'TihomirsWorkshop';
+  loadingTexts = ['loading...', 'baking bread...', 'kneading dough...', 'oven on fire...', 'house burning down...'];
 
   constructor(
     public footerService : FooterService, 
@@ -25,26 +27,27 @@ export class AppComponent {
     public userService : UserService,
     public nutritionService : NutritionService,
     public jwtHelper : JwtHelperService,
+    public loadingService: LoadingService
     ){
 
   }
 
   ngOnInit(){
-    this.helperService.showLoadingOverlay();
+    this.loadingService.showLoadingOverlay(this.loadingTexts);
     var accessToken = localStorage.getItem('accessTokenTihomirsWorkshop');
 
     if(accessToken){
       var userFromToken = this.accountService.decodeUserFromToken(accessToken);
 
       this.userService.getUserById(userFromToken.id).subscribe(res => {
-          this.helperService.hideLoadingOverlay();
-          this.accountService.$loggedUser.next(res);
-          this.nutritionService.getDataForUser();
+        this.loadingService.hideLoadingOverlay();
+        this.accountService.$loggedUser.next(res);
+        this.nutritionService.getDataForUser();
       });
     } 
     else {
       this.accountService.$loggedUser.next(new User(-1));
-      this.helperService.hideLoadingOverlay();
+      this.loadingService.hideLoadingOverlay();
     }
   }
 
@@ -53,6 +56,6 @@ export class AppComponent {
   }
 
   undim(){
-    this.router.navigate([''])
+    this.router.navigate(['']);
   }
 }

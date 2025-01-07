@@ -1,3 +1,41 @@
+.gym-essentials-loading-overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(6, 14, 8, 1);
+    z-index: 2;
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+    gap: 20px;
+
+    img{
+        animation: pulsate 2s infinite ease-in-out;
+    }
+
+    span{
+        font-size: 24px; 
+        color: aqua; 
+        font-family: 'Courier New', Courier, monospace; font-weight: bold;
+    }
+
+    @keyframes pulsate{
+        0%{
+            opacity: 0;
+        }
+        50%{
+            opacity: 1;
+        }
+        100%{
+            opacity: 0;
+        }
+    }
+}
+
 .gym-essentials-wrapper{
     --lightgreen: #08170d;
     --darkgreen: #060e08;

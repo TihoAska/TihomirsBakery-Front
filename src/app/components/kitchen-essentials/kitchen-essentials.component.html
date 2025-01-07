@@ -1,6 +1,11 @@
-<div class="kitchen-essentials-wrapper">
+<div class="kitchen-essentials-loading-overlay" *ngIf="!isImageLoaded">
+    <img src="assets/images/sidebar-icons/kitchen-essentials-orange.png" alt="" height="70px" width="70px">
+    <span>loading...</span>
+</div>
+
+<div class="kitchen-essentials-wrapper" [hidden]="!isImageLoaded">
     <div class="background">
-        <img id="background-image" src="assets/images/kitchen-essentials/kitchen-background.jpg" alt="KITCHEN">
+        <img id="background-image" src="assets/images/kitchen-essentials/kitchen-background.jpg" alt="KITCHEN" (load)="onImageLoad()">
         <div class="description-2">
             <p id="title">kitchen essentials.</p>
             <p id="welcome">food and supplements that are a great part of my diet. if you can tolerate food shown below you should

@@ -1,7 +1,11 @@
-<div #scrollContainer id="scroll-container">
+<div class="home-loading-overlay" *ngIf="!isImageLoaded">
+    <img src="assets/images/sidebar-icons/workout-aqua.png" alt="WORKOUT" height="70px" width="70px">
+    <span>loading...</span>
+</div>
+<div #scrollContainer id="scroll-container" [hidden]="!isImageLoaded">
     <div class="monkey-bar">
         <div class="image-wrapper">
-            <img id="bar" src="assets/images/home/monkey-bar-cartoonish.png" alt="MONKEY-BAR">
+            <img id="bar" src="assets/images/home/monkey-bar-cartoonish.png" alt="MONKEY-BAR" (load)="onImageLoad()">
             <div class="description-2">
                 <p id="title">tihomir's workshop.</p>
                 <p id="welcome">welcome to tihomir's workshop. here I will share my experience in cooking and working out.</p>
