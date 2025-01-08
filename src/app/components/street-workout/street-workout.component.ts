@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { HelperService } from '../../services/helper.service';
-import { LoadingService } from '../../services/loading.service';
 
 @Component({
   selector: 'app-street-workout',
@@ -8,20 +6,49 @@ import { LoadingService } from '../../services/loading.service';
   styleUrl: './street-workout.component.scss'
 })
 export class StreetWorkoutComponent {
-  constructor(public loadingService: LoadingService) {
+  intervalId;
+  displayLoadingOverlay = true;
+  videosLoadedCounter = 0;
+  loadingTextIndex = 1;
+  loadingText = 'loading...';
+  loadingTexts = ['loading...', 'rotating joints...', 'preparing chalk...', 'spraining ankles...', 'tearing muscles...', 'call an ambulance...'];
+
+  constructor() {
      
   }
 
   ngOnInit(){
     window.scrollTo(0,0);
-    this.showLoadingOverlay();
   }
 
-  showLoadingOverlay(){
-    this.loadingService.showStreetWorkoutLoadingOverlay();
+  onVideoLoad(){
+    this.videosLoadedCounter++;
+
+    if (this.videosLoadedCounter >= 12) {
+      this.displayLoadingOverlay = false;
+      this.stopTextRotation();
+    }
   }
 
-  ngOnDestroy(){
-    this.loadingService.hideStreetWorkoutLoadingOverlay();
+  startLoadingTextRotation(){
+    this.intervalId = setInterval(() => {
+      this.changeLoadingText(this.loadingTexts[this.loadingTextIndex]);
+      this.loadingTextIndex++;
+      if(this.loadingTextIndex >= this.loadingTexts.length){
+        this.loadingTextIndex = 0;
+      }
+    }, 5000);
+  }
+
+  changeLoadingText(loadingText){
+    this.loadingText = loadingText;
+  }
+
+  stopTextRotation(){
+    if(this.intervalId){
+      this.loadingTextIndex = 0;
+      clearInterval(this.intervalId);
+      this.intervalId = null;
+    }
   }
 }

@@ -90,4 +90,8 @@ export class SidebarComponent {
     }
     this.helperService.scrollTo(path);
   }
+
+  onImageLoad(){
+    this.sidebarService.$hasAvatarLoaded.next(true);
+  }
 }

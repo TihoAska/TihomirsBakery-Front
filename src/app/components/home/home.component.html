@@ -1,6 +1,6 @@
 <div class="home-loading-overlay" *ngIf="!isImageLoaded">
     <img src="assets/images/sidebar-icons/workout-aqua.png" alt="WORKOUT" height="70px" width="70px">
-    <span>loading...</span>
+    <span>{{ loadingText }}</span>
 </div>
 <div #scrollContainer id="scroll-container" [hidden]="!isImageLoaded">
     <div class="monkey-bar">

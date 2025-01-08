@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { HelperService } from '../../services/helper.service';
-import { LoadingService } from '../../services/loading.service';
 
 @Component({
   selector: 'app-gym',
@@ -8,20 +6,49 @@ import { LoadingService } from '../../services/loading.service';
   styleUrl: './gym.component.scss'
 })
 export class GymComponent {
-  constructor(public loadingService: LoadingService) {
+
+  intervalId;
+  displayLoadingOverlay = true;
+  videosLoadedCounter = 0;
+  loadingTextIndex = 1;
+  loadingText = 'loading...';
+  loadingTexts = ['loading...', 'warming up...', 'doing pushups...', 'bench pressing...', 'bar stuck...', 'help pls...'];
+
+  constructor() {
   
   }
 
   ngOnInit(){
     window.scrollTo(0,0);
-    this.showLoadingOverlay();
   }
 
-  showLoadingOverlay(){
-    this.loadingService.showGymLoadingOverlay();
+  onVideoLoad(){
+    this.videosLoadedCounter++;
+
+    if (this.videosLoadedCounter >= 12) {
+      this.displayLoadingOverlay = false;
+    }
   }
 
-  ngOnDestroy(){
-    this.loadingService.hideGymLoadingOverlay();
+  startLoadingTextRotation(){
+    this.intervalId = setInterval(() => {
+      this.changeLoadingText(this.loadingTexts[this.loadingTextIndex]);
+      this.loadingTextIndex++;
+      if(this.loadingTextIndex >= this.loadingTexts.length){
+        this.loadingTextIndex = 0;
+      }
+    }, 5000);
+  }
+
+  changeLoadingText(loadingText){
+    this.loadingText = loadingText;
+  }
+
+  stopTextRotation(){
+    if(this.intervalId){
+      this.loadingTextIndex = 0;
+      clearInterval(this.intervalId);
+      this.intervalId = null;
+    }
   }
 }
