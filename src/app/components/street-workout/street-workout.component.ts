@@ -19,6 +19,7 @@ export class StreetWorkoutComponent {
 
   ngOnInit(){
     window.scrollTo(0,0);
+    this.startLoadingTextRotation();
   }
 
   onVideoLoad(){
