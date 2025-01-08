@@ -2,7 +2,6 @@ import { Component, ElementRef, ViewChild  } from '@angular/core';
 import { Router } from '@angular/router';
 import { HelperService } from '../../services/helper.service';
 import { SidebarService } from '../../services/sidebar.service';
-import { LoadingService } from '../../services/loading.service';
 
 @Component({
   selector: 'app-home',
@@ -12,24 +11,26 @@ import { LoadingService } from '../../services/loading.service';
 export class HomeComponent {
   @ViewChild('workout') workoutContainer: ElementRef;
   @ViewChild('cooking') cookingContainer: ElementRef;
+
+  intervalId;
+  displayLoadingOverlay = true;
+  videosLoadedCounter = 0;
+  loadingTextIndex = 1;
+  loadingText = 'loading...';
   isImageLoaded = false;
-  loadingTexts = ['loading....', 'loading.....'];
 
   constructor(
     private router: Router, 
     private helperService: HelperService,
-    public sidebarService: SidebarService,
-    public loadingService: LoadingService) {    
+    public sidebarService: SidebarService) {    
 
   }
 
   onImageLoad(){
     this.isImageLoaded = true;
-    this.loadingService.hideLoadingOverlay();
   }
 
   ngOnInit() {
-    this.loadingService.showLoadingOverlay(this.loadingTexts);
     window.scrollTo(0,0);
     
     this.helperService.$scrollTo.subscribe(res => {
@@ -43,10 +44,6 @@ export class HomeComponent {
         });
       }
     });
-  }
-
-  ngOnDestroy(){
-    this.loadingService.hideLoadingOverlay();
   }
 
   navigateToSw(){
@@ -82,5 +79,13 @@ export class HomeComponent {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
     const targetOffset = cookingContainerRect.top + scrollTop - yOffset;
     window.scrollTo({ top: targetOffset, behavior: "smooth" });
+  }
+
+  onVideoLoad(){
+    this.videosLoadedCounter++;
+
+    if (this.videosLoadedCounter >= 12) {
+      this.displayLoadingOverlay = false;
+    }
   }
 }

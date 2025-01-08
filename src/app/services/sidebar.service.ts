@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import { AccountService } from './account.service';
 import { HelperService } from './helper.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SidebarService {
+  $hasAvatarLoaded = new BehaviorSubject<boolean>(false);
+
   private _isAvatarPickerWindowOpen = false;
   private _isLoginWindowOpen = false;
   private _isProfileWindowOpen = false;

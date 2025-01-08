@@ -1,6 +1,10 @@
-<div class="container">
+<div class="your-day-loading-overlay" *ngIf="isLoadingOverlayDisplayed">
+    <img src="assets/images/sidebar-icons/your-day-orange.png" alt="" height="70px" width="70px">
+    <span>{{ loadingText }}</span>
+</div>
+<div class="container" [hidden]="isLoadingOverlayDisplayed">
     <div class="kitchen-background">
-        <img src="assets/images/your-day/your-day-kitchen.jpg" alt="KITCHEN-BACKGROUND">
+        <img src="assets/images/your-day/your-day-kitchen.jpg" alt="KITCHEN-BACKGROUND" (load)="onImageLoad()">
         <div class="description">
             <p id="title">your day.</p>
             <p id="welcome">here you can track your calories and macros by logging your food and workout.</p>

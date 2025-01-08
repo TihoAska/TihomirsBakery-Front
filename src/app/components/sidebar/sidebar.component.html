@@ -31,7 +31,9 @@
       [src]="(accountService.$loggedUser | async).imageUrl" 
       [alt]="(accountService.$loggedUser | async).imageUrl" 
       height="50px" 
-      width="50px">
+      width="50px"
+      (load)="onImageLoad()"
+      >
     <p [@showName]="showSidebar ? 'show' : 'hide'">YOUR PROFILE</p>
   </div>
 </div>

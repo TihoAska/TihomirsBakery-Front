@@ -32,6 +32,9 @@ import { WorkoutService } from '../../services/workout.service';
 })
 export class YourDayComponent {
 
+  isLoadingOverlayDisplayed = true;
+  loadingText = 'loading...';
+  
   searchControl = new FormControl();
 
   allMeals: any[] = [];
@@ -117,6 +120,10 @@ export class YourDayComponent {
         totalCalories: res.totalCalories
       });
     })
+  }
+
+  onImageLoad(){
+    this.isLoadingOverlayDisplayed = false;
   }
 
   checkWorkoutType(workout){

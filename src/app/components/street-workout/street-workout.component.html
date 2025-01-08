@@ -1,8 +1,8 @@
-<div class="sw-container-loading-overlay" *ngIf="loadingService.isStreetWorkoutLoadingOverlayDisplayed()">
+<div class="sw-container-loading-overlay" *ngIf="displayLoadingOverlay">
     <img src="assets/images/sidebar-icons/workout-aqua.png" alt="WORKOUT" height="70px" width="70px">
-    <span>{{ loadingService.getLoadingText() }}</span>
+    <span>{{ loadingText }}</span>
 </div>
-<div class="sw-container" [hidden]="loadingService.isStreetWorkoutLoadingOverlayDisplayed()">
+<div class="sw-container" [hidden]="displayLoadingOverlay">
     <div class="sw">
         <img id="background-image" src="assets/images/street-workout/pullup-bar-cartoonish.png" alt="PULLUP-BAR">
         <div class="sw-description">
@@ -24,7 +24,7 @@
 
         <div class="pulls">
             <div class="pullups">
-                <video autoplay loop width="400px" height="400px" (loadeddata)="loadingService.loadStreetWorkoutVideo()">
+                <video autoplay loop width="400px" height="400px" (loadeddata)="onVideoLoad()">
                     <source src="assets/videos/street-workout/Pullups.mp4" type="video/mp4">
                 </video>
                 <div class="description">
@@ -47,7 +47,7 @@
             </div>
             
             <div class="pullups-wide">
-                <video autoplay loop width="400px" height="400px" (loadeddata)="loadingService.loadStreetWorkoutVideo()">
+                <video autoplay loop width="400px" height="400px" (loadeddata)="onVideoLoad()">
                     <source src="assets/videos/street-workout/Inverted-rows.mp4" type="video/mp4">
                 </video>
                 <div class="description">
@@ -73,7 +73,7 @@
     
     <div class="pullups-container-2">
         <div class="pullups-narrow">
-            <video autoplay loop width="400px" height="400px" (loadeddata)="loadingService.loadStreetWorkoutVideo()">
+            <video autoplay loop width="400px" height="400px" (loadeddata)="onVideoLoad()">
                 <source src="assets/videos/street-workout/Pullups-close-grip.mp4" type="video/mp4">
             </video>
             <div class="description">
@@ -97,7 +97,7 @@
         </div>
     
         <div class="pullups-alternate">
-            <video autoplay loop width="400px" height="400px" (loadeddata)="loadingService.loadStreetWorkoutVideo()">
+            <video autoplay loop width="400px" height="400px" (loadeddata)="onVideoLoad()">
                 <source src="assets/videos/street-workout/Pullups-alternate-grip.mp4" type="video/mp4">
             </video>
             <div class="description">
@@ -122,7 +122,7 @@
     
     <div class="chinups-container">
         <div class="chinups">
-            <video autoplay loop width="400px" height="400px" (loadeddata)="loadingService.loadStreetWorkoutVideo()">
+            <video autoplay loop width="400px" height="400px" (loadeddata)="onVideoLoad()">
                 <source src="assets/videos/street-workout/Chinups.mp4" type="video/mp4">
             </video>
             <div class="description">
@@ -146,7 +146,7 @@
         </div>
     
         <div class="chinups-narrow">
-            <video autoplay loop width="400px" height="400px" (loadeddata)="loadingService.loadStreetWorkoutVideo()">
+            <video autoplay loop width="400px" height="400px" (loadeddata)="onVideoLoad()">
                 <source src="assets/videos/street-workout/Chinups-close-grip.mp4" type="video/mp4">
             </video>
             <div class="description">
@@ -171,7 +171,7 @@
     
     <div class="neutral-pullups-container">
         <div class="neutral-pullups-narrow">
-            <video autoplay loop width="400px" height="400px" (loadeddata)="loadingService.loadStreetWorkoutVideo()">
+            <video autoplay loop width="400px" height="400px" (loadeddata)="onVideoLoad()">
                 <source src="assets/videos/street-workout/Neutral-pullups-narrow-grip.mp4" type="video/mp4">
             </video>
             <div class="description">
@@ -193,7 +193,7 @@
         </div>
     
         <div class="neutral-pullups-wide">
-            <video autoplay loop width="400px" height="400px" (loadeddata)="loadingService.loadStreetWorkoutVideo()">
+            <video autoplay loop width="400px" height="400px" (loadeddata)="onVideoLoad()">
                 <source src="assets/videos/street-workout/Neutral-pullups-wide-grip.mp4" type="video/mp4">
             </video>
             <div class="description">
@@ -217,7 +217,7 @@
     
     <div class="dips-container">
         <div class="dips">
-            <video autoplay loop width="400px" height="400px" (loadeddata)="loadingService.loadStreetWorkoutVideo()">
+            <video autoplay loop width="400px" height="400px" (loadeddata)="onVideoLoad()">
                 <source src="assets/videos/street-workout/Dips.mp4" type="video/mp4">
             </video>
             <div class="description">
@@ -241,7 +241,7 @@
         </div>
     
         <div class="straight-bar-dips">
-            <video autoplay loop width="400px" height="400px" (loadeddata)="loadingService.loadStreetWorkoutVideo()">
+            <video autoplay loop width="400px" height="400px" (loadeddata)="onVideoLoad()">
                 <source src="assets/videos/street-workout/Dips-straight-bar.mp4" type="video/mp4">
             </video>
             <div class="description">
@@ -266,7 +266,7 @@
     
     <div class="pushups-container">
         <div class="pushups">
-            <video autoplay loop width="400px" height="400px" (loadeddata)="loadingService.loadStreetWorkoutVideo()">
+            <video autoplay loop width="400px" height="400px" (loadeddata)="onVideoLoad()">
                 <source src="assets/videos/street-workout/Skull-crushers.mp4" type="video/mp4">
             </video>
             <div class="description">
@@ -289,7 +289,7 @@
         </div>
     
         <div class="skull-crushers">
-            <video autoplay loop width="400px" height="400px" (loadeddata)="loadingService.loadStreetWorkoutVideo()">
+            <video autoplay loop width="400px" height="400px" (loadeddata)="onVideoLoad()">
                 <source src="assets/videos/street-workout/Skull-crushers.mp4" type="video/mp4">
             </video>
             <div class="description">
@@ -314,7 +314,7 @@
 
     <div class="muscle-ups-container">
         <div class="muscle-ups">
-            <video autoplay loop width="400px" height="400px" (loadeddata)="loadingService.loadStreetWorkoutVideo()">
+            <video autoplay loop width="400px" height="400px" (loadeddata)="onVideoLoad()">
                 <source src="assets/videos/street-workout/Muscle-up.mp4" type="video/mp4">
             </video>
             <div class="description">

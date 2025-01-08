@@ -1,8 +1,8 @@
-<div class="gym-container-loading-overlay" *ngIf="loadingService.isGymLoadingOverlayDisplayed()">
+<div class="gym-container-loading-overlay" *ngIf="displayLoadingOverlay">
     <img src="assets/images/sidebar-icons/gym-aqua.png" alt="" height="70px" width="70px">
-    <span>{{ loadingService.getLoadingText() }}</span>
+    <span>{{ loadingText }}</span>
 </div>
-<div class="gym-container" [hidden]="loadingService.isGymLoadingOverlayDisplayed()">
+<div class="gym-container" [hidden]="displayLoadingOverlay">
     <div class="gym">
         <img id="background-image" src="assets/images/street-workout/pullup-bar-cartoonish.png" alt="PULLUP-BAR">
         <div class="gym-description">
@@ -24,7 +24,7 @@
 
         <div class="bench">
             <div class="flat-bench-press">
-                <video autoplay loop width="400px" height="400px" (loadeddata)="loadingService.loadGymVideo()">
+                <video autoplay loop width="400px" height="400px" (loadeddata)="onVideoLoad()">
                     <source src="assets/videos/gym/flat-bench-press.mp4" type="video/mp4">
                 </video>
                 <div class="description">
@@ -47,7 +47,7 @@
             </div>
             
             <div class="incline-bench-press">
-                <video autoplay loop width="400px" height="400px" (loadeddata)="loadingService.loadGymVideo()">
+                <video autoplay loop width="400px" height="400px" (loadeddata)="onVideoLoad()">
                     <source src="assets/videos/gym/incline-bench-press.mp4" type="video/mp4">
                 </video>
                 <div class="description">
@@ -74,7 +74,7 @@
     
     <div class="shoulders-container">
         <div class="overhead-press">
-            <video autoplay loop width="400px" height="400px" (loadeddata)="loadingService.loadGymVideo()">
+            <video autoplay loop width="400px" height="400px" (loadeddata)="onVideoLoad()">
                 <source src="assets/videos/gym/overhead-press.mp4" type="video/mp4">
             </video>
             <div class="description">
@@ -97,7 +97,7 @@
         </div>
     
         <div class="shoulder-flies">
-            <video autoplay loop width="400px" height="400px" (loadeddata)="loadingService.loadGymVideo()">
+            <video autoplay loop width="400px" height="400px" (loadeddata)="onVideoLoad()">
                 <source src="assets/videos/gym/shoulder-flies.mp4" type="video/mp4">
             </video>
             <div class="description">
@@ -122,7 +122,7 @@
     
     <div class="lower-upper-chest-container">
         <div class="weighted-dips">
-            <video autoplay loop width="400px" height="400px" (loadeddata)="loadingService.loadGymVideo()">
+            <video autoplay loop width="400px" height="400px" (loadeddata)="onVideoLoad()">
                 <source src="assets/videos/gym/weighted-dips.mp4" type="video/mp4">
             </video>
             <div class="description">
@@ -145,7 +145,7 @@
         </div>
     
         <div class="incline-shoulder-flies">
-            <video autoplay loop width="400px" height="400px" (loadeddata)="loadingService.loadGymVideo()">
+            <video autoplay loop width="400px" height="400px" (loadeddata)="onVideoLoad()">
                 <source src="assets/videos/gym/incline-chest-flies.mp4" type="video/mp4">
             </video>
             <div class="description">
@@ -169,7 +169,7 @@
     
     <div class="back-container">
         <div class="bent-over-rows">
-            <video autoplay loop width="400px" height="400px" (loadeddata)="loadingService.loadGymVideo()">
+            <video autoplay loop width="400px" height="400px" (loadeddata)="onVideoLoad()">
                 <source src="assets/videos/gym/bent-over-rows.mp4" type="video/mp4">
             </video>
             <div class="description">
@@ -193,7 +193,7 @@
         </div>
     
         <div class="one-arm-rows">
-            <video autoplay loop width="400px" height="400px" (loadeddata)="loadingService.loadGymVideo()">
+            <video autoplay loop width="400px" height="400px" (loadeddata)="onVideoLoad()">
                 <source src="assets/videos/gym/one-arm-bent-over-row.mp4" type="video/mp4">
             </video>
             <div class="description">
@@ -218,7 +218,7 @@
     
     <div class="curls-and-squats-container">
         <div class="curls">
-            <video autoplay loop width="400px" height="400px" (loadeddata)="loadingService.loadGymVideo()">
+            <video autoplay loop width="400px" height="400px" (loadeddata)="onVideoLoad()">
                 <source src="assets/videos/gym/biceps-curls.mp4" type="video/mp4">
             </video>
             <div class="description">
@@ -241,7 +241,7 @@
         </div>
     
         <div class="squats">
-            <video autoplay loop width="400px" height="400px" (loadeddata)="loadingService.loadGymVideo()">
+            <video autoplay loop width="400px" height="400px" (loadeddata)="onVideoLoad()">
                 <source src="assets/videos/gym/squats.mp4" type="video/mp4">
             </video>
             <div class="description">
@@ -267,7 +267,7 @@
 
     <div class="deadlifts-container">
         <div class="romanian-deadlift">
-            <video autoplay loop width="400px" height="400px" (loadeddata)="loadingService.loadGymVideo()">
+            <video autoplay loop width="400px" height="400px" (loadeddata)="onVideoLoad()">
                 <source src="assets/videos/gym/romanian-deadlift.mp4" type="video/mp4">
             </video>
             <div class="description">
@@ -290,7 +290,7 @@
         </div>
 
         <div class="conventional-deadlift">
-            <video autoplay loop width="400px" height="400px" (loadeddata)="loadingService.loadGymVideo()">
+            <video autoplay loop width="400px" height="400px" (loadeddata)="onVideoLoad()">
                 <source src="assets/videos/gym/conventional-deadlift.mp4" type="video/mp4">
             </video>
             <div class="description">
@@ -315,7 +315,7 @@
 
     <div class="split-squat-container">
         <div class="split-squat">
-            <video autoplay loop width="400px" height="400px" (loadeddata)="loadingService.loadGymVideo()">
+            <video autoplay loop width="400px" height="400px" (loadeddata)="onVideoLoad()">
                 <source src="assets/videos/gym/split-squat.mp4" type="video/mp4">
             </video>
             <div class="description">

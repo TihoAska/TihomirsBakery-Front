@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { LoadingService } from '../../services/loading.service';
 
 @Component({
   selector: 'app-kitchen-essentials',
@@ -9,7 +8,7 @@ import { LoadingService } from '../../services/loading.service';
 export class KitchenEssentialsComponent {
   isImageLoaded = false;
 
-  constructor(public loadingService: LoadingService) {
+  constructor() {
     
   }
 

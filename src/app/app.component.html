@@ -4,11 +4,11 @@
 
 </div>
 
-<div class="loading-overlay" *ngIf="loadingService.isLoadingOverlayDisplayed()">
+<div class="loading-overlay" *ngIf="isLoadingOverlayDisplayed">
   <div class="bread-container">
     <img src="assets/images/sidebar-icons/bread-baking-waves.png" alt="Heat Wave" class="wave1" height="50px" width="100px">
     <img src="assets/images/sidebar-icons/bread-without-waves.png" alt="Baking Bread" class="bread" height="50px" width="100px">
-    <span style="font-size: 24px; color: orangered; font-family: 'Courier New', Courier, monospace; font-weight: bold;">{{ loadingService.getLoadingText() }}</span>
+    <span style="font-size: 24px; color: orangered; font-family: 'Courier New', Courier, monospace; font-weight: bold;">{{ loadingText }}</span>
   </div>
 </div>
 
