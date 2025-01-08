@@ -20,6 +20,7 @@ export class GymComponent {
 
   ngOnInit(){
     window.scrollTo(0,0);
+    this.startLoadingTextRotation();
   }
 
   onVideoLoad(){
@@ -27,6 +28,7 @@ export class GymComponent {
 
     if (this.videosLoadedCounter >= 12) {
       this.displayLoadingOverlay = false;
+      this.stopTextRotation();
     }
   }
 
