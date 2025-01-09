@@ -17,7 +17,6 @@ export class SidebarService {
   private _confirmedAvatar = '';
   private _confirmedAvatarForRegister = 'assets/images/avatars/avatar-male-1.png';
   private _defaultAvatar = 'assets/images/avatars/avatar-male-1.png';
-  
 
   avatars = [
     { icon: 'assets/images/avatars/avatar-male-1.png', name: 'avatar-male-1'},
