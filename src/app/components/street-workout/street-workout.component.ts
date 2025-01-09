@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SidebarService } from '../../services/sidebar.service';
 
 @Component({
   selector: 'app-street-workout',
@@ -13,7 +14,7 @@ export class StreetWorkoutComponent {
   loadingText = 'loading...';
   loadingTexts = ['loading...', 'rotating joints...', 'preparing chalk...', 'spraining ankles...', 'tearing muscles...', 'call an ambulance...'];
 
-  constructor() {
+  constructor(public sidebarService: SidebarService) {
      
   }
 

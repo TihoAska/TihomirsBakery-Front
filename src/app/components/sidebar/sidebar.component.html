@@ -21,7 +21,9 @@
       src="assets/images/sidebar-icons/profile-icon.png" 
       alt="YOUR PROFILE" 
       height="50px" 
-      width="50px">
+      width="50px"
+      (load)="onImageLoad()"
+      >
     <p [@showName]="showSidebar ? 'show' : 'hide'">LOG IN</p>
   </div>
 

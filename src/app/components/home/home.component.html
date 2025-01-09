@@ -1,8 +1,8 @@
-<div class="home-loading-overlay" *ngIf="!isImageLoaded">
+<div class="home-loading-overlay" *ngIf="!(isImageLoaded && sidebarService.$hasAvatarLoaded | async)">
     <img src="assets/images/sidebar-icons/workout-aqua.png" alt="WORKOUT" height="70px" width="70px">
     <span>{{ loadingText }}</span>
 </div>
-<div #scrollContainer id="scroll-container" [hidden]="!isImageLoaded">
+<div #scrollContainer id="scroll-container" [hidden]="!(isImageLoaded && sidebarService.$hasAvatarLoaded | async)">
     <div class="monkey-bar">
         <div class="image-wrapper">
             <img id="bar" src="assets/images/home/monkey-bar-cartoonish.png" alt="MONKEY-BAR" (load)="onImageLoad()">

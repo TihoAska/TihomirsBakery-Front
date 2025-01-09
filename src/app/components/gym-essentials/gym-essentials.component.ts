@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SidebarService } from '../../services/sidebar.service';
 
 @Component({
   selector: 'app-gym-essentials',
@@ -8,7 +9,7 @@ import { Component } from '@angular/core';
 export class GymEssentialsComponent {
   isImageLoaded = false;
 
-  constructor() {
+  constructor(public sidebarService: SidebarService) {
     
   }
 

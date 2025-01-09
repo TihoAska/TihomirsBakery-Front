@@ -1,9 +1,9 @@
-<div class="gym-essentials-loading-overlay" *ngIf="!isImageLoaded">
+<div class="gym-essentials-loading-overlay" *ngIf="!(isImageLoaded && sidebarService.$hasAvatarLoaded | async)">
     <img src="assets/images/sidebar-icons/gym-essentials-aqua.png" alt="GYM-ESSENTIALS" height="70px" width="70px">
     <span>loading...</span>
 </div>
 
-<div class="gym-essentials-wrapper" [hidden]="!isImageLoaded">
+<div class="gym-essentials-wrapper" [hidden]="!(isImageLoaded && sidebarService.$hasAvatarLoaded | async)">
     <div class="background">
         <img id="background-image" src="assets/images/gym-essentials/pullup-bar-cartoonish.png" alt="PULLUP-BAR" (load)="onImageLoaded()">
         <div class="description-2">

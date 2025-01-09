@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SidebarService } from '../../services/sidebar.service';
 
 @Component({
   selector: 'app-gym',
@@ -14,7 +15,7 @@ export class GymComponent {
   loadingText = 'loading...';
   loadingTexts = ['loading...', 'warming up...', 'doing pushups...', 'bench pressing...', 'bar stuck...', 'help pls...'];
 
-  constructor() {
+  constructor(public sidebarService: SidebarService) {
   
   }
 
