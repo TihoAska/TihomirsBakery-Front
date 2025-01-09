@@ -8,20 +8,17 @@ import { User } from './models/User';
 import { NutritionService } from './services/nutrition.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { SidebarService } from './services/sidebar.service';
+import { LoadingComponent } from './shared/loading.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
+export class AppComponent extends LoadingComponent{
 
   title = 'TihomirsWorkshop';
-  textIntervalId;
-  loadingTextIndex = 1;
   isLoadingOverlayDisplayed = true;
-  loadingText = 'loading...'
-  loadingTexts = ['loading...', 'baking bread...', 'kneading dough...', 'oven on fire...', 'house burning down...'];
 
   constructor(
     public footerService : FooterService, 
@@ -33,7 +30,8 @@ export class AppComponent {
     public jwtHelper : JwtHelperService,
     public sidebarService: SidebarService
     ){
-
+      super();
+      this.loadingTexts = ['loading...', 'baking bread...', 'kneading dough...', 'oven on fire...', 'house burning down...'];
   }
 
   ngOnInit(){
@@ -76,27 +74,5 @@ export class AppComponent {
   hideLoadingOverlay(){
     this.isLoadingOverlayDisplayed = false;
     this.stopLoadingTextRotation();
-  }
-
-  startLoadingTextRotation(){
-    this.textIntervalId = setInterval(() => {
-      this.changeLoadingText(this.loadingTexts[this.loadingTextIndex]);
-      this.loadingTextIndex++;
-      if(this.loadingTextIndex >= this.loadingTexts.length){
-        this.loadingTextIndex = 0;
-      }
-    }, 5000);
-  }
-
-  changeLoadingText(loadingText){
-    this.loadingText = loadingText;
-  }
-
-  stopLoadingTextRotation(){
-    if(this.textIntervalId){
-      this.loadingTextIndex = 0;
-      clearInterval(this.textIntervalId);
-      this.textIntervalId = null;
-    }
   }
 }
