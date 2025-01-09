@@ -1,22 +1,18 @@
 import { Component } from '@angular/core';
 import { SidebarService } from '../../services/sidebar.service';
+import { LoadingComponent } from '../../shared/loading.component';
 
 @Component({
   selector: 'app-gym',
   templateUrl: './gym.component.html',
   styleUrl: './gym.component.scss'
 })
-export class GymComponent {
-
-  intervalId;
-  displayLoadingOverlay = true;
+export class GymComponent extends LoadingComponent {
   videosLoadedCounter = 0;
-  loadingTextIndex = 1;
-  loadingText = 'loading...';
-  loadingTexts = ['loading...', 'warming up...', 'doing pushups...', 'bench pressing...', 'bar stuck...', 'help pls...'];
-
-  constructor(public sidebarService: SidebarService) {
   
+  constructor(public sidebarService: SidebarService) {
+    super();
+    this.loadingTexts = ['loading...', 'warming up...', 'doing pushups...', 'bench pressing...', 'bar stuck...', 'help pls...'];
   }
 
   ngOnInit(){
@@ -29,29 +25,7 @@ export class GymComponent {
 
     if (this.videosLoadedCounter >= 12) {
       this.displayLoadingOverlay = false;
-      this.stopTextRotation();
-    }
-  }
-
-  startLoadingTextRotation(){
-    this.intervalId = setInterval(() => {
-      this.changeLoadingText(this.loadingTexts[this.loadingTextIndex]);
-      this.loadingTextIndex++;
-      if(this.loadingTextIndex >= this.loadingTexts.length){
-        this.loadingTextIndex = 0;
-      }
-    }, 5000);
-  }
-
-  changeLoadingText(loadingText){
-    this.loadingText = loadingText;
-  }
-
-  stopTextRotation(){
-    if(this.intervalId){
-      this.loadingTextIndex = 0;
-      clearInterval(this.intervalId);
-      this.intervalId = null;
+      this.stopLoadingTextRotation();
     }
   }
 }

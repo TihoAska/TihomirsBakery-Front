@@ -2,28 +2,26 @@ import { Component, ElementRef, ViewChild  } from '@angular/core';
 import { Router } from '@angular/router';
 import { HelperService } from '../../services/helper.service';
 import { SidebarService } from '../../services/sidebar.service';
+import { LoadingComponent } from '../../shared/loading.component';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
-export class HomeComponent {
+export class HomeComponent extends LoadingComponent {
   @ViewChild('workout') workoutContainer: ElementRef;
   @ViewChild('cooking') cookingContainer: ElementRef;
 
-  intervalId;
-  displayLoadingOverlay = true;
   videosLoadedCounter = 0;
-  loadingTextIndex = 1;
-  loadingText = 'loading...';
   isImageLoaded = false;
 
   constructor(
     private router: Router, 
     private helperService: HelperService,
     public sidebarService: SidebarService) {    
-
+      super();
+      this.loadingTexts = ['loading...'];
   }
 
   onImageLoad(){
