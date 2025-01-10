@@ -1,8 +1,8 @@
-<div class="gym-container-loading-overlay" *ngIf="displayLoadingOverlay && sidebarService.$hasAvatarLoaded | async">
+<div class="gym-container-loading-overlay" *ngIf="isLoadingOverlayDisplayed() && sidebarService.$hasAvatarLoaded | async">
     <img src="assets/images/sidebar-icons/gym-aqua.png" alt="" height="70px" width="70px">
-    <span>{{ loadingText }}</span>
+    <span>{{ getLoadingText() }}</span>
 </div>
-<div class="gym-container" [hidden]="displayLoadingOverlay && sidebarService.$hasAvatarLoaded | async">
+<div class="gym-container" [hidden]="isLoadingOverlayDisplayed() && sidebarService.$hasAvatarLoaded | async">
     <div class="gym">
         <img id="background-image" src="assets/images/street-workout/pullup-bar-cartoonish.png" alt="PULLUP-BAR">
         <div class="gym-description">

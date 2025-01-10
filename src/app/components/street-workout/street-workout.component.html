@@ -1,8 +1,8 @@
-<div class="sw-container-loading-overlay" *ngIf="displayLoadingOverlay && sidebarService.$hasAvatarLoaded | async">
+<div class="sw-container-loading-overlay" *ngIf="isLoadingOverlayDisplayed() && sidebarService.$hasAvatarLoaded | async">
     <img src="assets/images/sidebar-icons/workout-aqua.png" alt="WORKOUT" height="70px" width="70px">
-    <span>{{ loadingText }}</span>
+    <span>{{ getLoadingText() }}</span>
 </div>
-<div class="sw-container" [hidden]="displayLoadingOverlay && sidebarService.$hasAvatarLoaded | async">
+<div class="sw-container" [hidden]="isLoadingOverlayDisplayed() && sidebarService.$hasAvatarLoaded | async">
     <div class="sw">
         <img id="background-image" src="assets/images/street-workout/pullup-bar-cartoonish.png" alt="PULLUP-BAR">
         <div class="sw-description">

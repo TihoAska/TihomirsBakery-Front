@@ -9,6 +9,7 @@ import { NutritionService } from '../../services/nutrition.service';
 import { AccountService } from '../../services/account.service';
 import { SidebarService } from '../../services/sidebar.service';
 import { WorkoutService } from '../../services/workout.service';
+import { LoadingComponent } from '../../shared/loading.component';
 
 @Component({
   selector: 'app-your-day',
@@ -30,11 +31,7 @@ import { WorkoutService } from '../../services/workout.service';
     ]),
   ],
 })
-export class YourDayComponent {
-
-  isLoadingOverlayDisplayed = true;
-  loadingText = 'loading...';
-  
+export class YourDayComponent extends LoadingComponent { 
   searchControl = new FormControl();
 
   allMeals: any[] = [];
@@ -77,7 +74,10 @@ export class YourDayComponent {
     public sidebarService : SidebarService,
     public workoutService : WorkoutService,
     private fb : FormBuilder,
-  ) {}
+  ) {
+    super();
+    this.setLoadingTexts(['loading...']);
+  }
 
   ngOnInit() {
     window.scrollTo(0,0);
@@ -120,10 +120,6 @@ export class YourDayComponent {
         totalCalories: res.totalCalories
       });
     })
-  }
-
-  onImageLoad(){
-    this.isLoadingOverlayDisplayed = false;
   }
 
   checkWorkoutType(workout){

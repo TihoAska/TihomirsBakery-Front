@@ -1,6 +1,11 @@
-<div class="breakfast-ideas-wrapper">
+<div class="breakfast-ideas-loading-overlay" *ngIf="isLoadingOverlayDisplayed() && sidebarService.$hasAvatarLoaded | async">
+    <img src="assets/images/sidebar-icons/kitchen-orange.png" alt="WORKOUT" height="70px" width="70px">
+    <span>{{ getLoadingText() }}</span>
+</div>
+
+<div class="breakfast-ideas-wrapper" [hidden]="isLoadingOverlayDisplayed() && sidebarService.$hasAvatarLoaded | async">
     <div class="background">
-        <img id="background-image" src="assets/images/kitchen-essentials/kitchen-background.jpg" alt="KITCHEN">
+        <img id="background-image" src="assets/images/kitchen-essentials/kitchen-background.jpg" alt="KITCHEN" (load)="onImageLoad()">
         <div class="description-2">
             <p id="title">breakfast ideas.</p>
             <p id="welcome">

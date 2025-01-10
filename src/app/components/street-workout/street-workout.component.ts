@@ -8,11 +8,9 @@ import { LoadingComponent } from '../../shared/loading.component';
   styleUrl: './street-workout.component.scss'
 })
 export class StreetWorkoutComponent extends LoadingComponent {
-  videosLoadedCounter = 0;
-
   constructor(public sidebarService: SidebarService) {
     super();
-    this.loadingTexts = ['loading...', 'rotating joints...', 'preparing chalk...', 'spraining ankles...', 'tearing muscles...', 'call an ambulance...'];
+    this.setLoadingTexts(['loading...', 'rotating joints...', 'preparing chalk...', 'spraining ankles...', 'tearing muscles...', 'call an ambulance...']);
   }
 
   ngOnInit(){
@@ -21,11 +19,6 @@ export class StreetWorkoutComponent extends LoadingComponent {
   }
 
   onVideoLoad(){
-    this.videosLoadedCounter++;
-
-    if (this.videosLoadedCounter >= 12) {
-      this.displayLoadingOverlay = false;
-      this.stopLoadingTextRotation();
-    }
+    this.onVideosLoaded(12);
   }
 }
