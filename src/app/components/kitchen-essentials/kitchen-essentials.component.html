@@ -1,9 +1,9 @@
-<div class="kitchen-essentials-loading-overlay" *ngIf="!(isImageLoaded && sidebarService.$hasAvatarLoaded | async)">
+<div class="kitchen-essentials-loading-overlay" *ngIf="isLoadingOverlayDisplayed() && sidebarService.$hasAvatarLoaded | async">
     <img src="assets/images/sidebar-icons/kitchen-essentials-orange.png" alt="" height="70px" width="70px">
-    <span>loading...</span>
+    <span>{{ getLoadingText() }}</span>
 </div>
 
-<div class="kitchen-essentials-wrapper" [hidden]="!(isImageLoaded && sidebarService.$hasAvatarLoaded | async)">
+<div class="kitchen-essentials-wrapper" [hidden]="isLoadingOverlayDisplayed() && sidebarService.$hasAvatarLoaded | async">
     <div class="background">
         <img id="background-image" src="assets/images/kitchen-essentials/kitchen-background.jpg" alt="KITCHEN" (load)="onImageLoad()">
         <div class="description-2">

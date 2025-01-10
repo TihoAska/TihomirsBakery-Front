@@ -2,13 +2,14 @@ import { Component, ElementRef, Inject, ViewChild } from '@angular/core';
 import { Map, MapStyle, Marker, Popup, config } from '@maptiler/sdk';
 import '@maptiler/sdk/dist/maptiler-sdk.css';
 import { MAP_API_KEY } from '../../services/tokens.service';
+import { LoadingComponent } from '../../shared/loading.component';
 
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
   styleUrl: './map.component.scss'
 })
-export class MapComponent {
+export class MapComponent extends LoadingComponent {
   map: Map | undefined;
   isLoading = true;
 
@@ -16,7 +17,8 @@ export class MapComponent {
   private mapContainer!: ElementRef<HTMLElement>;
 
   constructor(@Inject(MAP_API_KEY) private mapApiKey: string) {
-    
+    super();
+    this.setLoadingTexts(['loading...']);
   }
 
   ngOnInit(): void {
@@ -33,7 +35,7 @@ export class MapComponent {
     this.createMarkers();
 
     this.map.on('load', () => {
-      this.isLoading = false;
+      this.hideLoadingOverlay();
     });
   }
 

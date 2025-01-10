@@ -8,11 +8,9 @@ import { LoadingComponent } from '../../shared/loading.component';
   styleUrl: './gym.component.scss'
 })
 export class GymComponent extends LoadingComponent {
-  videosLoadedCounter = 0;
-  
   constructor(public sidebarService: SidebarService) {
     super();
-    this.loadingTexts = ['loading...', 'warming up...', 'doing pushups...', 'bench pressing...', 'bar stuck...', 'help pls...'];
+    this.setLoadingTexts(['loading...', 'warming up...', 'doing pushups...', 'bench pressing...', 'bar stuck...', 'help pls...']);
   }
 
   ngOnInit(){
@@ -21,11 +19,6 @@ export class GymComponent extends LoadingComponent {
   }
 
   onVideoLoad(){
-    this.videosLoadedCounter++;
-
-    if (this.videosLoadedCounter >= 12) {
-      this.displayLoadingOverlay = false;
-      this.stopLoadingTextRotation();
-    }
+    this.onVideosLoaded(12);
   }
 }

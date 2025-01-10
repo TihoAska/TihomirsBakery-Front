@@ -13,19 +13,12 @@ export class HomeComponent extends LoadingComponent {
   @ViewChild('workout') workoutContainer: ElementRef;
   @ViewChild('cooking') cookingContainer: ElementRef;
 
-  videosLoadedCounter = 0;
-  isImageLoaded = false;
-
   constructor(
     private router: Router, 
     private helperService: HelperService,
     public sidebarService: SidebarService) {    
       super();
-      this.loadingTexts = ['loading...'];
-  }
-
-  onImageLoad(){
-    this.isImageLoaded = true;
+      this.setLoadingTexts(['loading...']);
   }
 
   ngOnInit() {
@@ -77,13 +70,5 @@ export class HomeComponent extends LoadingComponent {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
     const targetOffset = cookingContainerRect.top + scrollTop - yOffset;
     window.scrollTo({ top: targetOffset, behavior: "smooth" });
-  }
-
-  onVideoLoad(){
-    this.videosLoadedCounter++;
-
-    if (this.videosLoadedCounter >= 12) {
-      this.displayLoadingOverlay = false;
-    }
   }
 }

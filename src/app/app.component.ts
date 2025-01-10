@@ -18,7 +18,6 @@ import { LoadingComponent } from './shared/loading.component';
 export class AppComponent extends LoadingComponent{
 
   title = 'TihomirsWorkshop';
-  isLoadingOverlayDisplayed = true;
 
   constructor(
     public footerService : FooterService, 
@@ -31,7 +30,7 @@ export class AppComponent extends LoadingComponent{
     public sidebarService: SidebarService
     ){
       super();
-      this.loadingTexts = ['loading...', 'baking bread...', 'kneading dough...', 'oven on fire...', 'house burning down...'];
+      this.setLoadingTexts(['loading...', 'baking bread...', 'kneading dough...', 'oven on fire...', 'house burning down...']);
   }
 
   ngOnInit(){
@@ -64,15 +63,5 @@ export class AppComponent extends LoadingComponent{
 
   undim(){
     this.router.navigate(['']);
-  }
-
-  showLoadingOverlay(){
-    this.isLoadingOverlayDisplayed = true;
-    this.startLoadingTextRotation();
-  }
-
-  hideLoadingOverlay(){
-    this.isLoadingOverlayDisplayed = false;
-    this.stopLoadingTextRotation();
   }
 }

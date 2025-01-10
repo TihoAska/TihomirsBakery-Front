@@ -1,31 +1,71 @@
 export abstract class LoadingComponent {
-  intervalId: any;
-  loadingTextIndex: number = 0;
-  loadingText: string = '';
-  loadingTexts: string[] = ['loading...'];
-  displayLoadingOverlay: boolean = true;
-
+  private _intervalId: any;
+  private _loadingTextIndex: number = 0;
+  private _loadingText: string = 'loading...';
+  private _loadingTexts: string[] = ['loading...'];
+  private _isLoadingOverlayDisplayed: boolean = true;
+  private _videosLoadedCounter = 0;
+  
   startLoadingTextRotation(): void {
-    if (!this.loadingTexts || this.loadingTexts.length === 0) {
-      this.loadingTexts = ['loading...'];
+    if (!this._loadingTexts || this._loadingTexts.length === 0) {
+      this._loadingTexts = ['loading...'];
     }
 
-    this.loadingText = this.loadingTexts[this.loadingTextIndex];
+    this.setLoadingText(this._loadingTexts[this._loadingTextIndex])
 
-    this.intervalId = setInterval(() => {
-      this.loadingTextIndex++;
-      if (this.loadingTextIndex >= this.loadingTexts.length) {
-        this.loadingTextIndex = 0;
+    this._intervalId = setInterval(() => {
+      this._loadingTextIndex++;
+      if (this._loadingTextIndex >= this._loadingTexts.length) {
+        this._loadingTextIndex = 0;
       }
-      this.loadingText = this.loadingTexts[this.loadingTextIndex];
+      this.setLoadingText(this._loadingTexts[this._loadingTextIndex]);
     }, 5000);
   }
 
   stopLoadingTextRotation(): void {
-    if (this.intervalId) {
-      clearInterval(this.intervalId);
-      this.intervalId = null;
-      this.loadingTextIndex = 0;
+    if (this._intervalId) {
+      clearInterval(this._intervalId);
+      this._intervalId = null;
+      this._loadingTextIndex = 0;
     }
+  }
+
+  onImageLoad(){
+    this.hideLoadingOverlay();
+  }
+
+  onVideosLoaded(numberOfVideosToLoad: number){
+    this._videosLoadedCounter++;
+
+    if (this._videosLoadedCounter >= numberOfVideosToLoad) {
+      this.hideLoadingOverlay();
+      this.stopLoadingTextRotation();
+    }
+  }
+
+  isLoadingOverlayDisplayed(){
+    return this._isLoadingOverlayDisplayed;
+  }
+
+  showLoadingOverlay(){
+    this._isLoadingOverlayDisplayed = true;
+    this.startLoadingTextRotation();
+  }
+
+  hideLoadingOverlay(){
+    this._isLoadingOverlayDisplayed = false;
+    this.stopLoadingTextRotation();
+  }
+
+  getLoadingText(){
+    return this._loadingText;
+  }
+
+  setLoadingText(loadingText){
+    this._loadingText = loadingText;
+  }
+
+  setLoadingTexts(loadingTexts){
+    this._loadingTexts = loadingTexts;
   }
 }

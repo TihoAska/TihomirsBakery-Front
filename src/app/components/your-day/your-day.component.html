@@ -1,8 +1,8 @@
-<div class="your-day-loading-overlay" *ngIf="isLoadingOverlayDisplayed && sidebarService.$hasAvatarLoaded | async">
+<div class="your-day-loading-overlay" *ngIf="isLoadingOverlayDisplayed() && sidebarService.$hasAvatarLoaded | async">
     <img src="assets/images/sidebar-icons/your-day-orange.png" alt="" height="70px" width="70px">
-    <span>{{ loadingText }}</span>
+    <span>{{ getLoadingText() }}</span>
 </div>
-<div class="container" [hidden]="isLoadingOverlayDisplayed && sidebarService.$hasAvatarLoaded | async">
+<div class="container" [hidden]="isLoadingOverlayDisplayed() && sidebarService.$hasAvatarLoaded | async">
     <div class="kitchen-background">
         <img src="assets/images/your-day/your-day-kitchen.jpg" alt="KITCHEN-BACKGROUND" (load)="onImageLoad()">
         <div class="description">
